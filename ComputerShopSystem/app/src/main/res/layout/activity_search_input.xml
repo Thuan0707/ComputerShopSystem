@@ -8,7 +8,7 @@
     android:background="@color/white">
 
     <View
-        android:id="@+id/view3"
+        android:id="@+id/hr3"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="69dp"
@@ -19,7 +19,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txtSearch"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginStart="18dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/ibtnHome"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -69,7 +69,7 @@
             app:menu="@menu/nav_bot">
 
             <View
-                android:id="@+id/view2"
+                android:id="@+id/hr2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#EBF0FF"

@@ -26,7 +26,7 @@
             app:menu="@menu/nav_bot">
 
             <View
-                android:id="@+id/view2"
+                android:id="@+id/hr2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#EBF0FF"
@@ -35,7 +35,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tvNumberResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -44,10 +44,10 @@
         android:fontFamily="@font/poppins_bold"
         android:text="0 Result"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6" />
+        app:layout_constraintTop_toBottomOf="@+id/hr" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/ibtnSort"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -59,7 +59,7 @@
         app:srcCompat="@drawable/ic_resource_short" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/txtSearch"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginStart="18dp"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view6"
+        android:id="@+id/hr"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="69dp"
@@ -90,17 +90,17 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/ivNotFound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6"
+        app:layout_constraintTop_toBottomOf="@+id/hr"
         app:srcCompat="@drawable/ic_notfound" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/tvNotFound"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
 
@@ -111,10 +111,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/ivNotFound" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/tvThankyou"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_light"
@@ -122,10 +122,10 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNotFound" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnBackToHome"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -135,6 +135,6 @@
         android:text="Back to home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/tvThankyou" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     tools:context=".View.SearchResult">
 
     <View
-        android:id="@+id/view4"
+        android:id="@+id/hr"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="69dp"
@@ -18,7 +18,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/txtSearch"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginStart="18dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/ibtnSort"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -50,7 +50,7 @@
         app:srcCompat="@drawable/ic_resource_short" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvNumberResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -59,16 +59,16 @@
 
         android:text="1 Result"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view4" />
+        app:layout_constraintTop_toBottomOf="@+id/hr" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivItemResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="14dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumberResult"
         app:srcCompat="@drawable/itemresult" />
 
     <TextView
@@ -82,7 +82,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view4" />
+        app:layout_constraintTop_toBottomOf="@+id/hr" />
 
     <FrameLayout
         android:id="@+id/fl_wrapper"
@@ -104,7 +104,7 @@
             app:menu="@menu/nav_bot">
 
             <View
-                android:id="@+id/view2"
+                android:id="@+id/hr2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#EBF0FF"
