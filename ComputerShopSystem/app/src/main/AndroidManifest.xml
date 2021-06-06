@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComputerShopSystem">
-        <activity android:name=".View.AccountLoginSuccess"></activity>
-        <activity android:name=".View.AccountNotLogin"/>
+        <activity android:name=".View.MoreCategory"></activity>
+        <activity android:name=".View.AccountLoginSuccess" />
+        <activity android:name=".View.AccountNotLogin" />
         <activity android:name=".View.SearchNotFound" />
         <activity android:name=".View.SearchResult" />
         <activity android:name=".View.SearchInput" />

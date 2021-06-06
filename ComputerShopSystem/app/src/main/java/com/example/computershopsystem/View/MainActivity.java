@@ -40,5 +40,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AccountLoginSuccess.class);
         startActivity(intent);
     }
+    public  void  pageMoreCategory(View view){
+        Intent intent = new Intent(this, MoreCategory.class);
+        startActivity(intent);
+    }
 
 }

@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.MoreCategory">
+
+    <EditText
+        android:id="@+id/txtSearch2"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/seacher_notactive_bg"
+        android:drawableLeft="@drawable/ic_searchtext"
+        android:drawableRight="@drawable/ic_plusx"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Search Product"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        android:text="Laptop legion"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollViewProduct"
+        android:layout_width="409dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Brand"
+                android:textColor="#223263"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="16dp">
+
+                    <ImageButton
+                        android:id="@+id/ibtnHp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/circle_bg"
+                        app:srcCompat="@drawable/ic_hp" />
+
+                    <ImageButton
+                        android:id="@+id/ibtnDell"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/circle_bg"
+                        app:srcCompat="@drawable/ic_dell" />
+
+                    <ImageButton
+                        android:id="@+id/ibtnAcer"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/circle_bg"
+                        app:srcCompat="@drawable/ic_acer" />
+
+                    <ImageButton
+                        android:id="@+id/ibtnAsus"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/circle_bg"
+                        app:srcCompat="@drawable/ic_asus" />
+
+                    <ImageButton
+                        android:id="@+id/ibtnLenovo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/circle_bg"
+                        app:srcCompat="@drawable/ic_lenovo" />
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Price"
+                android:textColor="#223263"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="16dp">
+
+                    <Button
+                        android:id="@+id/btnGiaRe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="200 - 500$"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btnGiaVua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="500 - 1000$"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btnGiaCao"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="> 1000$"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tvRam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="RAM"
+                android:textColor="#223263"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="16dp">
+
+                    <Button
+                        android:id="@+id/btn4gb"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+
+                        android:text="4 GB"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn8gb"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="8 GB"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn16gb"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="16 GB"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/tvRom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="ROM"
+                android:textColor="#223263"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="16dp">
+
+                    <Button
+                        android:id="@+id/btn512gb"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+
+                        android:text="512 GB"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn1tb"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="1 TB"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn2tb"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="2 TB"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/tvCpu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="CPU"
+                android:textColor="#223263"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="16dp">
+
+                    <Button
+                        android:id="@+id/btni3"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+
+                        android:text="i3"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btni5"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="i5"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btni7"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="i7"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/tvScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Screen Size"
+                android:textColor="#223263"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="16dp">
+
+                    <Button
+                        android:id="@+id/btnScreen14"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+
+                        android:text="14 inch"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btnScree156"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="15.6 inch"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+                    <Button
+                        android:id="@+id/btnScreen17"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/circle_bg"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="17 inch"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/computershop"
+                        app:backgroundTint="@color/white" />
+
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fl_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:itemBackground="@color/white"
+            app:itemIconTint="#9098B1"
+            app:itemRippleColor="#201E1E"
+            app:itemTextColor="#9098B1"
+            app:menu="@menu/nav_bot">
+
+            <View
+                android:id="@+id/hr2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#EBF0FF"
+                tools:ignore="MissingConstraints" />
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </FrameLayout>
+
+    <View
+        android:id="@+id/hr6"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="69dp"
+        android:background="#EBF0FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/ibtnDoneChoose"
+        android:layout_width="73dp"
+        android:layout_height="68dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_done_40" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
