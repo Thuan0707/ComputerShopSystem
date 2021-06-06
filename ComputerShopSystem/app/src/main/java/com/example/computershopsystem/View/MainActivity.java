@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public  void  changePage(View view){
-        Intent intent = new Intent(this, ProductDetail.class);
+        Intent intent = new Intent(this, ProductDetails.class);
         startActivity(intent);
     }
 }
