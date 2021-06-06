@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "282431847470",
+    "firebase_url": "https://computershopsystem-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "computershopsystem",
     "storage_bucket": "computershopsystem.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:282431847470:android:4813c74c3681be486cf3bf",
+        "mobilesdk_app_id": "1:282431847470:android:2c28e2b9b4ab639e6cf3bf",
         "android_client_info": {
           "package_name": "com.example.computershopsystem"
         }
