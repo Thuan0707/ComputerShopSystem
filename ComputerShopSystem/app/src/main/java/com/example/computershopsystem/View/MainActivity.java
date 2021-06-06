@@ -20,4 +20,17 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProductDetails.class);
         startActivity(intent);
     }
+    public  void  pageSearch(View view){
+        Intent intent = new Intent(this, SearchInput.class);
+        startActivity(intent);
+    }
+    public  void  pageSearchResult(View view){
+        Intent intent = new Intent(this, SearchResult.class);
+        startActivity(intent);
+    }
+    public  void  pageSearchNotFound(View view){
+        Intent intent = new Intent(this, SearchNotFound.class);
+        startActivity(intent);
+    }
+
 }

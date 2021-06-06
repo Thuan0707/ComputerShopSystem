@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComputerShopSystem">
-        <activity android:name=".View.ProductDetails"></activity>
+        <activity android:name=".View.SearchNotFound"></activity>
+        <activity android:name=".View.SearchResult" />
+        <activity android:name=".View.SearchInput" />
+        <activity android:name=".View.ProductDetails" />
         <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

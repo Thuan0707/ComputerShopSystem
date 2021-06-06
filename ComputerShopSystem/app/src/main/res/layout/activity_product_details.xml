@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.ProductDetails">
+    tools:context=".View.ProductDetails"
+    android:background="@color/white">
 
     <ImageButton
         android:id="@+id/imageButton11"
@@ -68,7 +69,7 @@
         android:layout_width="409dp"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +79,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
 
             <ImageView
@@ -132,7 +132,6 @@
                     android:text="Please choose hard drive you want" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
 
             <LinearLayout
@@ -259,6 +258,7 @@
                 android:fontFamily="@font/poppins_light"
                 android:text="The estimated delivery will be between 5-7 working days, depending on the delivery address."
                 android:textAlignment="textStart" />
+
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
@@ -311,16 +311,15 @@
         </com.google.android.material.bottomnavigation.BottomNavigationView>
     </FrameLayout>
 
-    <ImageButton
-        android:id="@+id/imageButton12"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Add to cart"
+        app:layout_constraintBottom_toTopOf="@+id/fl_wrapper"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/addcart" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
