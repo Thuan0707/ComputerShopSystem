@@ -32,5 +32,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SearchNotFound.class);
         startActivity(intent);
     }
+    public  void  pageNotLogin(View view){
+        Intent intent = new Intent(this, AccountNotLogin.class);
+        startActivity(intent);
+    }
+    public  void  pageAccountLoginSuccess(View view){
+        Intent intent = new Intent(this, AccountLoginSuccess.class);
+        startActivity(intent);
+    }
 
 }
