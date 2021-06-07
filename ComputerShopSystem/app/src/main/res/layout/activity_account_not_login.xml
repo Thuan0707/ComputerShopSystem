@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.AccountNotLogin">
+
+    <TextView
+        android:id="@+id/tvAccount"
+        android:layout_width="220dp"
+        android:layout_height="30dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Account"
+        android:textColor="#223263"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/hr4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="69dp"
+        android:background="#EBF0FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <FrameLayout
+        android:id="@+id/fl_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:itemBackground="@color/white"
+            app:itemIconTint="#9098B1"
+            app:itemRippleColor="#201E1E"
+            app:itemTextColor="#9098B1"
+            app:menu="@menu/nav_bot">
+
+            <View
+                android:id="@+id/hr2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#EBF0FF"
+                tools:ignore="MissingConstraints" />
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:drawableLeft="@drawable/ic_userblue"
+        android:drawablePadding="16dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Login"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hr4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

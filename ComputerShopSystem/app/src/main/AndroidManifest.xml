@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComputerShopSystem">
+        <activity android:name=".View.MoreCategory"></activity>
+        <activity android:name=".View.AccountLoginSuccess" />
+        <activity android:name=".View.AccountNotLogin" />
+        <activity android:name=".View.SearchNotFound" />
+        <activity android:name=".View.SearchResult" />
+        <activity android:name=".View.SearchInput" />
+        <activity android:name=".View.ProductDetails" />
         <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

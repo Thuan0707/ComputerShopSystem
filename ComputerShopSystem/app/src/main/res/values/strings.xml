@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Computer Shop System</string>
+
+    <string-array name="harddrive">
+        <item>SSD 256GB</item>
+        <item>SSD 512GB</item>
+        <item>SSD 1TB</item>
+        <item>HDD 1TB</item>
+    </string-array>
 </resources>

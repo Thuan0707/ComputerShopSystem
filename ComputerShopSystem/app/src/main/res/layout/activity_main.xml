@@ -6,13 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".View.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btnMoreCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="384dp"
+        android:onClick="pageMoreCategory"
+        android:text="more category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+
+    <Button
+        android:id="@+id/btnSearchNotFound4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="132dp"
+        android:onClick="pageSearchNotFound"
+        android:text="Search Not Found"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+
+    <Button
+        android:id="@+id/btnSearchNotFound3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="296dp"
+        android:onClick="pageAccountLoginSuccess"
+        android:text="account login success"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+
+    <Button
+        android:id="@+id/btnNotAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="216dp"
+        android:onClick="pageNotLogin"
+        android:text="account not login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+
+    <Button
+        android:id="@+id/btnSearchResult"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="44dp"
+        android:onClick="pageSearchResult"
+        android:text="Search Result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+
+    <Button
+        android:id="@+id/btnSearchNotFound"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="132dp"
+        android:onClick="pageSearchNotFound"
+        android:text="Search Not Found"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+
+    <Button
+        android:id="@+id/btnSearchByText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="27dp"
+        android:onClick="pageSearch"
+        android:text="Search by Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnProductDetail" />
+
+    <Button
+        android:id="@+id/btnProductDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:onClick="changePage"
+        android:text="Product Detail"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
