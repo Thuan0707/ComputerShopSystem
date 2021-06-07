@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComputerShopSystem">
+
         <activity android:name=".View.MoreCategory"></activity>
         <activity android:name=".View.AccountLoginSuccess" />
         <activity android:name=".View.AccountNotLogin" />
@@ -16,6 +17,20 @@
         <activity android:name=".View.SearchResult" />
         <activity android:name=".View.SearchInput" />
         <activity android:name=".View.ProductDetails" />
+
+        <activity android:name=".View.HomeLoginActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".View.HomeActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".View.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".View.LoginWrongActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".View.LoginActiveActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".View.LoginActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+
         <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
