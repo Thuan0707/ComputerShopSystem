@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference();
-        mDatabase.setValue("asfdsadfasd");
+        mDatabase.setValue("asfdsadfasd1111fdsfasfsdsssssssfasf");
         Log.e("sadffffffffffffffffff",mDatabase.toString());
 
     }

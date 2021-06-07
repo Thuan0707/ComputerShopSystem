@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "282431847470",
-    "firebase_url": "https://computershopsystem-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "computershopsystem",
-    "storage_bucket": "computershopsystem.appspot.com"
+    "project_number": "518295832706",
+    "firebase_url": "https://computershopsystem-c38da-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "computershopsystem-c38da",
+    "storage_bucket": "computershopsystem-c38da.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:282431847470:android:2c28e2b9b4ab639e6cf3bf",
+        "mobilesdk_app_id": "1:518295832706:android:3625fd46eaa9a5f84f4c9b",
         "android_client_info": {
           "package_name": "com.example.computershopsystem"
         }
       },
       "oauth_client": [
         {
-          "client_id": "282431847470-roectuvrqm0u0mvv6jtpoomnu8eevhln.apps.googleusercontent.com",
+          "client_id": "518295832706-sujmlhja7956qhof1iuqisp6fjvncl1o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBvWpXlSxoCSzRhjb96q5Y_uZWZ_NMXbiQ"
+          "current_key": "AIzaSyD_LlkzYSkEoPJAO8UUPhW662rFSWLMyxI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "282431847470-roectuvrqm0u0mvv6jtpoomnu8eevhln.apps.googleusercontent.com",
+              "client_id": "518295832706-sujmlhja7956qhof1iuqisp6fjvncl1o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
