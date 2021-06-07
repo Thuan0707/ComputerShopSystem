@@ -21,10 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference();
-        mDatabase.setValue("asfdsadfasd1111fdsfasfsdsssssssfasf");
+        mDatabase.setValue("asf");
         Log.e("sadffffffffffffffffff",mDatabase.toString());
 
     }
