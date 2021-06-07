@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
        DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference("mesagae");
-       mDatabase.setValue("Group 81222");
+       mDatabase.setValue("Group 81222222222222");
        Log.e("sadffffffffffffffffff",mDatabase.toString());
 
     }
