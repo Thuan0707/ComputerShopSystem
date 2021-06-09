@@ -5,6 +5,7 @@ import java.util.Date;
 public class Product extends Device {
     int id;
     String name;
+String  image;
     String description;
     long buyPrice;
     long sellPrice;
@@ -14,10 +15,11 @@ public class Product extends Device {
     public Product() {
     }
 
-    public Product(CPU cpu, Ram ram, Rom rom, Brand brand, Screen screen, int id, String name, String description, long buyPrice, long sellPrice, Date createAt, Date deleteAt) {
+    public Product(CPU cpu, Ram ram, Rom rom, Brand brand, Screen screen, int id, String name, String image, String description, long buyPrice, long sellPrice, Date createAt, Date deleteAt) {
         super(cpu, ram, rom, brand, screen);
         this.id = id;
         this.name = name;
+        this.image = image;
         this.description = description;
         this.buyPrice = buyPrice;
         this.sellPrice = sellPrice;
@@ -39,6 +41,14 @@ public class Product extends Device {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrlImage() {
+        return image;
+    }
+
+    public void setUrlImage(String image) {
+        this.image = image;
     }
 
     public String getDescription() {
