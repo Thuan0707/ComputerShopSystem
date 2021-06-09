@@ -18,19 +18,20 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
+
     Button btnLogin, btnActive, btnWrong, btnRegister, btnHome, btnHomeLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        changePage();
        DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference("mesagae");
        mDatabase.setValue("Group 81222222222222");
        Log.e("sadffffffffffffffffff",mDatabase.toString());
 
     }
 
-    public  void  changePage(View view){
+    public  void  changePage( ){
         Intent intent = new Intent(this, ProductDetails.class);
         startActivity(intent);
 
