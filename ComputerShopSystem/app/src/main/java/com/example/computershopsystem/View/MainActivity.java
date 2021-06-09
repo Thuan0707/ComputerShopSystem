@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 
 
+import com.example.computershopsystem.Model.Customer;
+import com.example.computershopsystem.Model.CustomerAccount;
 import com.example.computershopsystem.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        // changePage();
-       DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference("mesagae");
-       mDatabase.setValue("Group 81222222222222");
-       Log.e("sadffffffffffffffffff",mDatabase.toString());
+       DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference();
+        CustomerAccount customerAccount=new CustomerAccount();
+       mDatabase.child("CustomerAccount");
+
 
     }
 
