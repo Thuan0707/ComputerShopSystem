@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        changePage();
+       // changePage();
        DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference("mesagae");
        mDatabase.setValue("Group 81222222222222");
        Log.e("sadffffffffffffffffff",mDatabase.toString());

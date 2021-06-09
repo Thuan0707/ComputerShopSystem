@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this, LoginVerifyOTP.class);
+                Intent intent=new Intent(LoginActivity.this, RegisterOTP.class);
                 intent.putExtra("PhoneNo",etPhone.getText().toString().trim());
                 startActivity(intent);
             }

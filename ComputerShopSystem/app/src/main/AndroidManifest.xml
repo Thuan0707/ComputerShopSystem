@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComputerShopSystem"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.LoginVerifyOTP"></activity>
+        <activity android:name=".View.RegisterOTP"></activity>
         <activity android:name=".View.MoreCategory" />
         <activity android:name=".View.AccountLoginSuccess" />
         <activity android:name=".View.AccountNotLogin" />

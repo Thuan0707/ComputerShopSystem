@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import android.provider.ContactsContract;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginVerifyOTP extends AppCompatActivity {
+public class RegisterOTP extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
@@ -44,7 +44,7 @@ public class LoginVerifyOTP extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_verify_otp);
+        setContentView(R.layout.activity_register_otp);
         phone = "";
         phone = getIntent().getStringExtra("PhoneNo").trim();
 
@@ -58,7 +58,7 @@ signInWithPhoneAuthCredentail(phoneAuthCredential);
 
             @Override
             public void onVerificationFailed(@NonNull @org.jetbrains.annotations.NotNull FirebaseException e) {
-                Toast.makeText(LoginVerifyOTP.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this,e.getMessage(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -68,7 +68,7 @@ signInWithPhoneAuthCredentail(phoneAuthCredential);
                 Log.d(TAG,"onCodeSent"+verificationId);
                 mVerificationId = verificationId;
                 forceResendingToken = token;
-                Toast.makeText(LoginVerifyOTP.this,"Verification code sent",Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this,"Verification code sent",Toast.LENGTH_SHORT).show();
 
             }
         };
@@ -86,9 +86,9 @@ signInWithPhoneAuthCredentail(phoneAuthCredential);
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String code = btnVerify.getText().toString().trim();
+                String code = etOTP.getText().toString().trim();
                 if (TextUtils.isEmpty(code)) {
-                    Toast.makeText(LoginVerifyOTP.this, "Please enter code", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterOTP.this, "Please enter code", Toast.LENGTH_SHORT).show();
                 } else {
                     verifyPhoneNumberWithCode(mVerificationId, code);
                 }
@@ -131,13 +131,13 @@ signInWithPhoneAuthCredentail(phoneAuthCredential);
             @Override
             public void onSuccess(AuthResult authResult) {
                 String phone = firebaseAuth.getCurrentUser().getPhoneNumber();
-                Toast.makeText(LoginVerifyOTP.this, "Logged in as" + phone, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this, "Logged in as" + phone, Toast.LENGTH_SHORT).show();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(LoginVerifyOTP.this, e.getMessage() + phone, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this, e.getMessage() + phone, Toast.LENGTH_SHORT).show();
             }
         });
     }
