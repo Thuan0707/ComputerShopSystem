@@ -12,30 +12,39 @@ import android.util.Log;
 import android.view.View;
 
 
-//import com.example.computershopsystem.Model.Customer;
-//import com.example.computershopsystem.Model.CustomerAccount;
+
+import com.example.computershopsystem.Model.Customer;
+import com.example.computershopsystem.Model.CustomerAccount;
+import com.example.computershopsystem.Model.Product;
+
 import com.example.computershopsystem.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnLogin, btnActive, btnWrong, btnRegister, btnHome, btnHomeLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        changePage();
-       DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference();
-      //  CustomerAccount customerAccount=new CustomerAccount();
-       mDatabase.child("CustomerAccount");
+
+       changePage();
+//        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+//        Product product = new Product(null, null, null, null, null, 4, "Laptop Raizer","image", "New, fast", 10000000, 5000000, new Date(), null);
+//        CustomerAccount customerAccount = new CustomerAccount();
+//        mDatabase.child("Product").push().setValue(product);
+//        Log.e("sdafas", mDatabase.toString());
 
 
 
     }
 
-    public  void  changePage( ){
+    public void changePage() {
         Intent intent = new Intent(this, ProductDetails.class);
         startActivity(intent);
 
@@ -86,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     private void map() {
@@ -99,27 +106,33 @@ public class MainActivity extends AppCompatActivity {
         btnHomeLogin = findViewById(R.id.btnHomeLogin);
 
     }
-    public  void  pageSearch(View view){
+
+    public void pageSearch(View view) {
         Intent intent = new Intent(this, SearchInput.class);
         startActivity(intent);
     }
-    public  void  pageSearchResult(View view){
+
+    public void pageSearchResult(View view) {
         Intent intent = new Intent(this, SearchResult.class);
         startActivity(intent);
     }
-    public  void  pageSearchNotFound(View view){
+
+    public void pageSearchNotFound(View view) {
         Intent intent = new Intent(this, SearchNotFound.class);
         startActivity(intent);
     }
-    public  void  pageNotLogin(View view){
+
+    public void pageNotLogin(View view) {
         Intent intent = new Intent(this, AccountNotLogin.class);
         startActivity(intent);
     }
-    public  void  pageAccountLoginSuccess(View view){
+
+    public void pageAccountLoginSuccess(View view) {
         Intent intent = new Intent(this, AccountLoginSuccess.class);
         startActivity(intent);
     }
-    public  void  pageMoreCategory(View view){
+
+    public void pageMoreCategory(View view) {
         Intent intent = new Intent(this, MoreCategory.class);
         startActivity(intent);
     }
