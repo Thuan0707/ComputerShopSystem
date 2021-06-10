@@ -123,7 +123,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                         }
 
 
-                        startActivity(new Intent(LoginActiveActivity.this, AccountLoginSuccess.class));
+                        startActivity(new Intent(LoginActiveActivity.this, Home.class));
                         finish();
 
                     }
