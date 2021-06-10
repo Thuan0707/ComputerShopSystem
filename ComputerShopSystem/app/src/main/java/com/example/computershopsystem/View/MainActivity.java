@@ -13,8 +13,8 @@ import android.view.View;
 
 
 
-import com.example.computershopsystem.Model.Customer;
-import com.example.computershopsystem.Model.CustomerAccount;
+//import com.example.computershopsystem.Model.Customer;
+//import com.example.computershopsystem.Model.CustomerAccount;
 import com.example.computershopsystem.Model.Product;
 
 import com.example.computershopsystem.R;

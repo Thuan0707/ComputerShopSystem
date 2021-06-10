@@ -8,7 +8,7 @@ import com.example.computershopsystem.DAO.DAO;
 import com.example.computershopsystem.Model.GridAdapter;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.ActivityHomeBinding;
-import com.example.computershopsystem.databinding.ActivityMainBinding;
+//import com.example.computershopsystem.databinding.ActivityMainBinding;
 
 public class HomeActivity extends AppCompatActivity {
 ActivityHomeBinding binding;
