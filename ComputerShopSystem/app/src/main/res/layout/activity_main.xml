@@ -10,54 +10,50 @@
         android:id="@+id/btnMoreCategory"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="384dp"
         android:onClick="pageMoreCategory"
         android:text="more category"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+        app:layout_constraintTop_toBottomOf="@+id/btnHomeLogin" />
 
     <Button
         android:id="@+id/btnSearchNotFound4"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="132dp"
         android:onClick="pageSearchNotFound"
         android:text="Search Not Found"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchNotFound" />
 
     <Button
         android:id="@+id/btnSearchNotFound3"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="296dp"
         android:onClick="pageAccountLoginSuccess"
         android:text="account login success"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+        app:layout_constraintTop_toBottomOf="@+id/btnNotAccount" />
 
     <Button
         android:id="@+id/btnNotAccount"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="216dp"
         android:onClick="pageNotLogin"
         android:text="account not login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchNotFound4" />
 
     <Button
         android:id="@+id/btnSearchResult"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="44dp"
         android:onClick="pageSearchResult"
         android:text="Search Result"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,23 +65,21 @@
         android:id="@+id/btnSearchNotFound"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="132dp"
         android:onClick="pageSearchNotFound"
         android:text="Search Not Found"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearchByText" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchResult" />
 
     <Button
         android:id="@+id/btnSearchByText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="27dp"
         android:onClick="pageSearch"
         android:text="Search by Text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnProductDetail" />
 
@@ -95,31 +89,26 @@
         android:layout_height="wrap_content"
         android:onClick="changePage"
         android:text="Product Detail"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchNotFound3" />
 
     <Button
         android:id="@+id/btnActive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
         android:text="Login Active"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +118,6 @@
         android:id="@+id/btnWrong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:text="Wrong"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +127,6 @@
         android:id="@+id/btnREgis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -150,7 +137,6 @@
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:text="Home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -162,10 +148,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Home Login"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHome"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintTop_toBottomOf="@+id/btnHome" />
 </androidx.constraintlayout.widget.ConstraintLayout>

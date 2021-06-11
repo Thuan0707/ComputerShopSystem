@@ -2,19 +2,14 @@ package com.example.computershopsystem.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.computershopsystem.R;
 
 import java.util.regex.Pattern;
-
-import static com.example.computershopsystem.R.id.btn_Login;
 
 public class LoginWrongActivity extends AppCompatActivity {
     private static final Pattern PASSWORD_PATTERN =
@@ -35,7 +30,7 @@ public class LoginWrongActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_wrong);
 
-        textPassword = findViewById(R.id.etPassword);
+        textPassword = findViewById(R.id.txtPassword);
     }
     private boolean validatePassword() {
         String passwordInput = textPassword.getText().toString().trim();
