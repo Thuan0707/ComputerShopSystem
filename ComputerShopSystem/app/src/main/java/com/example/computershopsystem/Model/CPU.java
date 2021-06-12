@@ -3,7 +3,7 @@ package com.example.computershopsystem.Model;
 import java.util.Date;
 
 public class CPU {
-    int id;
+    String id;
     String series;
     String description;
     Date createAt;
@@ -12,7 +12,7 @@ public class CPU {
     public CPU() {
     }
 
-    public CPU(int id, String series, String description, Date createAt, Date deleteAt) {
+    public CPU(String id, String series, String description, Date createAt, Date deleteAt) {
         this.id = id;
         this.series = series;
         this.description = description;
@@ -20,11 +20,11 @@ public class CPU {
         this.deleteAt = deleteAt;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -24,7 +24,7 @@
             android:name=".View.HomeLoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".View.HomeActivity"
+            android:name=".View.CusHomeFragment"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".View.RegisterActivity"

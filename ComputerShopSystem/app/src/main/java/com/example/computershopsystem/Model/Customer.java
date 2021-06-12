@@ -3,7 +3,7 @@ package com.example.computershopsystem.Model;
 import java.util.Date;
 
 public class Customer {
-    int id;
+    String  id;
     CustomerAccount customerAccount;
     Cart cart;
     String email;
@@ -18,7 +18,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, CustomerAccount customerAccount, Cart cart, String email, String fullName, Date dateOfBirth, String address, int gender, long money, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount, Cart cart, String email, String fullName, Date dateOfBirth, String address, int gender, long money, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.cart = cart;
@@ -32,11 +32,11 @@ public class Customer {
         this.deleteAt = deleteAt;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.HomeActivity">
+    tools:context=".View.CusHomeFragment">
 
     <TextView
         android:id="@+id/tvMoreCate"
@@ -59,28 +59,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_bot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:backgroundTint="#FFFFFF"
-            app:itemBackground="@color/white"
-            app:itemIconTint="#9098B1"
-            app:itemRippleColor="#201E1E"
-            app:itemTextColor="#9098B1"
-            app:menu="@menu/nav_bot">
-
-            <View
-                android:id="@+id/hr2"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#EBF0FF"
-                tools:ignore="MissingConstraints" />
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </FrameLayout>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
         android:id="@+id/ivHr"
@@ -199,13 +178,15 @@
 
     <GridView
         android:id="@+id/gridProduct"
-        android:layout_width="408dp"
-        android:layout_height="420dp"
+        android:layout_width="420dp"
+        android:layout_height="424dp"
         android:numColumns="2"
         app:layout_constraintBottom_toTopOf="@+id/fl_wrapper"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivHr"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/ibtnUser"

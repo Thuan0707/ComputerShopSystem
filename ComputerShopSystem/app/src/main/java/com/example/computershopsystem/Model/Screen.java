@@ -3,8 +3,8 @@ package com.example.computershopsystem.Model;
 import java.util.Date;
 
 public class Screen {
-    int id;
-    int size;
+    String id;
+    String  size;
     String description;
     Date createAt;
     Date deleteAt;
@@ -12,7 +12,7 @@ public class Screen {
     public Screen() {
     }
 
-    public Screen(int id, int size, String description, Date createAt, Date deleteAt) {
+    public Screen(String id, String size, String description, Date createAt, Date deleteAt) {
         this.id = id;
         this.size = size;
         this.description = description;
@@ -20,19 +20,19 @@ public class Screen {
         this.deleteAt = deleteAt;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 

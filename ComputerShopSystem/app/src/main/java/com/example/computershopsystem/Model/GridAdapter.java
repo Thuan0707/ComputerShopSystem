@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.computershopsystem.R;
+import com.example.computershopsystem.View.CusHomeFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -50,10 +51,12 @@ LayoutInflater layoutInflater;
         }
         ImageView imageView=convertView.findViewById(R.id.grid_image);
         TextView name=convertView.findViewById(R.id.name_product);
+        TextView brand=convertView.findViewById(R.id.brand_product);
         TextView price=convertView.findViewById(R.id.price_product);
         name.setText(listProduct.get(position).getName());
+        brand.setText(listProduct.get(position).getBrand().getName());
         price.setText(String.valueOf(listProduct.get(position).getSellPrice()));
-        Picasso.get().load(listProduct.get(position).getUrlImage()).into(imageView);
+        Picasso.get().load(listProduct.get(position).getImage()).fit().into(imageView);
 
         return convertView;
     }
