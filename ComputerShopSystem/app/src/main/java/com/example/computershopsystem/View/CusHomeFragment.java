@@ -16,20 +16,22 @@ import com.example.computershopsystem.Model.GridAdapter;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
 
+import org.jetbrains.annotations.NotNull;
 
 
 public class CusHomeFragment extends Fragment {
     CusHomeFragmentBinding binding;
 
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
         binding = CusHomeFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         DAO dao = new DAO();
         dao.loadProduct();
         GridAdapter gridAdapter = new GridAdapter(getActivity(), dao.getListProduct());
         binding.gridProduct.setAdapter(gridAdapter);
-        return view;
+        return  view;
     }
 }

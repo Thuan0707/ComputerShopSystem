@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment=new CusHomeFragment();
                         break;
                     case R.id.ic_user:
+                        selectedFragment=new TestLoginLogoutFragment();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
