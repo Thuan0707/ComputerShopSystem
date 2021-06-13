@@ -1,215 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<androidx.constraintlayout.widget.ConstraintLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".View.CusHomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tvMoreCate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="More Category"
-        android:textColor="#40BFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr" />
 
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".View.CusHomeFragment">
 
-        android:layout_marginTop="16dp"
-        android:text="Category"
-        android:textColor="#223263"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr" />
+        <ImageButton
+            android:id="@+id/btnAsus"
+            android:layout_width="68dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/border_detail"
+            app:layout_constraintStart_toEndOf="@+id/btnAcer"
+            app:layout_constraintTop_toBottomOf="@+id/tvMoreCate"
+            app:srcCompat="@drawable/ic_asus" />
 
-    <EditText
-        android:id="@+id/txtSearch"
-        android:layout_width="275dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/seacher_notactive_bg"
-        android:drawableLeft="@drawable/ic_searchtext"
-        android:drawableRight="@drawable/ic_plusx"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Search Product"
-        android:inputType="textPersonName"
-        android:padding="8dp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/btnAcer"
+            android:layout_width="68dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/border_detail"
+            app:layout_constraintStart_toEndOf="@+id/btnDell"
+            app:layout_constraintTop_toBottomOf="@+id/tvMoreCate"
+            app:srcCompat="@drawable/ic_acer" />
 
-    <FrameLayout
-        android:id="@+id/fl_wrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <ImageButton
+            android:id="@+id/btnDell"
+            android:layout_width="68dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/border_detail"
+            app:layout_constraintStart_toEndOf="@+id/btnHp"
+            app:layout_constraintTop_toBottomOf="@+id/tvCategory"
+            app:srcCompat="@drawable/ic_dell" />
 
-    <ImageView
-        android:id="@+id/ivHr"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/line39" />
+        <ImageButton
+            android:id="@+id/ibtnUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/ibtnNotify"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_user" />
 
-    <Button
-        android:id="@+id/btnDell"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/dell"
-        android:paddingLeft="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toEndOf="@+id/btnHP"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
+        <TextView
+            android:id="@+id/tvMoreCate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <Button
-        android:id="@+id/btnAsus"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/asus"
-        android:paddingLeft="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.641"
-        app:layout_constraintStart_toEndOf="@+id/btnAcer"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="More Category"
+            android:textColor="#40BFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHr" />
 
-    <Button
-        android:id="@+id/btnHP"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/hp1"
-        android:paddingLeft="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
 
-    <TextView
-        android:id="@+id/tvDell"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DELL"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
-        app:layout_constraintStart_toEndOf="@+id/tvHp"
-        app:layout_constraintTop_toBottomOf="@+id/btnDell"
-        app:layout_constraintVertical_bias="0.016" />
+            android:layout_marginTop="16dp"
+            android:text="Category"
+            android:textColor="#223263"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHr" />
 
-    <Button
-        android:id="@+id/btnAcer"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/acer"
-        android:paddingLeft="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
-        app:layout_constraintStart_toEndOf="@+id/btnDell"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
+        <EditText
+            android:id="@+id/txtSearch"
+            android:layout_width="275dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/seacher_notactive_bg"
+            android:drawableLeft="@drawable/ic_searchtext"
+            android:drawableRight="@drawable/ic_plusx"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Search Product"
+            android:inputType="textPersonName"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvAsus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ASUS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toEndOf="@+id/tvAcer"
-        app:layout_constraintTop_toBottomOf="@+id/btnAsus"
-        app:layout_constraintVertical_bias="0.016" />
+        <ImageView
+            android:id="@+id/ivHr"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/line39" />
 
-    <TextView
-        android:id="@+id/tvAcer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ACER"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
-        app:layout_constraintStart_toEndOf="@+id/tvDell"
-        app:layout_constraintTop_toBottomOf="@+id/btnAcer"
-        app:layout_constraintVertical_bias="0.012" />
+        <TextView
+            android:id="@+id/tvDell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="4dp"
+            android:text="DELL"
+            app:layout_constraintStart_toEndOf="@+id/tvHp"
+            app:layout_constraintTop_toBottomOf="@+id/btnDell" />
 
-    <TextView
-        android:id="@+id/tvHp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHP"
-        app:layout_constraintVertical_bias="0.016" />
+        <TextView
+            android:id="@+id/tvAsus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="4dp"
+            android:text="ASUS"
+            app:layout_constraintStart_toEndOf="@+id/tvAcer"
+            app:layout_constraintTop_toBottomOf="@+id/btnAsus" />
 
-    <GridView
-        android:id="@+id/gridProduct"
-        android:layout_width="420dp"
-        android:layout_height="424dp"
-        android:numColumns="2"
-        app:layout_constraintBottom_toTopOf="@+id/fl_wrapper"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/tvAcer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="4dp"
+            android:text="ACER"
+            app:layout_constraintStart_toEndOf="@+id/tvDell"
+            app:layout_constraintTop_toBottomOf="@+id/btnAcer" />
 
-    <ImageButton
-        android:id="@+id/ibtnUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/ibtnNotify"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_user" />
+        <TextView
+            android:id="@+id/tvHp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:text="HP"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnHp" />
 
-    <ImageButton
-        android:id="@+id/ibtnNotify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_notify" />
+        <GridView
+            android:id="@+id/gridProduct"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_marginBottom="60dp"
+            android:numColumns="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/ibtnNotify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_notify" />
+
+        <ImageButton
+            android:id="@+id/btnHp"
+            android:layout_width="68dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/border_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCategory"
+            app:srcCompat="@drawable/ic_hp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

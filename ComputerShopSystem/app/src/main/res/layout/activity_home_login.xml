@@ -7,6 +7,90 @@
     tools:context=".View.HomeLoginActivity">
 
     <TextView
+        android:id="@+id/tvAsus3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="4dp"
+        android:text="ASUS"
+        app:layout_constraintStart_toEndOf="@+id/tvAcer3"
+        app:layout_constraintTop_toBottomOf="@+id/btnAsus3" />
+
+    <TextView
+        android:id="@+id/tvAcer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="4dp"
+        android:text="ACER"
+        app:layout_constraintStart_toEndOf="@+id/tvDell3"
+        app:layout_constraintTop_toBottomOf="@+id/btnAcer3" />
+
+    <TextView
+        android:id="@+id/tvDell3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="4dp"
+        android:text="DELL"
+        app:layout_constraintStart_toEndOf="@+id/tvHp3"
+        app:layout_constraintTop_toBottomOf="@+id/btnDell3" />
+
+    <TextView
+        android:id="@+id/tvHp3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        android:text="HP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHp3" />
+
+    <ImageButton
+        android:id="@+id/btnAsus3"
+        android:layout_width="68dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_detail"
+        app:layout_constraintStart_toEndOf="@+id/btnAcer3"
+        app:layout_constraintTop_toBottomOf="@+id/tvMoreCate"
+        app:srcCompat="@drawable/ic_asus" />
+
+    <ImageButton
+        android:id="@+id/btnAcer3"
+        android:layout_width="68dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_detail"
+        app:layout_constraintStart_toEndOf="@+id/btnDell3"
+        app:layout_constraintTop_toBottomOf="@+id/tvMoreCate"
+        app:srcCompat="@drawable/ic_acer" />
+
+    <ImageButton
+        android:id="@+id/btnDell3"
+        android:layout_width="68dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_detail"
+        app:layout_constraintStart_toEndOf="@+id/btnHp3"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategory"
+        app:srcCompat="@drawable/ic_dell" />
+
+    <ImageButton
+        android:id="@+id/btnHp3"
+        android:layout_width="68dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategory"
+        app:srcCompat="@drawable/ic_hp" />
+
+    <TextView
         android:id="@+id/tvMoreCate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,114 +177,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/line39" />
 
-    <Button
-        android:id="@+id/btnDell"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/dell"
-        android:paddingLeft="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toEndOf="@+id/btnHP"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <Button
-        android:id="@+id/btnAsus"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/asus"
-        android:paddingLeft="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.641"
-        app:layout_constraintStart_toEndOf="@+id/btnAcer"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <Button
-        android:id="@+id/btnHP"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/hp1"
-        android:paddingLeft="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <TextView
-        android:id="@+id/tvDell"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DELL"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
-        app:layout_constraintStart_toEndOf="@+id/tvHp"
-        app:layout_constraintTop_toBottomOf="@+id/btnDell"
-        app:layout_constraintVertical_bias="0.016" />
-
-    <Button
-        android:id="@+id/btnAcer"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:background="@drawable/border_detail"
-        android:drawableStart="@drawable/acer"
-        android:paddingLeft="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
-        app:layout_constraintStart_toEndOf="@+id/btnDell"
-        app:layout_constraintTop_toBottomOf="@+id/ivHr"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <TextView
-        android:id="@+id/tvAsus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ASUS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toEndOf="@+id/tvAcer"
-        app:layout_constraintTop_toBottomOf="@+id/btnAsus"
-        app:layout_constraintVertical_bias="0.016" />
-
-    <TextView
-        android:id="@+id/tvAcer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ACER"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
-        app:layout_constraintStart_toEndOf="@+id/tvDell"
-        app:layout_constraintTop_toBottomOf="@+id/btnAcer"
-        app:layout_constraintVertical_bias="0.012" />
-
-    <TextView
-        android:id="@+id/tvHp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHP"
-        app:layout_constraintVertical_bias="0.016" />
-
     <GridView
         android:id="@+id/gridProduct"
-        android:layout_width="408dp"
-        android:layout_height="420dp"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
         android:numColumns="2"
         app:layout_constraintBottom_toTopOf="@+id/fl_wrapper"
         app:layout_constraintEnd_toEndOf="parent"
