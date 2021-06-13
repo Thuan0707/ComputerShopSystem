@@ -30,14 +30,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
     <list default="true" id="a1d0bfaf-2d8e-4752-9f4d-43d06ad53a8d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/grid_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grid_item.xml" afterDir="false" />
     </list>
-=======
-    <list default="true" id="a1d0bfaf-2d8e-4752-9f4d-43d06ad53a8d" name="Default Changelist" comment="" />
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
