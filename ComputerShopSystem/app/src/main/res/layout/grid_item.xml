@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="30dp"
+    android:layout_margin="10dp"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/border"
+
+    >
 
     <ImageView
         android:id="@+id/grid_image"
 
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-      />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/name_product"
@@ -37,8 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid_image"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/grid_image" />
 
     <TextView
         android:id="@+id/brand_product"
@@ -65,7 +66,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Price"
-        android:textColor="#40BFFF"
+        android:textColor="#FB7181"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

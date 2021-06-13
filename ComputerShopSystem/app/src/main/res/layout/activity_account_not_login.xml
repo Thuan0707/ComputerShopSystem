@@ -44,6 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:layout_gravity="bottom"
+            app:backgroundTint="#FFFFFF"
             app:itemBackground="@color/white"
             app:itemIconTint="#9098B1"
             app:itemRippleColor="#201E1E"
