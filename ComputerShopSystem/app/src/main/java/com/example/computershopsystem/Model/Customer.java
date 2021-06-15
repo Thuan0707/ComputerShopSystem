@@ -5,7 +5,6 @@ import java.util.Date;
 public class Customer {
     String  id;
     CustomerAccount customerAccount;
-    Cart cart;
     String email;
     String fullName;
     Date dateOfBirth;
@@ -18,10 +17,9 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String id, CustomerAccount customerAccount, Cart cart, String email, String fullName, Date dateOfBirth, String address, int gender, long money, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount,String email, String fullName, Date dateOfBirth, String address, int gender, long money, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
-        this.cart = cart;
         this.email = email;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -48,13 +46,6 @@ public class Customer {
         this.customerAccount = customerAccount;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 
     public String getEmail() {
         return email;
