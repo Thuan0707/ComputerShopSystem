@@ -57,6 +57,7 @@
         android:id="@+id/fl_wrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:foregroundGravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -66,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:layout_gravity="bottom"
             app:backgroundTint="#FFFFFF"
             app:itemBackground="@color/white"
             app:itemIconTint="#9098B1"
@@ -199,13 +201,15 @@
 
     <GridView
         android:id="@+id/gridProduct"
-        android:layout_width="408dp"
-        android:layout_height="420dp"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_marginTop="4dp"
         android:numColumns="2"
         app:layout_constraintBottom_toTopOf="@+id/fl_wrapper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDell" />
 
     <ImageButton
         android:id="@+id/ibtnUser"
