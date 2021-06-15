@@ -1,7 +1,6 @@
 package com.example.computershopsystem.Model;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.computershopsystem.R;
-import com.example.computershopsystem.View.CusHomeFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import javax.crypto.Cipher;
 
 public class GridAdapter extends BaseAdapter {
     Context context;
@@ -56,7 +52,7 @@ LayoutInflater layoutInflater;
         name.setText(listProduct.get(position).getName());
         brand.setText(listProduct.get(position).getBrand().getName());
         price.setText(String.valueOf(listProduct.get(position).getSellPrice()));
-        Picasso.get().load(listProduct.get(position).getImage()).fit().into(imageView);
+        Picasso.get().load(listProduct.get(position).getImage()).into(imageView);
 
         return convertView;
     }
