@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.ic_home:
                         selectedFragment=new CusHomeFragment();
+
                         break;
                     case R.id.ic_user:
                         selectedFragment=new TestLoginLogoutFragment();
