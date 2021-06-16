@@ -1,6 +1,7 @@
 package com.example.computershopsystem.Model;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,8 +44,8 @@ LayoutInflater layoutInflater;
             layoutInflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView==null){
             convertView=layoutInflater.inflate(R.layout.grid_item,null);
-
         }
+        Log.e("num",String.valueOf(getCount()));
         ImageView imageView=convertView.findViewById(R.id.grid_image);
         TextView name=convertView.findViewById(R.id.name_product);
         TextView brand=convertView.findViewById(R.id.brand_product);

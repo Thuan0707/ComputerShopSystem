@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity android:name=".View.RegisterOTP"></activity>
-        <activity android:name=".View.MoreCategory" />
+        <activity android:name=".View.MoreCategoryFragment" />
         <activity android:name=".View.AccountLoginSuccess" />
         <activity android:name=".View.AccountNotLogin" />
         <activity android:name=".View.SearchNotFound" />

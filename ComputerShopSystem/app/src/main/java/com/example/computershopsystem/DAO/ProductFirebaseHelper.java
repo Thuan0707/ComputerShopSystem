@@ -1,20 +1,44 @@
 package com.example.computershopsystem.DAO;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.example.computershopsystem.Model.Product;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class ProductFirebaseHelper {
-
-
     DatabaseReference db;
     Boolean saved = null;
     ArrayList<Product> list = new ArrayList<>();
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+            list.clear();
+            if (snapshot.exists()) {
+                for (DataSnapshot shot : snapshot.getChildren()) {
+                    Product product = shot.getValue(Product.class);
+                    Log.e("nameBrand",product.getBrand().getName());
+                    Log.e("name",product.getName());
+                    list.add(product);
+                }
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+        }
+    };
 
     public ProductFirebaseHelper(DatabaseReference db) {
         this.db = db;
@@ -40,44 +64,19 @@ public class ProductFirebaseHelper {
 
     //RETRIEVE
     public ArrayList<Product> retrieve() {
-
-        db.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                fetchData(dataSnapshot);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                fetchData(dataSnapshot);
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        db.addValueEventListener(valueEventListener);
         return list;
     }
 
-    private void fetchData(DataSnapshot dataSnapshot) {
-        list.clear();
-        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-            Product product = ds.getValue(Product.class);
-            list.add(product);
-        }
+    public ArrayList<Product> retrieveByName(String  s) {
+        Query query= db.orderByChild("name").equalTo(s);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
+    public ArrayList<Product> retrieveByBrand(String  s) {
+        Query query= db.orderByChild("brand/name").equalTo(s);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
     }
 
 }
