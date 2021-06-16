@@ -1,6 +1,5 @@
 package com.example.computershopsystem.View;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,8 +20,6 @@ import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.jetbrains.annotations.NotNull;
-
 
 public class CusHomeFragment extends Fragment {
     CusHomeFragmentBinding binding;
@@ -34,10 +31,10 @@ public class CusHomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CusHomeFragmentBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
         databaseReference = FirebaseDatabase.getInstance().getReference("Product");
         helper = new ProductFirebaseHelper(databaseReference);
-    gridAdapter = new GridAdapter(getActivity(), helper.retrieve());
+        helper.retrieve();
+        gridAdapter = new GridAdapter(getActivity(), helper.getList());
         binding.gridProduct.setAdapter(gridAdapter);
         binding.tvMoreCate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,11 +58,10 @@ public class CusHomeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().isEmpty()) {
-                    gridAdapter = new GridAdapter(getActivity(), helper.retrieveByName(s.toString()));
-                    binding.gridProduct.setAdapter(gridAdapter);
-                } else {
-     helper.retrieve();
+              helper.retrieveByName(s.toString());
 
+                } else {
+                    helper.retrieve();
                 }
             }
 
@@ -77,67 +73,37 @@ public class CusHomeFragment extends Fragment {
         binding.btnAsus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               helper.retrieveByBrand("Lenovo".trim());
+                helper.retrieveByBrand("Asus".trim());
                 gridAdapter.notifyDataSetChanged();
-
             }
         });
+        binding.btnHP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helper.retrieveByBrand("HP".trim());
+                gridAdapter.notifyDataSetChanged();
+            }
+        });
+        binding.btnAcer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helper.retrieveByBrand("Acer".trim());
+                gridAdapter.notifyDataSetChanged();
+            }
+        });
+        binding.btnDell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helper.retrieveByBrand("Dell".trim());
+                gridAdapter.notifyDataSetChanged();
+            }
+        });
+        View view = binding.getRoot();
         return view;
     }
 
     @Override
-    public void onAttach(@NonNull @NotNull Activity activity) {
-        super.onAttach(activity);
-        binding = CusHomeFragmentBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Product");
-        helper = new ProductFirebaseHelper(databaseReference);
-        gridAdapter = new GridAdapter(getActivity(), helper.retrieve());
-        binding.gridProduct.setAdapter(gridAdapter);
-        binding.tvMoreCate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MoreCategoryFragment fragment = new MoreCategoryFragment(binding.gridProduct);
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
-                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
-                        android.R.animator.fade_out);
-                fragTransaction.addToBackStack(null);
-                fragTransaction.add(R.id.fl_wrapper, fragment);
-                fragTransaction.commit();
-            }
-        });
-        binding.txtSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().isEmpty()) {
-                    gridAdapter = new GridAdapter(getActivity(), helper.retrieveByName(s.toString()));
-                    binding.gridProduct.setAdapter(gridAdapter);
-                } else {
-                    helper.retrieve();
-
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        binding.btnAsus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helper.retrieveByBrand("Lenovo".trim());
-                gridAdapter.notifyDataSetChanged();
-
-            }
-        });
+    public void onStart() {
+        super.onStart();
     }
-
-
 }

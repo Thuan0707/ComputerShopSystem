@@ -79,5 +79,12 @@ public class ProductFirebaseHelper {
         return list;
     }
 
+    public ArrayList<Product> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<Product> list) {
+        this.list = list;
+    }
 }
 

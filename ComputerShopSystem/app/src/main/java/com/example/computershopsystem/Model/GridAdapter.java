@@ -45,8 +45,8 @@ LayoutInflater layoutInflater;
         if (convertView==null){
             convertView=layoutInflater.inflate(R.layout.grid_item,null);
         }
-        Log.e("num",String.valueOf(getCount()));
         ImageView imageView=convertView.findViewById(R.id.grid_image);
+        Log.e("name122",listProduct.get(position).getName());
         TextView name=convertView.findViewById(R.id.name_product);
         TextView brand=convertView.findViewById(R.id.brand_product);
         TextView price=convertView.findViewById(R.id.price_product);
@@ -55,6 +55,7 @@ LayoutInflater layoutInflater;
         price.setText(String.valueOf(listProduct.get(position).getSellPrice()));
         Picasso.get().load(listProduct.get(position).getImage()).into(imageView);
 
+    notifyDataSetChanged();
         return convertView;
     }
 }
