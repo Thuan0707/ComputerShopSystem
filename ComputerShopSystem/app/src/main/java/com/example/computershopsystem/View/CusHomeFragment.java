@@ -58,7 +58,7 @@ public class CusHomeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().isEmpty()) {
-              helper.retrieveByName(s.toString());
+                    helper.retrieveByName(s.toString());
 
                 } else {
                     helper.retrieve();
@@ -74,6 +74,9 @@ public class CusHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 helper.retrieveByBrand("Asus".trim());
+                if (helper.getList().size() == 0) {
+
+                }
                 gridAdapter.notifyDataSetChanged();
             }
         });
@@ -100,6 +103,17 @@ public class CusHomeFragment extends Fragment {
         });
         View view = binding.getRoot();
         return view;
+    }
+
+    void ShowNotFound() {
+        MoreCategoryFragment fragment = new MoreCategoryFragment(binding.gridProduct);
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                android.R.animator.fade_out);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.add(R.id.fl_wrapper, fragment);
+        fragTransaction.commit();
     }
 
     @Override
