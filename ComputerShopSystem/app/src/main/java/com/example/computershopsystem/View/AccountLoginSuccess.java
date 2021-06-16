@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.computershopsystem.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,6 +18,8 @@ import org.w3c.dom.Text;
 public class AccountLoginSuccess extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+
+    private GoogleSignInClient googleSignInClient;
 
     TextView account;
 
@@ -36,6 +39,7 @@ public class AccountLoginSuccess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 firebaseAuth.signOut();
+                googleSignInClient.signOut();
                 checkUser();
             }
         });

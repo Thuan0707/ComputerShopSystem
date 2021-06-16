@@ -86,11 +86,14 @@ public class LoginActiveActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             Log.d(TAG, "onActivityResult: Google Signin intent result");
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
+            Log.d(TAG,"account task"+accountTask.toString());
             try{
                 GoogleSignInAccount account = accountTask.getResult(ApiException.class);
+                Log.d(TAG, "account: " + account );
                 firebaseAuthWithGoogleAccount(account);
             } catch (Exception e) {
-                Log.d(TAG, "onActivity result:" + e.getMessage());
+                e.printStackTrace();
+                Log.d(TAG, "onActivity result:" + e.getMessage() );
             }
         }
     }
