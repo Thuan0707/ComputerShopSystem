@@ -5,6 +5,9 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
@@ -35,10 +38,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\MSI_GF\.android\avd\Galaxy_Nexus_API_30.avd]" />
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\MSI_GF\.android\avd\Galaxy_Nexus_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,6 +59,11 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Computer Shop System" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Computer Shop System" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
               </path>
             </expand>
             <select />
@@ -87,17 +95,26 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
-
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\FPTU\SU21\PRM391\GitHub\ComputerShopSystem\ComputerShopSystem\app\src" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle signingReport" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -163,6 +180,30 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ComputerShopSystem [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ComputerShopSystem [signingReport]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -196,25 +237,41 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="614" y="198" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1623870384361" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1623853912429">
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1623879887509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623853912429" />
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623879887509" />
     <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1623290624127" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1623853912429">
+    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1623879887509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623853912429" />
+    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623879887509" />
     <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1623290624127" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1623853912429">
+    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1623879887509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623853912429" />
+    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623879887509" />
     <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1623290624127" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1623853912429">
+    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1623879887509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623853912429" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623879887509" />
     <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1623290624127" />
+    <state x="349" y="155" key="IDE.errors.dialog" timestamp="1623877751746">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1623877751746" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1623871937847">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1623871937847" />
+    <state x="477" y="11" width="581" height="801" key="find.popup" timestamp="1623878605740">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="477" y="11" width="581" height="801" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1623878605740" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1623873231706">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1623873231706" />
   </component>
 </project>

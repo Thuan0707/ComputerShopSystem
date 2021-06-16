@@ -88,6 +88,7 @@ public class LoginActiveActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             Log.d(TAG,"account task"+accountTask.toString());
             try{
+                Log.d(TAG, "I'm here");
                 GoogleSignInAccount account = accountTask.getResult(ApiException.class);
                 Log.d(TAG, "account: " + account );
                 firebaseAuthWithGoogleAccount(account);
@@ -101,6 +102,14 @@ public class LoginActiveActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
         Log.d(TAG, "firebaseAuthWithGoogleAccount: begin");
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        user.reauthenticate(credential)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+//                        Log.d(TAG, "reauthenticate");
+//                    }
+//                });
         firebaseAuth.signInWithCredential(credential)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -119,10 +128,10 @@ public class LoginActiveActivity extends AppCompatActivity {
 
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
                             Log.d(TAG, "onSuccess: Account Created");
-                            Toast.makeText(LoginActiveActivity.this, "Account Created " + email, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActiveActivity.this, "Account created for " + email, Toast.LENGTH_SHORT).show();
                         } else {
                             Log.d(TAG, "onSuccess: Existing User: " + email);
-                            Toast.makeText(LoginActiveActivity.this, "Account Existing" + email, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
                         }
 
 
