@@ -1,7 +1,7 @@
 package com.example.computershopsystem.Model;
 
 public class CustomerAccount {
-    int id;
+    String id;
     String phone;
     String  idFacebook;
     String idGmail;
@@ -10,7 +10,7 @@ public class CustomerAccount {
     public CustomerAccount() {
     }
 
-    public CustomerAccount(int id, String phone, String idFacebook, String idGmail, String password) {
+    public CustomerAccount(String id, String phone, String idFacebook, String idGmail, String password) {
         this.id = id;
         this.phone = phone;
         this.idFacebook = idFacebook;
@@ -18,11 +18,11 @@ public class CustomerAccount {
         this.password = password;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

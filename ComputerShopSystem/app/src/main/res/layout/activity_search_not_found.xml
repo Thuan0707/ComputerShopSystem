@@ -19,6 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:layout_gravity="bottom"
+            app:backgroundTint="#FFFFFF"
             app:itemBackground="@color/white"
             app:itemIconTint="#9098B1"
             app:itemRippleColor="#201E1E"
@@ -131,8 +133,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:backgroundTint="#03A9F4"
         android:fontFamily="@font/poppins_bold"
         android:text="Back to home"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvThankyou" />

@@ -3,15 +3,15 @@ package com.example.computershopsystem.Model;
 import java.util.Date;
 
 public class Brand {
-    int id;
+    String  id;
     String name;
     String description;
     Date createAt;
-Date deleteAt;
+    Date deleteAt;
     public Brand() {
     }
 
-    public Brand(int id, String name, String description, Date createAt, Date deleteAt) {
+    public Brand(String id, String name, String description, Date createAt, Date deleteAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -19,11 +19,11 @@ Date deleteAt;
         this.deleteAt = deleteAt;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

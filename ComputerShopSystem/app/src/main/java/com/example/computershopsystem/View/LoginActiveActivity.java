@@ -1,15 +1,15 @@
 package com.example.computershopsystem.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.computershopsystem.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -45,9 +45,9 @@ public class LoginActiveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_active);
 
-        btGoogle = findViewById(R.id.btnGo);
+        btGoogle = findViewById(R.id.btnGoogle);
 
-        btFacebook = findViewById(R.id.btnface);
+        btFacebook = findViewById(R.id.btnFace);
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -126,7 +126,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                         }
 
 
-                        startActivity(new Intent(LoginActiveActivity.this, HomeActivity.class));
+                        startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
                         finish();
 
                     }

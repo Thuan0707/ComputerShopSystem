@@ -1,140 +1,63 @@
 package com.example.computershopsystem.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 
-import android.util.Log;
-
-import android.view.View;
-
-
-
-//import com.example.computershopsystem.Model.Customer;
-//import com.example.computershopsystem.Model.CustomerAccount;
-import com.example.computershopsystem.Model.Product;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.computershopsystem.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Date;
+import org.jetbrains.annotations.NotNull;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnLogin, btnActive, btnWrong, btnRegister, btnHome, btnHomeLogin;
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-       changePage();
-//        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-//        Product product = new Product(null, null, null, null, null, 4, "Laptop Raizer","image", "New, fast", 10000000, 5000000, new Date(), null);
-//        CustomerAccount customerAccount = new CustomerAccount();
-//        mDatabase.child("Product").push().setValue(product);
-//        Log.e("sdafas", mDatabase.toString());
-
-
-
-    }
-
-    public void changePage() {
-        Intent intent = new Intent(this, ProductDetails.class);
-        startActivity(intent);
-
-
-        map();
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        getSupportFragmentManager().beginTransaction().add(R.id.fl_wrapper,new CusHomeFragment()).commit();
+        BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
+        nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.ic_home:
+                        selectedFragment=new CusHomeFragment();
+
+                        break;
+                    case R.id.ic_user:
+                        selectedFragment=new TestLoginLogoutFragment();
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
+                return true;
             }
         });
-        btnActive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActiveActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnWrong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginWrongActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnHomeLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HomeLoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
+//        mDatabase = FirebaseDatabase.getInstance().getReference("Product");
+//        String id = mDatabase.push().getKey();
+//       Brand brand = new Brand(null, "HP", "Good", null, null);
+//       CPU cpu = new CPU(null, "i7", "Intel Core i5 Comet Lake-10300H ", null, null);
+//        Screen screen=new Screen(null,"17","Full HD (1920 x 1080), 144Hz",null,null);
+//        Ram ram=new Ram(null,16,"DDR4 - 2666 MHz",null,null);
+//        Rom rom=new Rom(null,256,"Supporting HDD SATASSD 512 GB NVMe PCIe", null,null);
+//        Product product = new Product(cpu, ram, rom, brand, screen, id, "Lenovo Legion y530", "image", "i5 10300H 8GB/512GB/4GB GTX1650/144Hz/Win10 (255VN)", 15,9000000, 35990000, new Date(), null);
+//        mDatabase.child(id).setValue(product);
+//        mDatabase = FirebaseDatabase.getInstance().getReference("Customer");
+//        CustomerAccount a=new CustomerAccount("1QzUXC8c0bQxtJY0EiWOgdHwnIw2","012345678","null","null","null");
+//        Customer customer=new Customer("1QzUXC8c0bQxtJY0EiWOgdHwnIw2",a,"A@gmail.com","Dang Minh A",new Date(),"Can Tho", 1,100000,new Date(),null);
+//
+//        mDatabase.child("1QzUXC8c0bQxtJY0EiWOgdHwnIw2").setValue(customer);
     }
 
-    private void map() {
-        btnLogin = findViewById(R.id.btnLogin);
-        btnActive = findViewById(R.id.btnActive);
-        btnWrong = findViewById(R.id.btnWrong);
-        btnRegister = findViewById(R.id.btnREgis);
-        btnHome = findViewById(R.id.btnHome);
-        btnHomeLogin = findViewById(R.id.btnHomeLogin);
-
-    }
-
-    public void pageSearch(View view) {
-        Intent intent = new Intent(this, SearchInput.class);
-        startActivity(intent);
-    }
-
-    public void pageSearchResult(View view) {
-        Intent intent = new Intent(this, SearchResult.class);
-        startActivity(intent);
-    }
-
-    public void pageSearchNotFound(View view) {
-        Intent intent = new Intent(this, SearchNotFound.class);
-        startActivity(intent);
-    }
-
-    public void pageNotLogin(View view) {
-        Intent intent = new Intent(this, AccountNotLogin.class);
-        startActivity(intent);
-    }
-
-    public void pageAccountLoginSuccess(View view) {
-        Intent intent = new Intent(this, AccountLoginSuccess.class);
-        startActivity(intent);
-    }
-
-    public void pageMoreCategory(View view) {
-        Intent intent = new Intent(this, MoreCategory.class);
-        startActivity(intent);
-    }
 
 }

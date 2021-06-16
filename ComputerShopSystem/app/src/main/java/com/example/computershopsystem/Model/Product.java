@@ -3,10 +3,11 @@ package com.example.computershopsystem.Model;
 import java.util.Date;
 
 public class Product extends Device {
-    int id;
+    String id;
     String name;
-String  image;
+    String image;
     String description;
+    int quantity;
     long buyPrice;
     long sellPrice;
     Date createAt;
@@ -15,23 +16,24 @@ String  image;
     public Product() {
     }
 
-    public Product(CPU cpu, Ram ram, Rom rom, Brand brand, Screen screen, int id, String name, String image, String description, long buyPrice, long sellPrice, Date createAt, Date deleteAt) {
+    public Product(CPU cpu, Ram ram, Rom rom, Brand brand, Screen screen, String id, String name, String image, String description, int quantity, long buyPrice, long sellPrice, Date createAt, Date deleteAt) {
         super(cpu, ram, rom, brand, screen);
         this.id = id;
         this.name = name;
         this.image = image;
         this.description = description;
+        this.quantity = quantity;
         this.buyPrice = buyPrice;
         this.sellPrice = sellPrice;
         this.createAt = createAt;
         this.deleteAt = deleteAt;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -43,11 +45,11 @@ String  image;
         this.name = name;
     }
 
-    public String getUrlImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setUrlImage(String image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -57,6 +59,14 @@ String  image;
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public long getBuyPrice() {

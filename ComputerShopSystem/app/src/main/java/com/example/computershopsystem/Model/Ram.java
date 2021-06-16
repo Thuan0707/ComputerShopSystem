@@ -3,7 +3,7 @@ package com.example.computershopsystem.Model;
 import java.util.Date;
 
 public class Ram {
-    int id;
+    String id;
     int capacity;
     String description;
     Date createAt;
@@ -12,7 +12,7 @@ public class Ram {
     public Ram() {
     }
 
-    public Ram(int id, int capacity, String description, Date createAt, Date deleteAt) {
+    public Ram(String id, int capacity, String description, Date createAt, Date deleteAt) {
         this.id = id;
         this.capacity = capacity;
         this.description = description;
@@ -20,11 +20,11 @@ public class Ram {
         this.deleteAt = deleteAt;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

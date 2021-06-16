@@ -14,8 +14,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import javax.crypto.Cipher;
-
 public class GridAdapter extends BaseAdapter {
     Context context;
     ArrayList<Product> listProduct;
@@ -46,15 +44,18 @@ LayoutInflater layoutInflater;
             layoutInflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView==null){
             convertView=layoutInflater.inflate(R.layout.grid_item,null);
-
         }
         ImageView imageView=convertView.findViewById(R.id.grid_image);
+        Log.e("name122",listProduct.get(position).getName());
         TextView name=convertView.findViewById(R.id.name_product);
+        TextView brand=convertView.findViewById(R.id.brand_product);
         TextView price=convertView.findViewById(R.id.price_product);
         name.setText(listProduct.get(position).getName());
+        brand.setText(listProduct.get(position).getBrand().getName());
         price.setText(String.valueOf(listProduct.get(position).getSellPrice()));
-        Picasso.get().load(listProduct.get(position).getUrlImage()).into(imageView);
+        Picasso.get().load(listProduct.get(position).getImage()).into(imageView);
 
+    notifyDataSetChanged();
         return convertView;
     }
 }
