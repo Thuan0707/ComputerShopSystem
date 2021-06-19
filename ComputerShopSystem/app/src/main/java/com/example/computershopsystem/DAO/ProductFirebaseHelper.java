@@ -27,11 +27,11 @@ public class ProductFirebaseHelper {
             if (snapshot.exists()) {
                 for (DataSnapshot shot : snapshot.getChildren()) {
                     Product product = shot.getValue(Product.class);
-                    Log.e("nameBrand",product.getBrand().getName());
-                    Log.e("name",product.getName());
+
                     list.add(product);
                 }
             }
+            Log.e("list",String.valueOf(list.size()));
         }
 
         @Override
