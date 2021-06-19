@@ -1,9 +1,12 @@
 package com.example.computershopsystem.DAO;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 
+import com.example.computershopsystem.Model.GridAdapter;
 import com.example.computershopsystem.Model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,18 +23,30 @@ public class ProductFirebaseHelper {
     DatabaseReference db;
     Boolean saved = null;
     ArrayList<Product> list = new ArrayList<>();
+    GridView gridView;
+    GridAdapter gridAdapter;
+    Context context;
+
+    public ProductFirebaseHelper(DatabaseReference db, GridView gridView, Context context) {
+        this.gridView = gridView;
+        this.context = context;
+        this.db = db;
+    }
+
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-            list.clear();
+            ArrayList<Product> listProduct = new ArrayList<>();
             if (snapshot.exists()) {
                 for (DataSnapshot shot : snapshot.getChildren()) {
                     Product product = shot.getValue(Product.class);
-
-                    list.add(product);
+                    Log.e("nameBrand", product.getBrand().getName());
+                    Log.e("name", product.getName());
+                    listProduct.add(product);
                 }
             }
-            Log.e("list",String.valueOf(list.size()));
+            gridAdapter = new GridAdapter(context, listProduct);
+            gridView.setAdapter(gridAdapter);
         }
 
         @Override
@@ -40,9 +55,6 @@ public class ProductFirebaseHelper {
         }
     };
 
-    public ProductFirebaseHelper(DatabaseReference db) {
-        this.db = db;
-    }
 
     public Boolean save(Product Product) {
         if (Product == null) {
@@ -68,13 +80,14 @@ public class ProductFirebaseHelper {
         return list;
     }
 
-    public ArrayList<Product> retrieveByName(String  s) {
-        Query query= db.orderByChild("name").equalTo(s);
+    public ArrayList<Product> retrieveByName(String s) {
+        Query query = db.orderByChild("name").equalTo(s);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
-    public ArrayList<Product> retrieveByBrand(String  s) {
-        Query query= db.orderByChild("brand/name").equalTo(s);
+
+    public ArrayList<Product> retrieveByBrand(String s) {
+        Query query = db.orderByChild("brand/name").equalTo(s);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
