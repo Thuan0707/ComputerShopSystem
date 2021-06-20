@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -52,7 +53,7 @@ public class LoginActiveActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private AccessTokenTracker accessTokenTracker;
-
+TextView tvRegister;
     Button btGoogle;
     LoginButton btFacebook;
 
@@ -130,6 +131,16 @@ public class LoginActiveActivity extends AppCompatActivity {
                 }
             }
         };
+
+        tvRegister=findViewById(R.id.tvRegister);
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(LoginActiveActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

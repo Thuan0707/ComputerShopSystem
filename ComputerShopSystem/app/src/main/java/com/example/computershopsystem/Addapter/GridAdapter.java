@@ -1,4 +1,4 @@
-package com.example.computershopsystem.Model;
+package com.example.computershopsystem.Addapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.squareup.picasso.Picasso;
 
@@ -44,7 +45,6 @@ public class GridAdapter extends BaseAdapter {
           layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         convertView = layoutInflater.inflate(R.layout.grid_item, null);
         ImageView imageView = convertView.findViewById(R.id.grid_image);
-        Log.e("name122", listProduct.get(position).getName());
         TextView name = convertView.findViewById(R.id.name_product);
         TextView brand = convertView.findViewById(R.id.brand_product);
         TextView price = convertView.findViewById(R.id.price_product);
