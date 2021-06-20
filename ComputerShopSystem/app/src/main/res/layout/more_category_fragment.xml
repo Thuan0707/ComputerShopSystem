@@ -131,7 +131,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/btnGiaRe"
+                            android:id="@+id/btnLowPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="60dp"
                             android:layout_marginEnd="16dp"
@@ -145,7 +145,7 @@
                             app:backgroundTint="@color/white" />
 
                         <Button
-                            android:id="@+id/btnGiaVua"
+                            android:id="@+id/btnMediumPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="60dp"
                             android:layout_marginEnd="16dp"
@@ -159,7 +159,7 @@
                             app:backgroundTint="@color/white" />
 
                         <Button
-                            android:id="@+id/btnGiaCao"
+                            android:id="@+id/btnHighPrice"
                             android:layout_width="120dp"
                             android:layout_height="60dp"
                             android:layout_marginEnd="16dp"

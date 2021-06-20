@@ -91,7 +91,11 @@ public class ProductFirebaseHelper {
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
-
+    public ArrayList<Product> retrieveByLowPrice() {
+        Query query = db.orderByChild("sellPrice").endAt(500).startAt(200);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
     public ArrayList<Product> getList() {
         return list;
     }

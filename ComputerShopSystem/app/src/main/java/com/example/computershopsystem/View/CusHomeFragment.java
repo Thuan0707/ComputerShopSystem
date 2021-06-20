@@ -3,6 +3,7 @@ package com.example.computershopsystem.View;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,19 +32,20 @@ public class CusHomeFragment extends Fragment {
     GridAdapter gridAdapter;
     GridView gridView;
 
-
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CusHomeFragmentBinding.inflate(getLayoutInflater());
-
         databaseReference = FirebaseDatabase.getInstance().getReference("Product");
         helper = new ProductFirebaseHelper(databaseReference,binding.gridProduct,getActivity());
-        helper.retrieve();
-
-
+        Bundle bundle = this.getArguments();
+        String price="";
+        if (bundle!=null){
+          price=bundle.getString("FilterLowPrice");
+            helper.retrieveByLowPrice();
+        }else{
+            helper.retrieve();
+        }
 
 
 
@@ -56,7 +58,7 @@ public class CusHomeFragment extends Fragment {
                 fragTransaction.setCustomAnimations(android.R.animator.fade_in,
                         android.R.animator.fade_out);
                 fragTransaction.addToBackStack(null);
-                fragTransaction.add(R.id.fl_wrapper, fragment);
+                fragTransaction.replace(R.id.fl_wrapper, fragment);
                 fragTransaction.commit();
             }
         });
@@ -114,8 +116,14 @@ public class CusHomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
 
     }
+
 
 }

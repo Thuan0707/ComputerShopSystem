@@ -42,7 +42,7 @@ public class GridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-          layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         convertView = layoutInflater.inflate(R.layout.grid_item, null);
         ImageView imageView = convertView.findViewById(R.id.grid_image);
         TextView name = convertView.findViewById(R.id.name_product);
