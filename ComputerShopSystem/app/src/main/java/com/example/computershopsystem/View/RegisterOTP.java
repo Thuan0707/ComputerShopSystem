@@ -53,22 +53,22 @@ public class RegisterOTP extends AppCompatActivity {
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(@NonNull @org.jetbrains.annotations.NotNull PhoneAuthCredential phoneAuthCredential) {
-signInWithPhoneAuthCredentail(phoneAuthCredential);
+                signInWithPhoneAuthCredentail(phoneAuthCredential);
             }
 
             @Override
             public void onVerificationFailed(@NonNull @org.jetbrains.annotations.NotNull FirebaseException e) {
-                Toast.makeText(RegisterOTP.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCodeSent(@NonNull @org.jetbrains.annotations.NotNull String verificationId, @NonNull @org.jetbrains.annotations.NotNull PhoneAuthProvider.ForceResendingToken token) {
                 super.onCodeSent(verificationId, token);
 
-                Log.d(TAG,"onCodeSent"+verificationId);
+                Log.d(TAG, "onCodeSent" + verificationId);
                 mVerificationId = verificationId;
                 forceResendingToken = token;
-                Toast.makeText(RegisterOTP.this,"Verification code sent",Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this, "Verification code sent", Toast.LENGTH_SHORT).show();
 
             }
         };

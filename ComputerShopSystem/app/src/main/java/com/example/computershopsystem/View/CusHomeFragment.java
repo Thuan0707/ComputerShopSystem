@@ -29,8 +29,6 @@ public class CusHomeFragment extends Fragment {
     CusHomeFragmentBinding binding;
     ProductFirebaseHelper helper;
     DatabaseReference databaseReference;
-    GridAdapter gridAdapter;
-    GridView gridView;
 
     @Nullable
     @Override
@@ -105,7 +103,6 @@ public class CusHomeFragment extends Fragment {
                     helper.retrieveByScreenSize("17");
                     break;
             }
-
         } else {
             helper.retrieve();
         }
