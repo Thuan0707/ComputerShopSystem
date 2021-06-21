@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".View.InputPhoneRegister"></activity>
         <activity
             android:name=".View.RegisterOTP"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.MoreCategoryFragment"
             android:screenOrientation="portrait" />
@@ -69,7 +70,7 @@
             android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>
