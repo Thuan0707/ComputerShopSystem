@@ -96,6 +96,41 @@ public class ProductFirebaseHelper {
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
+    public ArrayList<Product> retrieveByMediumPrice() {
+        Query query = db.orderByChild("sellPrice").endAt(1000).startAt(500);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
+
+    public ArrayList<Product> retrieveByHighPrice() {
+        Query query = db.orderByChild("sellPrice").startAt(1000);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
+
+    public ArrayList<Product> retrieveByRam(int ram) {
+        Query query = db.orderByChild("ram/capacity").equalTo(ram);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
+
+    public ArrayList<Product> retrieveByRom(String rom) {
+        Query query = db.orderByChild("rom/capacity").equalTo(rom);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
+
+    public ArrayList<Product> retrieveByScreenSize(String size) {
+        Query query = db.orderByChild("screen/size").equalTo(size);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
+
+    public ArrayList<Product> retrieveBySPU(String num) {
+        Query query = db.orderByChild("cpu/series").equalTo("i"+num);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return list;
+    }
     public ArrayList<Product> getList() {
         return list;
     }

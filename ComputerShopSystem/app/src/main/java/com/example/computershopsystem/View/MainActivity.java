@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 //       CPU cpu = new CPU(null, "i7", "Intel Core i5 Comet Lake-10300H ", null, null);
 //        Screen screen=new Screen(null,"17","Full HD (1920 x 1080), 144Hz",null,null);
 //        Ram ram=new Ram(null,16,"DDR4 - 2666 MHz",null,null);
-//        Rom rom=new Rom(null,256,"Supporting HDD SATASSD 512 GB NVMe PCIe", null,null);
+//        Rom rom=new Rom(null,"1TB","Supporting HDD SATASSD 512 GB NVMe PCIe", null,null);
 //        Product product = new Product(cpu, ram, rom, brand, screen, id, "Lenovo Legion y530", "image", "i5 10300H 8GB/512GB/4GB GTX1650/144Hz/Win10 (255VN)", 15,9000000, 35990000, new Date(), null);
 //        mDatabase.child(id).setValue(product);
 

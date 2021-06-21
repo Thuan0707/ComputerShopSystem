@@ -37,16 +37,78 @@ public class CusHomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CusHomeFragmentBinding.inflate(getLayoutInflater());
         databaseReference = FirebaseDatabase.getInstance().getReference("Product");
-        helper = new ProductFirebaseHelper(databaseReference,binding.gridProduct,getActivity());
+        helper = new ProductFirebaseHelper(databaseReference, binding.gridProduct, getActivity());
         Bundle bundle = this.getArguments();
-        String price="";
-        if (bundle!=null){
-          price=bundle.getString("FilterLowPrice");
-            helper.retrieveByLowPrice();
-        }else{
+        String price = "";
+        if (bundle != null) {
+            String  str = bundle.getString("Filter");
+            Log.e("afsd",str);
+            switch (str) {
+                case "HP":
+                    helper.retrieveByBrand("HP");
+                    break;
+                case "Dell":
+                    helper.retrieveByBrand("Dell");
+                    break;
+                case "Acer":
+                    helper.retrieveByBrand("Acer");
+                    break;
+                case "Lenovo":
+                    helper.retrieveByBrand("Lenovo");
+                    break;
+                case "Asus":
+                    helper.retrieveByBrand("Asus");
+                    break;
+                case "LowPrice":
+                    helper.retrieveByLowPrice();
+                    break;
+                case "MediumPrice":
+                    helper.retrieveByMediumPrice();
+                    break;
+                case "HighPrice":
+                    helper.retrieveByHighPrice();
+                    break;
+                case "4gb":
+                    helper.retrieveByRam(4);
+                    break;
+                case "8gb":
+                    helper.retrieveByRam(8);
+                    break;
+                case "16gb":
+                    helper.retrieveByRam(16);
+                    break;
+                case "512gb":
+                    helper.retrieveByRom("512GB");
+                    break;
+                case "1tb":
+                    helper.retrieveByRom("1TB");
+                    break;
+                case "2tb":
+                    helper.retrieveByRom("2TB");
+                    break;
+                case "i3":
+                    helper.retrieveBySPU("i3");
+                    break;
+                case "i5":
+                    helper.retrieveBySPU("i5");
+                    break;
+                case "i7":
+                    helper.retrieveBySPU("i7");
+                    break;
+                case "s14":
+                    helper.retrieveByScreenSize("14");
+                    break;
+                case "s15.6":
+                    helper.retrieveByScreenSize("15.6");
+                    break;
+                case "s17":
+                    helper.retrieveByScreenSize("17");
+                    break;
+            }
+
+        } else {
             helper.retrieve();
         }
-
 
 
         binding.tvMoreCate.setOnClickListener(new View.OnClickListener() {
@@ -112,18 +174,6 @@ public class CusHomeFragment extends Fragment {
     }
 
 
-
-    @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-
-    }
 
 
 }

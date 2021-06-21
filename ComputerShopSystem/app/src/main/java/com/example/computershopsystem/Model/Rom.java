@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Rom {
     String id;
-    int capacity;
+    String  capacity;
     String description;
     Date createAt;
     Date deleteAt;
@@ -12,7 +12,7 @@ public class Rom {
     public Rom() {
     }
 
-    public Rom(String id, int capacity, String description, Date createAt, Date deleteAt) {
+    public Rom(String id, String capacity, String description, Date createAt, Date deleteAt) {
         this.id = id;
         this.capacity = capacity;
         this.description = description;
@@ -28,11 +28,11 @@ public class Rom {
         this.id = id;
     }
 
-    public int getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 
