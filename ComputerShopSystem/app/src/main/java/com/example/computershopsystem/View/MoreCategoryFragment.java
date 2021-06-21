@@ -54,7 +54,7 @@ public class MoreCategoryFragment extends Fragment {
         this.gridProduct = gridProduct;
     }
 
-    void buttonLowPrice() {
+   public void buttonLowPrice() {
         binding.btnLowPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class MoreCategoryFragment extends Fragment {
         });
     }
 
-    void buttonMediumPrice() {
+    public void buttonMediumPrice() {
         binding.btnLowPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +78,7 @@ public class MoreCategoryFragment extends Fragment {
         });
     }
 
-    void buttonHighPrice() {
+    public void buttonHighPrice() {
         binding.btnLowPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,4 +89,6 @@ public class MoreCategoryFragment extends Fragment {
             }
         });
     }
+
+
 }
