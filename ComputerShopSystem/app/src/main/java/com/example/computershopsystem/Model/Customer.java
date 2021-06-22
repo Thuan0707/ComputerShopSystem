@@ -1,8 +1,9 @@
 package com.example.computershopsystem.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Customer {
+public class Customer implements Serializable {
     String  id;
     CustomerAccount customerAccount;
     String email;
@@ -17,7 +18,15 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String id, CustomerAccount customerAccount,String email, String fullName, Date dateOfBirth, String address, int gender, long money, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount, String email, String fullName, Date createAt) {
+        this.id = id;
+        this.customerAccount = customerAccount;
+        this.email = email;
+        this.fullName = fullName;
+        this.createAt = createAt;
+    }
+
+    public Customer(String id, CustomerAccount customerAccount, String email, String fullName, Date dateOfBirth, String address, int gender, long money, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.email = email;

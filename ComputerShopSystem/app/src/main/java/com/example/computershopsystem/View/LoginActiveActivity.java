@@ -195,6 +195,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                         String email = firebaseUser.getEmail();
                         String phoneNumber = firebaseUser.getPhoneNumber();
 
+
                         Log.d(TAG, "uID: " + uid);
                         Log.d(TAG, "Email: " + email);
                         Log.d(TAG, "NumberPhone: " + phoneNumber);

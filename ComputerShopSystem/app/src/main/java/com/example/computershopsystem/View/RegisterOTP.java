@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.example.computershopsystem.Model.Customer;
 import com.example.computershopsystem.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -34,19 +37,20 @@ public class RegisterOTP extends AppCompatActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
     private FirebaseAuth firebaseAuth;
-
+    DatabaseReference mDatabase;
+    Customer customer;
     Button btnVerify;
     Button btnResend;
     EditText etOTP;
-    String phone = "";
+
     private static final String TAG = "LOGIN_TAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_otp);
-        phone = "";
-        phone = getIntent().getStringExtra("PhoneNo").trim();
+
+        customer = (Customer) getIntent().getSerializableExtra("Customer");
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -73,14 +77,14 @@ public class RegisterOTP extends AppCompatActivity {
             }
         };
 
-        startPhoneNumberVerification(phone);
+        startPhoneNumberVerification(customer.getCustomerAccount().getPhone());
         btnResend = findViewById(R.id.btnResend);
         btnVerify = findViewById(R.id.btnVerify);
         etOTP = findViewById(R.id.etOTP);
         btnResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resendVerificationCode(phone, forceResendingToken);
+                resendVerificationCode(customer.getCustomerAccount().getPhone(), forceResendingToken);
             }
         });
         btnVerify.setOnClickListener(new View.OnClickListener() {
@@ -131,13 +135,15 @@ public class RegisterOTP extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 String phone = firebaseAuth.getCurrentUser().getPhoneNumber();
-                Toast.makeText(RegisterOTP.this, "Logged in as" + phone, Toast.LENGTH_SHORT).show();
+                //Add customer
+        mDatabase = FirebaseDatabase.getInstance().getReference("Customer");
+        mDatabase.child("1QzUXC8c0bQxtJY0EiWOgdHwnIw2").setValue(customer);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(RegisterOTP.this, e.getMessage() + phone, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this, e.getMessage() + customer.getCustomerAccount().getPhone(), Toast.LENGTH_SHORT).show();
             }
         });
     }
