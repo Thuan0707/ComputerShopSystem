@@ -53,7 +53,7 @@ public class LoginActiveActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private AccessTokenTracker accessTokenTracker;
-TextView tvRegister;
+    TextView tvRegister;
     Button btGoogle;
     LoginButton btFacebook;
 
@@ -75,10 +75,9 @@ TextView tvRegister;
                 .build();
 
 
-
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
-        btFacebook.setReadPermissions("email","public_profile");
+        btFacebook.setReadPermissions("email", "public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         firebaseAuth = FirebaseAuth.getInstance();
         checkUser();
@@ -86,7 +85,7 @@ TextView tvRegister;
         btGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG,"OnClick: begin Google Login");
+                Log.d(TAG, "OnClick: begin Google Login");
                 Intent intent = googleSignInClient.getSignInIntent();
                 startActivityForResult(intent, RC_SIGN_IN);
             }
@@ -96,18 +95,18 @@ TextView tvRegister;
         btFacebook.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d(TAGFACE,"OnSuccess"+ loginResult);
+                Log.d(TAGFACE, "OnSuccess" + loginResult);
                 handleFacebookToken(loginResult.getAccessToken());
             }
 
             @Override
             public void onCancel() {
-                Log.d(TAGFACE,"OnCancel");
+                Log.d(TAGFACE, "OnCancel");
             }
 
             @Override
             public void onError(FacebookException error) {
-                Log.d(TAGFACE,"OnError"+error);
+                Log.d(TAGFACE, "OnError" + error);
             }
         });
 
@@ -115,9 +114,9 @@ TextView tvRegister;
             @Override
             public void onAuthStateChanged(@NonNull @NotNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user != null){
+                if (user != null) {
 
-                }else {
+                } else {
 
                 }
             }
@@ -126,13 +125,13 @@ TextView tvRegister;
         accessTokenTracker = new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                if(currentAccessToken == null){
+                if (currentAccessToken == null) {
                     firebaseAuth.signOut();
                 }
             }
         };
 
-        tvRegister=findViewById(R.id.tvRegister);
+        tvRegister = findViewById(R.id.tvRegister);
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,7 +141,6 @@ TextView tvRegister;
             }
         });
     }
-
 
 
     private void checkUser() {
@@ -161,15 +159,15 @@ TextView tvRegister;
         if (requestCode == RC_SIGN_IN) {
             Log.d(TAG, "onActivityResult: Google Signin intent result");
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            Log.d(TAG,"account task"+accountTask.toString());
-            try{
+            Log.d(TAG, "account task" + accountTask.toString());
+            try {
                 Log.d(TAG, "I'm here");
                 GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-                Log.d(TAG, "account: " + account );
+                Log.d(TAG, "account: " + account);
                 firebaseAuthWithGoogleAccount(account);
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.d(TAG, "onActivity result:" + e.getMessage() );
+                Log.d(TAG, "onActivity result:" + e.getMessage());
             }
         }
     }
@@ -197,9 +195,9 @@ TextView tvRegister;
                         String email = firebaseUser.getEmail();
                         String phoneNumber = firebaseUser.getPhoneNumber();
 
-                        Log.d(TAG, "uID: "+ uid);
-                        Log.d(TAG, "Email: "+ email);
-                        Log.d(TAG, "NumberPhone: "+ phoneNumber);
+                        Log.d(TAG, "uID: " + uid);
+                        Log.d(TAG, "Email: " + email);
+                        Log.d(TAG, "NumberPhone: " + phoneNumber);
 
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
                             Log.d(TAG, "onSuccess: Account Created");
@@ -224,15 +222,15 @@ TextView tvRegister;
 
     }
 
-    private void handleFacebookToken(AccessToken token){
-        Log.d(TAGFACE, "handleFacebookToken"+ token);
+    private void handleFacebookToken(AccessToken token) {
+        Log.d(TAGFACE, "handleFacebookToken" + token);
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
 
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Log.d(TAGFACE,"sign in with credential: successful");
+                if (task.isSuccessful()) {
+                    Log.d(TAGFACE, "sign in with credential: successful");
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                 }
             }
@@ -248,7 +246,7 @@ TextView tvRegister;
     @Override
     protected void onStop() {
         super.onStop();
-        if(authStateListener != null){
+        if (authStateListener != null) {
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
     }
