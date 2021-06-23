@@ -30,21 +30,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49b25fb0-06e2-4260-b309-c91fa0c78b2e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Brand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/CPU.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/CPU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/CustomerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/CustomerAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Device.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Ram.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Ram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Rom.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Rom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Utilities/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Utilities/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/RegisterActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/RegisterOTP.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/RegisterOTP.java" afterDir="false" />
-    </list>
+    <list default="true" id="49b25fb0-06e2-4260-b309-c91fa0c78b2e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,22 +172,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="144" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1624324024983" />
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom" timestamp="1624420393928">
+    <state width="1493" height="209" key="GridCell.Tab.0.bottom" timestamp="1624429853683">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1624420393928" />
-    <state width="1493" height="209" key="GridCell.Tab.0.center" timestamp="1624420393928">
+    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
+    <state width="1493" height="209" key="GridCell.Tab.0.center" timestamp="1624429853683">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1624420393928" />
-    <state width="1493" height="209" key="GridCell.Tab.0.left" timestamp="1624420393927">
+    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
+    <state width="1493" height="209" key="GridCell.Tab.0.left" timestamp="1624429853683">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1624420393927" />
-    <state width="1493" height="209" key="GridCell.Tab.0.right" timestamp="1624420393928">
+    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
+    <state width="1493" height="209" key="GridCell.Tab.0.right" timestamp="1624429853683">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1624420393928" />
+    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
     <state x="425" y="191" key="run.anything.popup" timestamp="1624326947957">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
