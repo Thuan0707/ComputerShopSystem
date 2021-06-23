@@ -1,8 +1,9 @@
 package com.example.computershopsystem.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Screen {
+public class Screen implements Serializable {
     String id;
     String  size;
     String description;

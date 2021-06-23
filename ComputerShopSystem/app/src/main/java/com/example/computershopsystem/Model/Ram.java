@@ -1,8 +1,9 @@
 package com.example.computershopsystem.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Ram {
+public class Ram  implements Serializable {
     String id;
     int capacity;
     String description;

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.computershopsystem.Model.Customer;
@@ -54,6 +55,8 @@ public class RegisterActivity extends AppCompatActivity {
                     activityRegisterBinding.txtConfirmPass.setError(confirmPasswordNotify);
                 }
                 if (validation.isValid()){
+                    phone=phone.substring(1);
+                    Log.e("asfafs",phone);
                     CustomerAccount customerAccount=new CustomerAccount(null, phone, null, null,password);
                     Customer customer=new Customer(null, customerAccount, null, name, new Date());
                     Intent intent=new Intent(RegisterActivity.this, RegisterOTP.class);

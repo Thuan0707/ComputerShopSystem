@@ -1,8 +1,9 @@
 package com.example.computershopsystem.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Rom {
+public class Rom  implements Serializable {
     String id;
     String  capacity;
     String description;

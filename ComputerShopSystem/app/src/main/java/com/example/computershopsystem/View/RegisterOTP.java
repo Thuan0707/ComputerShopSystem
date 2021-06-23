@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -136,8 +137,11 @@ public class RegisterOTP extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
                 String phone = firebaseAuth.getCurrentUser().getPhoneNumber();
                 //Add customer
-        mDatabase = FirebaseDatabase.getInstance().getReference("Customer");
-        mDatabase.child("1QzUXC8c0bQxtJY0EiWOgdHwnIw2").setValue(customer);
+                mDatabase = FirebaseDatabase.getInstance().getReference("Customer");
+                mDatabase.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
+                firebaseAuth.signOut();
+                Intent intent = new Intent(RegisterOTP.this, LoginActiveActivity.class);
+                startActivity(intent);
 
             }
         }).addOnFailureListener(new OnFailureListener() {

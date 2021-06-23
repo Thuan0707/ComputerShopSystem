@@ -1,4 +1,6 @@
 package com.example.computershopsystem.Model;
 
-public class Cart {
+import java.io.Serializable;
+
+public class Cart  implements Serializable {
 }

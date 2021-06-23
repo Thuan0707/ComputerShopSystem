@@ -58,7 +58,7 @@ public class Validation {
         if (confirmPassword.isEmpty()){
             isValid=false;
             return "Confirm password can not be empty" ;}
-        if (password.equals(confirmPassword)){
+        if (!password.equals(confirmPassword)){
             isValid=false;
             return "Password and confirm password must be the same";
         }

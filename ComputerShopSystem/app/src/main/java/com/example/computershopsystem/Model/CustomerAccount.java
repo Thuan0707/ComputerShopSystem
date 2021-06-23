@@ -1,6 +1,8 @@
 package com.example.computershopsystem.Model;
 
-public class CustomerAccount {
+import java.io.Serializable;
+
+public class CustomerAccount implements Serializable {
     String id;
     String phone;
     String  idFacebook;
