@@ -1,5 +1,6 @@
 package com.example.computershopsystem.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -166,9 +168,20 @@ public class CusHomeFragment extends Fragment {
                 helper.retrieveByBrand("Dell".trim());
             }
         });
+        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
+                getActivity().finish();
+            }
+        });
+
+
         View view = binding.getRoot();
         return view;
     }
+
+
 
 
 

@@ -63,9 +63,9 @@ public class AccountLoginSuccess extends AppCompatActivity {
             finish();
         } else {
 
-            String email = firebaseUser.getEmail();
+            String name = firebaseUser.getDisplayName();
             account = findViewById(R.id.tvAccount2);
-            account.setText(email);
+            account.setText(name);
         }
     }
 

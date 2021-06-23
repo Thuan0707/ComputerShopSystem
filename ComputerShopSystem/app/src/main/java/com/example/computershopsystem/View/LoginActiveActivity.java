@@ -42,8 +42,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Calendar;
+import java.util.List;
 
 public class LoginActiveActivity extends AppCompatActivity {
 
@@ -62,6 +67,7 @@ public class LoginActiveActivity extends AppCompatActivity {
 
     private CallbackManager mCallbackManager;
     private final static String TAGFACE = "FacebookAuthentication";
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,12 +168,10 @@ public class LoginActiveActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             Log.d(TAG, "account task" + accountTask.toString());
             try {
-                Log.d(TAG, "I'm here");
                 GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-                Log.d(TAG, "account: " + account);
+
                 firebaseAuthWithGoogleAccount(account);
             } catch (Exception e) {
-                e.printStackTrace();
                 Log.d(TAG, "onActivity result:" + e.getMessage());
             }
         }
@@ -176,14 +180,7 @@ public class LoginActiveActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
         Log.d(TAG, "firebaseAuthWithGoogleAccount: begin");
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        user.reauthenticate(credential)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-//                        Log.d(TAG, "reauthenticate");
-//                    }
-//                });
+
         firebaseAuth.signInWithCredential(credential)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -195,13 +192,26 @@ public class LoginActiveActivity extends AppCompatActivity {
                         String uid = firebaseUser.getUid();
                         String email = firebaseUser.getEmail();
                         String phoneNumber = firebaseUser.getPhoneNumber();
+                        String name = firebaseUser.getDisplayName();
+                        List listInfo = firebaseUser.getProviderData();
 
 
                         Log.d(TAG, "uID: " + uid);
                         Log.d(TAG, "Email: " + email);
                         Log.d(TAG, "NumberPhone: " + phoneNumber);
+                        Log.d(TAG, "name: " + name);
+                        Log.d(TAG, "listInfo: " + listInfo);
+
+
 
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
+
+                            databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+                            CustomerAccount customerAccount = new CustomerAccount(null, phoneNumber, null, uid, null);
+                            Customer customer = new Customer(uid, customerAccount, email, name, Calendar.getInstance().getTime());
+                            databaseReference.push().setValue(customer);
+
+
                             Log.d(TAG, "onSuccess: Account Created");
                             Toast.makeText(LoginActiveActivity.this, "Account created for " + email, Toast.LENGTH_SHORT).show();
                         } else {
