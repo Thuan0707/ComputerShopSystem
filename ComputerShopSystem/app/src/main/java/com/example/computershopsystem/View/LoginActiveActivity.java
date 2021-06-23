@@ -12,12 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.computershopsystem.Model.Customer;
+import com.example.computershopsystem.Model.CustomerAccount;
 import com.example.computershopsystem.R;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -114,10 +117,8 @@ public class LoginActiveActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull @NotNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-
-                } else {
-
+                if (user == null) {
+                    LoginManager.getInstance().logOut();
                 }
             }
         };
@@ -233,7 +234,33 @@ public class LoginActiveActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Log.d(TAGFACE, "sign in with credential: successful");
                     FirebaseUser user = firebaseAuth.getCurrentUser();
+                    String uid = user.getUid();
+                    String email = user.getEmail();
+                    String phoneNumber = user.getPhoneNumber();
+
+
+                    Log.d(TAG, "uID: " + uid);
+                    Log.d(TAG, "Email: " + email);
+                    Log.d(TAG, "NumberPhone: " + phoneNumber);
+
+                    if (task.getResult().getAdditionalUserInfo().isNewUser()) {
+                        Log.d(TAG, "onSuccess: Account Created");
+                        Toast.makeText(LoginActiveActivity.this, "Account created for " + email, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.d(TAG, "onSuccess: Existing User: " + email);
+                        Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
+                    finish();
                 }
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Log.d(TAG, "onFailure: Log In failed");
             }
         });
     }
