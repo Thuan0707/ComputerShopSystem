@@ -246,6 +246,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     String uid = user.getUid();
                     String email = user.getEmail();
+                    String name = user.getDisplayName();
                     String phoneNumber = user.getPhoneNumber();
 
 
@@ -254,6 +255,12 @@ public class LoginActiveActivity extends AppCompatActivity {
                     Log.d(TAG, "NumberPhone: " + phoneNumber);
 
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
+
+                        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+                        CustomerAccount customerAccount = new CustomerAccount(null, phoneNumber, uid, null, null);
+                        Customer customer = new Customer(uid, customerAccount, email, name, Calendar.getInstance().getTime());
+                        databaseReference.push().setValue(customer);
+
                         Log.d(TAG, "onSuccess: Account Created");
                         Toast.makeText(LoginActiveActivity.this, "Account created for " + email, Toast.LENGTH_SHORT).show();
                     } else {
