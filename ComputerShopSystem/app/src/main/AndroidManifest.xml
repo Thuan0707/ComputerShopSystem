@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.InputPhoneRegisterActivity"></activity>
+        <activity android:name=".View.CartFragment"></activity>
+        <activity android:name=".View.InputPhoneRegisterActivity" />
         <activity
             android:name=".View.RegisterOTP"
             android:screenOrientation="portrait" />

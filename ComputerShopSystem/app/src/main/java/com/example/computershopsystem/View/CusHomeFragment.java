@@ -1,6 +1,7 @@
 package com.example.computershopsystem.View;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 
@@ -19,18 +21,31 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.DAO.ProductFirebaseHelper;
 import com.example.computershopsystem.Addapter.GridAdapter;
+import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class CusHomeFragment extends Fragment {
     CusHomeFragmentBinding binding;
     ProductFirebaseHelper helper;
     DatabaseReference databaseReference;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     @Nullable
     @Override
@@ -39,10 +54,23 @@ public class CusHomeFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("Product");
         helper = new ProductFirebaseHelper(databaseReference, binding.gridProduct, getActivity());
         Bundle bundle = this.getArguments();
-        String price = "";
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), MODE_PRIVATE);
+            editor = sharedpreferences.edit();
+            if (!sharedpreferences.contains("cart")) {
+
+                List<Product> listProductInCart = new ArrayList<>();
+                setList("cart", listProductInCart);
+            }
+
+        }
+
         if (bundle != null) {
-            String  str = bundle.getString("Filter");
-            Log.e("afsd",str);
+            String str = bundle.getString("Filter");
+            Log.e("afsd", str);
             switch (str) {
                 case "HP":
                     helper.retrieveByBrand("HP");
@@ -182,8 +210,17 @@ public class CusHomeFragment extends Fragment {
     }
 
 
+    public <T> void setList(String key, List<T> list) {
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
 
+        set(key, json);
+    }
 
+    public void set(String key, String value) {
+        editor.putString(key, value);
+        editor.commit();
+    }
 
 
 }

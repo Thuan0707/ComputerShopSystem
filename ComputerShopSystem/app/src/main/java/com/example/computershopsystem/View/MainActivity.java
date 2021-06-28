@@ -49,10 +49,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.ic_cart:
                         if (firebaseUser!=null){
+                            selectedFragment=new CartFragment();
+                        }else{
+                            selectedFragment=new TestLoginLogoutFragment();
+                        }
+                        break;
+                    case R.id.ic_location:
+                        if (firebaseUser!=null){
                             selectedFragment=new ProductDetailsFragment();
                         }else{
                             selectedFragment=new TestLoginLogoutFragment();
                         }
+                        break;
 
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
