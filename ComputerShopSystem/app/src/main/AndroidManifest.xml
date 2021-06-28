@@ -21,7 +21,7 @@
             android:name=".View.MoreCategoryFragment"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".View.AccountLoginSuccess"
+            android:name=".View.AccountLoginSuccessFragment"
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.AccountNotLogin"
@@ -36,7 +36,7 @@
             android:name=".View.SearchInput"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".View.ProductDetails"
+            android:name=".View.ProductDetailsFragment"
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.HomeLoginActivity"

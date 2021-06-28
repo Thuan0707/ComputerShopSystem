@@ -2,7 +2,7 @@ package com.example.computershopsystem.View;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,34 +10,50 @@ import androidx.fragment.app.Fragment;
 
 import com.example.computershopsystem.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 import org.jetbrains.annotations.NotNull;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLogin, btnActive, btnWrong, btnRegister, btnHome, btnHomeLogin;
-    DatabaseReference mDatabase;
+    FirebaseUser firebaseUser;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         getSupportFragmentManager().beginTransaction().add(R.id.fl_wrapper,new CusHomeFragment()).commit();
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
         nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 Fragment selectedFragment = null;
+                firebaseAuth=FirebaseAuth.getInstance();
+                firebaseUser=firebaseAuth.getCurrentUser();
                 switch (item.getItemId()) {
                     case R.id.ic_home:
                         selectedFragment=new CusHomeFragment();
 
                         break;
                     case R.id.ic_user:
-                        selectedFragment=new TestLoginLogoutFragment();
+                        if (firebaseUser!=null){
+                            selectedFragment=new AccountLoginSuccessFragment();
+                        }else{
+                            selectedFragment=new TestLoginLogoutFragment();
+                        }
                         break;
+                    case R.id.ic_cart:
+                        if (firebaseUser!=null){
+                            selectedFragment=new ProductDetailsFragment();
+                        }else{
+                            selectedFragment=new TestLoginLogoutFragment();
+                        }
+
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
                 return true;
