@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageCartProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
@@ -29,7 +29,7 @@
 
 
             <TextView
-                android:id="@+id/txtNameItem"
+                android:id="@+id/txtNameCartProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -38,7 +38,7 @@
                 android:textColor="#017FFF" />
 
             <TextView
-                android:id="@+id/txtPriceItem"
+                android:id="@+id/txtPriceCartProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -51,14 +51,14 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
             android:paddingVertical="8dp">
 
 
             <ImageButton
-                android:id="@+id/btnDeleteItem"
+                android:id="@+id/btnDeleteCartProduct"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:backgroundTint="#FFFFFF"
@@ -74,7 +74,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/ibtnTru"
+                    android:id="@+id/ibtnDecreaseQuantity"
                     android:layout_width="20dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
@@ -84,9 +84,9 @@
                     app:srcCompat="@drawable/ic_tru" />
 
                 <TextView
-                    android:id="@+id/txtNumberItem"
+                    android:id="@+id/txtQuantityCartProduct"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/border_noradius"
                     android:text="1"
@@ -94,9 +94,9 @@
                     android:textSize="20sp" />
 
                 <ImageButton
-                    android:id="@+id/ibtnCong"
+                    android:id="@+id/ibtnIncreaseQuantity"
                     android:layout_width="20dp"
-                    android:layout_height="30dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     app:layout_constraintStart_toStartOf="parent"

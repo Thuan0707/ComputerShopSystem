@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.example.computershopsystem.Addapter.ListViewAdapter;
+import com.example.computershopsystem.Model.CartProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 
@@ -28,6 +31,7 @@ public class CartFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     public Product product;
+    private ListView listView;
     CartFragmentBinding binding;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
@@ -37,23 +41,23 @@ public class CartFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CartFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        listView = binding.listCart;
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
-        List<Product> productList = getList();
-        binding.cartName.setText(productList.get(0).getName());
-        binding.cartPrice.setText(String.valueOf(productList.get(0).getSellPrice()));
-
+        List<CartProduct> productList = getList();
+        ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(), R.layout.cart_item, productList);
+        listView.setAdapter(listViewAdapter);
         return view;
     }
 
-    public List<Product> getList() {
-        List<Product> listProduct = new ArrayList<>();
+    public List<CartProduct> getList() {
+        List<CartProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<Product>>() {
+            Type type = new TypeToken<List<CartProduct>>() {
             }.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }
