@@ -56,7 +56,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if (validation.isValid()){
                     phone=phone.substring(1);
-                    Log.e("asfafs",phone);
                     CustomerAccount customerAccount=new CustomerAccount(null, phone, null, null,password);
                     Customer customer=new Customer(null, customerAccount, null, name, new Date());
                     Intent intent=new Intent(RegisterActivity.this, RegisterOTP.class);

@@ -27,22 +27,27 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:Master" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49b25fb0-06e2-4260-b309-c91fa0c78b2e" name="Default Changelist" comment="" />
+    <list default="true" id="49b25fb0-06e2-4260-b309-c91fa0c78b2e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Utilities/SessionManagement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CartFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/cart_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProductDetailsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProductDetailsFragment.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\HP\.android\avd\Pixel_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\Dang Minh Thuan\.android\avd\Nexus_5X_API_26.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -75,6 +80,9 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.-1576783380">
+      <recent name="com.example.computershopsystem.View" />
+    </key>
+    <key name="android.template.90378597">
       <recent name="com.example.computershopsystem.View" />
     </key>
   </component>
@@ -161,19 +169,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -198,33 +194,33 @@
     </state>
     <state x="549" y="142" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1624456279197" />
     <state x="549" y="144" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1624324024983" />
-    <state width="1478" height="221" key="GridCell.Tab.0.bottom" timestamp="1624499338026">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1478" height="140" key="GridCell.Tab.0.bottom" timestamp="1624891177120">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
-    <state width="1478" height="221" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1624499338026" />
-    <state width="1478" height="221" key="GridCell.Tab.0.center" timestamp="1624499338026">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1478" height="140" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1624891177120" />
+    <state width="1478" height="140" key="GridCell.Tab.0.center" timestamp="1624891177120">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
-    <state width="1478" height="221" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1624499338026" />
-    <state width="1478" height="221" key="GridCell.Tab.0.left" timestamp="1624499338026">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1478" height="140" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1624891177120" />
+    <state width="1478" height="140" key="GridCell.Tab.0.left" timestamp="1624891177120">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
-    <state width="1478" height="221" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1624499338026" />
-    <state width="1478" height="221" key="GridCell.Tab.0.right" timestamp="1624499338026">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1478" height="140" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1624891177120" />
+    <state width="1478" height="140" key="GridCell.Tab.0.right" timestamp="1624891177120">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1624429853683" />
-    <state width="1478" height="221" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1624499338026" />
+    <state width="1478" height="140" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1624891177120" />
     <state x="425" y="191" key="run.anything.popup" timestamp="1624326947957">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="191" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1624326947957" />
+    <state x="431" y="155" key="search.everywhere.popup" timestamp="1624886621368">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1624886621368" />
   </component>
 </project>

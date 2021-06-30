@@ -1,37 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.ProductDetails"
+    tools:context=".View.ProductDetailsFragment"
     android:background="@color/white">
-
-    <ImageButton
-        android:id="@+id/ibtnSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/ibtnMore"
-        app:layout_constraintEnd_toStartOf="@+id/ibtnMore"
-        app:layout_constraintTop_toTopOf="@+id/ibtnMore"
-        app:srcCompat="@drawable/search" />
-
-    <ImageButton
-        android:id="@+id/ibtnMore"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/more" />
 
     <TextView
         android:id="@+id/tvNameTop"
-        android:layout_width="220dp"
-        android:layout_height="30dp"
+        android:layout_width="299dp"
+        android:layout_height="32dp"
         android:layout_marginStart="16dp"
 
         android:text="Laptop Lenovo Legion..."
@@ -116,23 +96,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dropdown"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="18dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="Please choose hard drive you want" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
 
             <LinearLayout
@@ -290,29 +253,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_bot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="bottom"
-            app:backgroundTint="#FFFFFF"
-            app:itemBackground="@color/white"
-            app:itemIconTint="#9098B1"
-            app:itemRippleColor="#201E1E"
-            app:itemTextColor="#9098B1"
-            app:menu="@menu/nav_bot">
-
-            <View
-                android:id="@+id/hr2"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#EBF0FF"
-                tools:ignore="MissingConstraints" />
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </FrameLayout>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/btnAddToCart"
@@ -325,6 +266,8 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/fl_wrapper"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewProduct" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

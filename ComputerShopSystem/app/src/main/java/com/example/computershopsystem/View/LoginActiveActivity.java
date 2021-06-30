@@ -34,14 +34,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -89,7 +86,7 @@ public class LoginActiveActivity extends AppCompatActivity {
         btFacebook.setReadPermissions("email", "public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         firebaseAuth = FirebaseAuth.getInstance();
-        checkUser();
+      //  checkUser();
 
         btGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,7 +150,7 @@ public class LoginActiveActivity extends AppCompatActivity {
     private void checkUser() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
-            startActivity(new Intent(this, AccountLoginSuccess.class));
+            startActivity(new Intent(this, AccountLoginSuccessFragment.class));
             finish();
         }
     }
