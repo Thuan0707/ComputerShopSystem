@@ -1,18 +1,14 @@
 package com.example.computershopsystem.View;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.example.computershopsystem.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
-
-import org.jetbrains.annotations.NotNull;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,26 +19,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,new CusHomeFragment()).commit();
-        String id;
-        BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
-        nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()) {
-                    case R.id.ic_home:
-                        selectedFragment=new CusHomeFragment();
-                        break;
-                    case R.id.ic_user:
-                        selectedFragment=new TestLoginLogoutFragment();
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
-                return true;
-            }
-        });
+        setContentView(R.layout.activity_main);
+       //t comment code o duoi lai de chay cart t coi, co gi mo code lai nhe
+//        getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,new CusHomeFragment()).commit();
+//        String id;
+//        BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
+//        nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+//                Fragment selectedFragment = null;
+//                switch (item.getItemId()) {
+//                    case R.id.ic_home:
+//                        selectedFragment=new CusHomeFragment();
+//                        break;
+//                    case R.id.ic_user:
+//                        selectedFragment=new TestLoginLogoutFragment();
+//                        break;
+//                }
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
+//                return true;
+//            }
+//        });
 //        mDatabase = FirebaseDatabase.getInstance().getReference("Product");
 //        id = mDatabase.push().getKey();
 //       Brand brand = new Brand(null, "MSI", "Good", null, null);
@@ -54,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
 //        mDatabase.child(id).setValue(product);
 
 
+    }
+    public void  gotoCart(View view){
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
     }
 
 
