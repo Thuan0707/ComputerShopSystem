@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.computershopsystem">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -8,19 +11,53 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ComputerShopSystem">
-        <activity android:name=".View.HomeLoginActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".View.HomeActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".View.RegisterActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".View.LoginWrongActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".View.LoginActiveActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".View.LoginActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".View.CartFragment"></activity>
+        <activity android:name=".View.InputPhoneRegisterActivity" />
+        <activity
+            android:name=".View.RegisterOTP"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.MoreCategoryFragment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.AccountLoginSuccessFragment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.AccountNotLogin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SearchNotFound"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SearchResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SearchInput"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.ProductDetailsFragment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.HomeLoginActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.CusHomeFragment"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".View.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.LoginWrongActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.LoginActiveActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.LoginActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +65,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>
