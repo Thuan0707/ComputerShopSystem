@@ -7,43 +7,49 @@
     tools:context=".View.MainActivity">
 
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gotoCart"
+        android:text="Cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <FrameLayout
         android:id="@+id/fl_wrapper"
-        android:layout_width="411dp"
-        android:layout_height="602dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017"></FrameLayout>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_bot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        android:layout_gravity="bottom"
-        app:backgroundTint="#FFFFFF"
-        app:itemBackground="@color/white"
-        app:itemIconTint="#9098B1"
-        app:itemRippleColor="#201E1E"
-        app:itemTextColor="#9098B1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_wrapper"
-        app:layout_constraintVertical_bias="0.903"
-        app:menu="@menu/nav_bot">
-
-        <View
-            android:id="@+id/hr2"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bot"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#EBF0FF"
-            tools:ignore="MissingConstraints" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="bottom"
+            app:backgroundTint="#FFFFFF"
+            app:itemBackground="@color/white"
+            app:itemIconTint="#9098B1"
+            app:itemRippleColor="#201E1E"
+            app:itemTextColor="#9098B1"
+            app:menu="@menu/nav_bot">
+
+            <View
+                android:id="@+id/hr2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#EBF0FF"
+                tools:ignore="MissingConstraints" />
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
