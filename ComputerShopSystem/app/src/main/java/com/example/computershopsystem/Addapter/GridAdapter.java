@@ -2,16 +2,13 @@ package com.example.computershopsystem.Addapter;
 
 import android.content.Context;
 
-import android.text.TextUtils;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import android.widget.Filter;
-import android.widget.Filterable;
+
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,17 +19,14 @@ import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
-import java.nio.file.attribute.FileAttribute;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 
 public class GridAdapter extends BaseAdapter {
-    public Object filter;
+
     Context context;
     ArrayList<Product> listProduct;
-     ArrayList<Product> listProductOld;
 
     LayoutInflater layoutInflater;
 
@@ -40,8 +34,6 @@ public class GridAdapter extends BaseAdapter {
         this.context = context;
         this.listProduct = listProduct;
 
-        this.listProductOld = new ArrayList<>();
-        listProductOld.addAll(listProduct);
 
     }
 
@@ -77,21 +69,5 @@ public class GridAdapter extends BaseAdapter {
     }
 
 
-    public  void filter(CharSequence charSequence){
-        ArrayList<Product> tempArrayList = new ArrayList<>();
-        if (!TextUtils.isEmpty(charSequence)){
-            for (Product pro: listProduct){
-                if (pro.getName().toLowerCase().contains(charSequence)){
-                    tempArrayList.add(pro);
-                }
-            }
-        }else{
-            listProduct.addAll(listProductOld);
-        }
-        listProduct.clear();
-        listProduct.addAll(tempArrayList);
-        //notifyDataSetChanged();
-        tempArrayList.clear();
-    }
 
 }
