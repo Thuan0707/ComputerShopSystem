@@ -162,7 +162,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvOr"
+                            android:id="@+id/tvNumberItem"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
@@ -200,7 +200,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvNameInfor"
+                            android:id="@+id/txtItem"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"

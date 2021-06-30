@@ -1,36 +1,18 @@
 package com.example.computershopsystem.View;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-
-import android.util.Log;
-
-import android.view.View;
-
-
-import com.example.computershopsystem.Model.Brand;
-import com.example.computershopsystem.Model.CPU;
-import com.example.computershopsystem.Model.Customer;
-import com.example.computershopsystem.Model.CustomerAccount;
-import com.example.computershopsystem.Model.Product;
-import com.example.computershopsystem.Model.Ram;
-import com.example.computershopsystem.Model.Rom;
-import com.example.computershopsystem.Model.Screen;
 import com.example.computershopsystem.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cart);
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,new CusHomeFragment()).commit();
         String id;
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);

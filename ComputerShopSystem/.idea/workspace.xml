@@ -30,7 +30,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1d0bfaf-2d8e-4752-9f4d-43d06ad53a8d" name="Default Changelist" comment="" />
+    <list default="true" id="a1d0bfaf-2d8e-4752-9f4d-43d06ad53a8d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CartActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_noradius.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_cong.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_trash.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_tru.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_cart.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/cart_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_active.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_active.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_wrong.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_wrong.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_details.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,6 +76,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -80,6 +98,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.1534863866">
+      <recent name="com.example.computershopsystem.View" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\TERM7\ComputerShop\code\ComputerShopSystem\ComputerShopSystem\app\src\main\res\layout" />
     </key>
@@ -183,11 +204,19 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1623491013221" />
-    <state x="281" y="127" key="AndroidCreateResourceFileDialog" timestamp="1623558075642">
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1625033730146">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="281" y="127" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1623558075642" />
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1625033730146" />
+    <state x="281" y="127" key="AndroidCreateResourceFileDialog" timestamp="1625037033406">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="281" y="127" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1625037033406" />
     <state x="316" y="146" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1623503506650" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1625036877516">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1625036877516" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1623564282410">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
