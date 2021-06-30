@@ -7,11 +7,21 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+
+import android.view.MotionEvent;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+
 import android.widget.GridView;
+
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.SearchView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +56,7 @@ public class CusHomeFragment extends Fragment {
     SharedPreferences.Editor editor;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+
 
     @Nullable
     @Override
@@ -151,6 +162,27 @@ public class CusHomeFragment extends Fragment {
                 fragTransaction.commit();
             }
         });
+
+        binding.txtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+        binding.txtSearch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_RIGHT = 2;
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (binding.txtSearch.getRight() - binding.txtSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        binding.txtSearch.setText(null);
+
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
         binding.txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -159,12 +191,22 @@ public class CusHomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                 if (!s.toString().isEmpty()) {
                     helper.retrieveByName(s.toString());
 
                 } else {
                     helper.retrieve();
                 }
+
+//                if (!s.toString().isEmpty()) {
+//                    helper.retrieveByName(s.toString());
+//
+//                } else {
+//                    helper.retrieve();
+//                }
+                GridAdapter.filter(s);
+
             }
 
             @Override
@@ -172,6 +214,7 @@ public class CusHomeFragment extends Fragment {
 
             }
         });
+
         binding.btnAsus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
