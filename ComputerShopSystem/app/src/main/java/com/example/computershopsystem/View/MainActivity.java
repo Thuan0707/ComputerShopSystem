@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ListView;
+
 
 
 import androidx.annotation.NonNull;
@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.computershopsystem.Model.CartProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
-import com.example.computershopsystem.databinding.CartFragmentBinding;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

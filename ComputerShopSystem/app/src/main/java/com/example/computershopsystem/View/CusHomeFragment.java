@@ -168,36 +168,36 @@ public class CusHomeFragment extends Fragment {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
 
-        binding.txtSearch.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                final int DRAWABLE_RIGHT = 2;
+                binding.txtSearch.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        final int DRAWABLE_RIGHT = 2;
 
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (binding.txtSearch.getRight() - binding.txtSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        binding.txtSearch.setText(null);
+                        if (event.getAction() == MotionEvent.ACTION_UP) {
+                            if (event.getRawX() >= (binding.txtSearch.getRight() - binding.txtSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                                binding.txtSearch.setText(null);
 
-                        return true;
+                                return true;
+                            }
+                        }
+                        return false;
                     }
-                }
-                return false;
-            }
-        });
-        binding.txtSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                });
+                binding.txtSearch.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+                    }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!s.toString().isEmpty()) {
-                    helper.retrieveByName(s.toString());
+                        if (!s.toString().isEmpty()) {
+                            helper.retrieveByName(s.toString());
 
-                } else {
-                    helper.retrieve();
-                }
+                        } else {
+                            helper.retrieve();
+                        }
 
 //                if (!s.toString().isEmpty()) {
 //                    helper.retrieveByName(s.toString());
@@ -205,65 +205,67 @@ public class CusHomeFragment extends Fragment {
 //                } else {
 //                    helper.retrieve();
 //                }
-                GridAdapter.filter(s);
+                        GridAdapter.filter(s);
 
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                binding.btnAsus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        helper.retrieveByBrand("Asus".trim());
+                    }
+                });
+                binding.btnHP.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        helper.retrieveByBrand("HP".trim());
+                    }
+                });
+                binding.btnAcer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        helper.retrieveByBrand("Acer".trim());
+                    }
+                });
+                binding.btnDell.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        helper.retrieveByBrand("Dell".trim());
+                    }
+                });
+                binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getActivity(), LoginActiveActivity.class));
+                        getActivity().finish();
+                    }
+                });
+
+
+                View view = binding.getRoot();
+                return view;
             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
 
-            }
-        });
+            public <T> void setList(String key, List<T> list) {
+                Gson gson = new Gson();
+                String json = gson.toJson(list);
 
-        binding.btnAsus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helper.retrieveByBrand("Asus".trim());
+                set(key, json);
             }
-        });
-        binding.btnHP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helper.retrieveByBrand("HP".trim());
+
+            public void set(String key, String value) {
+                editor.putString(key, value);
+                editor.commit();
             }
-        });
-        binding.btnAcer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helper.retrieveByBrand("Acer".trim());
-            }
-        });
-        binding.btnDell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helper.retrieveByBrand("Dell".trim());
-            }
-        });
-        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
-                getActivity().finish();
-            }
-        });
 
 
-        View view = binding.getRoot();
-        return view;
+        }
     }
-
-
-    public <T> void setList(String key, List<T> list) {
-        Gson gson = new Gson();
-        String json = gson.toJson(list);
-
-        set(key, json);
-    }
-
-    public void set(String key, String value) {
-        editor.putString(key, value);
-        editor.commit();
-    }
-
-
 }

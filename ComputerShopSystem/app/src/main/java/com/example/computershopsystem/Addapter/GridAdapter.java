@@ -22,20 +22,17 @@ import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
-
-public class GridAdapter extends BaseAdapter {
-    Context context;
-    ArrayList<Product> listProduct;
-
 import java.nio.file.attribute.FileAttribute;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class GridAdapter extends BaseAdapter {
-    public static Object filter;
+    public Object filter;
     Context context;
-    static ArrayList<Product> listProduct;
-    static ArrayList<Product> listProductOld;
+    ArrayList<Product> listProduct;
+     ArrayList<Product> listProductOld;
 
     LayoutInflater layoutInflater;
 
@@ -80,7 +77,7 @@ public class GridAdapter extends BaseAdapter {
     }
 
 
-    public static void filter(CharSequence charSequence){
+    public  void filter(CharSequence charSequence){
         ArrayList<Product> tempArrayList = new ArrayList<>();
         if (!TextUtils.isEmpty(charSequence)){
             for (Product pro: listProduct){
