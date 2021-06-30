@@ -48,10 +48,11 @@ public class ProductDetailsFragment extends Fragment {
         binding.btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                product = new Product(null, null, null, null, null, "122333", "Lenovo Legion y530", "https://firebasestorage.googleapis.com/v0/b/computershopsystem-c38da.appspot.com/o/Asus%20A%20series.png?alt=media&token=10182f40-0b8c-482d-9cfd-52fe706a4d17", "i5 10300H 8GB/512GB/4GB GTX1650/144Hz/Win10 (255VN)", 15, 9000000, 35990000, null, null);
+                product = new Product(null, null, null, null, null, "122121312333", "Lenovo Legion y530", "https://firebasestorage.googleapis.com/v0/b/computershopsystem-c38da.appspot.com/o/Asus%20A%20series.png?alt=media&token=10182f40-0b8c-482d-9cfd-52fe706a4d17", "i5 10300H 8GB/512GB/4GB GTX1650/144Hz/Win10 (255VN)", 15, 9000000, 35990000, null, null);
                 List<CartProduct> listProductInCart = getList();
                 IncreaseQuantityCartProduct(listProductInCart,product);
                 setList("cart", listProductInCart);
+                Log.e("after",String.valueOf(listProductInCart.get(0).getQuantityInCart()));
             }
         });
 
@@ -71,7 +72,7 @@ public class ProductDetailsFragment extends Fragment {
     }
     public List<CartProduct> getList(){
         List<CartProduct> listProduct=new ArrayList<>();
-        String serializedObject = sharedpreferences.getString(firebaseUser.getUid(), null);
+        String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
             Type type = new TypeToken<List<CartProduct>>(){}.getType();
@@ -80,10 +81,6 @@ public class ProductDetailsFragment extends Fragment {
         return  listProduct;
     }
     public void IncreaseQuantityCartProduct( List<CartProduct> listProductInCart,Product product) {
-
-        for(CartProduct p:listProductInCart){
-            Log.e("asds",String.valueOf(p.getQuantityInCart()));
-        }
         for (CartProduct item : listProductInCart) {
             if (item.getProduct().getId().equalsIgnoreCase(product.getId())) {
               item.setQuantityInCart(item.getQuantityInCart()+1);

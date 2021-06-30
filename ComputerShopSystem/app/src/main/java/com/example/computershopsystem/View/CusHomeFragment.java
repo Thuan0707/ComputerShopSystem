@@ -61,11 +61,9 @@ public class CusHomeFragment extends Fragment {
             sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), MODE_PRIVATE);
             editor = sharedpreferences.edit();
             if (!sharedpreferences.contains("cart")) {
-
                 List<Product> listProductInCart = new ArrayList<>();
                 setList("cart", listProductInCart);
             }
-
         }
 
         if (bundle != null) {

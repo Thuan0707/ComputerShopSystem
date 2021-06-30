@@ -39,9 +39,8 @@ public class ListViewAdapter extends ArrayAdapter<CartProduct> {
         TextView quantity = convertView.findViewById(R.id.txtQuantityCartProduct);
         name.setText(getItem(position).getProduct().getName());
         price.setText(String.valueOf(getItem(position).getProduct().getSellPrice()));
-        quantity.setText(getItem(position).getQuantityInCart());
+        quantity.setText(String.valueOf(getItem(position).getQuantityInCart()));
         Picasso.get().load(getItem(position).getProduct().getImage()).into(image);
-
 
         return convertView;
     }

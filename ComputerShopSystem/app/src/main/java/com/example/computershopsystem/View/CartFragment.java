@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class CartFragment extends Fragment {
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
         List<CartProduct> productList = getList();
+        Log.e("ádfsafsafasfasdf",String.valueOf(productList.size()));
         ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(), R.layout.cart_item, productList);
         listView.setAdapter(listViewAdapter);
         return view;

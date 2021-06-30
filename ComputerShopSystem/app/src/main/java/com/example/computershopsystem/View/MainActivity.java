@@ -51,11 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseUser = firebaseAuth.getCurrentUser();
-                if (firebaseUser != null) {
-                    sharedpreferences = getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
-                    editor = sharedpreferences.edit();
-                    setList("cart", cartProductList);
-                }
+
                 switch (item.getItemId()) {
                     case R.id.ic_home:
                         selectedFragment = new CusHomeFragment();
@@ -110,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
     public <T> void setList(String key, List<T> list) {
         Gson gson = new Gson();
         String json = gson.toJson(list);
-
         commit(key, json);
     }
 
