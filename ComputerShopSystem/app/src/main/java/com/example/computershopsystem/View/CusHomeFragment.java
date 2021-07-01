@@ -156,9 +156,8 @@ public class CusHomeFragment extends Fragment {
                 final int DRAWABLE_RIGHT = 2;
 
                 if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (binding.txtSearch.getRight() - binding.txtSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                    if(event.getRawX() >= (binding.txtSearch.getRight() - binding.txtSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width()-20)) {
                         binding.txtSearch.setText("");
-
                         return true;
                     }
                 }
