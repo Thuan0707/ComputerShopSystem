@@ -64,21 +64,21 @@ public class GridAdapter extends BaseAdapter {
         notifyDataSetChanged();
         return convertView;
     }
-
-    public static void filter(CharSequence charSequence){
-        ArrayList<Product> tempArrayList = new ArrayList<>();
-        if (!TextUtils.isEmpty(charSequence)){
-            for (Product pro: listProduct){
-                if (pro.getName().toLowerCase().contains(charSequence)){
-                    tempArrayList.add(pro);
-                }
-            }
-        }else{
-            listProduct.addAll(listProductOld);
-        }
-        listProduct.clear();
-        listProduct.addAll(tempArrayList);
-        //notifyDataSetChanged();
-        tempArrayList.clear();
-    }
+//
+//    public static void filter(CharSequence charSequence){
+//        ArrayList<Product> tempArrayList = new ArrayList<>();
+//        if (!TextUtils.isEmpty(charSequence)){
+//            for (Product pro: listProduct){
+//                if (pro.getName().toLowerCase().contains(charSequence)){
+//                    tempArrayList.add(pro);
+//                }
+//            }
+//        }else{
+//            listProduct.addAll(listProductOld);
+//        }
+//        listProduct.clear();
+//        listProduct.addAll(tempArrayList);
+//        //notifyDataSetChanged();
+//        tempArrayList.clear();
+//    }
 }

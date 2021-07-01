@@ -242,20 +242,23 @@ public class LoginActiveActivity extends AppCompatActivity {
                     Log.d(TAGFACE, "sign in with credential: successful");
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     String uid = user.getUid();
+                    String name = user.getDisplayName();
                     String email = user.getEmail();
                     String phoneNumber = user.getPhoneNumber();
-
 
                     Log.d(TAG, "uID: " + uid);
                     Log.d(TAG, "Email: " + email);
                     Log.d(TAG, "NumberPhone: " + phoneNumber);
 
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
-                        Log.d(TAG, "onSuccess: Account Created");
+                        CustomerAccount customerAccount = new CustomerAccount(uid, phoneNumber, uid, null, null);
+                        Customer customer = new Customer(uid, customerAccount, email, name, Calendar.getInstance().getTime());
+                        databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
+                        databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
                         Toast.makeText(LoginActiveActivity.this, "Account created for " + email, Toast.LENGTH_SHORT).show();
                     } else {
-                        Log.d(TAG, "onSuccess: Existing User: " + email);
-                        Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "onSuccess: Existing User: " + name);
+                        Toast.makeText(LoginActiveActivity.this, "Welcome back " + name, Toast.LENGTH_SHORT).show();
                     }
 
 

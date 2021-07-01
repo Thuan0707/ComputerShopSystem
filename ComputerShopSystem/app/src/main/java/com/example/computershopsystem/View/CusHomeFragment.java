@@ -179,13 +179,12 @@ public class CusHomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if (!s.toString().isEmpty()) {
-//                    helper.retrieveByName(s.toString());
-//
-//                } else {
-//                    helper.retrieve();
-//                }
-                GridAdapter.filter(s);
+                if (!s.toString().isEmpty()) {
+                    helper.retrieveByName(s.toString());
+
+                } else {
+                    helper.retrieve();
+                }
             }
 
             @Override
