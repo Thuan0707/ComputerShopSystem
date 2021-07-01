@@ -7,15 +7,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,8 +47,6 @@ public class CusHomeFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,11 +61,9 @@ public class CusHomeFragment extends Fragment {
             sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), MODE_PRIVATE);
             editor = sharedpreferences.edit();
             if (!sharedpreferences.contains("cart")) {
-
                 List<Product> listProductInCart = new ArrayList<>();
                 setList("cart", listProductInCart);
             }
-
         }
 
         if (bundle != null) {
@@ -157,24 +149,10 @@ public class CusHomeFragment extends Fragment {
                 fragTransaction.commit();
             }
         });
-        binding.txtSearch.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                final int DRAWABLE_RIGHT = 2;
-
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (binding.txtSearch.getRight() - binding.txtSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        binding.txtSearch.setText(null);
-
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
         binding.txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
@@ -192,7 +170,6 @@ public class CusHomeFragment extends Fragment {
 
             }
         });
-
         binding.btnAsus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
