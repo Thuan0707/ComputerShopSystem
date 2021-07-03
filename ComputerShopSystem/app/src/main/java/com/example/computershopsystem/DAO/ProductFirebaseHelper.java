@@ -90,8 +90,6 @@ public class ProductFirebaseHelper {
                     for (DataSnapshot shot : snapshot.getChildren()) {
                         if(shot.getValue(Product.class).getName().toLowerCase().contains(s.toLowerCase())){
                             Product product = shot.getValue(Product.class);
-                            Log.e("nameBrand", product.getBrand().getName());
-                            Log.e("name", product.getName());
                             listProduct.add(product);
                         }
                     }
