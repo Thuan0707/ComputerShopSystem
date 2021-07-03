@@ -81,7 +81,8 @@ public class ProductFirebaseHelper {
     }
 
     public ArrayList<Product> retrieveByName(String s) {
-        Query query = db.orderByChild("name").equalTo(s);
+        Query query = db.orderByChild("name").
+                equalTo(s);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
