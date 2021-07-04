@@ -83,7 +83,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_tru" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtQuantityCartProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

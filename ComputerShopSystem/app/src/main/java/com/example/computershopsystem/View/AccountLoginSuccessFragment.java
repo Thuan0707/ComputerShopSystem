@@ -34,8 +34,8 @@ public class AccountLoginSuccessFragment extends Fragment {
 
     Button btnLogOut;
     Button btnPayment;
+
     @Nullable
-    @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.account_login_success_fragment, container, false);
