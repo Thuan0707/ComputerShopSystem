@@ -13,12 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".View.InputCreditCardFragment"></activity>
+        <activity android:name=".View.CreditCardFragment" />
         <activity android:name=".View.InputPhoneRegisterActivity" />
         <activity
             android:name=".View.RegisterOTP"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".View.AccountNotLogin"
             android:screenOrientation="portrait" />
@@ -31,7 +31,6 @@
         <activity
             android:name=".View.SearchInput"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".View.HomeLoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />

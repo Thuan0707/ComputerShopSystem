@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.computershopsystem.Addapter.ListViewAdapter;
+import com.example.computershopsystem.Addapter.LVProductInCartAdapter;
 import com.example.computershopsystem.Model.CartProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
@@ -48,9 +48,8 @@ public class CartFragment extends Fragment {
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
         List<CartProduct> productList = getList();
-        Log.e("ádfsafsafasfasdf",String.valueOf(productList.size()));
-        ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(), R.layout.cart_item, productList);
-        listView.setAdapter(listViewAdapter);
+        LVProductInCartAdapter LVProductInCartAdapter = new LVProductInCartAdapter(getActivity(), R.layout.cart_item, productList);
+        listView.setAdapter(LVProductInCartAdapter);
         return view;
     }
 

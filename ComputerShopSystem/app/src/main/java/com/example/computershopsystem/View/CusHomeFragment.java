@@ -210,13 +210,7 @@ public class CusHomeFragment extends Fragment {
                 helper.retrieveByBrand("Dell".trim());
             }
         });
-        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
-                getActivity().finish();
-            }
-        });
+
 
 
         View view = binding.getRoot();

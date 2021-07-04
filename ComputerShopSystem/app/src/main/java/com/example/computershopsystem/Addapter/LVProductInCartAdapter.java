@@ -17,11 +17,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ListViewAdapter extends ArrayAdapter<CartProduct> {
+public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
     private Context context;
     private int resource;
 
-    public ListViewAdapter(@NonNull Context context, int resource, @NonNull List<CartProduct> objects) {
+    public LVProductInCartAdapter(@NonNull Context context, int resource, @NonNull List<CartProduct> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
