@@ -1,11 +1,15 @@
 package com.example.computershopsystem.Addapter;
 
 import android.content.Context;
-import android.util.Log;
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,16 +17,24 @@ import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.squareup.picasso.Picasso;
 
+
 import java.util.ArrayList;
 
+
+
+
 public class GridAdapter extends BaseAdapter {
+
     Context context;
     ArrayList<Product> listProduct;
+
     LayoutInflater layoutInflater;
 
     public GridAdapter(Context context, ArrayList<Product> listProduct) {
         this.context = context;
         this.listProduct = listProduct;
+
+
     }
 
     @Override
@@ -55,4 +67,7 @@ public class GridAdapter extends BaseAdapter {
         notifyDataSetChanged();
         return convertView;
     }
+
+
+
 }

@@ -1,69 +1,86 @@
 package com.example.computershopsystem.View;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+
 
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
 
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
+    public Product product;
+
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_wrapper,new CusHomeFragment()).commit();
+        List<CartProduct> cartProductList = new ArrayList<>();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fl_wrapper, new CusHomeFragment()).commit();
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
         nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 Fragment selectedFragment = null;
-                firebaseAuth=FirebaseAuth.getInstance();
-                firebaseUser=firebaseAuth.getCurrentUser();
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseUser = firebaseAuth.getCurrentUser();
+
                 switch (item.getItemId()) {
                     case R.id.ic_home:
-                        selectedFragment=new CusHomeFragment();
+                        selectedFragment = new CusHomeFragment();
 
                         break;
                     case R.id.ic_user:
-                        if (firebaseUser!=null){
-                            selectedFragment=new AccountLoginSuccessFragment();
-                        }else{
-                            selectedFragment=new TestLoginLogoutFragment();
+                        if (firebaseUser != null) {
+                            selectedFragment = new AccountLoginSuccessFragment();
+                        } else {
+                            selectedFragment = new TestLoginLogoutFragment();
                         }
                         break;
                     case R.id.ic_cart:
-                        if (firebaseUser!=null){
-                            selectedFragment=new CartFragment();
-                        }else{
-                            selectedFragment=new TestLoginLogoutFragment();
+                        if (firebaseUser != null) {
+                            selectedFragment = new CartFragment();
+                        } else {
+                            selectedFragment = new TestLoginLogoutFragment();
                         }
                         break;
                     case R.id.ic_location:
-                        if (firebaseUser!=null){
-                            selectedFragment=new ProductDetailsFragment();
-                        }else{
-                            selectedFragment=new TestLoginLogoutFragment();
+                        if (firebaseUser != null) {
+                            selectedFragment = new ProductDetailsFragment();
+                        } else {
+                            selectedFragment = new TestLoginLogoutFragment();
                         }
                         break;
 
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper, selectedFragment).commit();
                 return true;
             }
         });
@@ -86,5 +103,15 @@ public class MainActivity extends AppCompatActivity {
 //        mDatabase.child("1QzUXC8c0bQxtJY0EiWOgdHwnIw2").setValue(customer);
     }
 
+    public <T> void setList(String key, List<T> list) {
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        commit(key, json);
+    }
+
+    public void commit(String key, String value) {
+        editor.putString(key, value);
+        editor.commit();
+    }
 
 }

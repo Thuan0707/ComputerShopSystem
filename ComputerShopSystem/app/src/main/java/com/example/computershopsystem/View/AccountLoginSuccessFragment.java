@@ -32,8 +32,8 @@ public class AccountLoginSuccessFragment extends Fragment {
     FirebaseUser firebaseUser;
     TextView account;
 
-    Button btLogOut;
-
+    Button btnLogOut;
+    Button btnPayment;
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -44,14 +44,27 @@ public class AccountLoginSuccessFragment extends Fragment {
         String name = firebaseUser.getDisplayName();
         account = v.findViewById(R.id.tvAccount2);
         account.setText(name);
-        btLogOut = v.findViewById(R.id.btnLogout);
-
-        btLogOut.setOnClickListener(new View.OnClickListener() {
+        btnLogOut = v.findViewById(R.id.btnLogout);
+        btnPayment=v.findViewById(R.id.btnPayment);
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 firebaseAuth.signOut();
                 signOut();
                 CusHomeFragment fragment = new CusHomeFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                        android.R.animator.fade_out);
+                fragTransaction.addToBackStack(null);
+                fragTransaction.replace(R.id.fl_wrapper, fragment);
+                fragTransaction.commit();
+            }
+        });
+        btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreditCardFragment fragment = new CreditCardFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
                 fragTransaction.setCustomAnimations(android.R.animator.fade_in,

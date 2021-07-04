@@ -2,16 +2,17 @@ package com.example.computershopsystem.Model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Customer implements Serializable {
-    String  id;
+    String id;
     CustomerAccount customerAccount;
     String email;
     String fullName;
     Date dateOfBirth;
     String address;
     int gender;
-    long money;
+    List<CreditCard> cardList;
     Date createAt;
     Date deleteAt;
 
@@ -26,7 +27,7 @@ public class Customer implements Serializable {
         this.createAt = createAt;
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String email, String fullName, Date dateOfBirth, String address, int gender, long money, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount, String email, String fullName, Date dateOfBirth, String address, int gender, List<CreditCard> cardList, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.email = email;
@@ -34,7 +35,7 @@ public class Customer implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.gender = gender;
-        this.money = money;
+        this.cardList = cardList;
         this.createAt = createAt;
         this.deleteAt = deleteAt;
     }
@@ -54,7 +55,6 @@ public class Customer implements Serializable {
     public void setCustomerAccount(CustomerAccount customerAccount) {
         this.customerAccount = customerAccount;
     }
-
 
     public String getEmail() {
         return email;
@@ -96,12 +96,12 @@ public class Customer implements Serializable {
         this.gender = gender;
     }
 
-    public long getMoney() {
-        return money;
+    public List<CreditCard> getCardList() {
+        return cardList;
     }
 
-    public void setMoney(long money) {
-        this.money = money;
+    public void setCardList(List<CreditCard> cardList) {
+        this.cardList = cardList;
     }
 
     public Date getCreateAt() {

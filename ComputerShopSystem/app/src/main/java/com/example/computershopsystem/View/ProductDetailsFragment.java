@@ -4,6 +4,7 @@ package com.example.computershopsystem.View;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
+import com.example.computershopsystem.Model.CartProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.databinding.ProductDetailsFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,10 +48,11 @@ public class ProductDetailsFragment extends Fragment {
         binding.btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                product = new Product(null, null, null, null, null, "122333", "Lenovo Legion y530", "https://firebasestorage.googleapis.com/v0/b/computershopsystem-c38da.appspot.com/o/Asus%20A%20series.png?alt=media&token=10182f40-0b8c-482d-9cfd-52fe706a4d17", "i5 10300H 8GB/512GB/4GB GTX1650/144Hz/Win10 (255VN)", 15, 9000000, 35990000, null, null);
-                List<Product> listProductInCart = getList();
-                listProductInCart.add(product);
+                product = new Product(null, null, null, null, null, "122121312333", "Lenovo Legion y530", "https://firebasestorage.googleapis.com/v0/b/computershopsystem-c38da.appspot.com/o/Asus%20A%20series.png?alt=media&token=10182f40-0b8c-482d-9cfd-52fe706a4d17", "i5 10300H 8GB/512GB/4GB GTX1650/144Hz/Win10 (255VN)", 15, 9000000, 35990000, null, null);
+                List<CartProduct> listProductInCart = getList();
+                IncreaseQuantityCartProduct(listProductInCart,product);
                 setList("cart", listProductInCart);
+                Log.e("after",String.valueOf(listProductInCart.get(0).getQuantityInCart()));
             }
         });
 
@@ -67,14 +70,23 @@ public class ProductDetailsFragment extends Fragment {
         editor.putString(key, value);
         editor.apply();
     }
-    public List<Product> getList(){
-        List<Product> listProduct=new ArrayList<>();
-        String serializedObject = sharedpreferences.getString(firebaseUser.getUid(), null);
+    public List<CartProduct> getList(){
+        List<CartProduct> listProduct=new ArrayList<>();
+        String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<Product>>(){}.getType();
+            Type type = new TypeToken<List<CartProduct>>(){}.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }
         return  listProduct;
+    }
+    public void IncreaseQuantityCartProduct( List<CartProduct> listProductInCart,Product product) {
+        for (CartProduct item : listProductInCart) {
+            if (item.getProduct().getId().equalsIgnoreCase(product.getId())) {
+              item.setQuantityInCart(item.getQuantityInCart()+1);
+              return;
+            }
+        }
+        listProductInCart.add(new CartProduct(1,product));
     }
 }
