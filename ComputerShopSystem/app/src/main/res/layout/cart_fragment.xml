@@ -129,7 +129,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtBirthday"
+                android:id="@+id/txtItemQuantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -139,7 +139,7 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/txtEmail"
+                android:id="@+id/txtPriceItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -159,7 +159,7 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/txtPass"
+                android:id="@+id/txtTotalPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
