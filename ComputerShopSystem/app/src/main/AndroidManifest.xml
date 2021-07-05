@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.computershopsystem">
+    package="com.example.computershopsystem" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,8 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".View.ChangeNameFragment"></activity>
+        android:usesCleartextTraffic="true" >
+        <activity android:name=".View.ChangePassFragment" >
+        </activity>
+        <activity android:name=".View.VerifyPhoneFragment" />
+        <activity android:name=".View.ChangePhoneFragment" />
+        <activity android:name=".View.ChangeEmailFragment" />
+        <activity android:name=".View.BirthdayFragment" />
+        <activity android:name=".View.GenderFragment" />
+        <activity android:name=".View.ChangeNameFragment" />
         <activity android:name=".View.ProfileFragment" />
         <activity android:name=".View.InputCreditCardFragment" />
         <activity android:name=".View.CreditCardFragment" />
@@ -52,7 +59,7 @@
         <activity
             android:name=".View.LoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".View.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

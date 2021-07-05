@@ -145,7 +145,7 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/txtChangePass"
+                android:id="@+id/txtPass"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="4dp"
