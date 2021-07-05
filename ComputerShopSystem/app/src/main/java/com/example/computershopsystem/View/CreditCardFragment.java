@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +23,17 @@ import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 
-import com.example.computershopsystem.databinding.CartFragmentBinding;
 import com.example.computershopsystem.databinding.CreditCardFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -39,21 +45,14 @@ public class CreditCardFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private ListView listView;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
     @Nullable
     @Override
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
         binding = CreditCardFragmentBinding.inflate(getLayoutInflater());
         View view=binding.getRoot();
-        listView = binding.lvCard;
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
-        editor = sharedpreferences.edit();
-        List<CreditCard> productList = getList();
-        LVCreditCardAdapter LVCreditCardAdapter = new LVCreditCardAdapter(getActivity(), R.layout.card_item, productList);
-        listView.setAdapter(LVCreditCardAdapter);
+        getList();
         binding.btnGotoAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,15 +69,27 @@ public class CreditCardFragment extends Fragment {
         return view;
     }
 
-    public List<CreditCard> getList() {
-        List<CreditCard> listProduct = new ArrayList<>();
-        String serializedObject = sharedpreferences.getString("cart", null);
-        if (serializedObject != null) {
-            Gson gson = new Gson();
-            Type type = new TypeToken<List<CreditCard>>() {
-            }.getType();
-            listProduct = gson.fromJson(serializedObject, type);
-        }
-        return listProduct;
+    public void getList() {
+        ArrayList<CreditCard> creditCards = new ArrayList<>();
+        Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("card");
+        data.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot shot : dataSnapshot.getChildren()) {
+                        CreditCard creditCard = shot.getValue(CreditCard.class);
+                        creditCards.add(creditCard);
+                    }
+                }
+
+                listView = binding.lvCard;
+                LVCreditCardAdapter LVCreditCardAdapter = new LVCreditCardAdapter(getActivity(), R.layout.card_item, creditCards);
+                listView.setAdapter(LVCreditCardAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 }

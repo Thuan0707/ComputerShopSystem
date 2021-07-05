@@ -86,6 +86,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-07-05T03:05:17.484345700Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android-custom-viewC:/Users/HP/AppData/Local/Android/Sdk/sources/android-30/android/widget/ListView.java_SELECTED" value="ListView" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
@@ -208,11 +209,11 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1624092119454" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1625454713799">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1625475668392">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1625406481267" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1625454713799" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1625475668392" />
     <state x="449" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1625234330794">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -239,30 +240,30 @@
     </state>
     <state x="549" y="142" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1624456279197" />
     <state x="549" y="144" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1624324024983" />
-    <state width="746" height="223" key="GridCell.Tab.0.bottom" timestamp="1625459380793">
+    <state width="1135" height="230" key="GridCell.Tab.0.bottom" timestamp="1625479652064">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
     <state width="1493" height="205" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1625407289325" />
-    <state width="746" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1625459380793" />
-    <state width="746" height="223" key="GridCell.Tab.0.center" timestamp="1625459380793">
+    <state width="1135" height="230" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1625479652064" />
+    <state width="1135" height="230" key="GridCell.Tab.0.center" timestamp="1625479652064">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
     <state width="1493" height="205" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1625407289325" />
-    <state width="746" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1625459380793" />
-    <state width="746" height="223" key="GridCell.Tab.0.left" timestamp="1625459380793">
+    <state width="1135" height="230" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1625479652064" />
+    <state width="1135" height="230" key="GridCell.Tab.0.left" timestamp="1625479652064">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
     <state width="1493" height="205" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1625407289324" />
-    <state width="746" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1625459380793" />
-    <state width="746" height="223" key="GridCell.Tab.0.right" timestamp="1625459380793">
+    <state width="1135" height="230" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1625479652064" />
+    <state width="1135" height="230" key="GridCell.Tab.0.right" timestamp="1625479652064">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
     <state width="1493" height="205" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1625407289325" />
-    <state width="746" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1625459380793" />
+    <state width="1135" height="230" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1625479652064" />
     <state x="471" y="241" key="com.android.tools.idea.run.deployment.SelectMultipleDevicesDialog" timestamp="1625419042929">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
