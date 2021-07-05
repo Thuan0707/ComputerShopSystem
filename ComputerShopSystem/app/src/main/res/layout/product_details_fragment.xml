@@ -163,7 +163,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtItem"
+                            android:id="@+id/txtBirthday"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
@@ -172,7 +172,7 @@
                             android:textAlignment="textEnd" />
 
                         <TextView
-                            android:id="@+id/txtPriceItem"
+                            android:id="@+id/txtEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
@@ -181,7 +181,7 @@
                             android:textAlignment="textEnd" />
 
                         <TextView
-                            android:id="@+id/txtShipping"
+                            android:id="@+id/txtPhone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
@@ -190,7 +190,7 @@
                             android:textAlignment="textEnd" />
 
                         <TextView
-                            android:id="@+id/txtTotalPrice"
+                            android:id="@+id/txtPass"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
