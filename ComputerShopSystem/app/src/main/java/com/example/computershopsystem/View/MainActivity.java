@@ -10,25 +10,36 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.computershopsystem.Model.Brand;
+import com.example.computershopsystem.Model.CPU;
 import com.example.computershopsystem.Model.CartProduct;
 import com.example.computershopsystem.Model.Product;
+import com.example.computershopsystem.Model.Ram;
+import com.example.computershopsystem.Model.Rom;
+import com.example.computershopsystem.Model.Screen;
 import com.example.computershopsystem.R;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     public Product product;
@@ -42,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<CartProduct> cartProductList = new ArrayList<>();
-
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_wrapper, new CusHomeFragment()).commit();
+        switchFragment(new CusHomeFragment());
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
         nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -80,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper, selectedFragment).commit();
+                switchFragment(selectedFragment);
                 return true;
             }
         });
-        //Add Product
+       // Add Product
 //        mDatabase = FirebaseDatabase.getInstance().getReference("Product");
 //        String id = mDatabase.push().getKey();
 //       Brand brand = new Brand(null, "HP", "Good", null, null);
@@ -113,5 +123,13 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(key, value);
         editor.commit();
     }
-
+public  void switchFragment(Fragment fragment){
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+    fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+            android.R.animator.fade_out);
+    fragTransaction.addToBackStack(null);
+    fragTransaction.replace(R.id.fl_wrapper, fragment);
+    fragTransaction.commit();
+}
 }

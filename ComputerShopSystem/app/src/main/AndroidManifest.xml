@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.InputCreditCardFragment"></activity>
+        <activity android:name=".View.CheckOutFragment"></activity>
+        <activity android:name=".View.InputCreditCardFragment" />
         <activity android:name=".View.CreditCardFragment" />
         <activity android:name=".View.InputPhoneRegisterActivity" />
         <activity

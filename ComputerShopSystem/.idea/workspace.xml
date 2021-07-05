@@ -37,10 +37,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49b25fb0-06e2-4260-b309-c91fa0c78b2e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/check_out_fragment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Addapter/GridAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Addapter/GridAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Addapter/LVProductInCartAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Addapter/LVProductInCartAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/AccountLoginSuccessFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/AccountLoginSuccessFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CartFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CartFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProductDetailsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProductDetailsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cart_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cart_fragment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cart_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cart_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,6 +95,9 @@
       <recent name="com.example.computershopsystem.View" />
     </key>
     <key name="android.template.90378597">
+      <recent name="com.example.computershopsystem.View" />
+    </key>
+    <key name="android.template.839651889">
       <recent name="com.example.computershopsystem.View" />
     </key>
   </component>
@@ -198,10 +208,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1624092119454" />
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1625406481267">
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1625455614452">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1625406481267" />
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1625455614452" />
     <state x="449" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1625234330794">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -227,30 +237,34 @@
     </state>
     <state x="549" y="142" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1624456279197" />
     <state x="549" y="144" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1624324024983" />
-    <state width="1493" height="205" key="GridCell.Tab.0.bottom" timestamp="1625415621688">
+    <state width="1493" height="205" key="GridCell.Tab.0.bottom" timestamp="1625460074210">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="205" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1625415621688" />
+    <state width="1493" height="205" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1625460074210" />
     <state width="746" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1625106453885" />
-    <state width="1493" height="205" key="GridCell.Tab.0.center" timestamp="1625415621688">
+    <state width="1493" height="205" key="GridCell.Tab.0.center" timestamp="1625460074210">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="205" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1625415621688" />
+    <state width="1493" height="205" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1625460074210" />
     <state width="746" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1625106453885" />
-    <state width="1493" height="205" key="GridCell.Tab.0.left" timestamp="1625415621688">
+    <state width="1493" height="205" key="GridCell.Tab.0.left" timestamp="1625460074210">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="205" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1625415621688" />
+    <state width="1493" height="205" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1625460074210" />
     <state width="746" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1625106453885" />
-    <state width="1493" height="205" key="GridCell.Tab.0.right" timestamp="1625415621688">
+    <state width="1493" height="205" key="GridCell.Tab.0.right" timestamp="1625460074210">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624477655519" />
-    <state width="1493" height="205" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1625415621688" />
+    <state width="1493" height="205" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1625460074210" />
     <state width="746" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1625106453885" />
+    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625471793832">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1625471793832" />
     <state x="425" y="191" key="run.anything.popup" timestamp="1624326947957">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

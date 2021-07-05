@@ -3,6 +3,7 @@ package com.example.computershopsystem.Addapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +26,14 @@ import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
     private Context context;
     private int resource;
+    private List<CartProduct> objects;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     SharedPreferences sharedpreferences;
@@ -39,7 +42,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
-
+this.objects=objects;
     }
 
     @NonNull
@@ -52,10 +55,12 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
         TextView price = convertView.findViewById(R.id.txtPriceCartProduct);
         EditText quantity = convertView.findViewById(R.id.txtQuantityCartProduct);
         name.setText(getItem(position).getProduct().getName());
-        price.setText(String.valueOf(getItem(position).getProduct().getSellPrice()));
+        price.setText(checkInt(getItem(position).getProduct().getSellPrice()));
         quantity.setText(String.valueOf(getItem(position).getQuantityInCart()));
         Picasso.get().load(getItem(position).getProduct().getImage()).into(image);
         AppCompatImageButton increaseQuantity=convertView.findViewById(R.id.ibtnIncreaseQuantity);
+        AppCompatImageButton decreaseQuantity=convertView.findViewById(R.id.ibtnDecreaseQuantity);
+        AppCompatImageButton remove=convertView.findViewById(R.id.ibtnDeleteCartProduct);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = context.getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
@@ -65,17 +70,44 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
             public void onClick(View v) {
                 quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())+1));
                 List<CartProduct> listProduct=getList();
-                Log.e("soluong",listProduct.get(position).getProduct().getName());
-                listProduct.get(position).setQuantityInCart(getItem(position).getQuantityInCart()+1);
+                listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
                 setList("cart",listProduct);
             }
         });
+        decreaseQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())-1));
+                List<CartProduct> listProduct=getList();
+                listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
+                setList("cart",listProduct);
+            }
+        });
+        quantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                List<CartProduct> listProduct=getList();
+                listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
+                setList("cart",listProduct);
+                return true;
+            }
+        });
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<CartProduct> listProduct=getList();
+                listProduct.remove(position);
+                setList("cart",listProduct);
+                objects.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
         return convertView;
     }
     public <T> void setList(String key, List<T> list) {
         Gson gson = new Gson();
         String json = gson.toJson(list);
-
         update(key, json);
     }
 
@@ -93,5 +125,10 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
             listProduct = gson.fromJson(serializedObject, type);
         }
         return listProduct;
+    }
+    String checkInt(double num) {
+        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        DecimalFormat df = new DecimalFormat("###.####");
+        return df.format(num); //and for you, Christian Kuetbach
     }
 }

@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,9 +17,9 @@ import com.example.computershopsystem.R;
 import com.squareup.picasso.Picasso;
 
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-
-
 
 
 public class GridAdapter extends BaseAdapter {
@@ -62,12 +61,16 @@ public class GridAdapter extends BaseAdapter {
         TextView price = convertView.findViewById(R.id.price_product);
         name.setText(listProduct.get(position).getName());
         brand.setText(listProduct.get(position).getBrand().getName());
-        price.setText(String.valueOf(listProduct.get(position).getSellPrice()));
+        price.setText("$"+checkInt(listProduct.get(position).getSellPrice()));
         Picasso.get().load(listProduct.get(position).getImage()).into(imageView);
         notifyDataSetChanged();
         return convertView;
     }
 
-
+    String checkInt(double num) {
+        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        DecimalFormat df = new DecimalFormat("###.####");
+        return df.format(num); //and for you, Christian Kuetbach
+    }
 
 }
