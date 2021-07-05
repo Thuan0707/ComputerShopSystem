@@ -1,14 +1,30 @@
 package com.example.computershopsystem.Model;
 
+import com.google.firebase.database.PropertyName;
+
 import java.util.Date;
 
-public class CreditCard {
+public class CreditCard{
+
+    @PropertyName("id")
     String id;
+
+    @PropertyName("money")
     String money;
+
+    @PropertyName("cardNumber")
     String cardNumber;
+
+    @PropertyName("expirationDate")
     Date expirationDate;
+
+    @PropertyName("cardHolder")
     String cardHolder;
+
+    @PropertyName("createAt")
     Date createAt;
+
+    @PropertyName("deleteAt")
     Date deleteAt;
 
     public CreditCard(String id, String money, String cardNumber, Date expirationDate, String cardHolder, Date createAt, Date deleteAt) {
@@ -19,6 +35,9 @@ public class CreditCard {
         this.cardHolder = cardHolder;
         this.createAt = createAt;
         this.deleteAt = deleteAt;
+    }
+
+    public CreditCard() {
     }
 
     public String getId() {
