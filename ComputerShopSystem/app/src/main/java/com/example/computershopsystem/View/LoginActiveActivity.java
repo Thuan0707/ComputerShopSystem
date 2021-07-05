@@ -206,7 +206,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                             databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
                             CustomerAccount customerAccount = new CustomerAccount(null, phoneNumber, null, uid, null);
                             Customer customer = new Customer(uid, customerAccount, email, name, Calendar.getInstance().getTime());
-                            databaseReference.push().setValue(customer);
+                            databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
 
 
                             Log.d(TAG, "onSuccess: Account Created");
