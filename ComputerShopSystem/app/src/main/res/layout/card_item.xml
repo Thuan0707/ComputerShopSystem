@@ -4,9 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/border_card"
+    android:backgroundTint="#017FFF"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="80dp"
+        android:layout_height="42dp"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        tools:srcCompat="@drawable/iconcard" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:paddingVertical="16dp"
+            android:paddingVertical="4dp"
             android:paddingLeft="8dp">
 
 
@@ -29,39 +39,99 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Card Number"
-                android:textColor="#017FFF" />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/txtCardHolder"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Card Holder"
-                android:textColor="#FF3D00"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
 
-            <TextView
-                android:id="@+id/txtCardExpiration"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingVertical="4dp">
+
+                    <TextView
+                        android:id="@+id/tvCardHolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="CARD HOLDER"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtCardHolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Card Holder"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingVertical="4dp">
+
+                    <TextView
+                        android:id="@+id/tvCardExpiration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="CARD EXPIRATION"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtCardExpiration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Card Expiration"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Card Expiration"
-                android:textColor="#FF3D00"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/txtCardMoney"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Money"
-                android:textColor="#FF3D00"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+
+                <TextView
+                    android:id="@+id/txtCardMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Money"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </LinearLayout>
