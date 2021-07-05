@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,10 @@ public class InputCreditCardFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
-                    numberCard.setError("Please enter Number Card");
+                    numberCard.setError("Please enter Number Card !");
+                }
+                if(!(s.length()== 12)){
+                    numberCard.setError("Number Card must have 12 numbers !");
                 }
             }
 
@@ -94,8 +98,16 @@ public class InputCreditCardFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
-                    money.setError("Please enter Money");
+                    money.setError("Please enter Money !");
                 }
+                try {
+                    if(Integer.parseInt(s.toString()) <= 0){
+                        money.setError("Money must greater than $0 !");
+                    }
+                }catch (Exception ex){
+
+                }
+
             }
 
             @Override
@@ -112,7 +124,7 @@ public class InputCreditCardFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
-                    expirationDate.setError("Please enter Expiration Date");
+                    expirationDate.setError("Please enter Expiration Date !");
                 }
             }
 
@@ -130,7 +142,7 @@ public class InputCreditCardFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
-                    holderCard.setError("Please enter Holder Card");
+                    holderCard.setError("Please enter Holder Card !");
                 }
             }
 
@@ -149,32 +161,32 @@ public class InputCreditCardFragment extends Fragment {
                 Boolean check = true;
                 String cardNumber = String.valueOf(numberCard.getText());
                 if(cardNumber.equals("")){
-                    numberCard.setError("Please enter Number Card");
+                    numberCard.setError("Please enter Number Card !");
                     check = false;
                 }
                 Date cardExpiration = new Date();
                 try {
                     cardExpiration = formatter.parse(String.valueOf(expirationDate.getText())) ;
                 } catch (ParseException e) {
-                    expirationDate.setError("Please enter Expiration Date following format MM/dd/yyyy");
+                    expirationDate.setError("Please enter Expiration Date following format MM/dd/yyyy !");
                     check = false;
                 }
-                if(expirationDate.equals("")){
-                    expirationDate.setError("Please enter Expiration Date");
+                if(String.valueOf(expirationDate.getText()).equals("")){
+                    expirationDate.setError("Please enter Expiration Date !");
                     check = false;
                 }
                 String cardHolder = String.valueOf(holderCard.getText());
-                if(holderCard.equals("")){
-                    holderCard.setError("Please enter Holder card");
+                if(cardHolder.equals("")){
+                    holderCard.setError("Please enter Holder card !");
                     check = false;
                 }
                 String cardMoney = String.valueOf(money.getText());
-                if(money.equals("")){
-                    money.setError("Please enter Money");
+                if(cardMoney.equals("")){
+                    money.setError("Please enter Money !");
                     check = false;
                 }
                 if(check) {
-                    CreditCard creditCard = new CreditCard(cardNumber, cardMoney, cardNumber, cardExpiration, cardHolder, new Date(), new Date());
+                    CreditCard creditCard = new CreditCard(cardNumber, String.valueOf(Integer.parseInt(cardMoney.toString())), cardNumber, cardExpiration, cardHolder, new Date(), new Date());
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("card");
                     databaseReference.push().setValue(creditCard);
                     CreditCardFragment fragment = new CreditCardFragment();
