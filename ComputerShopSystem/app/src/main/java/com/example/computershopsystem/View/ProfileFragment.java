@@ -13,15 +13,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.ProfileFragmentBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
-
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
     ProfileFragmentBinding binding;
     @Nullable
     @Override
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ProfileFragmentBinding.inflate(getLayoutInflater());
         View view=binding.getRoot();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
         binding.txtGender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

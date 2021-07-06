@@ -22,4 +22,5 @@ public class ChangeNameFragment extends Fragment {
         View view = binding.getRoot();
         return view;
     }
+
 }
