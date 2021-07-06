@@ -8,7 +8,8 @@
     android:backgroundTint="#017FFF"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_margin="10dp" >
 
     <ImageView
         android:id="@+id/imageView4"
@@ -16,7 +17,7 @@
         android:layout_height="42dp"
         android:layout_gravity="start"
         android:layout_weight="1"
-        tools:srcCompat="@drawable/iconcard" />
+        android:src="@drawable/iconcard" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -135,6 +136,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>
