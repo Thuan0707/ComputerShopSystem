@@ -34,7 +34,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Gender"
-                android:textAlignment="textStart"
+
                 android:textColor="#017FFF" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Birthday"
-                android:textAlignment="textStart"
+
                 android:textColor="#017FFF" />
 
             <TextView
@@ -60,7 +60,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Email"
-                android:textAlignment="textStart"
+
                 android:textColor="#017FFF" />
 
             <TextView
@@ -73,7 +73,6 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Phone Number"
-                android:textAlignment="textStart"
                 android:textColor="#017FFF" />
 
             <TextView
@@ -86,7 +85,6 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Change Password"
-                android:textAlignment="textStart"
                 android:textColor="#017FFF" />
         </LinearLayout>
 
@@ -105,7 +103,7 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
                 android:text="Male"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
@@ -118,7 +116,7 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
                 android:text="12-12-2000"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
@@ -130,7 +128,7 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
@@ -142,7 +140,7 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
@@ -154,7 +152,7 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
         </LinearLayout>

@@ -45,6 +45,7 @@ public class AccountLoginSuccessFragment extends Fragment {
         account.setText(name);
         btnLogOut = v.findViewById(R.id.btnLogout);
         btnPayment=v.findViewById(R.id.btnPayment);
+        btnProfile=v.findViewById(R.id.btnProfile);
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
