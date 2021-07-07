@@ -37,7 +37,11 @@ public class ProfileFragment extends Fragment {
         helper=new ProfileFirebaseHelper(databaseReference,getActivity());
         binding.tvName.setText(firebaseUser.getDisplayName());
         binding.tvEmail.setText(firebaseUser.getEmail());
-        Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
+        binding.tvPhone.setText(firebaseUser.getPhoneNumber());
+        if(firebaseUser.getPhotoUrl()!=null){
+            Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
+        }
+
 
         binding.tvGender.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +67,11 @@ public class ProfileFragment extends Fragment {
         binding.tvPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("phone", binding.tvPhone.getText().toString());
+
                 ChangePhoneFragment fragment = new ChangePhoneFragment();
+                fragment.setArguments(bundle);
                 switchFragment(fragment);
             }
         });

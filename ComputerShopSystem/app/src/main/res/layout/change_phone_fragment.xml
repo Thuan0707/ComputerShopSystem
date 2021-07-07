@@ -8,7 +8,7 @@
     tools:context=".View.ChangePhoneFragment">
 
     <EditText
-        android:id="@+id/txtPhone"
+        android:id="@+id/edPhone"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -79,13 +79,13 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnChange"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#03A9F4"
-        android:text="Save"
+        android:text="Change"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

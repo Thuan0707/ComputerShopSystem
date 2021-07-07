@@ -46,15 +46,23 @@ public class RegisterOTP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_otp);
+        if (getIntent().getStringExtra("changePhone") == null) {
+            numberPhone = getIntent().getStringExtra("phone");
+        } else {
+            numberPhone = getIntent().getStringExtra("changePhone");
+        }
 
-        numberPhone = getIntent().getStringExtra("phone");
         numberPhone = numberPhone.substring(1);
 
         firebaseAuth = FirebaseAuth.getInstance();
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(@NonNull @org.jetbrains.annotations.NotNull PhoneAuthCredential phoneAuthCredential) {
-                signInWithPhoneAuthCredentail(phoneAuthCredential);
+                if (getIntent().getStringExtra("changePhone") == null) {
+                    signInWithPhoneAuthCredentail(phoneAuthCredential);
+                } else {
+                    ChangePhone(phoneAuthCredential);
+                }
             }
 
             @Override
@@ -69,7 +77,7 @@ public class RegisterOTP extends AppCompatActivity {
                 Log.d(TAG, "onCodeSent" + verificationId);
                 mVerificationId = verificationId;
                 forceResendingToken = token;
-                Toast.makeText(RegisterOTP.this, "Verification code sent"+numberPhone, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterOTP.this, "Verification code sent" + numberPhone, Toast.LENGTH_SHORT).show();
 
             }
         };
@@ -99,7 +107,11 @@ public class RegisterOTP extends AppCompatActivity {
 
     private void verifyPhoneNumberWithCode(String verificationId, String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-        signInWithPhoneAuthCredentail(credential);
+        if (getIntent().getStringExtra("changePhone") == null) {
+            signInWithPhoneAuthCredentail(credential);
+        } else {
+            ChangePhone(credential);
+        }
     }
 
     private void resendVerificationCode(String phone, PhoneAuthProvider.ForceResendingToken token) {
@@ -126,19 +138,24 @@ public class RegisterOTP extends AppCompatActivity {
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
+    private void ChangePhone(PhoneAuthCredential credential) {
+        firebaseAuth.getCurrentUser().updatePhoneNumber(credential);
+        Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
+        startActivity(intent);
+    }
+
     private void signInWithPhoneAuthCredentail(PhoneAuthCredential credential) {
 
         firebaseAuth.signInWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
 
-                if (firebaseAuth.getCurrentUser().getDisplayName()==null){
+                if (firebaseAuth.getCurrentUser().getDisplayName() == null) {
                     Intent intent = new Intent(RegisterOTP.this, InputFullNameRegisterActivity.class);
-                    intent.putExtra("phone","0"+numberPhone);
+                    intent.putExtra("phone", "0" + numberPhone);
                     startActivity(intent);
                     RegisterOTP.this.finish();
-                }
-                else{
+                } else {
                     String phone = firebaseAuth.getCurrentUser().getPhoneNumber();
                     //Add customer
 //                CustomerAccount customerAccount=new CustomerAccount(firebaseAuth.getCurrentUser().getUid(), "0"+numberPhone, null,null,null,null);
