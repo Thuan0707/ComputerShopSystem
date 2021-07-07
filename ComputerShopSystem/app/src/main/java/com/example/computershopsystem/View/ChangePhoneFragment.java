@@ -1,16 +1,25 @@
 package com.example.computershopsystem.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.example.computershopsystem.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-public class ChangePhoneFragment extends AppCompatActivity {
+import com.example.computershopsystem.databinding.ChangePhoneFragmentBinding;
 
+public class ChangePhoneFragment extends Fragment {
+
+    ChangePhoneFragmentBinding binding;
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_phone_fragment);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = ChangePhoneFragmentBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        return view;
     }
 }

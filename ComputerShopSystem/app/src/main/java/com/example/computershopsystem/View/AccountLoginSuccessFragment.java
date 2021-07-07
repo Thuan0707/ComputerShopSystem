@@ -1,6 +1,5 @@
 package com.example.computershopsystem.View;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,6 +32,7 @@ public class AccountLoginSuccessFragment extends Fragment {
 
     Button btnLogOut;
     Button btnPayment;
+    Button btnProfile;
 
     @Nullable
     @Override
@@ -46,6 +45,20 @@ public class AccountLoginSuccessFragment extends Fragment {
         account.setText(name);
         btnLogOut = v.findViewById(R.id.btnLogout);
         btnPayment=v.findViewById(R.id.btnPayment);
+        btnProfile=v.findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProfileFragment fragment = new ProfileFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                        android.R.animator.fade_out);
+                fragTransaction.addToBackStack(null);
+                fragTransaction.replace(R.id.fl_wrapper, fragment);
+                fragTransaction.commit();
+            }
+        });
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

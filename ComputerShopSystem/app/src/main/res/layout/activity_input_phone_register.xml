@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
             <Button
-                android:id="@+id/btnPhoneRegister"
+                android:id="@+id/btnPhoneContinue"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -65,7 +65,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/boder_button"
                 android:backgroundTint="#03A9F4"
-                android:text="Register"
+                android:text="Continue"
                 android:textAllCaps="false"
                 android:textColor="#FBFCFD"
                 android:textStyle="bold"

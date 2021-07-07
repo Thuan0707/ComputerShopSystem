@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.ProfileFragment">
@@ -33,7 +34,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Gender"
-                android:textAlignment="textStart"
+
                 android:textColor="#017FFF" />
 
             <TextView
@@ -46,7 +47,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Birthday"
-                android:textAlignment="textStart"
+
                 android:textColor="#017FFF" />
 
             <TextView
@@ -59,7 +60,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Email"
-                android:textAlignment="textStart"
+
                 android:textColor="#017FFF" />
 
             <TextView
@@ -72,7 +73,6 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Phone Number"
-                android:textAlignment="textStart"
                 android:textColor="#017FFF" />
 
             <TextView
@@ -85,7 +85,6 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
                 android:text="Change Password"
-                android:textAlignment="textStart"
                 android:textColor="#017FFF" />
         </LinearLayout>
 
@@ -95,7 +94,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtGender"
+                android:id="@+id/tvGender"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="4dp"
@@ -104,11 +103,11 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
                 android:text="Male"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/txtBirthday"
+                android:id="@+id/tvBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="4dp"
@@ -117,11 +116,11 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
                 android:text="12-12-2000"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/txtEmail"
+                android:id="@+id/tvEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="4dp"
@@ -129,11 +128,11 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/txtPhone"
+                android:id="@+id/tvPhone"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="4dp"
@@ -141,11 +140,11 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/txtPass"
+                android:id="@+id/tvPass"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="4dp"
@@ -153,7 +152,7 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
-                android:textAlignment="textEnd"
+
                 android:textColor="#000000" />
 
         </LinearLayout>
@@ -207,14 +206,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <FrameLayout
-        android:id="@+id/fl_wrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imgAvatar"
@@ -242,13 +233,5 @@
         app:layout_constraintStart_toEndOf="@+id/imgAvatar"
         app:layout_constraintTop_toBottomOf="@+id/hr8" />
 
-    <TextView
-        android:id="@+id/tvNameEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="khuongnguyen"
-        app:layout_constraintStart_toEndOf="@+id/imgAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
