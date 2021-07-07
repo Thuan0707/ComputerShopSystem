@@ -27,8 +27,11 @@ import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -55,6 +58,7 @@ public class CusHomeFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("Product");
         helper = new ProductFirebaseHelper(databaseReference, binding.gridProduct, getActivity());
         Bundle bundle = this.getArguments();
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -136,6 +140,28 @@ public class CusHomeFragment extends Fragment {
             helper.retrieve();
         }
 
+        binding.gridProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                ArrayList<Product> listProduct = new ArrayList<>();
+                bundle.putString("idProduct", "abc");
+
+                //Set ProductDetailsFragment Arguments
+                ProductDetailsFragment fragment = new ProductDetailsFragment();
+                fragment.setArguments(bundle);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                        android.R.animator.fade_out);
+                fragTransaction.addToBackStack(null);
+                fragTransaction.replace(R.id.fl_wrapper, fragment);
+                fragTransaction.commit();
+
+
+            }
+        });
+
 
         binding.tvMoreCate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +236,13 @@ public class CusHomeFragment extends Fragment {
                 helper.retrieveByBrand("Dell".trim());
             }
         });
+        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
+                getActivity().finish();
+            }
+        });
 
 
 
@@ -221,7 +254,6 @@ public class CusHomeFragment extends Fragment {
     public <T> void setList(String key, List<T> list) {
         Gson gson = new Gson();
         String json = gson.toJson(list);
-
         set(key, json);
     }
 
