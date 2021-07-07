@@ -104,7 +104,7 @@ public class LoginActiveActivity extends AppCompatActivity {
         btFacebook.setReadPermissions("email", "public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         firebaseAuth = FirebaseAuth.getInstance();
-        //  checkUser();
+         checkUser();
 
         btGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
