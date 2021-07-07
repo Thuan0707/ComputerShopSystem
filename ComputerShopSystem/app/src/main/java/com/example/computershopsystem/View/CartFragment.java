@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,9 @@ public class CartFragment extends Fragment {
         List<CartProduct> productList = getList();
         LVProductInCartAdapter LVProductInCartAdapter = new LVProductInCartAdapter(getActivity(), R.layout.cart_item, productList);
         listView.setAdapter(LVProductInCartAdapter);
+        binding.txtItemQuantity.setText(String.valueOf(productList.size()));
+        binding.txtPriceItem.setText("$"+checkInt(sumInList(productList)));
+        binding.txtTotalPrice.setText("$"+checkInt(sumInList(productList) + 20));
         return view;
     }
 
@@ -63,5 +67,19 @@ public class CartFragment extends Fragment {
             listProduct = gson.fromJson(serializedObject, type);
         }
         return listProduct;
+    }
+
+    public double sumInList(List<CartProduct> productList) {
+        double sum = 0;
+        for (CartProduct item : productList) {
+            sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
+        }
+        return sum;
+    }
+
+    String checkInt(double num) {
+        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        DecimalFormat df = new DecimalFormat("###.####");
+        return df.format(num); //and for you, Christian Kuetbach
     }
 }

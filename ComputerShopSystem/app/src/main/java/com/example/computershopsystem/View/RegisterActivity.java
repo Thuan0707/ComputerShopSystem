@@ -1,28 +1,29 @@
 package com.example.computershopsystem.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.computershopsystem.Model.Customer;
-import com.example.computershopsystem.Model.CustomerAccount;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.Utilities.Validation;
 import com.example.computershopsystem.databinding.ActivityRegisterBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Date;
+import org.jetbrains.annotations.NotNull;
 
 public class RegisterActivity extends AppCompatActivity {
     ActivityRegisterBinding activityRegisterBinding;
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mAuth = FirebaseAuth.getInstance();
         activityRegisterBinding = ActivityRegisterBinding.inflate(getLayoutInflater());
         activityRegisterBinding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,11 +31,11 @@ public class RegisterActivity extends AppCompatActivity {
                 SetOriginBackground();
                 Validation validation=new Validation();
                 String name=activityRegisterBinding.txtName.getText().toString().trim();
-                String phone=activityRegisterBinding.txtPhone.getText().toString().trim();
+                String email=activityRegisterBinding.txtEmail.getText().toString().trim();
                 String password=activityRegisterBinding.txtPass.getText().toString();
                 String  confirmPassword=activityRegisterBinding.txtConfirmPass.getText().toString();
                 String fullNameNotify=validation.CheckName(name);
-                String phoneNotify=validation.CheckPhone(phone);
+
                 String passwordNotify=validation.CheckPassword(password);
                 String confirmPasswordNotify=validation.CheckConfirmPassword(password,confirmPassword);
 
@@ -42,10 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
                     activityRegisterBinding.txtName.setBackground(getDrawable(R.drawable.border_red));
                     activityRegisterBinding.txtName.setError(fullNameNotify);
                 }
-                if ( phoneNotify!=null){
-                    activityRegisterBinding.txtPhone.setBackground(getDrawable(R.drawable.border_red));
-                    activityRegisterBinding.txtPhone.setError(phoneNotify);
-                }
+
                 if ( passwordNotify!=null){
                     activityRegisterBinding.txtPass.setBackground(getDrawable(R.drawable.border_red));
                     activityRegisterBinding.txtPass.setError(passwordNotify);
@@ -55,12 +53,26 @@ public class RegisterActivity extends AppCompatActivity {
                     activityRegisterBinding.txtConfirmPass.setError(confirmPasswordNotify);
                 }
                 if (validation.isValid()){
-                    phone=phone.substring(1);
-                    CustomerAccount customerAccount=new CustomerAccount(null, phone, null, null,password);
-                    Customer customer=new Customer(null, customerAccount, null, name, new Date());
-                    Intent intent=new Intent(RegisterActivity.this, RegisterOTP.class);
-                    intent.putExtra("Customer",customer);
-                    startActivity(intent);
+
+                    mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                Intent intent=new Intent(RegisterActivity.this, LoginActiveActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                            }  else
+                            {
+
+                            }
+                        }
+
+                    });
+//                    CustomerAccount customerAccount=new CustomerAccount(null, null, null,email, null,password);
+//                    Customer customer=new Customer(null, customerAccount, name, new Date());
+//                    Intent intent=new Intent(RegisterActivity.this, RegisterOTP.class);
+//                    intent.putExtra("Customer",customer);
+//                    startActivity(intent);
                 }
             }
         });
@@ -70,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
 
    void SetOriginBackground(){
        activityRegisterBinding.txtName.setBackground(getDrawable(R.drawable.border));
-       activityRegisterBinding.txtPhone.setBackground(getDrawable(R.drawable.border));
+       activityRegisterBinding.txtEmail.setBackground(getDrawable(R.drawable.border));
        activityRegisterBinding.txtPass.setBackground(getDrawable(R.drawable.border));
        activityRegisterBinding.txtConfirmPass.setBackground(getDrawable(R.drawable.border));
    }

@@ -58,7 +58,7 @@
 
 
             <ImageButton
-                android:id="@+id/btnDeleteCartProduct"
+                android:id="@+id/ibtnDeleteCartProduct"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:backgroundTint="#FFFFFF"
@@ -83,13 +83,15 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_tru" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtQuantityCartProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/border_noradius"
                     android:text="1"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
