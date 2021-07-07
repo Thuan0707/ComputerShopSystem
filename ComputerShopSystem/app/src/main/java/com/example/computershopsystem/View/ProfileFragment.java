@@ -43,6 +43,7 @@ public class ProfileFragment extends Fragment {
         }
 
 
+
         binding.tvGender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +61,10 @@ public class ProfileFragment extends Fragment {
         binding.tvEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("email", binding.tvEmail.getText().toString());
                 ChangeEmailFragment fragment = new ChangeEmailFragment();
+                fragment.setArguments(bundle);
                 switchFragment(fragment);
             }
         });
