@@ -11,14 +11,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.computershopsystem.DAO.ProfileFirebaseHelper;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.ProfileFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    ProfileFirebaseHelper helper;
+    DatabaseReference databaseReference;
     ProfileFragmentBinding binding;
     @Nullable
     @Override
@@ -27,36 +33,41 @@ public class ProfileFragment extends Fragment {
         View view=binding.getRoot();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
+        helper=new ProfileFirebaseHelper(databaseReference,getActivity());
+        binding.tvName.setText(firebaseUser.getDisplayName());
+        binding.tvEmail.setText(firebaseUser.getEmail());
+        Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
 
-        binding.txtGender.setOnClickListener(new View.OnClickListener() {
+        binding.tvGender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GenderFragment fragment = new GenderFragment();
                 switchFragment(fragment);
             }
         });
-        binding.txtBirthday.setOnClickListener(new View.OnClickListener() {
+        binding.tvBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BirthdayFragment fragment = new BirthdayFragment();
                 switchFragment(fragment);
             }
         });
-        binding.txtEmail.setOnClickListener(new View.OnClickListener() {
+        binding.tvEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChangeEmailFragment fragment = new ChangeEmailFragment();
                 switchFragment(fragment);
             }
         });
-        binding.txtPhone.setOnClickListener(new View.OnClickListener() {
+        binding.tvPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChangePhoneFragment fragment = new ChangePhoneFragment();
                 switchFragment(fragment);
             }
         });
-        binding.txtPass.setOnClickListener(new View.OnClickListener() {
+        binding.tvPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChangePassFragment fragment = new ChangePassFragment();

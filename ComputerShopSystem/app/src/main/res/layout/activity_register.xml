@@ -67,21 +67,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.407"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
+            app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
         <EditText
-            android:id="@+id/txtPhone"
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/border"
-            android:drawableLeft="@drawable/ic_phone"
+            android:drawableLeft="@drawable/ic_email"
             android:drawablePadding="8dp"
             android:ems="10"
-            android:hint="Your Phone Number"
-            android:inputType="phone"
+            android:hint="Your Email"
+            android:inputType="textEmailAddress"
             android:paddingHorizontal="16dp"
             android:textColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"

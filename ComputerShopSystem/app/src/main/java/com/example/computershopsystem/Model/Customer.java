@@ -7,7 +7,6 @@ import java.util.List;
 public class Customer implements Serializable {
     String id;
     CustomerAccount customerAccount;
-    String email;
     String fullName;
     Date dateOfBirth;
     String address;
@@ -19,18 +18,17 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String email, String fullName, Date createAt) {
+    public Customer(String id, CustomerAccount customerAccount, String fullName, Date createAt) {
         this.id = id;
         this.customerAccount = customerAccount;
-        this.email = email;
+
         this.fullName = fullName;
         this.createAt = createAt;
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String email, String fullName, Date dateOfBirth, String address, int gender, List<CreditCard> cardList, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount, String fullName, Date dateOfBirth, String address, int gender, List<CreditCard> cardList, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
-        this.email = email;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
@@ -54,14 +52,6 @@ public class Customer implements Serializable {
 
     public void setCustomerAccount(CustomerAccount customerAccount) {
         this.customerAccount = customerAccount;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getFullName() {

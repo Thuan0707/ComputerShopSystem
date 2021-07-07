@@ -1,11 +1,8 @@
 package com.example.computershopsystem.View;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,28 +10,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystem.Model.Brand;
-import com.example.computershopsystem.Model.CPU;
 import com.example.computershopsystem.Model.CartProduct;
 import com.example.computershopsystem.Model.Product;
-import com.example.computershopsystem.Model.Ram;
-import com.example.computershopsystem.Model.Rom;
-import com.example.computershopsystem.Model.Screen;
 import com.example.computershopsystem.R;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
-
 
 import org.jetbrains.annotations.NotNull;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
