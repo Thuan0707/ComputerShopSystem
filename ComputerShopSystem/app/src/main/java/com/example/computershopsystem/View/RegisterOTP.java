@@ -1,5 +1,6 @@
 package com.example.computershopsystem.View;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,15 +11,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.computershopsystem.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -139,9 +147,80 @@ public class RegisterOTP extends AppCompatActivity {
     }
 
     private void ChangePhone(PhoneAuthCredential credential) {
-        firebaseAuth.getCurrentUser().updatePhoneNumber(credential);
-        Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
-        startActivity(intent);
+        if (firebaseAuth.getCurrentUser().getPhoneNumber() == null) {
+            firebaseAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
+
+                        startActivity(intent);
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterOTP.this);
+                        builder.setTitle("AlertDialog");
+                        builder.setMessage("This number phone is has already existed account, If you save this phone for this account, the phone account (including data) will be deleted ?");
+                        // add the buttons
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                LinkPhone(credential);
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+
+                        // create and show the alert dialog
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+
+                    }
+                }
+            });
+        } else {
+            firebaseAuth.getCurrentUser().updatePhoneNumber(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterOTP.this);
+                        builder.setTitle("AlertDialog");
+                        builder.setMessage("This number phone is has already existed account, If you save this phone for this account, the phone account (including data) will be deleted ?");
+                        // add the buttons
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                UpdatePhone(credential);
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
+
+                                startActivity(intent);
+                            }
+                        });
+
+                        // create and show the alert dialog
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                }
+            });
+        }
+
+
+        // setup the alert builder
+
+
     }
 
     private void signInWithPhoneAuthCredentail(PhoneAuthCredential credential) {
@@ -149,7 +228,6 @@ public class RegisterOTP extends AppCompatActivity {
         firebaseAuth.signInWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-
                 if (firebaseAuth.getCurrentUser().getDisplayName() == null) {
                     Intent intent = new Intent(RegisterOTP.this, InputFullNameRegisterActivity.class);
                     intent.putExtra("phone", "0" + numberPhone);
@@ -166,8 +244,6 @@ public class RegisterOTP extends AppCompatActivity {
                     Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
                     startActivity(intent);
                 }
-
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -176,4 +252,62 @@ public class RegisterOTP extends AppCompatActivity {
             }
         });
     }
+
+    void UpdatePhone(PhoneAuthCredential credential) {
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(RegisterOTP.this);
+        AuthCredential credentialGmail = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user.delete()
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    firebaseAuth.signInWithCredential(credentialGmail).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                                            firebaseAuth.getCurrentUser().updatePhoneNumber(credential);
+                                            Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
+
+                                            startActivity(intent);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+            }
+        });
+
+    }
+
+    void LinkPhone(PhoneAuthCredential credential) {
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(RegisterOTP.this);
+        AuthCredential credentialGmail = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user.unlink(PhoneAuthProvider.PROVIDER_ID);
+                if (user.isAnonymous()){
+                    user.delete();
+                }
+                firebaseAuth.signInWithCredential(credentialGmail).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                        firebaseAuth.getCurrentUser().linkWithCredential(credential);
+                        Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+
+    }
+
+    void DeleteUser() {
+
+    }
+
 }

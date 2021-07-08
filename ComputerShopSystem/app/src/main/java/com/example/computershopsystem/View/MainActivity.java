@@ -1,5 +1,6 @@
 package com.example.computershopsystem.View;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -40,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<CartProduct> cartProductList = new ArrayList<>();
-        switchFragment(new CusHomeFragment());
+        Intent intent=getIntent();
+
+
+            switchFragment(new CusHomeFragment());
+
+
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
         nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -41,7 +41,7 @@ public class ProductFirebaseHelper {
                 for (DataSnapshot shot : snapshot.getChildren()) {
                     Product product = shot.getValue(Product.class);
                     Log.e("nameBrand", product.getBrand().getName());
-                    Log.e("name", product.getName());
+                    Log.e("n    ame", product.getName());
                     listProduct.add(product);
                 }
             }

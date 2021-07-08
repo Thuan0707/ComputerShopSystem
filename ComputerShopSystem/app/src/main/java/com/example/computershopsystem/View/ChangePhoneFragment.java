@@ -25,8 +25,8 @@ public class ChangePhoneFragment extends Fragment {
         binding = ChangePhoneFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            String str = bundle.getString("phone");
+        String str = bundle.getString("phone");
+        if (str != "") {
             binding.edPhone.setText("0"+str.substring(3));
         }
         binding.btnChange.setOnClickListener(new View.OnClickListener() {

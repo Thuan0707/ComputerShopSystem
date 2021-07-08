@@ -72,10 +72,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle=new Bundle();
-                bundle.putString("phone", binding.tvPhone.getText().toString());
-
                 ChangePhoneFragment fragment = new ChangePhoneFragment();
-                fragment.setArguments(bundle);
+                if (binding.tvPhone.getText()!=null){
+                    bundle.putString("phone", binding.tvPhone.getText().toString());
+                    fragment.setArguments(bundle);
+                }
+
                 switchFragment(fragment);
             }
         });
