@@ -11,8 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,20 +19,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.DAO.ProductFirebaseHelper;
-import com.example.computershopsystem.Addapter.GridAdapter;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
+import com.example.computershopsystem.Utilities.Utils;
+import com.example.computershopsystem.Utilities.Variable;
 import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +44,8 @@ public class CusHomeFragment extends Fragment {
     SharedPreferences.Editor editor;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    private final String TAG = "testing";
+    private final String PRODUCT_KEY = "product";
 
     @Nullable
     @Override
@@ -143,9 +139,11 @@ public class CusHomeFragment extends Fragment {
         binding.gridProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Product product = (Product) parent.getAdapter().getItem(position);
+
                 Bundle bundle = new Bundle();
-                ArrayList<Product> listProduct = new ArrayList<>();
-                bundle.putString("idProduct", "abc");
+                String productJsonString = Utils.getGsonParser().toJson(product);
+                bundle.putString(Variable.DETAIL_KEY, productJsonString);
 
                 //Set ProductDetailsFragment Arguments
                 ProductDetailsFragment fragment = new ProductDetailsFragment();
@@ -249,6 +247,8 @@ public class CusHomeFragment extends Fragment {
         View view = binding.getRoot();
         return view;
     }
+
+
 
 
     public <T> void setList(String key, List<T> list) {
