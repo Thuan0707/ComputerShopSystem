@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.computershopsystem.DAO.ProductFirebaseHelper;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
+import com.example.computershopsystem.Utilities.Utils;
+import com.example.computershopsystem.Utilities.Variable;
 import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +43,8 @@ public class CusHomeFragment extends Fragment {
     SharedPreferences.Editor editor;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    private final String TAG = "testing";
+    private final String PRODUCT_KEY = "product";
 
     @Nullable
     @Override
@@ -48,6 +53,7 @@ public class CusHomeFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("Product");
         helper = new ProductFirebaseHelper(databaseReference, binding.gridProduct, getActivity());
         Bundle bundle = this.getArguments();
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -130,6 +136,30 @@ public class CusHomeFragment extends Fragment {
             helper.retrieve();
         }
 
+        binding.gridProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Product product = (Product) parent.getAdapter().getItem(position);
+
+                Bundle bundle = new Bundle();
+                String productJsonString = Utils.getGsonParser().toJson(product);
+                bundle.putString(Variable.DETAIL_KEY, productJsonString);
+
+                //Set ProductDetailsFragment Arguments
+                ProductDetailsFragment fragment = new ProductDetailsFragment();
+                fragment.setArguments(bundle);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                        android.R.animator.fade_out);
+                fragTransaction.addToBackStack(null);
+                fragTransaction.replace(R.id.fl_wrapper, fragment);
+                fragTransaction.commit();
+
+
+            }
+        });
+
 
         binding.tvMoreCate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,6 +234,13 @@ public class CusHomeFragment extends Fragment {
                 helper.retrieveByBrand("Dell".trim());
             }
         });
+        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
+                getActivity().finish();
+            }
+        });
 
 
 
@@ -212,10 +249,11 @@ public class CusHomeFragment extends Fragment {
     }
 
 
+
+
     public <T> void setList(String key, List<T> list) {
         Gson gson = new Gson();
         String json = gson.toJson(list);
-
         set(key, json);
     }
 

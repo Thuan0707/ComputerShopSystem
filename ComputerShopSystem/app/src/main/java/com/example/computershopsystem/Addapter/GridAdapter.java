@@ -1,14 +1,10 @@
 package com.example.computershopsystem.Addapter;
 
 import android.content.Context;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,8 +12,6 @@ import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.squareup.picasso.Picasso;
 
-
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -43,7 +37,8 @@ public class GridAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        Object product = listProduct.get(position);
+        return product;
     }
 
     @Override
