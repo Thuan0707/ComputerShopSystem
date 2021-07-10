@@ -104,7 +104,7 @@ public class LoginActiveActivity extends AppCompatActivity {
         btFacebook.setReadPermissions("email", "public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         firebaseAuth = FirebaseAuth.getInstance();
-         checkUser();
+        checkUser();
 
         btGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +160,12 @@ public class LoginActiveActivity extends AppCompatActivity {
     private void checkUser() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
-            startActivity(new Intent(this, AccountLoginSuccessFragment.class));
+            Log.e("ádf","inputphone nè");
+            if (firebaseUser.getPhoneNumber()==null){
+                startActivity(new Intent(this, InputPhoneRegisterActivity.class));
+            }else{
+                startActivity(new Intent(this, AccountLoginSuccessFragment.class));
+            }
             finish();
         }
     }
@@ -211,22 +216,20 @@ public class LoginActiveActivity extends AppCompatActivity {
 
 
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
-
-                            databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
-                            CustomerAccount customerAccount = new CustomerAccount(null, phoneNumber, null, email, uid, null);
-                            Customer customer = new Customer(uid, customerAccount, name, Calendar.getInstance().getTime());
-                            databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
-
-
+                            Intent intent = new Intent(LoginActiveActivity.this, InputPhoneRegisterActivity.class);
+                            startActivity(intent);
                             Log.d(TAG, "onSuccess: Account Created");
                             Toast.makeText(LoginActiveActivity.this, "Account created for " + email, Toast.LENGTH_SHORT).show();
                         } else {
-                            Log.d(TAG, "onSuccess: Existing User: " + email);
-                            Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
+                            if (firebaseUser.getPhoneNumber()==null){
+
+                                startActivity(new Intent(LoginActiveActivity.this, InputPhoneRegisterActivity.class));
+                            }else {
+                                startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
+                                Log.d(TAG, "onSuccess: Existing User: " + email);
+                                Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
+                            }
                         }
-
-
-                        startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
                         finish();
 
                     }
@@ -272,6 +275,7 @@ public class LoginActiveActivity extends AppCompatActivity {
 
 
                     startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
+
                     finish();
                 }
             }
@@ -297,4 +301,5 @@ public class LoginActiveActivity extends AppCompatActivity {
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
     }
+
 }

@@ -16,8 +16,6 @@ public class Validation {
     }
 
 
-
-
     public String CheckName(String name) {
         if (name.isEmpty()) {
             isValid=false;

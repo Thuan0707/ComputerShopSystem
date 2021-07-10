@@ -1,6 +1,5 @@
 package com.example.computershopsystem.View;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -41,10 +40,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<CartProduct> cartProductList = new ArrayList<>();
-        Intent intent=getIntent();
 
 
-            switchFragment(new CusHomeFragment());
+        switchFragment(new CusHomeFragment());
 
 
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
@@ -87,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-       // Add Product
+        // Add Product
 //        mDatabase = FirebaseDatabase.getInstance().getReference("Product");
 //        String id = mDatabase.push().getKey();
 //       Brand brand = new Brand(null, "HP", "Good", null, null);
@@ -116,13 +114,14 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(key, value);
         editor.commit();
     }
-public  void switchFragment(Fragment fragment){
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
-    fragTransaction.setCustomAnimations(android.R.animator.fade_in,
-            android.R.animator.fade_out);
-    fragTransaction.addToBackStack(null);
-    fragTransaction.replace(R.id.fl_wrapper, fragment);
-    fragTransaction.commit();
-}
+
+    public void switchFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                android.R.animator.fade_out);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.replace(R.id.fl_wrapper, fragment);
+        fragTransaction.commit();
+    }
 }

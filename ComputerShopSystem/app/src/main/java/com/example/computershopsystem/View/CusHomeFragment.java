@@ -20,6 +20,9 @@ import com.example.computershopsystem.DAO.ProductFirebaseHelper;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +41,7 @@ public class CusHomeFragment extends Fragment {
     DatabaseReference databaseReference;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    private GoogleSignInClient googleSignInClient;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
@@ -53,6 +57,10 @@ public class CusHomeFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         if (firebaseUser != null) {
+            if(firebaseUser.getPhoneNumber()==""){
+                firebaseAuth.signOut();
+                signOut();
+            }
             sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), MODE_PRIVATE);
             editor = sharedpreferences.edit();
             if (!sharedpreferences.contains("cart")) {
@@ -223,6 +231,14 @@ public class CusHomeFragment extends Fragment {
         editor.putString(key, value);
         editor.commit();
     }
+    private void signOut() {
+        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
+        googleSignInClient = GoogleSignIn.getClient(getActivity(), options);
+        googleSignInClient.signOut();
+    }
 
 }

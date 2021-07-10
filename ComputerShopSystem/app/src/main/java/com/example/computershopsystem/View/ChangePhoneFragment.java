@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.R;
+import com.example.computershopsystem.Utilities.Validation;
 import com.example.computershopsystem.databinding.ChangePhoneFragmentBinding;
 
 public class ChangePhoneFragment extends Fragment {
@@ -32,9 +33,16 @@ public class ChangePhoneFragment extends Fragment {
         binding.btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), RegisterOTP.class);
-                intent.putExtra("changePhone",binding.edPhone.getText().toString());
-                startActivity(intent);
+                Validation validation=new Validation();
+                String  notify=validation.CheckPhone(binding.edPhone.getText().toString());
+                if ( notify!=null) {
+                    binding.edPhone.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                    binding.edPhone.setError(notify);
+                }else{
+                    Intent intent = new Intent(getContext(), RegisterOTP.class);
+                    intent.putExtra("changePhone",binding.edPhone.getText().toString());
+                    startActivity(intent);
+                }
             }
         });
         return view;
