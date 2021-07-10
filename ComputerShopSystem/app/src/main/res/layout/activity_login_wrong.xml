@@ -132,7 +132,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <TextView
-        android:id="@+id/tvOr"
+        android:id="@+id/tvNumberItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -183,7 +183,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvOr" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNumberItem" />
 
     <Button
         android:id="@+id/btnFace"

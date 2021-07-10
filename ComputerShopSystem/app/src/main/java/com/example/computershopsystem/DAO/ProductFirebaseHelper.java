@@ -56,6 +56,7 @@ public class ProductFirebaseHelper {
     };
 
 
+
     public Boolean save(Product Product) {
         if (Product == null) {
             saved = false;
@@ -81,8 +82,28 @@ public class ProductFirebaseHelper {
     }
 
     public ArrayList<Product> retrieveByName(String s) {
-        Query query = db.orderByChild("name").equalTo(s);
-        query.addListenerForSingleValueEvent(valueEventListener);
+        Query query = db.orderByChild("name");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                ArrayList<Product> listProduct = new ArrayList<>();
+                if (snapshot.exists()) {
+                    for (DataSnapshot shot : snapshot.getChildren()) {
+                        if(shot.getValue(Product.class).getName().toLowerCase().contains(s.toLowerCase())){
+                            Product product = shot.getValue(Product.class);
+                            listProduct.add(product);
+                        }
+                    }
+                }
+                gridAdapter = new GridAdapter(context, listProduct);
+                gridView.setAdapter(gridAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
         return list;
     }
 

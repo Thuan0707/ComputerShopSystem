@@ -1,49 +1,87 @@
 package com.example.computershopsystem.View;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    Button btnLogin, btnActive, btnWrong, btnRegister, btnHome, btnHomeLogin;
     DatabaseReference mDatabase;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
+    public Product product;
+
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_wrapper,new CusHomeFragment()).commit();
+
+        List<CartProduct> cartProductList = new ArrayList<>();
+        switchFragment(new CusHomeFragment());
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
         nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 Fragment selectedFragment = null;
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseUser = firebaseAuth.getCurrentUser();
+
                 switch (item.getItemId()) {
                     case R.id.ic_home:
-                        selectedFragment=new CusHomeFragment();
+                        selectedFragment = new CusHomeFragment();
 
                         break;
                     case R.id.ic_user:
-                        selectedFragment=new TestLoginLogoutFragment();
+                        if (firebaseUser != null) {
+                            selectedFragment = new AccountLoginSuccessFragment();
+                        } else {
+                            selectedFragment = new TestLoginLogoutFragment();
+                        }
                         break;
+                    case R.id.ic_cart:
+                        if (firebaseUser != null) {
+                            selectedFragment = new CartFragment();
+                        } else {
+                            selectedFragment = new TestLoginLogoutFragment();
+                        }
+                        break;
+                    case R.id.ic_location:
+                        if (firebaseUser != null) {
+                            selectedFragment = new ProductDetailsFragment();
+                        } else {
+                            selectedFragment = new TestLoginLogoutFragment();
+                        }
+                        break;
+
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,selectedFragment).commit();
+                switchFragment(selectedFragment);
                 return true;
             }
         });
-        //Add Product
+       // Add Product
 //        mDatabase = FirebaseDatabase.getInstance().getReference("Product");
 //        String id = mDatabase.push().getKey();
 //       Brand brand = new Brand(null, "HP", "Good", null, null);
@@ -62,5 +100,23 @@ public class MainActivity extends AppCompatActivity {
 //        mDatabase.child("1QzUXC8c0bQxtJY0EiWOgdHwnIw2").setValue(customer);
     }
 
+    public <T> void setList(String key, List<T> list) {
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        commit(key, json);
+    }
 
+    public void commit(String key, String value) {
+        editor.putString(key, value);
+        editor.commit();
+    }
+public  void switchFragment(Fragment fragment){
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+    fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+            android.R.animator.fade_out);
+    fragTransaction.addToBackStack(null);
+    fragTransaction.replace(R.id.fl_wrapper, fragment);
+    fragTransaction.commit();
+}
 }

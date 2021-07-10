@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,14 +34,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -61,9 +57,13 @@ public class LoginActiveActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private AccessTokenTracker accessTokenTracker;
-    TextView tvRegister;
+
+    private FirebaseUser firebaseUser;
     Button btGoogle;
     LoginButton btFacebook;
+    Button btnContinue;
+    EditText edPhone;
+    String numberPhone;
 
     private CallbackManager mCallbackManager;
     private final static String TAGFACE = "FacebookAuthentication";
@@ -73,6 +73,21 @@ public class LoginActiveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_active);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
+        btnContinue = findViewById(R.id.btnContinue);
+        edPhone = findViewById(R.id.txtPhoneContinue);
+
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numberPhone = edPhone.getText().toString();
+                Intent intent = new Intent(LoginActiveActivity.this, RegisterOTP.class);
+                intent.putExtra("phone", numberPhone);
+                startActivity(intent);
+            }
+        });
+
 
         btGoogle = findViewById(R.id.btnGoogle);
 
@@ -138,22 +153,14 @@ public class LoginActiveActivity extends AppCompatActivity {
             }
         };
 
-        tvRegister = findViewById(R.id.tvRegister);
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(LoginActiveActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 
     private void checkUser() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
-            startActivity(new Intent(this, AccountLoginSuccess.class));
+            startActivity(new Intent(this, AccountLoginSuccessFragment.class));
             finish();
         }
     }
@@ -203,13 +210,12 @@ public class LoginActiveActivity extends AppCompatActivity {
                         Log.d(TAG, "listInfo: " + listInfo);
 
 
-
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
 
                             databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
-                            CustomerAccount customerAccount = new CustomerAccount(null, phoneNumber, null, uid, null);
-                            Customer customer = new Customer(uid, customerAccount, email, name, Calendar.getInstance().getTime());
-                            databaseReference.push().setValue(customer);
+                            CustomerAccount customerAccount = new CustomerAccount(null, phoneNumber, null, email, uid, null);
+                            Customer customer = new Customer(uid, customerAccount, name, Calendar.getInstance().getTime());
+                            databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
 
 
                             Log.d(TAG, "onSuccess: Account Created");
@@ -245,20 +251,23 @@ public class LoginActiveActivity extends AppCompatActivity {
                     Log.d(TAGFACE, "sign in with credential: successful");
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     String uid = user.getUid();
+                    String name = user.getDisplayName();
                     String email = user.getEmail();
                     String phoneNumber = user.getPhoneNumber();
-
 
                     Log.d(TAG, "uID: " + uid);
                     Log.d(TAG, "Email: " + email);
                     Log.d(TAG, "NumberPhone: " + phoneNumber);
 
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
-                        Log.d(TAG, "onSuccess: Account Created");
+                        CustomerAccount customerAccount = new CustomerAccount(uid, phoneNumber, uid, email, null, null);
+                        Customer customer = new Customer(uid, customerAccount, name, Calendar.getInstance().getTime());
+                        databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
+                        databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
                         Toast.makeText(LoginActiveActivity.this, "Account created for " + email, Toast.LENGTH_SHORT).show();
                     } else {
-                        Log.d(TAG, "onSuccess: Existing User: " + email);
-                        Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "onSuccess: Existing User: " + name);
+                        Toast.makeText(LoginActiveActivity.this, "Welcome back " + name, Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -267,12 +276,12 @@ public class LoginActiveActivity extends AppCompatActivity {
                 }
             }
         })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                Log.d(TAG, "onFailure: Log In failed");
-            }
-        });
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Log.d(TAG, "onFailure: Log In failed");
+                    }
+                });
     }
 
     @Override

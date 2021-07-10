@@ -9,15 +9,15 @@ public class Product extends Device implements Serializable {
     String image;
     String description;
     int quantity;
-    long buyPrice;
-    long sellPrice;
+    double buyPrice;
+    double sellPrice;
     Date createAt;
     Date deleteAt;
 
     public Product() {
     }
 
-    public Product(CPU cpu, Ram ram, Rom rom, Brand brand, Screen screen, String id, String name, String image, String description, int quantity, long buyPrice, long sellPrice, Date createAt, Date deleteAt) {
+    public Product(CPU cpu, Ram ram, Rom rom, Brand brand, Screen screen, String id, String name, String image, String description, int quantity, double buyPrice, double sellPrice, Date createAt, Date deleteAt) {
         super(cpu, ram, rom, brand, screen);
         this.id = id;
         this.name = name;
@@ -70,19 +70,19 @@ public class Product extends Device implements Serializable {
         this.quantity = quantity;
     }
 
-    public long getBuyPrice() {
+    public double getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(long buyPrice) {
+    public void setBuyPrice(double buyPrice) {
         this.buyPrice = buyPrice;
     }
 
-    public long getSellPrice() {
+    public double getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(long sellPrice) {
+    public void setSellPrice(double sellPrice) {
         this.sellPrice = sellPrice;
     }
 

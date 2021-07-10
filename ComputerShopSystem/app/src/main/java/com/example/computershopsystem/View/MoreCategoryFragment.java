@@ -12,12 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystem.Addapter.GridAdapter;
-import com.example.computershopsystem.DAO.ProductFirebaseHelper;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.MoreCategoryFragmentBinding;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 import org.jetbrains.annotations.NotNull;
 

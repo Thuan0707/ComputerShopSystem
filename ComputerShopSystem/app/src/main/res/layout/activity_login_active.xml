@@ -45,11 +45,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
     <EditText
-        android:id="@+id/txtPhone"
+        android:id="@+id/txtPhoneContinue"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/boder_button"
         android:drawableLeft="@drawable/ic_phone"
@@ -58,69 +58,35 @@
         android:hint="Your Phone Number"
         android:inputType="phone"
         android:paddingHorizontal="16dp"
-        android:text="0866069999"
+        android:text="0353798884"
         android:textAlignment="textStart"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubWelcome" />
 
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/border"
-        android:drawableStart="@drawable/password"
-        android:drawablePadding="16dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingHorizontal="16dp"
-        android:text="HelloLaKaitoDay"
-        android:textColor="@color/grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
-
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnContinue"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/boder_button"
         android:backgroundTint="#03A9F4"
-        android:text="Login"
+        android:text="Continue"
         android:textAllCaps="false"
         android:textColor="#FBFCFD"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvForgotPass" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPhoneContinue" />
 
     <TextView
-        android:id="@+id/tvForgotPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-
-        android:text="Forgot Password?"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
-
-    <TextView
-        android:id="@+id/tvOr"
+        android:id="@+id/tvNumberItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -130,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/btnContinue" />
 
     <ImageView
         android:id="@+id/hr"
@@ -139,7 +105,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnContinue"
         app:srcCompat="@drawable/line37" />
 
     <ImageView
@@ -149,7 +115,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnContinue"
         app:srcCompat="@drawable/line37" />
 
     <Button
@@ -163,7 +129,7 @@
         android:backgroundTint="#00FFFFFF"
         android:drawableLeft="@drawable/ic_google"
         android:paddingHorizontal="16dp"
-        android:text="Login with Google"
+        android:text="Continue with Google"
         android:textAllCaps="false"
         android:textColor="#9098B1"
         android:textSize="16sp"
@@ -171,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvOr" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNumberItem" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/btnFace"
@@ -194,15 +160,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGoogle" />
 
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don’t have a account? Register"
-        android:textColor="@color/grey"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFace" />
 </androidx.constraintlayout.widget.ConstraintLayout>

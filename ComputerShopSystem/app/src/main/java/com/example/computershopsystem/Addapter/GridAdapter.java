@@ -1,7 +1,6 @@
 package com.example.computershopsystem.Addapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +12,22 @@ import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+
 public class GridAdapter extends BaseAdapter {
+
     Context context;
     ArrayList<Product> listProduct;
+
     LayoutInflater layoutInflater;
 
     public GridAdapter(Context context, ArrayList<Product> listProduct) {
         this.context = context;
         this.listProduct = listProduct;
+
+
     }
 
     @Override
@@ -32,7 +37,8 @@ public class GridAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        Object product = listProduct.get(position);
+        return product;
     }
 
     @Override
@@ -50,9 +56,16 @@ public class GridAdapter extends BaseAdapter {
         TextView price = convertView.findViewById(R.id.price_product);
         name.setText(listProduct.get(position).getName());
         brand.setText(listProduct.get(position).getBrand().getName());
-        price.setText(String.valueOf(listProduct.get(position).getSellPrice()));
+        price.setText("$"+checkInt(listProduct.get(position).getSellPrice()));
         Picasso.get().load(listProduct.get(position).getImage()).into(imageView);
         notifyDataSetChanged();
         return convertView;
     }
+
+    String checkInt(double num) {
+        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        DecimalFormat df = new DecimalFormat("###.####");
+        return df.format(num); //and for you, Christian Kuetbach
+    }
+
 }
