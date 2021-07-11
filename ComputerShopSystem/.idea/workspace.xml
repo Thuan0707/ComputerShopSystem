@@ -32,10 +32,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/DAO/ProfileFirebaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/DAO/ProfileFirebaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/BirthdayFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/BirthdayFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/GenderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/GenderFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProductDetailsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProductDetailsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/input_credit_card_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/input_credit_card_fragment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/birthday_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/birthday_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/gender_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/gender_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,30 +196,30 @@
     </state>
     <state x="263" y="118" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503003656" />
     <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1625541600428" />
-    <state width="746" height="205" key="GridCell.Tab.0.bottom" timestamp="1625886586876">
+    <state width="1493" height="209" key="GridCell.Tab.0.bottom" timestamp="1626006360630">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="205" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1625886586876" />
-    <state width="746" height="205" key="GridCell.Tab.0.center" timestamp="1625886586875">
+    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626006360630" />
+    <state width="1493" height="209" key="GridCell.Tab.0.center" timestamp="1626006360630">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="205" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1625886586875" />
-    <state width="746" height="205" key="GridCell.Tab.0.left" timestamp="1625886586875">
+    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626006360630" />
+    <state width="1493" height="209" key="GridCell.Tab.0.left" timestamp="1626006360630">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="205" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1625886586875" />
-    <state width="746" height="205" key="GridCell.Tab.0.right" timestamp="1625886586875">
+    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626006360630" />
+    <state width="1493" height="209" key="GridCell.Tab.0.right" timestamp="1626006360630">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="205" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1625886586875" />
+    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626006360630" />
     <state x="499" y="141" key="chooseDestDirectoryDialog" timestamp="1625503921999">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="499" y="141" key="chooseDestDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503921999" />
-    <state x="425" y="189" key="run.anything.popup" timestamp="1625738664692">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1625929020614">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1625738664692" />
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1625929020614" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1625706179741">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

@@ -8,7 +8,7 @@ public class Customer implements Serializable {
     String id;
     CustomerAccount customerAccount;
     String fullName;
-    Date dateOfBirth;
+    String  dateOfBirth;
     String address;
     int gender;
     List<CreditCard> cardList;
@@ -26,7 +26,7 @@ public class Customer implements Serializable {
         this.createAt = createAt;
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String fullName, Date dateOfBirth, String address, int gender, List<CreditCard> cardList, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, List<CreditCard> cardList, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.fullName = fullName;
@@ -62,11 +62,11 @@ public class Customer implements Serializable {
         this.fullName = fullName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -31,8 +31,23 @@ public class ProfileFirebaseHelper {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     customer = snapshot.getValue(Customer.class);
-                    birth.setText(customer.getDateOfBirth().toString());
-                    gender.setText(customer.getGender()==1?"Male":"Femail");
+                    if (customer.getDateOfBirth()!=null){
+                        birth.setText(customer.getDateOfBirth().toString());
+                    }
+
+                    String strGender=null;
+                    switch (customer.getGender()){
+                        case 1:
+                            strGender="Male";
+                            break;
+                        case 0:
+                            strGender="Female";
+                            break;
+                        case 2:
+                            strGender="Other";
+                            break;
+                    }
+                    gender.setText(strGender);
                 }
             }
 

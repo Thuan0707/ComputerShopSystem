@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/hr12" />
 
     <TextView
-        android:id="@+id/txtBirthday"
+        android:id="@+id/edBirthday"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"

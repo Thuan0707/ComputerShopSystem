@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,13 +64,14 @@ public class ProductDetailsFragment extends Fragment {
                 if (firebaseUser == null) {
                     startActivity(new Intent(getActivity(), LoginActiveActivity.class));
                     getActivity().finish();
+                }else{
+                    sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
+                    editor = sharedpreferences.edit();
+                    List<CartProduct> listProductInCart = getList();
+                    IncreaseQuantityCartProduct(listProductInCart,product);
+                    setList("cart", listProductInCart);
                 }
-                sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
-                editor = sharedpreferences.edit();
-                List<CartProduct> listProductInCart = getList();
-                IncreaseQuantityCartProduct(listProductInCart,product);
-                setList("cart", listProductInCart);
-                Log.e("after",String.valueOf(listProductInCart.get(0).getQuantityInCart()));
+
             }
         });
 
