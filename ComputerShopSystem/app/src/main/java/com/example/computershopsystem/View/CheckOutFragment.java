@@ -20,6 +20,7 @@ import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.Model.Order;
 import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.Model.Product;
+import com.example.computershopsystem.Model.Voucher;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CheckOutFragmentBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -50,12 +51,18 @@ public class CheckOutFragment extends Fragment {
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
     CreditCard creditCard;
-
+Voucher voucher;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CheckOutFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+        voucher =(Voucher) bundle.getSerializable("voucher");
+            binding.tvVoucherCheckOut.setText(voucher.getCode());
+            binding.tvDiscountCheckOut.setText("-"+checkInt(voucher.getDiscount()));
+        }
         creditCard=new CreditCard();
         listView = binding.lvProductCheckout;
         firebaseAuth = FirebaseAuth.getInstance();
@@ -65,13 +72,20 @@ public class CheckOutFragment extends Fragment {
         List<OrderProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);
         listView.setAdapter(LVProductInCartAdapter);
-        binding.tvPriceAndQuantityItemLable.setText("Price (" + String.valueOf(productList.size()) + " Products)");
+        binding.tvNumberOfProduct.setText("Price (" + String.valueOf(productList.size()) + " Products)");
         binding.tvPriceCheckOut.setText("$" + checkInt(sumInList(productList)));
-        binding.tvTotalCheckOut.setText("$" + checkInt(sumInList(productList) + 20));
+        binding.tvTotalCheckOut.setText("$" + checkInt(sumInList(productList) + 20-(voucher!=null?voucher.getDiscount():0)));
         binding.tvPaymentCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CreditCardFragment fragment = new CreditCardFragment();
+                switchFragment(fragment);
+            }
+        });
+        binding.tvVoucherCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VoucherFragment fragment = new VoucherFragment();
                 switchFragment(fragment);
             }
         });

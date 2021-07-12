@@ -9,10 +9,11 @@
 
     <Button
         android:id="@+id/btnOrderCheckOut"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_width="339dp"
+        android:layout_height="49dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
         android:backgroundTint="#03A9F4"
         android:text="Order Now"
         android:textColor="@color/white"
@@ -107,8 +108,8 @@
 
     <ListView
         android:id="@+id/lvProductCheckout"
-        android:layout_width="match_parent"
-        android:layout_height="174dp"
+        android:layout_width="378dp"
+        android:layout_height="129dp"
 
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -120,34 +121,6 @@
 
     </ListView>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <TextView
         android:id="@+id/tvTimeDeliveryCheckOut"
         android:layout_width="280dp"
@@ -155,7 +128,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_light"
-        android:text="Date Shipping - 8:30am - 07/07/2020"
+        android:text="Date Shipping - 8:30 - 07/07/2020"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddressCheckout" />
@@ -221,7 +194,7 @@
                 android:text="Shipping fee (11km)" />
 
             <TextView
-                android:id="@+id/tvPriceAndQuantityItemLable"
+                android:id="@+id/tvDiscountLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
@@ -299,7 +272,7 @@
                 android:textAlignment="viewEnd" />
 
             <TextView
-                android:id="@+id/tvDecreasePriceCheckOut"
+                android:id="@+id/tvDiscountCheckOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"

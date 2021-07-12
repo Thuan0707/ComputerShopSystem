@@ -109,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
 //        Customer customer=new Customer("1QzUXC8c0bQxtJY0EiWOgdHwnIw2",a,"A@gmail.com","Dang Minh A",new Date(),"Can Tho", 1,100000,new Date(),null);
 //
 //        mDatabase.child("1QzUXC8c0bQxtJY0EiWOgdHwnIw2").setValue(customer);
+
+//              //  add voucher
+//                mDatabase = FirebaseDatabase.getInstance().getReference("Voucher");
+//                String  id=mDatabase.push().getKey();
+//        Voucher voucher=new Voucher( id,"ABCDEF",1500, "SPRING SALE", "11/7/2021",null);
+//        mDatabase.child(id).setValue(voucher);
     }
 
     public <T> void setList(String key, List<T> list) {
