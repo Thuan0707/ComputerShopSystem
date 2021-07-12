@@ -104,7 +104,9 @@
                 android:gravity="center_vertical"
                 android:text="Male"
 
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvBirthday"
@@ -117,7 +119,9 @@
                 android:gravity="center_vertical"
 
 
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -129,7 +133,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
 
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvPhone"
@@ -141,7 +147,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
 
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvPass"
@@ -153,7 +161,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
 
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
     </LinearLayout>
