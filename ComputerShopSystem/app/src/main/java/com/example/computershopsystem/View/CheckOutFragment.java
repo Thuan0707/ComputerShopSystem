@@ -11,6 +11,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.Addapter.LVProductInCheckOutAdapter;
 import com.example.computershopsystem.Model.CartProduct;
@@ -28,18 +30,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CheckOutFragment extends Fragment {
-CheckOutFragmentBinding binding;
+    CheckOutFragmentBinding binding;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     public Product product;
     private ListView listView;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CheckOutFragmentBinding.inflate(getLayoutInflater());
-        View view=binding.getRoot();
+        View view = binding.getRoot();
         listView = binding.lvProductCheckout;
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -48,9 +51,16 @@ CheckOutFragmentBinding binding;
         List<CartProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);
         listView.setAdapter(LVProductInCartAdapter);
-        binding.tvPriceAndQuantityItemLable.setText("Price ("+String.valueOf(productList.size())+" Products)");
-        binding.tvPriceCheckOut.setText("$"+checkInt(sumInList(productList)));
-        binding.tvTotalCheckOut.setText("$"+checkInt(sumInList(productList) + 20));
+        binding.tvPriceAndQuantityItemLable.setText("Price (" + String.valueOf(productList.size()) + " Products)");
+        binding.tvPriceCheckOut.setText("$" + checkInt(sumInList(productList)));
+        binding.tvTotalCheckOut.setText("$" + checkInt(sumInList(productList) + 20));
+        binding.tvPaymentCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreditCardFragment fragment = new CreditCardFragment();
+                switchFragment(fragment);
+            }
+        });
         return view;
     }
 
@@ -78,5 +88,15 @@ CheckOutFragmentBinding binding;
         if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
         DecimalFormat df = new DecimalFormat("###.####");
         return df.format(num); //and for you, Christian Kuetbach
+    }
+
+    void switchFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                android.R.animator.fade_out);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.replace(R.id.fl_wrapper, fragment);
+        fragTransaction.commit();
     }
 }

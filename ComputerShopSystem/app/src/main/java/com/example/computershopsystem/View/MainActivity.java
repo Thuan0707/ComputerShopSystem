@@ -1,5 +1,6 @@
 package com.example.computershopsystem.View;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,9 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,9 +41,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        sharedpreferences =getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
 
-        List<CartProduct> cartProductList = new ArrayList<>();
-
+        List<CartProduct> productList = getList();
 
         switchFragment(new CusHomeFragment());
 
@@ -74,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.ic_location:
                         if (firebaseUser != null) {
+
                             selectedFragment = new ProductDetailsFragment();
                         } else {
                             selectedFragment = new TestLoginLogoutFragment();
@@ -114,7 +121,17 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(key, value);
         editor.commit();
     }
-
+    public List<CartProduct> getList() {
+        List<CartProduct> listProduct = new ArrayList<>();
+        String serializedObject = sharedpreferences.getString("cart", null);
+        if (serializedObject != null) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<CartProduct>>() {
+            }.getType();
+            listProduct = gson.fromJson(serializedObject, type);
+        }
+        return listProduct;
+    }
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

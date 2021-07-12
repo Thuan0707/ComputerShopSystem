@@ -1,43 +1,28 @@
 package com.example.computershopsystem.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.adapters.TextViewBindingAdapter;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.R;
-import com.example.computershopsystem.Utilities.Validation;
-import com.example.computershopsystem.databinding.CreditCardFragmentBinding;
 import com.example.computershopsystem.databinding.InputCreditCardFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,9 +63,11 @@ public class InputCreditCardFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
                     numberCard.setError("Please enter Number Card !");
+                    numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                 }
                 if(!(s.length()== 12)){
                     numberCard.setError("Number Card must have 12 numbers !");
+                    numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                 }
             }
 
@@ -99,10 +86,12 @@ public class InputCreditCardFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
                     money.setError("Please enter Money !");
+                    money.setBackground(getActivity().getDrawable(R.drawable.border_red));
                 }
                 try {
                     if(Integer.parseInt(s.toString()) <= 0){
                         money.setError("Money must greater than $0 !");
+                        money.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     }
                 }catch (Exception ex){
 
@@ -125,6 +114,7 @@ public class InputCreditCardFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
                     expirationDate.setError("Please enter Expiration Date !");
+                    expirationDate.setBackground(getActivity().getDrawable(R.drawable.border_red));
                 }
             }
 
@@ -143,6 +133,7 @@ public class InputCreditCardFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
                     holderCard.setError("Please enter Holder Card !");
+                    holderCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                 }
             }
 
@@ -162,6 +153,7 @@ public class InputCreditCardFragment extends Fragment {
                 String cardNumber = String.valueOf(numberCard.getText());
                 if(cardNumber.equals("")){
                     numberCard.setError("Please enter Number Card !");
+                    numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
                 Date cardExpiration = new Date();
@@ -169,20 +161,25 @@ public class InputCreditCardFragment extends Fragment {
                     cardExpiration = formatter.parse(String.valueOf(expirationDate.getText())) ;
                 } catch (ParseException e) {
                     expirationDate.setError("Please enter Expiration Date following format MM/dd/yyyy !");
+                    expirationDate.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
                 if(String.valueOf(expirationDate.getText()).equals("")){
                     expirationDate.setError("Please enter Expiration Date !");
+                    expirationDate.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
                 String cardHolder = String.valueOf(holderCard.getText());
                 if(cardHolder.equals("")){
                     holderCard.setError("Please enter Holder card !");
+                    holderCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
                 String cardMoney = String.valueOf(money.getText());
                 if(cardMoney.equals("")){
                     money.setError("Please enter Money !");
+                    money.setBackground(getActivity().getDrawable(R.drawable.border_red));
+
                     check = false;
                 }
                 if(check) {
