@@ -61,7 +61,7 @@ Voucher voucher;
         if (bundle != null) {
         voucher =(Voucher) bundle.getSerializable("voucher");
             binding.tvVoucherCheckOut.setText(voucher.getCode());
-            binding.tvDiscountCheckOut.setText("-"+checkInt(voucher.getDiscount()));
+            binding.tvDiscountCheckOut.setText("-$"+checkInt(voucher.getDiscount()));
         }
         creditCard=new CreditCard();
         listView = binding.lvProductCheckout;
