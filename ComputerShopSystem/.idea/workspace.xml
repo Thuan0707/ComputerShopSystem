@@ -30,13 +30,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/check_out_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/check_out_fragment.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -218,6 +212,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="499" y="141" key="chooseDestDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503921999" />
+    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1626111586383">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1626111586383" />
     <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1625929020614">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
