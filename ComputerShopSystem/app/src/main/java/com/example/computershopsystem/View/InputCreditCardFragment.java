@@ -183,7 +183,7 @@ public class InputCreditCardFragment extends Fragment {
                     check = false;
                 }
                 if(check) {
-                    CreditCard creditCard = new CreditCard(cardNumber, String.valueOf(Integer.parseInt(cardMoney.toString())), cardNumber, cardExpiration, cardHolder, new Date(), new Date());
+                    CreditCard creditCard = new CreditCard(cardNumber, String.valueOf(Integer.parseInt(cardMoney.toString())), cardNumber, "12/12/2020", cardHolder, new Date(), new Date());
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("card");
                     databaseReference.push().setValue(creditCard);
                     CreditCardFragment fragment = new CreditCardFragment();

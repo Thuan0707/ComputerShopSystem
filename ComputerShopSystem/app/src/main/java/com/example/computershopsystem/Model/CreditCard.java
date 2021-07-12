@@ -16,7 +16,7 @@ public class CreditCard{
     String cardNumber;
 
     @PropertyName("expirationDate")
-    Date expirationDate;
+    String expirationDate;
 
     @PropertyName("cardHolder")
     String cardHolder;
@@ -27,7 +27,7 @@ public class CreditCard{
     @PropertyName("deleteAt")
     Date deleteAt;
 
-    public CreditCard(String id, String money, String cardNumber, Date expirationDate, String cardHolder, Date createAt, Date deleteAt) {
+    public CreditCard(String id, String money, String cardNumber, String expirationDate, String cardHolder, Date createAt, Date deleteAt) {
         this.id = id;
         this.money = money;
         this.cardNumber = cardNumber;
@@ -64,11 +64,11 @@ public class CreditCard{
         this.cardNumber = cardNumber;
     }
 
-    public Date getExpirationDate() {
+    public String getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
 

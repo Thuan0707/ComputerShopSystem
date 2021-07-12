@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.Addapter.LVProductInCheckOutAdapter;
 import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CheckOutFragmentBinding;
@@ -37,6 +38,7 @@ public class CheckOutFragment extends Fragment {
     private ListView listView;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    CreditCard creditCard;
 
     @Nullable
     @Override
