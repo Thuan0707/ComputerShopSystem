@@ -2,13 +2,11 @@ package com.example.computershopsystem.Addapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,7 +40,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
-this.objects=objects;
+         this.objects=objects;
     }
 
     @NonNull
