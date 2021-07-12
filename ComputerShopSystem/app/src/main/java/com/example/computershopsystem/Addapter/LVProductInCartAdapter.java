@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 
-import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,15 +28,15 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
+public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
     private Context context;
     private int resource;
-    private List<CartProduct> objects;
+    private List<OrderProduct> objects;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
-    public LVProductInCartAdapter(@NonNull Context context, int resource, @NonNull List<CartProduct> objects) {
+    public LVProductInCartAdapter(@NonNull Context context, int resource, @NonNull List<OrderProduct> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
@@ -67,7 +67,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
             @Override
             public void onClick(View v) {
                 quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())+1));
-                List<CartProduct> listProduct=getList();
+                List<OrderProduct> listProduct=getList();
                 listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
                 setList("cart",listProduct);
             }
@@ -76,7 +76,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
             @Override
             public void onClick(View v) {
                 quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())-1));
-                List<CartProduct> listProduct=getList();
+                List<OrderProduct> listProduct=getList();
                 listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
                 setList("cart",listProduct);
             }
@@ -84,7 +84,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
         quantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                List<CartProduct> listProduct=getList();
+                List<OrderProduct> listProduct=getList();
                 listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
                 setList("cart",listProduct);
                 return true;
@@ -93,7 +93,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<CartProduct> listProduct=getList();
+                List<OrderProduct> listProduct=getList();
                 listProduct.remove(position);
                 setList("cart",listProduct);
                 objects.remove(position);
@@ -113,12 +113,12 @@ public class LVProductInCartAdapter extends ArrayAdapter<CartProduct> {
         editor.putString(key, value);
         editor.apply();
     }
-    public List<CartProduct> getList() {
-        List<CartProduct> listProduct = new ArrayList<>();
+    public List<OrderProduct> getList() {
+        List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<CartProduct>>() {
+            Type type = new TypeToken<List<OrderProduct>>() {
             }.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }

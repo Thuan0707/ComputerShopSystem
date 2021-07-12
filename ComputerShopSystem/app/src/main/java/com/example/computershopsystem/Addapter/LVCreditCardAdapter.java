@@ -1,12 +1,10 @@
 package com.example.computershopsystem.Addapter;
 
 import android.content.Context;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,7 +37,7 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         TextView cardMoney = convertView.findViewById(R.id.txtCardMoney);
         cardNumber.setText(getItem(position).getCardNumber());
         cardHolder.setText(String.valueOf(getItem(position).getCardHolder()));
-        cardExpiration.setText(String.valueOf(DateFormat.format("MM/dd/yyy",getItem(position).getExpirationDate())));
+        cardExpiration.setText(String.valueOf(getItem(position).getExpirationDate()));
         cardMoney.setText(String.valueOf(getItem(position).getMoney()));
 
         return convertView;

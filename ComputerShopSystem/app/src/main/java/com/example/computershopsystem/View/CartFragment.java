@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.Addapter.LVProductInCartAdapter;
-import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CartFragmentBinding;
@@ -48,7 +48,7 @@ public class CartFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
-        List<CartProduct> productList = getList();
+        List<OrderProduct> productList = getList();
         LVProductInCartAdapter LVProductInCartAdapter = new LVProductInCartAdapter(getActivity(), R.layout.cart_item, productList);
         listView.setAdapter(LVProductInCartAdapter);
         binding.txtItemQuantity.setText(String.valueOf(productList.size()));
@@ -64,21 +64,21 @@ public class CartFragment extends Fragment {
         return view;
     }
 
-    public List<CartProduct> getList() {
-        List<CartProduct> listProduct = new ArrayList<>();
+    public List<OrderProduct> getList() {
+        List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<CartProduct>>() {
+            Type type = new TypeToken<List<OrderProduct>>() {
             }.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }
         return listProduct;
     }
 
-    public double sumInList(List<CartProduct> productList) {
+    public double sumInList(List<OrderProduct> productList) {
         double sum = 0;
-        for (CartProduct item : productList) {
+        for (OrderProduct item : productList) {
             sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
         }
         return sum;

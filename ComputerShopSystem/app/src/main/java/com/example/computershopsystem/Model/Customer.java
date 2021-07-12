@@ -12,6 +12,8 @@ public class Customer implements Serializable {
     String address;
     int gender;
     List<CreditCard> cardList;
+    List<Order> orderList;
+    List<Payment> list;
     Date createAt;
     Date deleteAt;
 
@@ -26,7 +28,7 @@ public class Customer implements Serializable {
         this.createAt = createAt;
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, List<CreditCard> cardList, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, List<CreditCard> cardList, List<Order> orderList, List<Payment> list, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.fullName = fullName;
@@ -34,6 +36,8 @@ public class Customer implements Serializable {
         this.address = address;
         this.gender = gender;
         this.cardList = cardList;
+        this.orderList = orderList;
+        this.list = list;
         this.createAt = createAt;
         this.deleteAt = deleteAt;
     }
@@ -92,6 +96,22 @@ public class Customer implements Serializable {
 
     public void setCardList(List<CreditCard> cardList) {
         this.cardList = cardList;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
+    public List<Payment> getList() {
+        return list;
+    }
+
+    public void setList(List<Payment> list) {
+        this.list = list;
     }
 
     public Date getCreateAt() {

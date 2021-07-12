@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.Utilities.Utils;
 import com.example.computershopsystem.Utilities.Variable;
@@ -67,7 +67,7 @@ public class ProductDetailsFragment extends Fragment {
                 }else{
                     sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
                     editor = sharedpreferences.edit();
-                    List<CartProduct> listProductInCart = getList();
+                    List<OrderProduct> listProductInCart = getList();
                     IncreaseQuantityCartProduct(listProductInCart,product);
                     setList("cart", listProductInCart);
                 }
@@ -89,24 +89,24 @@ public class ProductDetailsFragment extends Fragment {
         editor.putString(key, value);
         editor.apply();
     }
-    public List<CartProduct> getList(){
-        List<CartProduct> listProduct=new ArrayList<>();
+    public List<OrderProduct> getList(){
+        List<OrderProduct> listProduct=new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<CartProduct>>(){}.getType();
+            Type type = new TypeToken<List<OrderProduct>>(){}.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }
         return  listProduct;
     }
-    public void IncreaseQuantityCartProduct( List<CartProduct> listProductInCart,Product product) {
-        for (CartProduct item : listProductInCart) {
+    public void IncreaseQuantityCartProduct(List<OrderProduct> listProductInCart, Product product) {
+        for (OrderProduct item : listProductInCart) {
             if (item.getProduct().getId().equalsIgnoreCase(product.getId())) {
               item.setQuantityInCart(item.getQuantityInCart()+1);
               return;
             }
         }
-        listProductInCart.add(new CartProduct(1,product));
+        listProductInCart.add(new OrderProduct(1,product));
     }
 
 //    private String moneyFormat(double money) {

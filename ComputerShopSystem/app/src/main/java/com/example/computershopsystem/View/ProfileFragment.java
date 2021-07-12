@@ -86,7 +86,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String email = binding.tvEmail.getText().toString();
-                if (email == null) {
+                if (email == "") {
                     ChangeEmailFragment fragment = new ChangeEmailFragment();
 
                     switchFragment(fragment);
