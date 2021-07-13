@@ -4,21 +4,22 @@ import java.util.List;
 
 public class Order {
     String id;
-    String  idCustomer;
-    String  name;
-   String  orderDate;
-   ShipFee shipFee;
-   String  ShipDate;
-   String addesss;
-   String numberPhone;
-   List<OrderProduct> orderProductList;
-   String  note;
-   CreditCard creditCard;
+    String idCustomer;
+    String name;
+    String orderDate;
+    ShipFee shipFee;
+    String ShipDate;
+    String addesss;
+    String numberPhone;
+    List<OrderProduct> orderProductList;
+    String note;
+    CreditCard creditCard;
+    Voucher voucher;
 
     public Order() {
     }
 
-    public Order(String id, String idCustomer, String name, String orderDate, ShipFee shipFee, String shipDate, String addesss, String numberPhone, List<OrderProduct> orderProductList, String note, CreditCard creditCard) {
+    public Order(String id, String idCustomer, String name, String orderDate, ShipFee shipFee, String shipDate, String addesss, String numberPhone, List<OrderProduct> orderProductList, String note, CreditCard creditCard, Voucher voucher) {
         this.id = id;
         this.idCustomer = idCustomer;
         this.name = name;
@@ -30,6 +31,7 @@ public class Order {
         this.orderProductList = orderProductList;
         this.note = note;
         this.creditCard = creditCard;
+        this.voucher = voucher;
     }
 
     public String getId() {
@@ -118,5 +120,13 @@ public class Order {
 
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
+    }
+
+    public Voucher getVoucher() {
+        return voucher;
+    }
+
+    public void setVoucher(Voucher voucher) {
+        this.voucher = voucher;
     }
 }

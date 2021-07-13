@@ -33,6 +33,9 @@
     <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/AccountLoginSuccessFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/AccountLoginSuccessFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,8 +86,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -108,17 +111,20 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\TERM7\ComputerShop\code\ComputerShopSystem\ComputerShopSystem\app\src\main\res\drawable" />
-    </key>
-    <key name="android.template.-2010695239">
+    <key name="android.template.-1121942099">
       <recent name="com.example.computershopsystem.View" />
     </key>
     <key name="android.template.1840410148">
       <recent name="com.example.computershopsystem.View" />
     </key>
+    <key name="android.template.-2010695239">
+      <recent name="com.example.computershopsystem.View" />
+    </key>
     <key name="android.template.-740602657">
       <recent name="com.example.computershopsystem.View" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\TERM7\ComputerShop\code\ComputerShopSystem\ComputerShopSystem\app\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -262,10 +268,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1626107743473">
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1626171691285">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1626107743473" />
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1626171691285" />
     <state x="628" y="109" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1625506495753">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -274,27 +280,27 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="93" y="93" width="1350" height="648" key="AVDManager/0.0.1536.834@0.0.1536.834" timestamp="1626100938782" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1626106050490">
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1626169792775">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="263" y="118" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503003656" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1626106050490" />
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626153975548">
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1626169792775" />
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626154103513">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626153975548" />
-    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626153975548">
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626154103513" />
+    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626154103513">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626153975548" />
-    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626153975548">
+    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626154103513" />
+    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626154103513">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626153975548" />
-    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626153975548">
+    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626154103513" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626154103513">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626153975548" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626154103513" />
     <state x="432" y="116" key="SettingsEditor" timestamp="1626153359780">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
