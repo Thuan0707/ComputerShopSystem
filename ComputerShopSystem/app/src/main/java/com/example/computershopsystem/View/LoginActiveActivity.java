@@ -77,6 +77,8 @@ public class LoginActiveActivity extends AppCompatActivity {
         firebaseAuth.signOut();
         btnContinue = findViewById(R.id.btnContinue);
         edPhone = findViewById(R.id.txtPhoneContinue);
+        checkUser();
+
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +106,7 @@ public class LoginActiveActivity extends AppCompatActivity {
         btFacebook.setReadPermissions("email", "public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         firebaseAuth = FirebaseAuth.getInstance();
-        checkUser();
+
 
         btGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,14 +160,17 @@ public class LoginActiveActivity extends AppCompatActivity {
 
 
     private void checkUser() {
+        Log.d(TAG, "checkUser: hello");
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
         if (firebaseUser != null) {
             Log.e("ádf","inputphone nè");
             if (firebaseUser.getPhoneNumber()==null){
                 startActivity(new Intent(this, InputPhoneRegisterActivity.class));
-            }else{
-                startActivity(new Intent(this, AccountLoginSuccessFragment.class));
+                finish();
             }
+            Log.e(TAG, "Aloo: toi day chua di " );
+            startActivity(new Intent(this, AccountLoginSuccessFragment.class));
             finish();
         }
     }
