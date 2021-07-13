@@ -31,198 +31,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Addapter/GridAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Addapter/LVCreditCardAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Addapter/LVProductInCartAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Addapter/LVProductInCheckOutAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Addapter/LVVoucherAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/ProductFirebaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/ProfileFirebaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/VoucherFirebaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Brand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/CPU.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/CreditCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/CustomerAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Device.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/OrderProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Ram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Rom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Screen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/ShipFee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Model/Voucher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Utilities/SessionManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Utilities/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Utilities/Validation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Utilities/Variable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Utilities/abc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/AccountLoginSuccessFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/AccountNotLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/AddressCheckOutFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/BirthdayFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/CartFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangeEmailFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangeNameFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangePassFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangePhoneFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/CheckOutFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/CreditCardFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/CusHomeFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/GenderFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/HomeLoginActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/InputCreditCardFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/InputFullNameRegisterActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/InputNoteCheckOutFragement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/InputPhoneRegisterActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/LoginActiveActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/LoginActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/LoginWrongActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/MoreCategoryFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/OrderHistoryFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ProductDetailsFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ProfileFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/RegisterActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/RegisterOTP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/SearchInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/SearchNotFound.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/SearchResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/TestLoginLogoutFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/VerifyPhoneFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/VoucherFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/acer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/addcart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/asus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/boder_button.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/border.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/border_card.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/border_detail.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/border_noradius.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/border_red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/circle_bg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/dell.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/facebook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/google.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/hp1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_acer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_asus.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_baseline_done_40.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_birthday.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_cart.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_cong.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_dell.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_edit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_email.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_eye.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_facebook.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_gender.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_google.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_home.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_hp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_lenovo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_location.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_logout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_mapblue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_notfound.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_notify.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_order.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_password.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_password_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_payment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_phone.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_phone_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_plusx.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_resource_short.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_searchtext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_trash.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_tru.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_user.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/ic_userblue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/iconcard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/itemresult.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/key_opt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/khuong.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/line37.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/line39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/map.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/more.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/notification.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/password.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/phone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/productimage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/profile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/seacher_notactive_bg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/search_bg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/userlogin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/drawable/verify.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/font/poppins_bold.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/font/poppins_light.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/account_login_success_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_account_not_login.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_home_login.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_input_full_name_register.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_input_phone_register.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_login_active.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_login_wrong.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_register.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_register_otp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_search_input.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_search_not_found.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_search_result.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/address_check_out_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/birthday_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/card_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/cart_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/cart_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/change_email_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/change_name_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/change_pass_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/change_phone_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/check_out_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/check_out_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/credit_card_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/cus_home_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/fragment_blank.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/fragment_test_login_logout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/gender_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/grid_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/input_credit_card_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/input_note_check_out_fragement.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/more_category_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/order_history_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/orderhistory_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/product_details_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/profile_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/verify_phone_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/voucher_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/voucher_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/menu/nav_bot.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/font_certs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/LoginActiveActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/LoginActiveActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/LoginActiveActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/LoginActiveActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_login_active.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_login_active.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -476,22 +288,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1626184646049" />
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626186875803">
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626195085324">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626186875803" />
-    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626186875803">
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626195085324">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626186875803" />
-    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626186875803">
+    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626195085324">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626186875803" />
-    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626186875803">
+    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626195085324">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626186875803" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
     <state x="432" y="116" key="SettingsEditor" timestamp="1626177640535">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
