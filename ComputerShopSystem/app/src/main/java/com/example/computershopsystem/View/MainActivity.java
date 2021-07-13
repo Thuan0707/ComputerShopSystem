@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             editor = sharedpreferences.edit();
         }
         
-        List<OrderProduct> productList = getList();
+     
 
         switchFragment(new CusHomeFragment());
 
