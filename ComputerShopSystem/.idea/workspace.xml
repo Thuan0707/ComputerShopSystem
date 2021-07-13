@@ -30,7 +30,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="" />
+    <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/build.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -299,10 +306,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626172238878" />
-    <state x="432" y="116" key="SettingsEditor" timestamp="1626153359780">
+    <state x="432" y="116" key="SettingsEditor" timestamp="1626177640535">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="432" y="116" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1626153359780" />
+    <state x="432" y="116" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1626177640535" />
     <state x="499" y="141" key="chooseDestDirectoryDialog" timestamp="1625503921999">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
