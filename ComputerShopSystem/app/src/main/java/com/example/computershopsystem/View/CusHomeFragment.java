@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.DAO.ProductFirebaseHelper;
+import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.Model.Voucher;
 import com.example.computershopsystem.R;
@@ -85,7 +86,13 @@ public class CusHomeFragment extends Fragment {
                 editor.putString("note", "");
                 editor.commit();
             }
-
+            if (!sharedpreferences.contains("creditCard")) {
+                CreditCard creditCard=new CreditCard();
+                Gson gson = new Gson();
+                String json = gson.toJson(creditCard);
+                editor.putString("creditCard", json);
+                editor.commit();
+            }
         }
 
         if (bundle != null) {
