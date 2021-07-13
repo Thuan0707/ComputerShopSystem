@@ -65,11 +65,15 @@ public class CheckOutFragment extends Fragment {
         Gson gson = new Gson();
         String strVoucher = sharedpreferences.getString("voucher", null);
         voucher = gson.fromJson(strVoucher, Voucher.class);
-
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
+            binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
+        }
         binding.tvVoucherCheckOut.setText(voucher.getCode());
         binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
 
-        binding.tvNoteCheckOut.setText( sharedpreferences.getString("note", null));
+        binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
 
 
         creditCard = new CreditCard();
@@ -106,9 +110,9 @@ public class CheckOutFragment extends Fragment {
         binding.btnOrderCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = binding.txtNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
-                String phone = binding.txtNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
-                String addesss = binding.btnAddressCheckout.getText().toString();
+                String name = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
+                String phone = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
+                String addesss = binding.tvAddressCheckout.getText().toString();
                 String shipDate = binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[1] + " " + binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[2];
                 DateFormat dateFormat = new SimpleDateFormat("HH:mm mm/dd/yyyy");
                 String orderDate = dateFormat.format(new Date());
@@ -131,6 +135,21 @@ public class CheckOutFragment extends Fragment {
             }
 
 
+        });
+        binding.tvChangeInfoCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
+                String phone = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
+                String address = binding.tvAddressCheckout.getText().toString();
+                Bundle bundle=new Bundle();
+                bundle.putString("nameCheckOut",name);
+                bundle.putString("phoneCheckOut",phone);
+                bundle.putString("addressCheckOut",address);
+                AddressCheckOutFragment fragment = new AddressCheckOutFragment();
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
         });
         return view;
     }

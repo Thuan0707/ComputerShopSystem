@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtNameAndPhoneCheckout"
+        android:id="@+id/tvNameAndPhoneCheckout"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/btnAddressCheckout"
+        android:id="@+id/tvAddressCheckout"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -92,10 +92,10 @@
         android:text="500 Nguyen Van Cu noi dai, An Binh\nNinh Kieu, Can Tho, Viet Nam"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNameAndPhoneCheckout" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNameAndPhoneCheckout" />
 
     <TextView
-        android:id="@+id/btnChangeInfoCheckout"
+        android:id="@+id/tvChangeInfoCheckout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -131,7 +131,7 @@
         android:text="Date Shipping - 8:30 - 07/07/2020"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddressCheckout" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAddressCheckout" />
 
     <LinearLayout
         android:layout_width="match_parent"
