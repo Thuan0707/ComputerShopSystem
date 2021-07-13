@@ -83,9 +83,9 @@ public class CheckOutFragment extends Fragment {
         List<OrderProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);
         listView.setAdapter(LVProductInCartAdapter);
-        binding.tvNumberOfProduct.setText("Price (" + String.valueOf(productList.size()) + " Products)");
-        binding.tvPriceCheckOut.setText("$" + checkInt(sumInList(productList)));
-        binding.tvTotalCheckOut.setText("$" + checkInt(sumInList(productList) + 20 - (voucher != null ? voucher.getDiscount() : 0)));
+        binding.tvNumberOfProduct.setText("Price (" + String.valueOf(quantityItemInList(productList)) + " Products)");
+        binding.tvPriceCheckOut.setText("$" + checkInt(sumPriceInList(productList)));
+        binding.tvTotalCheckOut.setText("$" + checkInt(sumPriceInList(productList) + 20 - (voucher != null ? voucher.getDiscount() : 0)));
         binding.tvPaymentCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,10 +142,10 @@ public class CheckOutFragment extends Fragment {
                 String name = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
                 String phone = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
                 String address = binding.tvAddressCheckout.getText().toString();
-                Bundle bundle=new Bundle();
-                bundle.putString("nameCheckOut",name);
-                bundle.putString("phoneCheckOut",phone);
-                bundle.putString("addressCheckOut",address);
+                Bundle bundle = new Bundle();
+                bundle.putString("nameCheckOut", name);
+                bundle.putString("phoneCheckOut", phone);
+                bundle.putString("addressCheckOut", address);
                 AddressCheckOutFragment fragment = new AddressCheckOutFragment();
                 fragment.setArguments(bundle);
                 switchFragment(fragment);
@@ -166,12 +166,20 @@ public class CheckOutFragment extends Fragment {
         return listProduct;
     }
 
-    public double sumInList(List<OrderProduct> productList) {
+    public double sumPriceInList(List<OrderProduct> productList) {
         double sum = 0;
         for (OrderProduct item : productList) {
             sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
         }
         return sum;
+    }
+
+    public int quantityItemInList(List<OrderProduct> productList) {
+        int quantity = 0;
+        for (OrderProduct item : productList) {
+            quantity += item.getQuantityInCart();
+        }
+        return quantity;
     }
 
     String checkInt(double num) {
