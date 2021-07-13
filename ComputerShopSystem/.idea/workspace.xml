@@ -32,8 +32,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,22 +199,22 @@
     </state>
     <state x="263" y="118" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503003656" />
     <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1626106050490" />
-    <state width="746" height="188" key="GridCell.Tab.0.bottom" timestamp="1626148790097">
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626151794356">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626148790097" />
-    <state width="746" height="188" key="GridCell.Tab.0.center" timestamp="1626148790097">
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
+    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626151794356">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626148790097" />
-    <state width="746" height="188" key="GridCell.Tab.0.left" timestamp="1626148790097">
+    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
+    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626151794356">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626148790097" />
-    <state width="746" height="188" key="GridCell.Tab.0.right" timestamp="1626148790097">
+    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626151794356">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626148790097" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
     <state x="499" y="141" key="chooseDestDirectoryDialog" timestamp="1625503921999">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

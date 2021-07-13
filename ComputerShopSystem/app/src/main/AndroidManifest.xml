@@ -13,14 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.AddressCheckOutFragment"></activity>
-        <activity android:name=".View.InputNoteCheckOutFragement" />
-        <activity android:name=".View.VoucherFragment" />
-        <activity android:name=".View.InputFullNameRegisterActivity" />
-        <activity android:name=".View.CheckOutFragment" />
-        <activity android:name=".View.InputCreditCardFragment" />
-        <activity android:name=".View.CreditCardFragment" />
-        <activity android:name=".View.InputPhoneRegisterActivity" />
+
         <activity
             android:name=".View.RegisterOTP"
             android:screenOrientation="portrait" />

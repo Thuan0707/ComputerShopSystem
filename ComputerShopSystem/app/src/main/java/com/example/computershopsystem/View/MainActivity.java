@@ -43,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        sharedpreferences =getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
-        editor = sharedpreferences.edit();
-
+        if (firebaseUser!=null){
+            sharedpreferences =getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
+            editor = sharedpreferences.edit();
+        }
+        
         List<OrderProduct> productList = getList();
 
         switchFragment(new CusHomeFragment());
