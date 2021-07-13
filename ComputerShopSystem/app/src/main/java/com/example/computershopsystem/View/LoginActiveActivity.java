@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.Model.Customer;
 import com.example.computershopsystem.Model.CustomerAccount;
@@ -74,10 +77,10 @@ public class LoginActiveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_active);
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.signOut();
+//        firebaseAuth.signOut();
         btnContinue = findViewById(R.id.btnContinue);
         edPhone = findViewById(R.id.txtPhoneContinue);
-        checkUser();
+
 
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +109,7 @@ public class LoginActiveActivity extends AppCompatActivity {
         btFacebook.setReadPermissions("email", "public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         firebaseAuth = FirebaseAuth.getInstance();
+        checkUser();
 
 
         btGoogle.setOnClickListener(new View.OnClickListener() {
@@ -168,10 +172,18 @@ public class LoginActiveActivity extends AppCompatActivity {
             if (firebaseUser.getPhoneNumber()==null){
                 startActivity(new Intent(this, InputPhoneRegisterActivity.class));
                 finish();
+            } else {
+                Log.e(TAG, "Aloo: toi day chua di " );
+                Fragment fragment = new AccountLoginSuccessFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                        android.R.animator.fade_out);
+                fragTransaction.addToBackStack(null);
+                fragTransaction.replace(R.id.fl_wrapper, fragment);
+                fragTransaction.commit();
             }
-            Log.e(TAG, "Aloo: toi day chua di " );
-            startActivity(new Intent(this, AccountLoginSuccessFragment.class));
-            finish();
+
         }
     }
 
