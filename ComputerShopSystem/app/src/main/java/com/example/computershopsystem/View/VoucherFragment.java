@@ -1,5 +1,7 @@
 package com.example.computershopsystem.View;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +18,21 @@ import com.example.computershopsystem.DAO.VoucherFirebaseHelper;
 import com.example.computershopsystem.Model.Voucher;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.VoucherFragmentBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 public class VoucherFragment extends Fragment {
 VoucherFragmentBinding binding;
   DatabaseReference databaseReference;
+  SharedPreferences sharedpreferences;
+  SharedPreferences.Editor editor;
   @Override
   public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
     binding = VoucherFragmentBinding.inflate(getLayoutInflater());
+    sharedpreferences = getActivity().getSharedPreferences(FirebaseAuth.getInstance().getCurrentUser().getUid(), Context.MODE_PRIVATE);
+    editor = sharedpreferences.edit();
     databaseReference = FirebaseDatabase.getInstance().getReference("Voucher");
     VoucherFirebaseHelper helper=new VoucherFirebaseHelper(databaseReference,getContext());
     helper.getList(binding.lvVoucher);
@@ -32,10 +40,11 @@ VoucherFragmentBinding binding;
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
       Voucher voucher=(Voucher)parent.getAdapter().getItem(position);
-        Bundle bundle = new Bundle();
+        Gson gson = new Gson();
+        String json = gson.toJson(voucher);
+        editor.putString("voucher", json);
+        editor.apply();
         CheckOutFragment fragment = new CheckOutFragment();
-          bundle.putSerializable("voucher",voucher);
-          fragment.setArguments(bundle);
         switchFragment(fragment);
       }
     });

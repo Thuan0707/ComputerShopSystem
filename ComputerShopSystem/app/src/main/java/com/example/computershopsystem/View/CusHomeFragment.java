@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.DAO.ProductFirebaseHelper;
 import com.example.computershopsystem.Model.Product;
+import com.example.computershopsystem.Model.Voucher;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.Utilities.Utils;
 import com.example.computershopsystem.Utilities.Variable;
@@ -73,6 +74,18 @@ public class CusHomeFragment extends Fragment {
                 List<Product> listProductInCart = new ArrayList<>();
                 setList("cart", listProductInCart);
             }
+            if (!sharedpreferences.contains("voucher")) {
+                Voucher voucher=new Voucher();
+                Gson gson = new Gson();
+                String json = gson.toJson(voucher);
+                editor.putString("voucher", json);
+                editor.commit();
+            }
+            if (!sharedpreferences.contains("note")) {
+                editor.putString("note", "");
+                editor.commit();
+            }
+
         }
 
         if (bundle != null) {

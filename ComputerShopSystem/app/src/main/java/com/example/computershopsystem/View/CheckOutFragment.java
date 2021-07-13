@@ -51,30 +51,37 @@ public class CheckOutFragment extends Fragment {
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
     CreditCard creditCard;
-Voucher voucher;
+    Voucher voucher;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CheckOutFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-        voucher =(Voucher) bundle.getSerializable("voucher");
-            binding.tvVoucherCheckOut.setText(voucher.getCode());
-            binding.tvDiscountCheckOut.setText("-$"+checkInt(voucher.getDiscount()));
-        }
-        creditCard=new CreditCard();
-        listView = binding.lvProductCheckout;
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
+        Gson gson = new Gson();
+        String strVoucher = sharedpreferences.getString("voucher", null);
+        voucher = gson.fromJson(strVoucher, Voucher.class);
+
+        binding.tvVoucherCheckOut.setText(voucher.getCode());
+        binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
+
+        binding.tvNoteCheckOut.setText( sharedpreferences.getString("note", null));
+
+
+        creditCard = new CreditCard();
+        listView = binding.lvProductCheckout;
+
+
         List<OrderProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);
         listView.setAdapter(LVProductInCartAdapter);
         binding.tvNumberOfProduct.setText("Price (" + String.valueOf(productList.size()) + " Products)");
         binding.tvPriceCheckOut.setText("$" + checkInt(sumInList(productList)));
-        binding.tvTotalCheckOut.setText("$" + checkInt(sumInList(productList) + 20-(voucher!=null?voucher.getDiscount():0)));
+        binding.tvTotalCheckOut.setText("$" + checkInt(sumInList(productList) + 20 - (voucher != null ? voucher.getDiscount() : 0)));
         binding.tvPaymentCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,25 +96,32 @@ Voucher voucher;
                 switchFragment(fragment);
             }
         });
+        binding.tvNoteCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputNoteCheckOutFragement fragment = new InputNoteCheckOutFragement();
+                switchFragment(fragment);
+            }
+        });
         binding.btnOrderCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = binding.txtNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
                 String phone = binding.txtNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
                 String addesss = binding.btnAddressCheckout.getText().toString();
-                String shipDate = binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[1]+" " + binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[2];
+                String shipDate = binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[1] + " " + binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[2];
                 DateFormat dateFormat = new SimpleDateFormat("HH:mm mm/dd/yyyy");
-                String orderDate=dateFormat.format(new Date());
+                String orderDate = dateFormat.format(new Date());
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
-                String  id=mDatabase.push().getKey();
-                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null,shipDate, addesss, phone, productList,binding.tvNoteCheckOut.getText().toString(), null);
+                String id = mDatabase.push().getKey();
+                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), null);
 
                 mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext(), "Order Successfully", Toast.LENGTH_SHORT).show();
-                        }else{
+                        } else {
                             Toast.makeText(getContext(), "Order Fail", Toast.LENGTH_SHORT).show();
                         }
                         switchFragment(new CusHomeFragment());

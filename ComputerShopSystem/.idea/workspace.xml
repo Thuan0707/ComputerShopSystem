@@ -30,7 +30,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="" />
+    <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/VoucherFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/VoucherFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/check_out_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/check_out_fragment.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +81,17 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\TERM7\ComputerShop\code\ComputerShopSystem\ComputerShopSystem\app\src\main\res\drawable" />
+    </key>
+    <key name="android.template.-2010695239">
+      <recent name="com.example.computershopsystem.View" />
+    </key>
     <key name="android.template.1840410148">
       <recent name="com.example.computershopsystem.View" />
     </key>
     <key name="android.template.-740602657">
       <recent name="com.example.computershopsystem.View" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\TERM7\ComputerShop\code\ComputerShopSystem\ComputerShopSystem\app\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunManager">
@@ -192,22 +202,22 @@
     </state>
     <state x="263" y="118" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503003656" />
     <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1626106050490" />
-    <state width="746" height="188" key="GridCell.Tab.0.bottom" timestamp="1626110517899">
+    <state width="746" height="188" key="GridCell.Tab.0.bottom" timestamp="1626141057818">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626110517899" />
-    <state width="746" height="188" key="GridCell.Tab.0.center" timestamp="1626110517898">
+    <state width="746" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626141057818" />
+    <state width="746" height="188" key="GridCell.Tab.0.center" timestamp="1626141057818">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626110517898" />
-    <state width="746" height="188" key="GridCell.Tab.0.left" timestamp="1626110517898">
+    <state width="746" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626141057818" />
+    <state width="746" height="188" key="GridCell.Tab.0.left" timestamp="1626141057818">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626110517898" />
-    <state width="746" height="188" key="GridCell.Tab.0.right" timestamp="1626110517898">
+    <state width="746" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626141057818" />
+    <state width="746" height="188" key="GridCell.Tab.0.right" timestamp="1626141057818">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626110517898" />
+    <state width="746" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626141057818" />
     <state x="499" y="141" key="chooseDestDirectoryDialog" timestamp="1625503921999">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
