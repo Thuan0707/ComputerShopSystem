@@ -179,13 +179,20 @@ public class LoginActiveActivity extends AppCompatActivity {
             Log.d(TAG, "onActivityResult: Google Signin intent result");
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             Log.d(TAG, "account task" + accountTask.toString());
-            try {
-                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
 
-                firebaseAuthWithGoogleAccount(account);
-            } catch (Exception e) {
-                Log.d(TAG, "onActivity result:" + e.getMessage());
+            Log.e(TAG, "LAAAAAAAAAAAAAAAAAAAA" + accountTask.toString());
+//            try {
+            GoogleSignInAccount account = null;
+            try {
+                account = accountTask.getResult(ApiException.class);
+            } catch (ApiException e) {
+                e.printStackTrace();
             }
+
+            firebaseAuthWithGoogleAccount(account);
+//            } catch (Exception e) {
+//                Log.d(TAG, "onActivity result:" + e.toString());
+//            }
         }
     }
 
@@ -197,6 +204,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+
                         Log.d(TAG, "onSuccess: Log In");
 
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();

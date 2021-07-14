@@ -65,6 +65,7 @@ public class CheckOutFragment extends Fragment {
         Gson gson = new Gson();
         String strVoucher = sharedpreferences.getString("voucher", null);
         voucher = gson.fromJson(strVoucher, Voucher.class);
+
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
@@ -76,9 +77,14 @@ public class CheckOutFragment extends Fragment {
         binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
 
 
-        creditCard = new CreditCard();
+        Gson gson1 = new Gson();
+        String strCreditCard = sharedpreferences.getString("creditCard", null);
+        editor.remove("isCheckoutCreditCard");
+        editor.apply();
+        creditCard = gson.fromJson(strCreditCard, CreditCard.class);;
         listView = binding.lvProductCheckout;
-
+//
+        binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
 
         List<OrderProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);
@@ -90,6 +96,8 @@ public class CheckOutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CreditCardFragment fragment = new CreditCardFragment();
+                editor.putBoolean("isCheckoutCreditCard",true);
+                editor.apply();
                 switchFragment(fragment);
             }
         });
