@@ -215,8 +215,7 @@
         app:layout_constraintBottom_toTopOf="@+id/hr9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hr8"
-
-        android:src="@drawable/khuong" />
+        android:src="@drawable/verify" />
 
     <TextView
         android:id="@+id/tvName"

@@ -24,6 +24,9 @@ import com.example.computershopsystem.R;
 import com.example.computershopsystem.Utilities.Utils;
 import com.example.computershopsystem.Utilities.Variable;
 import com.example.computershopsystem.databinding.CusHomeFragmentBinding;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +45,7 @@ public class CusHomeFragment extends Fragment {
     DatabaseReference databaseReference;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    private GoogleSignInClient googleSignInClient;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private final String TAG = "testing";
@@ -58,7 +62,12 @@ public class CusHomeFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
         if (firebaseUser != null) {
+            if(firebaseUser.getPhoneNumber()==""){
+                firebaseAuth.signOut();
+                signOut();
+            }
             sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), MODE_PRIVATE);
             editor = sharedpreferences.edit();
             if (!sharedpreferences.contains("cart")) {
@@ -189,6 +198,8 @@ public class CusHomeFragment extends Fragment {
             }
         });
 
+
+
         binding.txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -210,6 +221,14 @@ public class CusHomeFragment extends Fragment {
 
             }
         });
+
+        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
+            }
+        });
+
         binding.btnAsus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,13 +253,7 @@ public class CusHomeFragment extends Fragment {
                 helper.retrieveByBrand("Dell".trim());
             }
         });
-        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
-                getActivity().finish();
-            }
-        });
+
 
 
 
@@ -261,6 +274,14 @@ public class CusHomeFragment extends Fragment {
         editor.putString(key, value);
         editor.commit();
     }
+    private void signOut() {
+        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
+        googleSignInClient = GoogleSignIn.getClient(getActivity(), options);
+        googleSignInClient.signOut();
+    }
 
 }

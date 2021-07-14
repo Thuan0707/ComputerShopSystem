@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,7 +38,12 @@ public class ProfileFragment extends Fragment {
         helper=new ProfileFirebaseHelper(databaseReference,getActivity());
         binding.tvName.setText(firebaseUser.getDisplayName());
         binding.tvEmail.setText(firebaseUser.getEmail());
-        Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
+        binding.tvPhone.setText(firebaseUser.getPhoneNumber());
+        if(firebaseUser.getPhotoUrl()!=null){
+            Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
+        }
+
+
 
         binding.tvGender.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,14 +62,29 @@ public class ProfileFragment extends Fragment {
         binding.tvEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChangeEmailFragment fragment = new ChangeEmailFragment();
-                switchFragment(fragment);
+                String email=binding.tvEmail.getText().toString();
+                if (email==null){
+                    ChangeEmailFragment fragment = new ChangeEmailFragment();
+
+                    switchFragment(fragment);
+                }else{
+                    Toast.makeText(getContext(), "You can not change email" , Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
         binding.tvPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Bundle bundle=new Bundle();
                 ChangePhoneFragment fragment = new ChangePhoneFragment();
+                if (binding.tvPhone.getText()!=null){
+                    bundle.putString("phone", binding.tvPhone.getText().toString());
+                    fragment.setArguments(bundle);
+                }
+
                 switchFragment(fragment);
             }
         });
@@ -77,7 +98,12 @@ public class ProfileFragment extends Fragment {
         binding.tvName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle=new Bundle();
                 ChangeNameFragment fragment = new ChangeNameFragment();
+                if (binding.tvName.getText()!=null){
+                    bundle.putString("name", binding.tvName.getText().toString());
+                    fragment.setArguments(bundle);
+                }
                 switchFragment(fragment);
             }
         });

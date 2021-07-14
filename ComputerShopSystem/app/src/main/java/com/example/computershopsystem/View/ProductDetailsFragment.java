@@ -68,7 +68,6 @@ public class ProductDetailsFragment extends Fragment {
                 }
                 sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
                 editor = sharedpreferences.edit();
-                product = new Product(null, null, null, null, null, "131512333", "Lenovo Legion y530", "https://firebasestorage.googleapis.com/v0/b/computershopsystem-c38da.appspot.com/o/Asus%20A%20series.png?alt=media&token=10182f40-0b8c-482d-9cfd-52fe706a4d17", "i5 10300H 8GB/512GB/4GB GTX1650/144Hz/Win10 (255VN)", 15, 9000000, 9000000.981, null, null);
                 List<CartProduct> listProductInCart = getList();
                 IncreaseQuantityCartProduct(listProductInCart,product);
                 setList("cart", listProductInCart);

@@ -11,5 +11,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="facebook_app_id">337699107729205</string>
     <string name="fb_login_protocol_scheme">fb337699107729205</string>
+    <string name="title_activity_google_maps_api">Map</string>
+    <string name="normal_map">normal map</string>
+    <string name="hybrid_map">hybrid_map map</string>
+    <string name="satellite_map">satellite map</string>
+    <string name="terrain_map">terrain map</string>
 
 </resources>

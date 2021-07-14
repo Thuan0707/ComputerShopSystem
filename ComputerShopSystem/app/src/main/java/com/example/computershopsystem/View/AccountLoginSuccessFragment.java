@@ -1,5 +1,6 @@
 package com.example.computershopsystem.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class AccountLoginSuccessFragment extends Fragment {
     Button btnLogOut;
     Button btnPayment;
     Button btnProfile;
+    Button btnAddress;
 
     @Nullable
     @Override
@@ -44,8 +46,9 @@ public class AccountLoginSuccessFragment extends Fragment {
         account = v.findViewById(R.id.tvAccount2);
         account.setText(name);
         btnLogOut = v.findViewById(R.id.btnLogout);
-        btnPayment=v.findViewById(R.id.btnPayment);
-        btnProfile=v.findViewById(R.id.btnProfile);
+        btnPayment =v.findViewById(R.id.btnPayment);
+        btnProfile =v.findViewById(R.id.btnProfile);
+        btnAddress = v.findViewById(R.id.btnAddress);
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +62,14 @@ public class AccountLoginSuccessFragment extends Fragment {
                 fragTransaction.commit();
             }
         });
+
+        btnAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), GoogleMapsApi.class));
+            }
+        });
+
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
