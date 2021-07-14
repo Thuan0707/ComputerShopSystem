@@ -32,8 +32,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/LoginActiveActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/LoginActiveActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_login_active.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/activity_login_active.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +44,7 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\HP\.android\avd\Nexus_5X_API_26.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\Dang Minh Thuan\.android\avd\Nexus_5X_API_26.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -84,8 +85,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -101,31 +102,33 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@C:\Users\HP\.android\avd\Nexus_5X_API_26.avd" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-07-13T09:04:53.516393400Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="android-custom-viewC:/Users/MSI_GF/AppData/Local/Android/Sdk/sources/android-30/android/widget/GridView.java_SELECTED" value="GridView" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ComputerShopSystemAdmin" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\TERM7\ComputerShop\code\ComputerShopSystem\ComputerShopSystem\app\src\main\res\drawable" />
-    </key>
-    <key name="android.template.-2010695239">
+    <key name="android.template.-1121942099">
       <recent name="com.example.computershopsystem.View" />
     </key>
     <key name="android.template.1840410148">
       <recent name="com.example.computershopsystem.View" />
     </key>
+    <key name="android.template.-2010695239">
+      <recent name="com.example.computershopsystem.View" />
+    </key>
     <key name="android.template.-740602657">
       <recent name="com.example.computershopsystem.View" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\TERM7\ComputerShop\code\ComputerShopSystem\ComputerShopSystem\app\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="gradle finger" />
       <command value="gradle signingreport" />
     </option>
   </component>
@@ -195,6 +198,25 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ComputerShopSystem [finger]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="finger" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ComputerShopSystem [signingreport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -217,6 +239,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ComputerShopSystem [signingreport]" />
+        <item itemvalue="Gradle.ComputerShopSystem [finger]" />
       </list>
     </recent_temporary>
   </component>
@@ -244,10 +267,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1626107743473">
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1626171691285">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1626107743473" />
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1626171691285" />
     <state x="628" y="109" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1625506495753">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -256,47 +279,35 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="93" y="93" width="1350" height="648" key="AVDManager/0.0.1536.834@0.0.1536.834" timestamp="1626100938782" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1626106050490">
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1626169792775">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="263" y="118" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503003656" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1626106050490" />
-    <state width="1493" height="222" key="GridCell.Tab.0.bottom" timestamp="1626261252390">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1626169792775" />
+    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1626184646049">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
-    <state width="1493" height="222" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
-    <state width="1493" height="222" key="GridCell.Tab.0.center" timestamp="1626261252390">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1626184646049" />
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626195085324">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
-    <state width="1493" height="222" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
-    <state width="1493" height="222" key="GridCell.Tab.0.left" timestamp="1626261252390">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626195085324">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
-    <state width="1493" height="222" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
-    <state width="1493" height="222" key="GridCell.Tab.0.right" timestamp="1626261252390">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626195085324">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
-    <state width="1493" height="222" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
-    <state width="1493" height="427" key="GridCell.Tab.1.bottom" timestamp="1626173600447">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626195085324">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="427" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
-    <state width="1493" height="427" key="GridCell.Tab.1.center" timestamp="1626173600447">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state x="432" y="116" key="SettingsEditor" timestamp="1626177640535">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="427" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
-    <state width="1493" height="427" key="GridCell.Tab.1.left" timestamp="1626173600447">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="427" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
-    <state width="1493" height="427" key="GridCell.Tab.1.right" timestamp="1626173600447">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="427" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
+    <state x="432" y="116" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1626177640535" />
     <state x="499" y="141" key="chooseDestDirectoryDialog" timestamp="1625503921999">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -305,11 +316,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1626111586383" />
-    <state x="425" y="196" width="672" height="702" key="run.anything.popup" timestamp="1626165845855">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1626153622914">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1625929020614" />
-    <state x="425" y="196" width="672" height="702" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1626165845855" />
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1626153622914" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1625706179741">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

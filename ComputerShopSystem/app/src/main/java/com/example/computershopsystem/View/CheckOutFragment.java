@@ -126,7 +126,7 @@ public class CheckOutFragment extends Fragment {
                 String orderDate = dateFormat.format(new Date());
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
                 String id = mDatabase.push().getKey();
-                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), null);
+                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), null,voucher);
 
                 mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
