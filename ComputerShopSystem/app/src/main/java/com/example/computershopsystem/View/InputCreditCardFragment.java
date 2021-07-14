@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +78,6 @@ public class InputCreditCardFragment extends Fragment {
             id = sharedpreferences.getString("IdCard",null);
             editor.remove("IdCard");
             editor.apply();
-            Log.e("PaSSSSSSSSSSSSSSSSSSSSSSSSS","LLLLLLLLL"+id);
             Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("card").orderByChild("id").equalTo(id);
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -123,6 +121,7 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                numberCard.setBackground(getActivity().getDrawable(R.drawable.border));
                 if(s.toString().equals("")){
                     numberCard.setError("Please enter Number Card !");
                     numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
@@ -146,6 +145,7 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                money.setBackground(getActivity().getDrawable(R.drawable.border));
                 if(s.toString().equals("")){
                     money.setError("Please enter Money !");
                     money.setBackground(getActivity().getDrawable(R.drawable.border_red));
@@ -198,6 +198,7 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                money.setBackground(getActivity().getDrawable(R.drawable.border));
                 if(s.toString().equals("")){
                     holderCard.setError("Please enter Holder Card !");
                     holderCard.setBackground(getActivity().getDrawable(R.drawable.border_red));

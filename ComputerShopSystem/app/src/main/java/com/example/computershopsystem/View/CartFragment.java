@@ -49,6 +49,9 @@ public class CartFragment extends Fragment {
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
         List<OrderProduct> productList = getList();
+        if (productList.size()==0){
+            switchFragment(new NotFoundFragment());
+        }
         LVProductInCartAdapter LVProductInCartAdapter = new LVProductInCartAdapter(getActivity(), R.layout.cart_item, productList);
         listView.setAdapter(LVProductInCartAdapter);
         binding.txtItemQuantity.setText(String.valueOf(productList.size()));
