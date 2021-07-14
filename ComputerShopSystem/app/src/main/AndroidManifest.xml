@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".View.InputPhoneRegisterActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.RegisterOTP"
             android:screenOrientation="portrait" />

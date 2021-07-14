@@ -43,11 +43,42 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\Dang Minh Thuan\.android\avd\Nexus_5X_API_26.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\HP\.android\avd\Nexus_5X_API_26.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Computer Shop System" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Computer Shop System" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Computer Shop System" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -70,6 +101,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@C:\Users\HP\.android\avd\Nexus_5X_API_26.avd" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-07-13T09:04:53.516393400Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="android-custom-viewC:/Users/MSI_GF/AppData/Local/Android/Sdk/sources/android-30/android/widget/GridView.java_SELECTED" value="GridView" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
@@ -91,7 +124,12 @@
       <recent name="com.example.computershopsystem.View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle signingreport" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -157,6 +195,30 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ComputerShopSystem [signingreport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingreport" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ComputerShopSystem [signingreport]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -199,22 +261,42 @@
     </state>
     <state x="263" y="118" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1625503003656" />
     <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1626106050490" />
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626151794356">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="222" key="GridCell.Tab.0.bottom" timestamp="1626261252390">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
-    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626151794356">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="222" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
+    <state width="1493" height="222" key="GridCell.Tab.0.center" timestamp="1626261252390">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
-    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626151794356">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="222" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
+    <state width="1493" height="222" key="GridCell.Tab.0.left" timestamp="1626261252390">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
-    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626151794356">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="222" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
+    <state width="1493" height="222" key="GridCell.Tab.0.right" timestamp="1626261252390">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626151794356" />
+    <state width="1493" height="222" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1626261252390" />
+    <state width="1493" height="427" key="GridCell.Tab.1.bottom" timestamp="1626173600447">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="427" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
+    <state width="1493" height="427" key="GridCell.Tab.1.center" timestamp="1626173600447">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="427" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
+    <state width="1493" height="427" key="GridCell.Tab.1.left" timestamp="1626173600447">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="427" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
+    <state width="1493" height="427" key="GridCell.Tab.1.right" timestamp="1626173600447">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="427" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1626173600447" />
     <state x="499" y="141" key="chooseDestDirectoryDialog" timestamp="1625503921999">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -223,10 +305,11 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1626111586383" />
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1625929020614">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="425" y="196" width="672" height="702" key="run.anything.popup" timestamp="1626165845855">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1625929020614" />
+    <state x="425" y="196" width="672" height="702" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1626165845855" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1625706179741">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
