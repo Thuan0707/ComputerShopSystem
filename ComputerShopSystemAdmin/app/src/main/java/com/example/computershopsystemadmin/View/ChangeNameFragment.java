@@ -57,7 +57,7 @@ public class ChangeNameFragment extends Fragment {
                         public void onComplete(@NonNull @NotNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/"+user.getUid()+"/fullName");
+                                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Admin/"+user.getUid()+"/fullName");
                                 mDatabase.setValue(fullName).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -67,7 +67,7 @@ public class ChangeNameFragment extends Fragment {
                                         }else{
                                             Toast.makeText(getContext(), "Change Name Fail" , Toast.LENGTH_SHORT).show();
                                         }
-                                        switchFragment(new ProfileFragment());
+                                        switchFragment(new ProfileAdminFragment());
                                     }
                                 });
                             }
@@ -88,5 +88,4 @@ public class ChangeNameFragment extends Fragment {
         fragTransaction.replace(R.id.fl_wrapper, fragment);
         fragTransaction.commit();
     }
-
 }

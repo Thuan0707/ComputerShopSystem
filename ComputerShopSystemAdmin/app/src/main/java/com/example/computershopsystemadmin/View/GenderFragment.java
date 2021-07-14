@@ -65,12 +65,12 @@ public class GenderFragment extends Fragment {
                     gender = 2;
                 }
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + user.getUid() + "/gender");
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Admin/"+user.getUid()+"/gender");
                 mDatabase.setValue(gender).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            ProfileFragment fragment=new ProfileFragment();
+                            ProfileAdminFragment fragment=new ProfileAdminFragment();
                             switchFragment(fragment);
                         }
                     }

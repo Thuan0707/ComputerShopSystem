@@ -68,7 +68,7 @@ public class BirthdayFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/"+user.getUid()+"/dateOfBirth");
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Admin/"+user.getUid()+"/dateOfBirth");
                 mDatabase.setValue(binding.edBirthday.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -78,7 +78,7 @@ public class BirthdayFragment extends Fragment {
                         }else{
                             Toast.makeText(getContext(), "Change Date Of Birth Fail" , Toast.LENGTH_SHORT).show();
                         }
-                        switchFragment(new ProfileFragment());
+                        switchFragment(new ProfileAdminFragment());
                     }
                 });
             }
