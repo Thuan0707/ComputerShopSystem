@@ -37,11 +37,12 @@ public class ProfileFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
         helper = new ProfileFirebaseHelper(databaseReference, getActivity());
-        helper.loadACustomer(firebaseUser.getUid(), binding.tvBirthday, binding.tvGender);
-        binding.tvName.setText(firebaseUser.getDisplayName());
+        helper.loadACustomer(firebaseUser.getUid(), binding.tvBirthday, binding.tvGender,binding.tvName);
+
         binding.tvEmail.setText(firebaseUser.getEmail());
         binding.tvPhone.setText(firebaseUser.getPhoneNumber());
         if (firebaseUser.getPhotoUrl() != null) {
+
             Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
         }
 

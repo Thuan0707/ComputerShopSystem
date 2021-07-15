@@ -2,6 +2,7 @@ package com.example.computershopsystemadmin.Model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Customer implements Serializable {
@@ -11,9 +12,9 @@ public class Customer implements Serializable {
     String  dateOfBirth;
     String address;
     int gender;
-    List<CreditCard> cardList;
-    List<Order> orderList;
-    List<Payment> list;
+    HashMap<String ,CreditCard> cardList;
+    HashMap<String ,Order> orderList;
+    HashMap<String ,Payment> list;
     Date createAt;
     Date deleteAt;
 
@@ -28,7 +29,7 @@ public class Customer implements Serializable {
         this.createAt = createAt;
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, List<CreditCard> cardList, List<Order> orderList, List<Payment> list, Date createAt, Date deleteAt) {
+    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, HashMap<String, CreditCard> cardList, HashMap<String, Order> orderList, HashMap<String, Payment> list, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.fullName = fullName;
@@ -90,27 +91,27 @@ public class Customer implements Serializable {
         this.gender = gender;
     }
 
-    public List<CreditCard> getCardList() {
+    public HashMap<String, CreditCard> getCardList() {
         return cardList;
     }
 
-    public void setCardList(List<CreditCard> cardList) {
+    public void setCardList(HashMap<String, CreditCard> cardList) {
         this.cardList = cardList;
     }
 
-    public List<Order> getOrderList() {
+    public HashMap<String, Order> getOrderList() {
         return orderList;
     }
 
-    public void setOrderList(List<Order> orderList) {
+    public void setOrderList(HashMap<String, Order> orderList) {
         this.orderList = orderList;
     }
 
-    public List<Payment> getList() {
+    public HashMap<String, Payment> getList() {
         return list;
     }
 
-    public void setList(List<Payment> list) {
+    public void setList(HashMap<String, Payment> list) {
         this.list = list;
     }
 

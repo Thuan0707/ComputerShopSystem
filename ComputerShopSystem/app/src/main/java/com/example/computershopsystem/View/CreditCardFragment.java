@@ -3,7 +3,6 @@ package com.example.computershopsystem.View;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +52,6 @@ public class CreditCardFragment extends Fragment {
             editor = sharedpreferences.edit();
         }
         getList();
-        Log.e("LALALA","lllllllllllllllllllll"+creditCards.size());
         binding.btnGotoAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
