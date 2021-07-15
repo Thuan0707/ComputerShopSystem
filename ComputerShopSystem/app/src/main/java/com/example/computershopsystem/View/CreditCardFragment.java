@@ -3,7 +3,6 @@ package com.example.computershopsystem.View;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +39,7 @@ public class CreditCardFragment extends Fragment {
 
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
-    ArrayList<CreditCard> creditCards = new ArrayList<>();
+    ArrayList<CreditCard> creditCards;
     @Nullable
     @Override
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
@@ -53,7 +52,6 @@ public class CreditCardFragment extends Fragment {
             editor = sharedpreferences.edit();
         }
         getList();
-        Log.e("LALALA","lllllllllllllllllllll"+creditCards.size());
         binding.btnGotoAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +76,7 @@ public class CreditCardFragment extends Fragment {
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                creditCards = new ArrayList<>();
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot shot : dataSnapshot.getChildren()) {
                         CreditCard creditCard = shot.getValue(CreditCard.class);

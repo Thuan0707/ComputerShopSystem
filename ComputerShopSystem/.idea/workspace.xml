@@ -44,7 +44,7 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\Dang Minh Thuan\.android\avd\Nexus_5X_API_26.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\HP\.android\avd\Nexus_5X_API_26.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -288,22 +288,26 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1626184646049" />
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1626195085324">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="143" key="GridCell.Tab.0.bottom" timestamp="1626362933796">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
-    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1626195085324">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="143" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1626362933796" />
+    <state width="1493" height="143" key="GridCell.Tab.0.center" timestamp="1626362933796">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
-    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1626195085324">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="143" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1626362933796" />
+    <state width="1493" height="143" key="GridCell.Tab.0.left" timestamp="1626362933796">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
-    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1626195085324">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1493" height="143" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1626362933796" />
+    <state width="1493" height="143" key="GridCell.Tab.0.right" timestamp="1626362933796">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626195085324" />
+    <state width="1493" height="143" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1626362933796" />
     <state x="432" y="116" key="SettingsEditor" timestamp="1626177640535">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
