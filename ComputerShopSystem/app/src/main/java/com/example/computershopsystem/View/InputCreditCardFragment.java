@@ -78,7 +78,7 @@ public class InputCreditCardFragment extends Fragment {
             id = sharedpreferences.getString("IdCard",null);
             editor.remove("IdCard");
             editor.apply();
-            Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("card").orderByChild("id").equalTo(id);
+            Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("cardList").orderByChild("id").equalTo(id);
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -242,7 +242,7 @@ public class InputCreditCardFragment extends Fragment {
                 }
                 if(check) {
                     String idCard = id;
-                    databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("card");
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
                     if((id == null)) {
                         idCard = databaseReference.push().getKey();
                     }
