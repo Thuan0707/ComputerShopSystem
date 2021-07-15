@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,14 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.databinding.ChangePhoneFragmentBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.jetbrains.annotations.NotNull;
 
 public class ChangePhoneFragment extends Fragment {
 
@@ -39,9 +48,22 @@ public class ChangePhoneFragment extends Fragment {
                     binding.edPhone.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     binding.edPhone.setError(notify);
                 }else{
-                    Intent intent = new Intent(getContext(), RegisterOTP.class);
-                    intent.putExtra("changePhone",binding.edPhone.getText().toString());
-                    startActivity(intent);
+                    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Admin/"+user.getUid()+"/phone");
+                    mDatabase.setValue(binding.edPhone.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(getContext(), "Change Phone Number Successfully" , Toast.LENGTH_SHORT).show();
+                                ProfileAdminFragment fragment=new ProfileAdminFragment();
+                                switchFragment(fragment);
+
+                            }else{
+                                Toast.makeText(getContext(), "Change Phone Number Fail" , Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
                 }
             }
         });

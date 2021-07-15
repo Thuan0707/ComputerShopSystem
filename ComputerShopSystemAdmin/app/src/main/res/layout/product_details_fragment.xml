@@ -83,7 +83,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/hr" />
 
             <TextView
-                android:id="@+id/tvPriceProduct"
+                android:id="@+id/tvSellPriceProduct"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="18dp"
+
+                android:layout_marginEnd="135dp"
+                android:text="$799,43"
+                android:textColor="@color/red"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHp" />
+            <TextView
+                android:id="@+id/tvBuyPriceProduct"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginStart="18dp"
@@ -96,7 +110,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHp" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,7 +136,13 @@
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
-
+                        <TextView
+                            android:id="@+id/tvCPUItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="CPU:" />
                         <TextView
                             android:id="@+id/tvNumberItem"
                             android:layout_width="match_parent"
@@ -131,6 +150,13 @@
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/poppins_bold"
                             android:text="Name:" />
+                        <TextView
+                            android:id="@+id/tvNumberItem1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Brand:" />
 
                         <TextView
                             android:id="@+id/tvMoreCate"
@@ -154,14 +180,22 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="Battery:" />
+                            android:text="ROM:" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
-
+                        <TextView
+                            android:id="@+id/txtCPU"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="i7 Intel Core i5 Comet Lake-10300H "
+                            android:drawableEnd="@drawable/ic_right"
+                            android:textAlignment="textEnd" />
                         <TextView
                             android:id="@+id/txtNameProduct"
                             android:layout_width="match_parent"
@@ -169,17 +203,27 @@
                             android:layout_marginBottom="12dp"
                             android:fontFamily="@font/poppins_light"
                             android:text="Laptop Lenovo Legion 5-15IMH05 "
+                            android:drawableEnd="@drawable/ic_right"
                             android:textAlignment="textEnd" />
 
+                        <TextView
+                            android:id="@+id/txtBrand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="Lenovo"
+                            android:drawableEnd="@drawable/ic_right"
+                            android:textAlignment="textEnd" />
                         <TextView
                             android:id="@+id/txtRAM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:fontFamily="@font/poppins_light"
-                            android:text="8GB DDR4 (2x SO-DIMM socket)"
+                            android:text="16GB"
+                            android:drawableEnd="@drawable/ic_right"
                             android:textAlignment="textEnd" />
-
                         <TextView
                             android:id="@+id/txtScreen"
                             android:layout_width="match_parent"
@@ -187,15 +231,17 @@
                             android:layout_marginBottom="12dp"
                             android:fontFamily="@font/poppins_light"
                             android:text='15.6" FHD (1920 x 1080) IPS, 144Hz'
+                            android:drawableEnd="@drawable/ic_right"
                             android:textAlignment="textEnd" />
 
                         <TextView
-                            android:id="@+id/txtBattery"
+                            android:id="@+id/txtROM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:fontFamily="@font/poppins_light"
-                            android:text="3 Cell 51WHr"
+                            android:text="SSD 512GB"
+                            android:drawableEnd="@drawable/ic_right"
                             android:textAlignment="textEnd" />
 
                     </LinearLayout>
@@ -220,28 +266,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="18dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="The estimated delivery will be between 5-7 working days, depending on the delivery address."
+                android:text="3km 5M"
                 android:textAlignment="textStart" />
 
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
 
-                android:layout_marginHorizontal="18dp"
-                android:text="Exchange and return:"
-                android:textColor="#223263"
-                android:textSize="16dp"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvExchange"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="18dp"
-                android:fontFamily="@font/poppins_light"
-                android:text="You have 30 days from the shipping date to return your purchare. Return costs are 150.000 and they will be deducted from your return."
-                android:textAlignment="textStart" />
+
 
         </LinearLayout>
 

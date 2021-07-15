@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.ShopFragment"></activity>
+        <activity android:name=".View.ChangeScreenProductFragment"></activity>
+        <activity android:name=".View.ChangeROMProductFragment" />
+        <activity android:name=".View.ChangeRAMProductFragment" />
+        <activity android:name=".View.ChangeNameProductFragment" />
+        <activity android:name=".View.ChangeCPUProductFragment" />
         <activity
             android:name=".View.InputPhoneRegisterActivity"
             android:screenOrientation="portrait" />
@@ -46,12 +50,12 @@
             android:name=".View.LoginWrongActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".View.LoginActiveActivity"
+            android:name=".View.MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".View.LoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".View.LoginActiveActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

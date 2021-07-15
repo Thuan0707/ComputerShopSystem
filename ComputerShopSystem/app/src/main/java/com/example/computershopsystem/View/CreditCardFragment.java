@@ -55,7 +55,6 @@ public class CreditCardFragment extends Fragment {
         binding.btnGotoAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 editor.remove("IdCard");
                 editor.apply();
                 InputCreditCardFragment fragment = new InputCreditCardFragment();

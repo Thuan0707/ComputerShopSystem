@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".View.InputPhoneRegisterActivity"
             android:screenOrientation="portrait" />
@@ -22,9 +23,7 @@
         <activity
             android:name=".View.AccountNotLogin"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.NotFoundFragment"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".View.SearchResult"
             android:screenOrientation="portrait" />

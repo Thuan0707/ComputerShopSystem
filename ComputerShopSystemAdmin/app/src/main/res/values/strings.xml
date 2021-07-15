@@ -1,11 +1,29 @@
 <resources>
     <string name="app_name">Computer Shop System</string>
 
-    <string-array name="harddrive">
+    <string-array name="rom">
         <item>SSD 256GB</item>
         <item>SSD 512GB</item>
         <item>SSD 1TB</item>
         <item>HDD 1TB</item>
+    </string-array>
+    <string-array name="screen">
+        <item>14 Inch</item>
+        <item>15.6 Inch</item>
+        <item>17 Inch</item>
+        <item>19 Inch</item>
+    </string-array>
+    <string-array name="ram">
+        <item>4GB</item>
+        <item>8GB</item>
+        <item>16GB</item>
+        <item>32GB</item>
+    </string-array>
+    <string-array name="cpuSeries">
+        <item>i3</item>
+        <item>i5</item>
+        <item>i7</item>
+        <item>i9</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
