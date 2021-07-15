@@ -111,13 +111,7 @@ public class ProfileFragment extends Fragment {
                 switchFragment(fragment);
             }
         });
-        binding.tvPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChangePassFragment fragment = new ChangePassFragment();
-                switchFragment(fragment);
-            }
-        });
+     
         binding.tvName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

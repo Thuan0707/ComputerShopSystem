@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +46,8 @@ public class LoginActiveActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(LoginActiveActivity.this, MainActivity.class);
                             startActivity(intent);
+                            Toast.makeText(LoginActiveActivity.this, "Login Successfully!!!", Toast.LENGTH_SHORT).show();
+
                         } else {
                             tvErrorLogin = findViewById(R.id.tvErrorLogin);
                             tvErrorLogin.setText("Your Username or Password is Wrong!!!!");

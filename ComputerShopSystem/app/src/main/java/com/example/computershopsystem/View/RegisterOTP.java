@@ -164,7 +164,12 @@ public class RegisterOTP extends AppCompatActivity {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
                         CustomerAccount customerAccount = new CustomerAccount(user.getUid(), numberPhone, null, user.getEmail(), user.getUid(), null);
+
                         Customer customer = new Customer(user.getUid(), customerAccount, user.getDisplayName(), new Date());
+//                         Order order = new Order(user.getUid(), "132", "ádsf", "11/11/2222", null, "11/22/2222", "Ninh kiu", "123", null,null, new CreditCard(),new Voucher());
+//                        List<Order> orderList=new ArrayList<>();
+//                        orderList.add(order);
+//                        customer.setOrderList(orderList);
                         databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
                         Intent intent = new Intent(RegisterOTP.this, MainActivity.class);
                         startActivity(intent);

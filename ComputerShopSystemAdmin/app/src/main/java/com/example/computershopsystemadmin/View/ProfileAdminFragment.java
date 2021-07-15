@@ -14,33 +14,32 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystemadmin.DAO.ProfileFirebaseHelper;
 import com.example.computershopsystemadmin.R;
-import com.example.computershopsystemadmin.databinding.ProfileFragmentBinding;
+import com.example.computershopsystemadmin.databinding.ProfileAdminFragmentBinding;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class ProfileFragment extends Fragment {
+public class ProfileAdminFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     ProfileFirebaseHelper helper;
     DatabaseReference databaseReference;
-    ProfileFragmentBinding binding;
+    ProfileAdminFragmentBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = ProfileFragmentBinding.inflate(getLayoutInflater());
+        binding = ProfileAdminFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Admin");
         helper = new ProfileFirebaseHelper(databaseReference, getActivity());
-        helper.loadACustomer(firebaseUser.getUid(), binding.tvBirthday, binding.tvGender);
+        helper.loadAAdmin(firebaseUser.getUid(), binding.tvBirthday, binding.tvGender, binding.tvEmail, binding.tvPhone);
         binding.tvName.setText(firebaseUser.getDisplayName());
-        binding.tvEmail.setText(firebaseUser.getEmail());
-        binding.tvPhone.setText(firebaseUser.getPhoneNumber());
         if (firebaseUser.getPhotoUrl() != null) {
             Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
         }
@@ -86,14 +85,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String email = binding.tvEmail.getText().toString();
-                if (email == "") {
-                    ChangeEmailFragment fragment = new ChangeEmailFragment();
+                Bundle bundle = new Bundle();
+                ChangeEmailFragment fragment = new ChangeEmailFragment();
+                bundle.putString("email", email);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
 
-                    switchFragment(fragment);
-                } else {
-                    Toast.makeText(getContext(), "You can not change email", Toast.LENGTH_SHORT).show();
-
-                }
 
             }
         });

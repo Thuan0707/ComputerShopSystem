@@ -72,7 +72,7 @@ public class CreditCardFragment extends Fragment {
     }
 
     public void getList() {
-        Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("card");
+        Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("cardList");
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

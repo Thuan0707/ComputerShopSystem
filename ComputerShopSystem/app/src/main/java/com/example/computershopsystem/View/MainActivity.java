@@ -82,7 +82,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.ic_location:
                         if (firebaseUser != null) {
-                            selectedFragment = new ProductDetailsFragment();
+                            Bundle bundle = new Bundle();
+                            selectedFragment = new NotFoundFragment();
+                            bundle.putString("log", "This Function is maintaining!!!!");
+                            selectedFragment.setArguments(bundle);
                         } else {
                             selectedFragment = new TestLoginLogoutFragment();
                         }

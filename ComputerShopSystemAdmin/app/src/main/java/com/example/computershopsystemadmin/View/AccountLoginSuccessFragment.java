@@ -51,7 +51,7 @@ public class AccountLoginSuccessFragment extends Fragment {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProfileFragment fragment = new ProfileFragment();
+                ProfileAdminFragment fragment = new ProfileAdminFragment();
                 switchFragment(fragment);
             }
         });
