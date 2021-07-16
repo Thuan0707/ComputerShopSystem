@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".View.ChangeRAMProductFragment">
+        tools:context=".View.ChangeRamProductFragment">
 
         <EditText
             android:id="@+id/edRAM"
@@ -18,7 +18,7 @@
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Enter RAM Product"
-            android:inputType="number"
+            android:inputType="text"
             android:paddingHorizontal="16dp"
             android:textAlignment="textStart"
             android:textColor="@color/black"

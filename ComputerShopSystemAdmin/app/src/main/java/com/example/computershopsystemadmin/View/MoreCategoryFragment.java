@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 public class MoreCategoryFragment extends Fragment {
     MoreCategoryFragmentBinding binding;
     GridView gridProduct;
-    CusHomeFragment cusHomeFragment ;
+    ProductManagementFragment productManagementFragment;
     FragmentManager fragmentManager;
     FragmentTransaction fragTransaction;
     Bundle result;
@@ -32,7 +32,7 @@ public class MoreCategoryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = MoreCategoryFragmentBinding.inflate(getLayoutInflater());
-        cusHomeFragment = new CusHomeFragment();
+        productManagementFragment = new ProductManagementFragment();
         result = new Bundle();
         fragmentManager = getActivity().getSupportFragmentManager();
         fragTransaction = fragmentManager.beginTransaction();
@@ -69,8 +69,8 @@ public class MoreCategoryFragment extends Fragment {
 
     public void PassData(String filter) {
         result.putString("Filter", filter);
-        cusHomeFragment.setArguments(result);
-        fragTransaction.replace(R.id.fl_wrapper, cusHomeFragment);
+        productManagementFragment.setArguments(result);
+        fragTransaction.replace(R.id.fl_wrapper, productManagementFragment);
         fragTransaction.commit();
     }
     public void buttonHP() {

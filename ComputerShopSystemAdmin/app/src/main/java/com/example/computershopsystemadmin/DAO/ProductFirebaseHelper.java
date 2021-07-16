@@ -7,7 +7,7 @@ import android.widget.GridView;
 import androidx.annotation.NonNull;
 
 
-import com.example.computershopsystemadmin.Addapter.GridAdapter;
+import com.example.computershopsystemadmin.Addapter.GridProductAdapter;
 import com.example.computershopsystemadmin.Model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +25,7 @@ public class ProductFirebaseHelper {
     Boolean saved = null;
     ArrayList<Product> list = new ArrayList<>();
     GridView gridView;
-    GridAdapter gridAdapter;
+    GridProductAdapter gridProductAdapter;
     Context context;
 
     public ProductFirebaseHelper(DatabaseReference db, GridView gridView, Context context) {
@@ -46,8 +46,8 @@ public class ProductFirebaseHelper {
                     listProduct.add(product);
                 }
             }
-            gridAdapter = new GridAdapter(context, listProduct);
-            gridView.setAdapter(gridAdapter);
+            gridProductAdapter = new GridProductAdapter(context, listProduct);
+            gridView.setAdapter(gridProductAdapter);
         }
 
         @Override
@@ -96,8 +96,8 @@ public class ProductFirebaseHelper {
                         }
                     }
                 }
-                gridAdapter = new GridAdapter(context, listProduct);
-                gridView.setAdapter(gridAdapter);
+                gridProductAdapter = new GridProductAdapter(context, listProduct);
+                gridView.setAdapter(gridProductAdapter);
             }
 
             @Override

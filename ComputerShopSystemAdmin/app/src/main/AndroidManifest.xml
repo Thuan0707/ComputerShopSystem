@@ -13,9 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.ChangeScreenProductFragment"></activity>
+        <activity android:name=".View.CustomerProfileFragment"></activity>
+        <activity android:name=".View.CustomerManagementFragment" />
+        <activity android:name=".View.ManagementFragment" />
+        <activity android:name=".View.ChangePriceQuantityProductFragment" />
+        <activity android:name=".View.ChangeBrandProductFragment" />
+        <activity android:name=".View.ChangeScreenProductFragment" />
         <activity android:name=".View.ChangeROMProductFragment" />
-        <activity android:name=".View.ChangeRAMProductFragment" />
+        <activity android:name=".View.ChangeRamProductFragment" />
         <activity android:name=".View.ChangeNameProductFragment" />
         <activity android:name=".View.ChangeCPUProductFragment" />
         <activity
@@ -40,7 +45,7 @@
             android:name=".View.HomeLoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".View.CusHomeFragment"
+            android:name=".View.ProductManagementFragment"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             tools:ignore="Instantiatable" />
         <activity

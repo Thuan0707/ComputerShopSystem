@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
 
-public class AccountLoginSuccessFragment extends Fragment {
+public class CustomerDetailFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
 
@@ -38,7 +38,7 @@ public class AccountLoginSuccessFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.account_login_success_fragment, container, false);
+        View v = inflater.inflate(R.layout.customer_detail_fragment, container, false);
         firebaseAuth = firebaseAuth.getInstance();
         firebaseUser= firebaseAuth.getCurrentUser();
         String name = firebaseUser.getDisplayName();
@@ -51,16 +51,15 @@ public class AccountLoginSuccessFragment extends Fragment {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProfileAdminFragment fragment = new ProfileAdminFragment();
+                CustomerProfileFragment fragment = new CustomerProfileFragment();
                 switchFragment(fragment);
             }
         });
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.signOut();
-                signOut();
-                CusHomeFragment fragment = new CusHomeFragment();
+
+                ProductManagementFragment fragment = new ProductManagementFragment();
                 switchFragment(fragment);
             }
         });

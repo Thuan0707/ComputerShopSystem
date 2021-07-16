@@ -5,10 +5,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".View.ChangeCPUProductFragment">
+        tools:context=".View.ChangePriceQuantityProductFragment">
 
         <EditText
-            android:id="@+id/edDesCPU"
+            android:id="@+id/edSellPrice"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
@@ -17,8 +17,8 @@
             android:background="@drawable/border"
             android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="Enter Description CPU"
-            android:inputType="text"
+            android:hint="Enter Sell Price Product"
+            android:inputType="numberDecimal"
             android:paddingHorizontal="16dp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
@@ -29,26 +29,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView122" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="CPU Series"
-            android:textColor="#017FFF"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameTop12" />
-
-        <TextView
             android:id="@+id/tvNameTop12"
             android:layout_width="220dp"
             android:layout_height="30dp"
 
             android:layout_marginStart="16dp"
-            android:text="Change CPU Product "
+            android:text="Change Price Product "
             android:textColor="#223263"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -96,30 +82,88 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Spinner
-            android:id="@+id/spSeriesCPU"
-            android:layout_width="98dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="8dp"
-            android:entries="@array/cpuSeries"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
         <TextView
             android:id="@+id/textView122"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="64dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="CPU Description"
+            android:text="Sell Price"
             android:textColor="#017FFF"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNameTop12" />
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Buy Price"
+            android:textColor="#017FFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameTop12" />
+
+        <EditText
+            android:id="@+id/edBuyPrice"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/border"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Enter Buy Price Product"
+            android:inputType="numberDecimal"
+            android:paddingHorizontal="16dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView122" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="304dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Quantity"
+            android:textColor="#017FFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameTop12" />
+
+        <EditText
+            android:id="@+id/edQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="264dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/border"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Enter Quantity Product"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView122" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

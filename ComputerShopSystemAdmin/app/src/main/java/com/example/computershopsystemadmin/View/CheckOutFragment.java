@@ -128,7 +128,7 @@ public class CheckOutFragment extends Fragment {
                         } else {
                             Toast.makeText(getContext(), "Order Fail", Toast.LENGTH_SHORT).show();
                         }
-                        switchFragment(new CusHomeFragment());
+                        switchFragment(new ProductManagementFragment());
                     }
                 });
 

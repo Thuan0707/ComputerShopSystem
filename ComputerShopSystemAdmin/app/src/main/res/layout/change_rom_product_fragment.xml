@@ -18,7 +18,7 @@
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Enter ROM Product"
-            android:inputType="number"
+            android:inputType="text"
             android:paddingHorizontal="16dp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
@@ -98,8 +98,8 @@
 
         <Spinner
             android:id="@+id/spROM"
-            android:layout_width="98dp"
-            android:layout_height="27dp"
+            android:layout_width="173dp"
+            android:layout_height="32dp"
             android:layout_marginTop="8dp"
             android:entries="@array/rom"
             app:layout_constraintEnd_toEndOf="parent"

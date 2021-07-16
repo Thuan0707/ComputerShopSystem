@@ -12,6 +12,7 @@ public class Customer implements Serializable {
     String  dateOfBirth;
     String address;
     int gender;
+    String image;
     HashMap<String ,CreditCard> cardList;
     HashMap<String ,Order> orderList;
     HashMap<String ,Payment> list;
@@ -29,13 +30,15 @@ public class Customer implements Serializable {
         this.createAt = createAt;
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, HashMap<String, CreditCard> cardList, HashMap<String, Order> orderList, HashMap<String, Payment> list, Date createAt, Date deleteAt) {
+
+    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, String image, HashMap<String, CreditCard> cardList, HashMap<String, Order> orderList, HashMap<String, Payment> list, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.gender = gender;
+        this.image = image;
         this.cardList = cardList;
         this.orderList = orderList;
         this.list = list;
@@ -89,6 +92,14 @@ public class Customer implements Serializable {
 
     public void setGender(int gender) {
         this.gender = gender;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public HashMap<String, CreditCard> getCardList() {

@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystemadmin.Model.Admin;
-import com.example.computershopsystemadmin.Model.AdminAccount;
 import com.example.computershopsystemadmin.Model.OrderProduct;
 import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.R;
@@ -20,7 +18,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -28,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -53,10 +49,7 @@ public class MainActivity extends AppCompatActivity {
             editor = sharedpreferences.edit();
 
         }
-        
-     
-
-        switchFragment(new CusHomeFragment());
+        switchFragment(new ProductManagementFragment());
 
 
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
@@ -69,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.ic_home:
-                        selectedFragment = new CusHomeFragment();
+                        selectedFragment = new ProductManagementFragment();
 
                         break;
                     case R.id.ic_user:
@@ -81,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.ic_cart:
                         if (firebaseUser != null) {
-                            selectedFragment = new CartFragment();
+                            selectedFragment = new ManagementFragment();
                         } else {
                             selectedFragment = new TestLoginLogoutFragment();
                         }

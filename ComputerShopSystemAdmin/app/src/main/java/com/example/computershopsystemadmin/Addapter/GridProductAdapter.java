@@ -16,14 +16,14 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
-public class GridAdapter extends BaseAdapter {
+public class GridProductAdapter extends BaseAdapter {
 
     Context context;
     ArrayList<Product> listProduct;
 
     LayoutInflater layoutInflater;
 
-    public GridAdapter(Context context, ArrayList<Product> listProduct) {
+    public GridProductAdapter(Context context, ArrayList<Product> listProduct) {
         this.context = context;
         this.listProduct = listProduct;
 

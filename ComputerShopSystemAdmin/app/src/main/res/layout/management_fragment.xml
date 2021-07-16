@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.AccountLoginSuccessFragment">
+    tools:context=".View.ManagementFragment">
 
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnShipFeeManagement"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -17,7 +18,7 @@
         android:drawableLeft="@drawable/ic_logout"
         android:drawablePadding="16dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Logout"
+        android:text="Shipping Fee Management"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -26,10 +27,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPayment" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPaymentManagement" />
 
     <Button
-        android:id="@+id/btnPayment"
+        android:id="@+id/btnPaymentManagement"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -38,7 +39,7 @@
         android:drawableLeft="@drawable/ic_payment"
         android:drawablePadding="16dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Payment"
+        android:text="Payment Management"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -47,10 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/btnVoucherManagement" />
 
     <Button
-        android:id="@+id/btnAddress"
+        android:id="@+id/btnVoucherManagement"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -59,7 +60,7 @@
         android:drawableLeft="@drawable/ic_mapblue"
         android:drawablePadding="16dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Address"
+        android:text="Voucher Management"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -68,10 +69,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOrder" />
+        app:layout_constraintTop_toBottomOf="@+id/btnProductManagement" />
 
     <Button
-        android:id="@+id/btnOrder"
+        android:id="@+id/btnProductManagement"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -80,7 +81,7 @@
         android:drawableLeft="@drawable/ic_order"
         android:drawablePadding="16dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Order"
+        android:text="Product Management"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -89,10 +90,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCustomerManagement" />
 
     <Button
-        android:id="@+id/btnProfile"
+        android:id="@+id/btnCustomerManagement"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -101,7 +102,7 @@
         android:drawableLeft="@drawable/ic_userblue"
         android:drawablePadding="16dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Profile"
+        android:text="Customer Management"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -138,10 +139,11 @@
 
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Account"
+        android:text="Management"
         android:textColor="#223263"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

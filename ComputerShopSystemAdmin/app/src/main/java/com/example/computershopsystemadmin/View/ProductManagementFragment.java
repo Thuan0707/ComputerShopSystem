@@ -24,7 +24,8 @@ import com.example.computershopsystemadmin.Model.Voucher;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
 import com.example.computershopsystemadmin.Utilities.Variable;
-import com.example.computershopsystemadmin.databinding.CusHomeFragmentBinding;
+
+import com.example.computershopsystemadmin.databinding.ProductManagementFragmentBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -40,8 +41,9 @@ import java.util.List;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class CusHomeFragment extends Fragment {
-    CusHomeFragmentBinding binding;
+public class ProductManagementFragment extends Fragment {
+    ProductManagementFragmentBinding binding;
+
     ProductFirebaseHelper helper;
     DatabaseReference databaseReference;
     SharedPreferences sharedpreferences;
@@ -55,7 +57,7 @@ public class CusHomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = CusHomeFragmentBinding.inflate(getLayoutInflater());
+        binding = ProductManagementFragmentBinding.inflate(getLayoutInflater());
         databaseReference = FirebaseDatabase.getInstance().getReference("Product");
         helper = new ProductFirebaseHelper(databaseReference, binding.gridProduct, getActivity());
         Bundle bundle = this.getArguments();

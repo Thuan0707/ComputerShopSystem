@@ -21,6 +21,8 @@ import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ProductDetailsFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
@@ -50,19 +52,111 @@ public class ProductDetailsFragment extends Fragment {
         Bundle bundle = getArguments();
         String productJsonString = bundle.getString(Variable.DETAIL_KEY);
         product = Utils.getGsonParser().fromJson(productJsonString, Product.class);
-        binding.tvBuyPriceProduct.setText("BUY PRICE: $"+Utils.checkInt(product.getBuyPrice()));
-        binding.txtCPU.setText(product.getCpu().getDescription());
+        binding.txtBuyPriceProduct.setText("BUY PRICE: $" + Utils.checkInt(product.getBuyPrice()));
+        binding.txtCPU.setText(product.getCpu().getSeries() + " " + product.getCpu().getDescription());
         Picasso.get().load(product.getImage()).into(binding.ivProduct);
-        binding.tvSellPriceProduct.setText("SELL PRICE: $"+Utils.checkInt(product.getSellPrice()));
+        binding.txtSellPriceProduct.setText("SELL PRICE: $" + Utils.checkInt(product.getSellPrice()));
         binding.txtNameProduct.setText(product.getName());
-        binding.txtRAM.setText(product.getRam().getCapacity()+ "GB " + product.getRam().getDescription());
+        binding.txtRAM.setText(product.getRam().getCapacity() + "GB " + product.getRam().getDescription());
         binding.txtScreen.setText(product.getScreen().getSize() + " " + product.getScreen().getDescription());
-        binding.txtROM.setText(product.getRom().getCapacity()+" "+product.getRom().getDescription());
+        binding.txtROM.setText(product.getRom().getCapacity() + " " + product.getRom().getDescription());
         binding.txtBrand.setText(product.getBrand().getName());
-        binding.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+        binding.txtQuantity.setText(String.valueOf(product.getQuantity()));
+        binding.txtQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchFragment(new ChangeCPUProductFragment());
+                Bundle bundle = new Bundle();
+                ChangePriceQuantityProductFragment fragment = new ChangePriceQuantityProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtBuyPriceProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangePriceQuantityProductFragment fragment = new ChangePriceQuantityProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtSellPriceProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangePriceQuantityProductFragment fragment = new ChangePriceQuantityProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtCPU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangeCPUProductFragment fragment = new ChangeCPUProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtBrand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangeBrandProductFragment fragment = new ChangeBrandProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtRAM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangeRamProductFragment fragment = new ChangeRamProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtROM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangeROMProductFragment fragment = new ChangeROMProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangeScreenProductFragment fragment = new ChangeScreenProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.txtNameProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                ChangeNameProductFragment fragment = new ChangeNameProductFragment();
+                bundle.putSerializable("product", product);
+                fragment.setArguments(bundle);
+                switchFragment(fragment);
+            }
+        });
+        binding.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId());
+                mDatabase.removeValue();
             }
         });
 
@@ -80,25 +174,19 @@ public class ProductDetailsFragment extends Fragment {
         editor.putString(key, value);
         editor.apply();
     }
-    public List<OrderProduct> getList(){
-        List<OrderProduct> listProduct=new ArrayList<>();
+
+    public List<OrderProduct> getList() {
+        List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<OrderProduct>>(){}.getType();
+            Type type = new TypeToken<List<OrderProduct>>() {
+            }.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }
-        return  listProduct;
+        return listProduct;
     }
-    public void IncreaseQuantityCartProduct(List<OrderProduct> listProductInCart, Product product) {
-        for (OrderProduct item : listProductInCart) {
-            if (item.getProduct().getId().equalsIgnoreCase(product.getId())) {
-              item.setQuantityInCart(item.getQuantityInCart()+1);
-              return;
-            }
-        }
-        listProductInCart.add(new OrderProduct(1,product));
-    }
+
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

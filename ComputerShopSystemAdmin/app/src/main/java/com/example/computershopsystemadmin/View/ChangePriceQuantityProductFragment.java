@@ -13,57 +13,49 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.computershopsystemadmin.Model.Product;
-import com.example.computershopsystemadmin.Model.Rom;
-import com.example.computershopsystemadmin.Model.Screen;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
 import com.example.computershopsystemadmin.Utilities.Variable;
-import com.example.computershopsystemadmin.databinding.ChangeRomProductFragmentBinding;
-import com.example.computershopsystemadmin.databinding.ChangeScreenProductFragmentBinding;
+import com.example.computershopsystemadmin.databinding.ChangeNameProductFragmentBinding;
+import com.example.computershopsystemadmin.databinding.ChangePriceQuantityProductFragmentBinding;
+import com.example.computershopsystemadmin.databinding.ProductDetailsFragmentBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ChangeScreenProductFragment extends Fragment {
-ChangeScreenProductFragmentBinding binding;
+public class ChangePriceQuantityProductFragment extends Fragment {
+    ChangePriceQuantityProductFragmentBinding binding;
+
     @Override
-    public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        binding = ChangeScreenProductFragmentBinding.inflate(getLayoutInflater());
+    public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = ChangePriceQuantityProductFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
-            Product product =(Product) bundle.getSerializable("product");
-            binding.edDesScreen.setText(product.getScreen().getDescription());
-            int pos=0;
-            switch (product.getScreen().getSize()){
-                case "14 Inch":
-                    pos=0;
-                    break;
-                case "15.6 Inch":
-                    pos=1;
-                    break;
-                case "17 Inch":
-                    pos=2;
-                    break;
-                case "19 Inch":
-                    pos=3;
-                    break;
+            Product product = (Product) bundle.getSerializable("product");
+            binding.edBuyPrice.setText(String.valueOf(Utils.checkInt(product.getBuyPrice())));
+            binding.edSellPrice.setText(String.valueOf(Utils.checkInt(product.getSellPrice())));
+            binding.edQuantity.setText(String.valueOf(product.getQuantity()));
 
-            }
-            binding.spScreen.setSelection(pos);
+
             binding.btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String size = binding.spScreen.getSelectedItem().toString();
-                    String des = binding.edDesScreen.getText().toString();
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/screen/size");
-                    mDatabase.setValue(size);
-                    product.getScreen().setSize(size);
-                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/screen/description");
-                    mDatabase.setValue(des);
-                    product.getScreen().setDescription(des);
+
+                    double sellPrice = Double.parseDouble(binding.edSellPrice.getText().toString().trim());
+                    double buyPrice = Double.parseDouble(binding.edBuyPrice.getText().toString().trim());
+                    int quantity = Integer.parseInt(binding.edQuantity.getText().toString().trim());
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/sellPrice");
+                    mDatabase.setValue(sellPrice);
+                    product.setSellPrice(sellPrice);
+                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/buyPrice");
+                    mDatabase.setValue(buyPrice);
+                    product.setBuyPrice(buyPrice);
+                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/quantity");
+                    mDatabase.setValue(quantity);
+                    product.setQuantity(quantity);
                     ProductDetailsFragment fragment = new ProductDetailsFragment();
                     Bundle bundle = new Bundle();
                     String productJsonString = Utils.getGsonParser().toJson(product);
@@ -75,6 +67,7 @@ ChangeScreenProductFragmentBinding binding;
         }
         return view;
     }
+
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
