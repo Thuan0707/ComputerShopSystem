@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".View.OrderHistoryDetailFragmentBinding">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Address Information"
+            android:textColor="#017FFF"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hr19" />
+
+        <View
+            android:id="@+id/hr19"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="69dp"
+            android:background="#EBF0FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/ibtnBack12"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/left" />
+
+        <TextView
+            android:id="@+id/tvNameTop13"
+            android:layout_width="220dp"
+            android:layout_height="30dp"
+
+            android:layout_marginStart="16dp"
+            android:text="Order Details"
+            android:textColor="#223263"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/hr19"
+            app:layout_constraintStart_toEndOf="@+id/ibtnBack12"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNameAndPhoneOrder"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Minh Thuan - 0351234327"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/tvAddressCheckout"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="500 Nguyen Van Cu noi dai, An Binh\nNinh Kieu, Can Tho, Viet Nam"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameAndPhoneOrder" />
+
+        <ListView
+            android:id="@+id/lvProductOrder"
+            android:layout_width="382dp"
+            android:layout_height="186dp"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimeDeliveryOrder">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/tvTimeDeliveryOrder"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Date Shipping - 8:30 - 07/07/2020"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddressCheckout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lvProductOrder">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Payment" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Note" />
+
+                <TextView
+
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Voucher" />
+
+                <TextView
+                    android:id="@+id/tvNumberOfProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Price (2 products)" />
+
+                <TextView
+                    android:id="@+id/tvShipHowFar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Shipping fee (11km)" />
+
+                <TextView
+                    android:id="@+id/tvDiscountLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Voucher Discount" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Total"
+                    android:textColor="#FF3D00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPaymentOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp"
+
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="1234 5678 9123 4567"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/tvNoteOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/tvVoucherOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/tvPriceOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:paddingRight="22dp"
+                    android:text="$20000"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/tvShippingOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:paddingRight="22dp"
+                    android:text="$20"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/tvDiscountOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:paddingRight="22dp"
+                    android:text="-$0"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/tvTotalOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:paddingRight="22dp"
+                    android:text="$500000"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#FF3D00" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

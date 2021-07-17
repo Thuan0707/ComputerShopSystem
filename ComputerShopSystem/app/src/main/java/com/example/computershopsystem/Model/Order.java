@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Order implements Serializable {
-    String id;
-    String idCustomer;
-    String name;
-    String orderDate;
-    ShipFee shipFee;
-    String ShipDate;
-    String addesss;
-    String numberPhone;
-    List<OrderProduct> orderProductList;
-    String note;
-    CreditCard creditCard;
-    Voucher voucher;
+        String id;
+        String idCustomer;
+        String name;
+        String orderDate;
+        ShipFee shipFee;
+        String ShipDate;
+        String addesss;
+        String numberPhone;
+        List<OrderProduct> orderProductList;
+        String note;
+        CreditCard creditCard;
+        Voucher voucher;
 
     public Order() {
     }

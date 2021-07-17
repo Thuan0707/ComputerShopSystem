@@ -36,7 +36,7 @@ public class CustomerManagementFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("customer", (Customer) parent.getAdapter().getItem(position));
-                CustomerProfileFragment fragment = new CustomerProfileFragment();
+                CustomerDetailFragment fragment = new CustomerDetailFragment();
                 fragment.setArguments(bundle);
                 switchFragment(fragment);
             }

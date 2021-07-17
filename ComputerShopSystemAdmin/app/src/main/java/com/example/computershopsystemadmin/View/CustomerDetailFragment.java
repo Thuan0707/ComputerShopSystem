@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,13 +25,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class CustomerDetailFragment extends Fragment {
 
-    private FirebaseAuth firebaseAuth;
-
-    private GoogleSignInClient googleSignInClient;
-    FirebaseUser firebaseUser;
+    Customer customer;
     TextView account;
 
-    Button btnLogOut;
     Button btnPayment;
     Button btnProfile;
     Button btnOrder;
@@ -39,41 +36,44 @@ public class CustomerDetailFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.customer_detail_fragment, container, false);
-        firebaseAuth = firebaseAuth.getInstance();
-        firebaseUser= firebaseAuth.getCurrentUser();
-        String name = firebaseUser.getDisplayName();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            customer = (Customer) bundle.getSerializable("customer");
+        }
+        String name = customer.getFullName();
         account = v.findViewById(R.id.tvAccount2);
         account.setText(name);
-        btnLogOut = v.findViewById(R.id.btnLogout);
-        btnPayment=v.findViewById(R.id.btnPayment);
-        btnProfile=v.findViewById(R.id.btnProfile);
-        btnOrder=v.findViewById(R.id.btnOrder);
+        btnPayment = v.findViewById(R.id.btnPayment);
+        btnProfile = v.findViewById(R.id.btnProfile);
+        btnOrder = v.findViewById(R.id.btnOrder);
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CustomerProfileFragment fragment = new CustomerProfileFragment();
+                Bundle bun = new Bundle();
+                bun.putSerializable("customer", customer);
+                fragment.setArguments(bun);
                 switchFragment(fragment);
             }
         });
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                ProductManagementFragment fragment = new ProductManagementFragment();
-                switchFragment(fragment);
-            }
-        });
         btnPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CreditCardFragment fragment = new CreditCardFragment();
+                Bundle bun = new Bundle();
+                bun.putSerializable("customer", customer);
+                fragment.setArguments(bun);
                 switchFragment(fragment);
             }
         });
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OrderHistoryFragment fragment=new OrderHistoryFragment();
+                OrderHistoryFragment fragment = new OrderHistoryFragment();
+                Bundle bun = new Bundle();
+                bun.putSerializable("customer", customer);
+                fragment.setArguments(bun);
                 switchFragment(fragment);
             }
         });
@@ -89,16 +89,6 @@ public class CustomerDetailFragment extends Fragment {
         fragTransaction.addToBackStack(null);
         fragTransaction.replace(R.id.fl_wrapper, fragment);
         fragTransaction.commit();
-    }
-
-    private void signOut() {
-        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        googleSignInClient = GoogleSignIn.getClient(getActivity(), options);
-        googleSignInClient.signOut();
     }
 
 
