@@ -33,6 +33,7 @@ public class AccountLoginSuccessFragment extends Fragment {
     Button btnLogOut;
     Button btnPayment;
     Button btnProfile;
+    Button btnOrder;
 
     @Nullable
     @Override
@@ -46,17 +47,12 @@ public class AccountLoginSuccessFragment extends Fragment {
         btnLogOut = v.findViewById(R.id.btnLogout);
         btnPayment=v.findViewById(R.id.btnPayment);
         btnProfile=v.findViewById(R.id.btnProfile);
+        btnOrder=v.findViewById(R.id.btnOrder);
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ProfileFragment fragment = new ProfileFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
-                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
-                        android.R.animator.fade_out);
-                fragTransaction.addToBackStack(null);
-                fragTransaction.replace(R.id.fl_wrapper, fragment);
-                fragTransaction.commit();
+                switchFragment(fragment);
             }
         });
         btnLogOut.setOnClickListener(new View.OnClickListener() {
@@ -65,32 +61,36 @@ public class AccountLoginSuccessFragment extends Fragment {
                 firebaseAuth.signOut();
                 signOut();
                 CusHomeFragment fragment = new CusHomeFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
-                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
-                        android.R.animator.fade_out);
-                fragTransaction.addToBackStack(null);
-                fragTransaction.replace(R.id.fl_wrapper, fragment);
-                fragTransaction.commit();
+                switchFragment(fragment);
             }
         });
         btnPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CreditCardFragment fragment = new CreditCardFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
-                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
-                        android.R.animator.fade_out);
-                fragTransaction.addToBackStack(null);
-                fragTransaction.replace(R.id.fl_wrapper, fragment);
-                fragTransaction.commit();
+                switchFragment(fragment);
             }
         });
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OrderHistoryFragment fragment=new OrderHistoryFragment();
+                switchFragment(fragment);
+            }
+        });
+
         return v;
     }
 
-
+    public void switchFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                android.R.animator.fade_out);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.replace(R.id.fl_wrapper, fragment);
+        fragTransaction.commit();
+    }
 
     private void signOut() {
         GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

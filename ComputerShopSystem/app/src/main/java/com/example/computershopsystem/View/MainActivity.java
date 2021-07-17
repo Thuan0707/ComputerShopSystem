@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -43,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        sharedpreferences =getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
-        editor = sharedpreferences.edit();
-
-        List<CartProduct> productList = getList();
+        if (firebaseUser!=null){
+            sharedpreferences =getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
+            editor = sharedpreferences.edit();
+        }
+        
+     
 
         switchFragment(new CusHomeFragment());
 
@@ -80,13 +82,14 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.ic_location:
                         if (firebaseUser != null) {
-
-                            selectedFragment = new ProductDetailsFragment();
+                            Bundle bundle = new Bundle();
+                            selectedFragment = new NotFoundFragment();
+                            bundle.putString("log", "This Function is maintaining!!!!");
+                            selectedFragment.setArguments(bundle);
                         } else {
                             selectedFragment = new TestLoginLogoutFragment();
                         }
                         break;
-
                 }
                 switchFragment(selectedFragment);
                 return true;
@@ -109,6 +112,12 @@ public class MainActivity extends AppCompatActivity {
 //        Customer customer=new Customer("1QzUXC8c0bQxtJY0EiWOgdHwnIw2",a,"A@gmail.com","Dang Minh A",new Date(),"Can Tho", 1,100000,new Date(),null);
 //
 //        mDatabase.child("1QzUXC8c0bQxtJY0EiWOgdHwnIw2").setValue(customer);
+
+//              //  add voucher
+//                mDatabase = FirebaseDatabase.getInstance().getReference("Voucher");
+//                String  id=mDatabase.push().getKey();
+//        Voucher voucher=new Voucher( id,"ABCDEF",1500, "SPRING SALE", "11/7/2021",null);
+//        mDatabase.child(id).setValue(voucher);
     }
 
     public <T> void setList(String key, List<T> list) {
@@ -121,12 +130,12 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(key, value);
         editor.commit();
     }
-    public List<CartProduct> getList() {
-        List<CartProduct> listProduct = new ArrayList<>();
+    public List<OrderProduct> getList() {
+        List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<CartProduct>>() {
+            Type type = new TypeToken<List<OrderProduct>>() {
             }.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }

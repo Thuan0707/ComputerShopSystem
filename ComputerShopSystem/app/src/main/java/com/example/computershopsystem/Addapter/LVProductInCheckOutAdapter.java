@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.computershopsystem.Model.CartProduct;
+import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,15 +25,15 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LVProductInCheckOutAdapter extends ArrayAdapter<CartProduct> {
+public class LVProductInCheckOutAdapter extends ArrayAdapter<OrderProduct> {
     private Context context;
     private int resource;
-    private List<CartProduct> objects;
+    private List<OrderProduct> objects;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
-    public LVProductInCheckOutAdapter(@NonNull Context context, int resource, @NonNull List<CartProduct> objects) {
+    public LVProductInCheckOutAdapter(@NonNull Context context, int resource, @NonNull List<OrderProduct> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
@@ -73,12 +73,12 @@ public class LVProductInCheckOutAdapter extends ArrayAdapter<CartProduct> {
         editor.putString(key, value);
         editor.apply();
     }
-    public List<CartProduct> getList() {
-        List<CartProduct> listProduct = new ArrayList<>();
+    public List<OrderProduct> getList() {
+        List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<CartProduct>>() {
+            Type type = new TypeToken<List<OrderProduct>>() {
             }.getType();
             listProduct = gson.fromJson(serializedObject, type);
         }

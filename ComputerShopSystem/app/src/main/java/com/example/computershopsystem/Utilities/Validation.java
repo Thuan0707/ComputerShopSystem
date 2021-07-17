@@ -62,4 +62,12 @@ public class Validation {
         }
         return null;
     }
+   public String CheckAddress(String address){
+        if (address.isEmpty()){
+            isValid=false;
+            return "Address can not null";
+
+        }
+        return null;
+    }
 }

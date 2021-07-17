@@ -1,5 +1,8 @@
 package com.example.computershopsystem.View;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -7,7 +10,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,11 +25,17 @@ import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.InputCreditCardFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class InputCreditCardFragment extends Fragment {
@@ -35,24 +46,73 @@ public class InputCreditCardFragment extends Fragment {
     InputCreditCardFragmentBinding binding;
     EditText numberCard;
     EditText money;
-    EditText expirationDate;
+    TextView expirationDate;
     EditText holderCard;
 
+    String id;
+    String keyCreditCard;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
         binding = InputCreditCardFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        id = null;
+        keyCreditCard = null;
+        CreditCard creditCard = new CreditCard();
+
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         numberCard = binding.edCardNumberAdd;
         money = binding.edMoneyCardAdd;
         expirationDate = binding.edExpirationCardAdd;
         holderCard = binding.edCardHolderAdd;
-
         numberCard.setInputType(InputType.TYPE_CLASS_NUMBER);
-        expirationDate.setInputType(InputType.TYPE_CLASS_DATETIME);
         money.setInputType(InputType.TYPE_CLASS_NUMBER);
+        if (firebaseUser!=null){
+            sharedpreferences = getContext().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
+            editor = sharedpreferences.edit();
+            id = sharedpreferences.getString("IdCard",null);
+            editor.remove("IdCard");
+            editor.apply();
+            Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("cardList").orderByChild("id").equalTo(id);
+            data.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot shot : snapshot.getChildren()) {
+                            keyCreditCard=shot.getKey();
+                            CreditCard creditCard = shot.getValue(CreditCard.class);
+                            numberCard.setText(creditCard.getCardNumber());
+                            money.setText(creditCard.getMoney());
+                            expirationDate.setText(creditCard.getExpirationDate());
+                            holderCard.setText(creditCard.getCardHolder());
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                }
+            });
+        }
+
+        if(!(id == null)){
+            binding.tvNameTop12.setText("Update Card");
+            binding.btnAddCard.setText("Save");
+            //Log.e("NUNUNUNU",null);
+//            if(creditCard != null ){
+//
+////                numberCard.setText(creditCard.getCardNumber());
+////                money.setText(creditCard.getMoney());
+////                expirationDate.setText(creditCard.getExpirationDate());
+////                holderCard.setText(creditCard.getCardHolder());
+//            }
+        }
         numberCard.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -61,6 +121,7 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                numberCard.setBackground(getActivity().getDrawable(R.drawable.border));
                 if(s.toString().equals("")){
                     numberCard.setError("Please enter Number Card !");
                     numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
@@ -84,6 +145,7 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                money.setBackground(getActivity().getDrawable(R.drawable.border));
                 if(s.toString().equals("")){
                     money.setError("Please enter Money !");
                     money.setBackground(getActivity().getDrawable(R.drawable.border_red));
@@ -104,23 +166,28 @@ public class InputCreditCardFragment extends Fragment {
 
             }
         });
-        expirationDate.addTextChangedListener(new TextWatcher() {
+        expirationDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                //getting current day,month and year.
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
 
-            }
+                        expirationDate.setText( (monthOfYear + 1)+ "/" +dayOfMonth  + "/" + year);
+                    }
+                };
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.toString().equals("")){
-                    expirationDate.setError("Please enter Expiration Date !");
-                    expirationDate.setBackground(getActivity().getDrawable(R.drawable.border_red));
-                }
-            }
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                        android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+                        dateSetListener, year, month, day);
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                datePickerDialog.show();
             }
         });
         holderCard.addTextChangedListener(new TextWatcher() {
@@ -131,6 +198,7 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                money.setBackground(getActivity().getDrawable(R.drawable.border));
                 if(s.toString().equals("")){
                     holderCard.setError("Please enter Holder Card !");
                     holderCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
@@ -143,9 +211,6 @@ public class InputCreditCardFragment extends Fragment {
             }
         });
 
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
         binding.btnAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,14 +221,7 @@ public class InputCreditCardFragment extends Fragment {
                     numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
-                Date cardExpiration = new Date();
-                try {
-                    cardExpiration = formatter.parse(String.valueOf(expirationDate.getText())) ;
-                } catch (ParseException e) {
-                    expirationDate.setError("Please enter Expiration Date following format MM/dd/yyyy !");
-                    expirationDate.setBackground(getActivity().getDrawable(R.drawable.border_red));
-                    check = false;
-                }
+                String expiration = String.valueOf(expirationDate.getText());
                 if(String.valueOf(expirationDate.getText()).equals("")){
                     expirationDate.setError("Please enter Expiration Date !");
                     expirationDate.setBackground(getActivity().getDrawable(R.drawable.border_red));
@@ -183,9 +241,13 @@ public class InputCreditCardFragment extends Fragment {
                     check = false;
                 }
                 if(check) {
-                    CreditCard creditCard = new CreditCard(cardNumber, String.valueOf(Integer.parseInt(cardMoney.toString())), cardNumber, "12/12/2020", cardHolder, new Date(), new Date());
-                    databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("card");
-                    databaseReference.push().setValue(creditCard);
+                    String idCard = id;
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
+                    if((id == null)) {
+                        idCard = databaseReference.push().getKey();
+                    }
+                    CreditCard creditCard = new CreditCard(idCard, String.valueOf(Integer.parseInt(cardMoney.toString())), cardNumber, expiration, cardHolder, new Date(), new Date());
+                    databaseReference.child(idCard).setValue(creditCard);
                     CreditCardFragment fragment = new CreditCardFragment();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
