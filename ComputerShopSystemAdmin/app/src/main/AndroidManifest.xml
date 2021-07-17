@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.ChangePhotoProductFragment"></activity>
+        <activity android:name=".View.DashboardFragment"></activity>
+        <activity android:name=".View.ChangePhotoProductFragment" />
         <activity android:name=".View.CustomerProfileFragment" />
         <activity android:name=".View.CustomerManagementFragment" />
         <activity android:name=".View.ManagementFragment" />

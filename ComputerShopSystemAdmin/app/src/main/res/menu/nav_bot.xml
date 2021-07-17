@@ -9,10 +9,7 @@
         android:id="@+id/ic_cart"
         android:icon="@drawable/ic_manage"
         android:title="Management"/>
-    <item
-        android:id="@+id/ic_location"
-        android:icon="@drawable/ic_location"
-        android:title="Map"/>
+
     <item
         android:id="@+id/ic_user"
         android:icon="@drawable/ic_user"
