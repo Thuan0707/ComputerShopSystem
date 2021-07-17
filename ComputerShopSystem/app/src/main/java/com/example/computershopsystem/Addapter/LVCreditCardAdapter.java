@@ -71,7 +71,7 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
             deleteCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("card").child(getItem(position).getId());
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList").child(getItem(position).getId());
                     databaseReference.removeValue();
                     CreditCardFragment fragment = new CreditCardFragment();
                     switchFragment(fragment);

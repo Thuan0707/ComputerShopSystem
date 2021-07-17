@@ -15,13 +15,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 
+import com.example.computershopsystem.DAO.ProductFirebaseHelper;
 import com.example.computershopsystem.Model.OrderProduct;
+import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.text.DecimalFormat;
@@ -34,18 +43,22 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
     private List<OrderProduct> objects;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    Query query;
+    ProductFirebaseHelper productFirebaseHelper;
+    Product product;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
     public LVProductInCartAdapter(@NonNull Context context, int resource, @NonNull List<OrderProduct> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
-         this.objects=objects;
+        this.objects=objects;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         convertView = layoutInflater.inflate(resource, parent, false);
         ImageView image = convertView.findViewById(R.id.imageCartProduct);
@@ -63,9 +76,27 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = context.getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
+        query = FirebaseDatabase.getInstance().getReference("Product").orderByChild("name").equalTo(getItem(position).getProduct().getName());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                product = new Product();
+                if (snapshot.exists()) {
+                    for (DataSnapshot shot : snapshot.getChildren()) {
+                        product = shot.getValue(Product.class);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
         increaseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(product.getQuantity() > Integer.parseInt(quantity.getText().toString()))
                 quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())+1));
                 List<OrderProduct> listProduct=getList();
                 listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
@@ -75,10 +106,12 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         decreaseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())-1));
-                List<OrderProduct> listProduct=getList();
-                listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
-                setList("cart",listProduct);
+                if(Integer.parseInt(quantity.getText().toString())>1) {
+                    quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString()) - 1));
+                    List<OrderProduct> listProduct = getList();
+                    listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
+                    setList("cart", listProduct);
+                }
             }
         });
         quantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {

@@ -66,7 +66,7 @@ public class CreditCardFragment extends Fragment {
 
     public void getList() {
         ArrayList<CreditCard> creditCards = new ArrayList<>();
-        Query data = FirebaseDatabase.getInstance().getReference("Customer").child(customer.getId()).child("card");
+        Query data = FirebaseDatabase.getInstance().getReference("Customer").child(customer.getId()).child("cardList");
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -78,7 +78,7 @@ public class CreditCardFragment extends Fragment {
                 }
 
                 listView = binding.lvCard;
-                LVCreditCardAdapter LVCreditCardAdapter = new LVCreditCardAdapter(getActivity(), R.layout.card_item, creditCards);
+                LVCreditCardAdapter LVCreditCardAdapter = new LVCreditCardAdapter(getActivity(), R.layout.card_item, creditCards, customer);
                 listView.setAdapter(LVCreditCardAdapter);
             }
             @Override

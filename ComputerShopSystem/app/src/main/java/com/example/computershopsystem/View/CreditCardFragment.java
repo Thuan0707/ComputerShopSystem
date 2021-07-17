@@ -39,7 +39,7 @@ public class CreditCardFragment extends Fragment {
 
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
-    ArrayList<CreditCard> creditCards = new ArrayList<>();
+    ArrayList<CreditCard> creditCards;
     @Nullable
     @Override
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
@@ -75,6 +75,7 @@ public class CreditCardFragment extends Fragment {
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                creditCards = new ArrayList<>();
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot shot : dataSnapshot.getChildren()) {
                         CreditCard creditCard = shot.getValue(CreditCard.class);
