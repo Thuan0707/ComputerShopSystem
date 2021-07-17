@@ -2,6 +2,7 @@ package com.example.computershopsystemadmin.Addapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystemadmin.Model.CreditCard;
+import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.View.CheckOutFragment;
 import com.example.computershopsystemadmin.View.CreditCardFragment;
@@ -33,16 +35,18 @@ import java.util.List;
 public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
     private Context context;
     private int resource;
+    Customer customer;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
 
-    public LVCreditCardAdapter(@NonNull Context context, int resource, @NonNull List<CreditCard> objects) {
+    public LVCreditCardAdapter(@NonNull Context context, int resource, @NonNull List<CreditCard> objects, Customer customer) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
+        this.customer = customer;
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -63,21 +67,16 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         TextView cardExpiration = convertView.findViewById(R.id.txtCardExpiration);
         TextView cardMoney = convertView.findViewById(R.id.txtCardMoney);
         ImageButton deleteCard = convertView.findViewById(R.id.ibtnDeleteCreditCard);
-        boolean isCheckout = sharedpreferences.getBoolean("isCheckoutCreditCard",false);
-        if(isCheckout){
-            deleteCard.setVisibility(View.INVISIBLE);
-        }
-        else {
-            deleteCard.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("card").child(getItem(position).getId());
-                    databaseReference.removeValue();
-                    CreditCardFragment fragment = new CreditCardFragment();
-                    switchFragment(fragment);
-                }
-            });
-        }
+
+        deleteCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(customer.getId()).child("cardList").child(getItem(position).getId());
+                databaseReference.removeValue();
+                CreditCardFragment fragment = new CreditCardFragment();
+                switchFragment(fragment);
+            }
+        });
         cardNumber.setText(getItem(position).getCardNumber());
         cardHolder.setText(String.valueOf(getItem(position).getCardHolder()));
         cardExpiration.setText(String.valueOf(getItem(position).getExpirationDate()));
@@ -86,27 +85,21 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isCheckout){
-                    CreditCard creditCard=(CreditCard) getItem(position);
-                    Gson gson = new Gson();
-                    String json = gson.toJson(creditCard);
-                    editor.putString("creditCard", json);
-                    editor.apply();
-                    CheckOutFragment fragment = new CheckOutFragment();
-                    switchFragment(fragment);
-                }else {
-                    editor.putString("IdCard", getItem(position).getId());
-                    editor.apply();
-                    Log.e("Lala", "nnnnnnnnnnnnnnnnnnnnnnnnnnnn" + getItem(position).getCardHolder());
-                    InputCreditCardFragment fragment = new InputCreditCardFragment();
-                    switchFragment(fragment);
-                }
+                editor.putString("IdCard", getItem(position).getId());
+                editor.apply();
+                Log.e("Lala", "nnnnnnnnnnnnnnnnnnnnnnnnnnnn" + getItem(position).getCardHolder());
+                InputCreditCardFragment fragment = new InputCreditCardFragment();
+                switchFragment(fragment);
+
             }
         });
         return convertView;
     }
 
     void switchFragment(Fragment fragment) {
+        Bundle bun=new Bundle();
+        bun.putSerializable("customer",customer);
+        fragment.setArguments(bun);
         FragmentActivity f = (FragmentActivity) context;
         FragmentManager fragmentManager = f.getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

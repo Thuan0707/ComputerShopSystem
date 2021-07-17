@@ -50,7 +50,7 @@ public class InputCreditCardFragment extends Fragment {
     EditText money;
     TextView expirationDate;
     EditText holderCard;
-Customer customer;
+    Customer customer;
     String id;
     String keyCreditCard;
     SharedPreferences sharedpreferences;
@@ -84,7 +84,7 @@ Customer customer;
             id = sharedpreferences.getString("IdCard",null);
             editor.remove("IdCard");
             editor.apply();
-            Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("cardList").orderByChild("id").equalTo(id);
+            Query data = FirebaseDatabase.getInstance().getReference("Customer").child(customer.getId()).child("cardList").orderByChild("id").equalTo(id);
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -248,13 +248,16 @@ Customer customer;
                 }
                 if(check) {
                     String idCard = id;
-                    databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(customer.getId()).child("cardList");
                     if((id == null)) {
                         idCard = databaseReference.push().getKey();
                     }
                     CreditCard creditCard = new CreditCard(idCard, String.valueOf(Integer.parseInt(cardMoney.toString())), cardNumber, expiration, cardHolder, new Date(), new Date());
                     databaseReference.child(idCard).setValue(creditCard);
                     CreditCardFragment fragment = new CreditCardFragment();
+                    Bundle bun=new Bundle();
+                    bun.putSerializable("customer",customer);
+                    fragment.setArguments(bun);
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
                     fragTransaction.setCustomAnimations(android.R.animator.fade_in,
