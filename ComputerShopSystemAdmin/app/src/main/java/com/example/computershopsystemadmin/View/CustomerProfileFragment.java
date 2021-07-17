@@ -39,13 +39,14 @@ public class CustomerProfileFragment extends Fragment {
     DatabaseReference databaseReference;
     private static final int PICK_IMAGE_REQUEST = 3;
     private Uri imageURI;
+
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = CustomerProfileFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        Bundle bundle=this.getArguments();
-        if (bundle!=null){
-            customer=(Customer) bundle.getSerializable("customer");
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            customer = (Customer) bundle.getSerializable("customer");
         }
         storageReference = FirebaseStorage.getInstance().getReference("Customer");
         binding.tvEmail.setText(customer.getCustomerAccount().getEmail());
@@ -151,9 +152,16 @@ public class CustomerProfileFragment extends Fragment {
                 switchFragment(fragment);
             }
         });
+        binding.imgAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser();
 
+            }
+        });
         return view;
     }
+
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
@@ -163,14 +171,17 @@ public class CustomerProfileFragment extends Fragment {
         fragTransaction.replace(R.id.fl_wrapper, fragment);
         fragTransaction.commit();
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST) {
             imageURI = data.getData();
-          //  Picasso.get().load(imageURI).resize(500,500).into(binding.ivProduct);
+            Picasso.get().load(imageURI).resize(500, 500).into(binding.imgAvatar);
+            uploadFile();
         }
     }
+
     private void uploadFile() {
         if (imageURI != null) {
             StorageReference fileReference = storageReference.child(imageURI.getLastPathSegment());
@@ -179,16 +190,14 @@ public class CustomerProfileFragment extends Fragment {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(
                             new OnCompleteListener<Uri>() {
-
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     String fileLink = task.getResult().toString();
-                                   // product.setImage(fileLink);
-                                    databaseReference = FirebaseDatabase.getInstance().getReference("Product");
-                                  //  databaseReference.push().setValue(product);
-                                    ProductManagementFragment fragment=new ProductManagementFragment();
-                                    switchFragment(fragment);
-                                    Toast.makeText(getContext(), "Add product success fully", Toast.LENGTH_SHORT).show();
+                                    customer.setImage(fileLink);
+                                    databaseReference = FirebaseDatabase.getInstance().getReference("Customer/" + customer.getId() + "/image");
+                                    databaseReference.setValue(fileLink);
+
+                                    Toast.makeText(getContext(), "Change Photo successfully", Toast.LENGTH_SHORT).show();
 
                                 }
                             }
@@ -205,9 +214,11 @@ public class CustomerProfileFragment extends Fragment {
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
+
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
+
     private String getFileExtension(Uri uri) {
         ContentResolver cr = getContext().getContentResolver();
         MimeTypeMap mine = MimeTypeMap.getSingleton();
