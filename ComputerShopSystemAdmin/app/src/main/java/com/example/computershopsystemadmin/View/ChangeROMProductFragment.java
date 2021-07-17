@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.Model.CustomerAccount;
 import com.example.computershopsystemadmin.Model.Product;
+import com.example.computershopsystemadmin.Model.Ram;
 import com.example.computershopsystemadmin.Model.Rom;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
@@ -31,6 +32,8 @@ import java.util.Date;
 
 public class ChangeROMProductFragment extends Fragment {
     ChangeRomProductFragmentBinding binding;
+    Product pro;
+    Product product;
 
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -38,51 +41,70 @@ public class ChangeROMProductFragment extends Fragment {
         View view = binding.getRoot();
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            Product product = (Product) bundle.getSerializable("product");
+            if (bundle.getSerializable("newProduct") != null) {
+                product = (Product) bundle.getSerializable("newProduct");
+                binding.tvTitle.setText("ADD NEW PRODUCT");
+                binding.btnSave.setText("Next");
+            } else {
+                pro = (Product) bundle.getSerializable("product");
 
-            binding.edDesROM.setText(product.getRom().getDescription());
-            int pos = 0;
-            switch (product.getRom().getCapacity()) {
-                case "SDD 128GB":
-                    pos = 0;
-                    break;
-                case "SSD 256GB":
-                    pos = 1;
-                    break;
-                case "SSD 512GB":
-                    pos = 2;
-                    break;
-                case "SSD 1TB":
-                    pos = 3;
-                    break;
-                case "HDD 512GB":
-                    pos = 4;
-                    break;
-                case "HDD 1TB":
-                    pos = 5;
-                    break;
-                case "HDD 2TB":
-                    pos = 6;
-                    break;
+                binding.edDesROM.setText(pro.getRom().getDescription());
+                int pos = 0;
+                switch (pro.getRom().getCapacity()) {
+                    case "SDD 128GB":
+                        pos = 0;
+                        break;
+                    case "SSD 256GB":
+                        pos = 1;
+                        break;
+                    case "SSD 512GB":
+                        pos = 2;
+                        break;
+                    case "SSD 1TB":
+                        pos = 3;
+                        break;
+                    case "HDD 512GB":
+                        pos = 4;
+                        break;
+                    case "HDD 1TB":
+                        pos = 5;
+                        break;
+                    case "HDD 2TB":
+                        pos = 6;
+                        break;
+                }
+                binding.spROM.setSelection(pos);
             }
-            binding.spROM.setSelection(pos);
             binding.btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String  capacity=binding.spROM.getSelectedItem().toString();
-                    String  des=binding.edDesROM.getText().toString();
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/rom/capacity");
-                    mDatabase.setValue(capacity);
-                    product.getRom().setCapacity(capacity);
-                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/rom/description");
-                    mDatabase.setValue(des);
-                    product.getRom().setDescription(des);
-                    ProductDetailsFragment fragment = new ProductDetailsFragment();
-                    Bundle bundle = new Bundle();
-                    String productJsonString = Utils.getGsonParser().toJson(product);
-                    bundle.putString(Variable.DETAIL_KEY, productJsonString);
-                    fragment.setArguments(bundle);
-                    switchFragment(fragment);
+                    String capacity = binding.spROM.getSelectedItem().toString();
+                    String des = binding.edDesROM.getText().toString();
+                    if (bundle.getSerializable("newProduct") != null) {
+                        Bundle bundle = new Bundle();
+                        Rom rom = new Rom();
+                        rom.setCapacity(capacity);
+                        rom.setDescription(des);
+                        product.setRom(rom);
+                        ChangeScreenProductFragment fragment = new ChangeScreenProductFragment();
+                        bundle.putSerializable("newProduct", product);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    } else {
+
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/rom/capacity");
+                        mDatabase.setValue(capacity);
+                        pro.getRom().setCapacity(capacity);
+                        mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/rom/description");
+                        mDatabase.setValue(des);
+                        pro.getRom().setDescription(des);
+                        ProductDetailsFragment fragment = new ProductDetailsFragment();
+                        Bundle bundle = new Bundle();
+                        String productJsonString = Utils.getGsonParser().toJson(pro);
+                        bundle.putString(Variable.DETAIL_KEY, productJsonString);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    }
                 }
             });
         }

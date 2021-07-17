@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 public class ChangeNameProductFragment extends Fragment {
 
     ChangeNameProductFragmentBinding binding;
+    Product product;
+Product pro;
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = ChangeNameProductFragmentBinding.inflate(getLayoutInflater());
@@ -35,27 +37,47 @@ public class ChangeNameProductFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
-            Product product = (Product)bundle.getSerializable("product");
-            binding.edName.setText(product.getName());
 
+
+            if (bundle.getSerializable("newProduct") != null) {
+                product=(Product)bundle.getSerializable("newProduct");
+                binding.tvTitle.setText("ADD NEW PRODUCT: Add Name");
+                binding.btnSave.setText("Next");
+            }else{
+       pro = (Product) bundle.getSerializable("product");
+                binding.edName.setText(pro.getName());
+            }
             binding.btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String  name=binding.edName.getText().toString();
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/name");
-                    mDatabase.setValue(name);
-                    product.setName(name);
-                    ProductDetailsFragment fragment = new ProductDetailsFragment();
-                    Bundle bundle = new Bundle();
-                    String productJsonString = Utils.getGsonParser().toJson(product);
-                    bundle.putString(Variable.DETAIL_KEY, productJsonString);
-                    fragment.setArguments(bundle);
-                    switchFragment(fragment);
+                    String name = binding.edName.getText().toString();
+
+
+                    if (bundle.getSerializable("newProduct") != null) {
+                        Bundle bundle = new Bundle();
+                        product.setName(name);
+                        ChangeBrandProductFragment fragment = new ChangeBrandProductFragment();
+                        bundle.putSerializable("newProduct", product);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    } else {
+                        Bundle bundle = new Bundle();
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/name");
+                        mDatabase.setValue(name);
+                        pro.setName(name);
+                        ProductDetailsFragment fragment = new ProductDetailsFragment();
+                        String productJsonString = Utils.getGsonParser().toJson(pro);
+                        bundle.putString(Variable.DETAIL_KEY, productJsonString);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    }
+
                 }
             });
         }
         return view;
     }
+
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

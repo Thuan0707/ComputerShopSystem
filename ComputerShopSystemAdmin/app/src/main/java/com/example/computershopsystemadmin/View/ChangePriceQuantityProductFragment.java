@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.computershopsystemadmin.Model.Product;
+import com.example.computershopsystemadmin.Model.Screen;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
 import com.example.computershopsystemadmin.Utilities.Variable;
@@ -26,20 +27,27 @@ import org.jetbrains.annotations.NotNull;
 
 public class ChangePriceQuantityProductFragment extends Fragment {
     ChangePriceQuantityProductFragmentBinding binding;
+    Product pro;
+    Product product;
 
     @Override
-    public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ChangePriceQuantityProductFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
-            Product product = (Product) bundle.getSerializable("product");
-            binding.edBuyPrice.setText(String.valueOf(Utils.checkInt(product.getBuyPrice())));
-            binding.edSellPrice.setText(String.valueOf(Utils.checkInt(product.getSellPrice())));
-            binding.edQuantity.setText(String.valueOf(product.getQuantity()));
+            if (bundle.getSerializable("newProduct") != null) {
+                product = (Product) bundle.getSerializable("newProduct");
+                binding.tvTitle.setText("ADD NEW PRODUCT");
+                binding.btnSave.setText("Next");
+            } else {
+                pro = (Product) bundle.getSerializable("product");
+                binding.edBuyPrice.setText(String.valueOf(Utils.checkInt(pro.getBuyPrice())));
+                binding.edSellPrice.setText(String.valueOf(Utils.checkInt(pro.getSellPrice())));
+                binding.edQuantity.setText(String.valueOf(pro.getQuantity()));
 
-
+            }
             binding.btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -47,21 +55,35 @@ public class ChangePriceQuantityProductFragment extends Fragment {
                     double sellPrice = Double.parseDouble(binding.edSellPrice.getText().toString().trim());
                     double buyPrice = Double.parseDouble(binding.edBuyPrice.getText().toString().trim());
                     int quantity = Integer.parseInt(binding.edQuantity.getText().toString().trim());
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/sellPrice");
-                    mDatabase.setValue(sellPrice);
-                    product.setSellPrice(sellPrice);
-                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/buyPrice");
-                    mDatabase.setValue(buyPrice);
-                    product.setBuyPrice(buyPrice);
-                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/quantity");
-                    mDatabase.setValue(quantity);
-                    product.setQuantity(quantity);
-                    ProductDetailsFragment fragment = new ProductDetailsFragment();
-                    Bundle bundle = new Bundle();
-                    String productJsonString = Utils.getGsonParser().toJson(product);
-                    bundle.putString(Variable.DETAIL_KEY, productJsonString);
-                    fragment.setArguments(bundle);
-                    switchFragment(fragment);
+
+                    if (bundle.getSerializable("newProduct") != null) {
+                        Bundle bundle = new Bundle();
+
+                        product.setSellPrice(sellPrice);
+                        product.setBuyPrice(buyPrice);
+                        product.setQuantity(quantity);
+
+                        ChangePhotoProductFragment fragment = new ChangePhotoProductFragment();
+                        bundle.putSerializable("newProduct", product);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    } else {
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/sellPrice");
+                        mDatabase.setValue(sellPrice);
+                        pro.setSellPrice(sellPrice);
+                        mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/buyPrice");
+                        mDatabase.setValue(buyPrice);
+                        pro.setBuyPrice(buyPrice);
+                        mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/quantity");
+                        mDatabase.setValue(quantity);
+                        pro.setQuantity(quantity);
+                        ProductDetailsFragment fragment = new ProductDetailsFragment();
+                        Bundle bundle = new Bundle();
+                        String productJsonString = Utils.getGsonParser().toJson(pro);
+                        bundle.putString(Variable.DETAIL_KEY, productJsonString);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    }
                 }
             });
         }

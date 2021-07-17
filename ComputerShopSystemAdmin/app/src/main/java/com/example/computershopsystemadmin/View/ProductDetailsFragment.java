@@ -62,13 +62,13 @@ public class ProductDetailsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ProductDetailsFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        storageReference = FirebaseStorage.getInstance().getReference("uploads");
+        storageReference = FirebaseStorage.getInstance().getReference("Product");
         Bundle bundle = getArguments();
         String productJsonString = bundle.getString(Variable.DETAIL_KEY);
         product = Utils.getGsonParser().fromJson(productJsonString, Product.class);
         binding.txtBuyPriceProduct.setText("BUY PRICE: $" + Utils.checkInt(product.getBuyPrice()));
         binding.txtCPU.setText(product.getCpu().getSeries() + " " + product.getCpu().getDescription());
-        Picasso.get().load(product.getImage()).into(binding.ivProduct);
+        Picasso.get().load(product.getImage()).resize(500,500).into(binding.ivProduct);
         binding.txtSellPriceProduct.setText("SELL PRICE: $" + Utils.checkInt(product.getSellPrice()));
         binding.txtNameProduct.setText(product.getName());
         binding.txtRAM.setText(product.getRam().getCapacity() + "GB " + product.getRam().getDescription());
@@ -192,7 +192,7 @@ public class ProductDetailsFragment extends Fragment {
             uploadFile();
 
             Log.e("uri", imageURI.toString());
-            Picasso.get().load(imageURI).fit().centerCrop().into(binding.ivProduct);
+            Picasso.get().load(imageURI).resize(500,500).into(binding.ivProduct);
         }
     }
 
@@ -238,7 +238,7 @@ public class ProductDetailsFragment extends Fragment {
 
     private void uploadFile() {
         if (imageURI != null) {
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageURI));
+            StorageReference fileReference = storageReference.child(imageURI.getLastPathSegment());
             fileReference.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

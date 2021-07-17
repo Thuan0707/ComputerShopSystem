@@ -5,42 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".View.ChangeROMProductFragment">
-
-        <EditText
-            android:id="@+id/edDesROM"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/border"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:hint="Enter ROM Product"
-            android:inputType="text"
-            android:paddingHorizontal="16dp"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView122" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Rom Capacity"
-            android:textColor="#017FFF"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        tools:context=".View.ChangeRamProductFragment">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -48,7 +13,7 @@
             android:layout_height="30dp"
 
             android:layout_marginStart="16dp"
-            android:text="Change ROM Product "
+            android:text="Add New Product"
             android:textColor="#223263"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -82,44 +47,42 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnAddNewProduct"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#03A9F4"
-            android:text="Save"
+            android:text="Add New Product"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Spinner
-            android:id="@+id/spROM"
-            android:layout_width="173dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="8dp"
-            android:entries="@array/rom"
+        <ImageView
+            android:id="@+id/ivProduct"
+            android:layout_width="244dp"
+            android:layout_height="207dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/hr18"
+            android:src="@drawable/ic_home" />
 
-        <TextView
-            android:id="@+id/textView122"
+        <Button
+            android:id="@+id/btnOpen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="ROM Description"
-            android:textColor="#017FFF"
-            android:textSize="16sp"
+            android:layout_marginTop="48dp"
+            android:text="Import Photo"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddNewProduct"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.057"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/ivProduct"
+            app:layout_constraintVertical_bias="0.076" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

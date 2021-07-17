@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ChangeRamProductFragment extends Fragment {
     ChangeRamProductFragmentBinding binding;
+    Product pro;
+    Product product;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,46 +38,71 @@ public class ChangeRamProductFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
-            Product product = (Product) bundle.getSerializable("product");
-            binding.edRAM.setText(product.getRam().getDescription());
-            int pos = 0;
-            switch (product.getRam().getCapacity()) {
-                case 4:
-                    pos = 0;
-                    break;
-                case 8:
-                    pos = 1;
-                    break;
-                case 16:
-                    pos = 2;
-                    break;
-                case 32:
-                    pos = 3;
-                    break;
-            }
-            binding.spRAM.setSelection(pos);
-            binding.btnSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int capacity = Integer.parseInt(binding.spRAM.getSelectedItem().toString().trim().replace("GB",""));
-                    String des = binding.edRAM.getText().toString();
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/ram/capacity");
-                    mDatabase.setValue(capacity);
-                    product.getRam().setCapacity(capacity);
-                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/ram/description");
-                    mDatabase.setValue(des);
-                    product.getRam().setDescription(des);
-                    ProductDetailsFragment fragment = new ProductDetailsFragment();
-                    Bundle bundle = new Bundle();
-                    String productJsonString = Utils.getGsonParser().toJson(product);
-                    bundle.putString(Variable.DETAIL_KEY, productJsonString);
-                    fragment.setArguments(bundle);
-                    switchFragment(fragment);
+            if (bundle.getSerializable("newProduct") != null) {
+                product = (Product) bundle.getSerializable("newProduct");
+                binding.tvTitle.setText("ADD NEW PRODUCT");
+                binding.btnSave.setText("Next");
+            } else {
+
+                pro = (Product) bundle.getSerializable("product");
+                binding.edRAM.setText(pro.getRam().getDescription());
+                int pos = 0;
+                switch (pro.getRam().getCapacity()) {
+                    case 4:
+                        pos = 0;
+                        break;
+                    case 8:
+                        pos = 1;
+                        break;
+                    case 16:
+                        pos = 2;
+                        break;
+                    case 32:
+                        pos = 3;
+                        break;
                 }
-            });
+
+                binding.spRAM.setSelection(pos);}
+                binding.btnSave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("asdf","vo ne");
+                        int capacity = Integer.parseInt(binding.spRAM.getSelectedItem().toString().trim().replace("GB", ""));
+                        String des = binding.edRAM.getText().toString();
+
+                        if (bundle.getSerializable("newProduct") != null) {
+                            Bundle bundle = new Bundle();
+                            Ram ram = new Ram();
+                            ram.setCapacity(capacity);
+                            ram.setDescription(des);
+                            product.setRam(ram);
+                            ChangeROMProductFragment fragment = new ChangeROMProductFragment();
+                            bundle.putSerializable("newProduct", product);
+                            Log.e("vo","Vo nua ne");
+                            fragment.setArguments(bundle);
+                            switchFragment(fragment);
+                        } else {
+
+                            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/ram/capacity");
+                            mDatabase.setValue(capacity);
+                            pro.getRam().setCapacity(capacity);
+                            mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/ram/description");
+                            mDatabase.setValue(des);
+                            pro.getRam().setDescription(des);
+                            ProductDetailsFragment fragment = new ProductDetailsFragment();
+                            Bundle bundle = new Bundle();
+                            String productJsonString = Utils.getGsonParser().toJson(pro);
+                            bundle.putString(Variable.DETAIL_KEY, productJsonString);
+                            fragment.setArguments(bundle);
+                            switchFragment(fragment);
+                        }
+                    }
+                });
+
         }
         return view;
     }
+
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

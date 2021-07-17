@@ -19,13 +19,13 @@
             app:srcCompat="@drawable/ic_user" />
 
         <TextView
-            android:id="@+id/tvMoreCate"
+            android:id="@+id/tvAddNewProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="More Category"
+            android:text="Add New Product"
             android:textColor="#40BFFF"
             android:textSize="16sp"
             android:textStyle="bold"

@@ -191,17 +191,18 @@ public class ProductManagementFragment extends Fragment {
         });
 
 
-        binding.tvMoreCate.setOnClickListener(new View.OnClickListener() {
+        binding.tvAddNewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoreCategoryFragment fragment = new MoreCategoryFragment(binding.gridProduct);
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
-                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
-                        android.R.animator.fade_out);
-                fragTransaction.addToBackStack(null);
-                fragTransaction.replace(R.id.fl_wrapper, fragment);
-                fragTransaction.commit();
+                Bundle bun=new Bundle();
+                Product product=new Product();
+                bun.putSerializable("newProduct",product);
+
+                ChangeNameProductFragment fragment = new ChangeNameProductFragment();
+                fragment.setArguments(bun);
+                switchFragment(fragment);
+
+
             }
         });
         binding.txtSearch.setOnTouchListener(new View.OnTouchListener() {
@@ -294,5 +295,13 @@ public class ProductManagementFragment extends Fragment {
         googleSignInClient = GoogleSignIn.getClient(getActivity(), options);
         googleSignInClient.signOut();
     }
-
+    public void switchFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                android.R.animator.fade_out);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.replace(R.id.fl_wrapper, fragment);
+        fragTransaction.commit();
+    }
 }

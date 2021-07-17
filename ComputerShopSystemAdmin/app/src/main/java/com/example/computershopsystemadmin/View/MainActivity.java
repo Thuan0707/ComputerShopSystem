@@ -66,18 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case R.id.ic_user:
-                        if (firebaseUser != null) {
+
                             selectedFragment = new ProfileAdminFragment();
-                        } else {
-                            selectedFragment = new TestLoginLogoutFragment();
-                        }
+
                         break;
                     case R.id.ic_cart:
-                        if (firebaseUser != null) {
+
                             selectedFragment = new ManagementFragment();
-                        } else {
-                            selectedFragment = new TestLoginLogoutFragment();
-                        }
+
                         break;
                     case R.id.ic_location:
                         if (firebaseUser != null) {

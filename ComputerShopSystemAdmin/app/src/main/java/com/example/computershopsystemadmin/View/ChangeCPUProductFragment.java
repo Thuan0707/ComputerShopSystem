@@ -25,48 +25,68 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ChangeCPUProductFragment extends Fragment {
 
     ChangeCpuProductFragmentBinding binding;
-
+Product pro;
+Product product;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ChangeCpuProductFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            Product product = (Product) bundle.getSerializable("product");
-            binding.edDesCPU.setText(product.getCpu().getDescription());
-            int pos = 0;
-            switch (product.getCpu().getSeries()) {
-                case "i3":
-                    pos = 0;
-                    break;
-                case "i5":
-                    pos = 1;
-                    break;
-                case "i7":
-                    pos = 2;
-                    break;
-                case "i9":
-                    pos = 3;
-                    break;
+            if (bundle.getSerializable("newProduct") != null) {
+                product = (Product) bundle.getSerializable("newProduct");
+                binding.tvTitle.setText("ADD NEW PRODUCT");
+                binding.btnSave.setText("Next");
+            } else {
+                pro = (Product) bundle.getSerializable("product");
+                binding.edDesCPU.setText(pro.getCpu().getDescription());
+                int pos = 0;
+                switch (pro.getCpu().getSeries()) {
+                    case "i3":
+                        pos = 0;
+                        break;
+                    case "i5":
+                        pos = 1;
+                        break;
+                    case "i7":
+                        pos = 2;
+                        break;
+                    case "i9":
+                        pos = 3;
+                        break;
+                }
+                binding.spSeriesCPU.setSelection(pos);
             }
-            binding.spSeriesCPU.setSelection(pos);
             binding.btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String series = binding.spSeriesCPU.getSelectedItem().toString();
                     String des = binding.edDesCPU.getText().toString();
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/cpu/series");
-                    mDatabase.setValue(series);
-                    product.getCpu().setSeries(series);
-                    mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/cpu/description");
-                    mDatabase.setValue(des);
-                    product.getCpu().setDescription(des);
-                    ProductDetailsFragment fragment = new ProductDetailsFragment();
-                    Bundle bundle = new Bundle();
-                    String productJsonString = Utils.getGsonParser().toJson(product);
-                    bundle.putString(Variable.DETAIL_KEY, productJsonString);
-                    fragment.setArguments(bundle);
-                    switchFragment(fragment);
+                    if (bundle.getSerializable("newProduct") != null) {
+                        Bundle bundle = new Bundle();
+                     CPU cpu=new CPU();
+                     cpu.setSeries(series);
+                     cpu.setDescription(des);
+                        product.setCpu(cpu);
+                        ChangeRamProductFragment fragment = new ChangeRamProductFragment();
+                        bundle.putSerializable("newProduct", product);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    } else {
+
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/cpu/series");
+                        mDatabase.setValue(series);
+                        pro.getCpu().setSeries(series);
+                        mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/cpu/description");
+                        mDatabase.setValue(des);
+                        pro.getCpu().setDescription(des);
+                        ProductDetailsFragment fragment = new ProductDetailsFragment();
+                        Bundle bundle = new Bundle();
+                        String productJsonString = Utils.getGsonParser().toJson(pro);
+                        bundle.putString(Variable.DETAIL_KEY, productJsonString);
+                        fragment.setArguments(bundle);
+                        switchFragment(fragment);
+                    }
                 }
             });
         }

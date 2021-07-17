@@ -28,7 +28,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
-            android:id="@+id/tvNameTop4"
+            android:id="@+id/tvTitle"
             android:layout_width="220dp"
             android:layout_height="30dp"
 
