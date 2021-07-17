@@ -17,6 +17,7 @@ import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.Model.Ram;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
+import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ChangeCpuProductFragmentBinding;
 import com.example.computershopsystemadmin.databinding.ChangeNameProductFragmentBinding;
@@ -51,27 +52,32 @@ Product pro;
                 @Override
                 public void onClick(View v) {
                     String name = binding.edName.getText().toString();
-
-
-                    if (bundle.getSerializable("newProduct") != null) {
-                        Bundle bundle = new Bundle();
-                        product.setName(name);
-                        ChangeBrandProductFragment fragment = new ChangeBrandProductFragment();
-                        bundle.putSerializable("newProduct", product);
-                        fragment.setArguments(bundle);
-                        switchFragment(fragment);
+                    Validation validation = new Validation();
+                    String notify = validation.CheckNameProduct(name);
+                    if (notify != null) {
+                        binding.edName.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edName.setError(notify);
                     } else {
-                        Bundle bundle = new Bundle();
-                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/name");
-                        mDatabase.setValue(name);
-                        pro.setName(name);
-                        ProductDetailsFragment fragment = new ProductDetailsFragment();
-                        String productJsonString = Utils.getGsonParser().toJson(pro);
-                        bundle.putString(Variable.DETAIL_KEY, productJsonString);
-                        fragment.setArguments(bundle);
-                        switchFragment(fragment);
-                    }
 
+                        if (bundle.getSerializable("newProduct") != null) {
+                            Bundle bundle = new Bundle();
+                            product.setName(name);
+                            ChangeBrandProductFragment fragment = new ChangeBrandProductFragment();
+                            bundle.putSerializable("newProduct", product);
+                            fragment.setArguments(bundle);
+                            switchFragment(fragment);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/name");
+                            mDatabase.setValue(name);
+                            pro.setName(name);
+                            ProductDetailsFragment fragment = new ProductDetailsFragment();
+                            String productJsonString = Utils.getGsonParser().toJson(pro);
+                            bundle.putString(Variable.DETAIL_KEY, productJsonString);
+                            fragment.setArguments(bundle);
+                            switchFragment(fragment);
+                        }
+                    }
                 }
             });
         }

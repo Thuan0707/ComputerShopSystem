@@ -16,6 +16,7 @@ import com.example.computershopsystemadmin.Model.Brand;
 import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
+import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ChangeBrandProductFragmentBinding;
 import com.example.computershopsystemadmin.databinding.ChangeRomProductFragmentBinding;
@@ -28,6 +29,7 @@ public class ChangeBrandProductFragment extends Fragment {
     ChangeBrandProductFragmentBinding binding;
     Product pro;
     Product product;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ChangeBrandProductFragmentBinding.inflate(getLayoutInflater());
@@ -39,7 +41,7 @@ public class ChangeBrandProductFragment extends Fragment {
                 binding.tvTitle.setText("ADD NEW PRODUCT");
                 binding.btnSave.setText("Next");
             } else {
-            pro = (Product) bundle.getSerializable("product");
+                pro = (Product) bundle.getSerializable("product");
                 binding.edBrand.setText(pro.getBrand().getName());
             }
 
@@ -48,26 +50,34 @@ public class ChangeBrandProductFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     String name = binding.edBrand.getText().toString();
-                    if (bundle.getSerializable("newProduct") != null) {
-                        Bundle bundle = new Bundle();
-                        Brand brand=new Brand();
-                        brand.setName(name);
-                        product.setBrand(brand);
-                        ChangeCPUProductFragment fragment = new ChangeCPUProductFragment();
-                        bundle.putSerializable("newProduct", product);
-                        fragment.setArguments(bundle);
-                        switchFragment(fragment);
+                    Validation validation = new Validation();
+                    String notify = validation.CheckBrandProduct(name);
+                    if (notify != null) {
+                        binding.edBrand.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edBrand.setError(notify);
                     } else {
 
-                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/brand/name");
-                        mDatabase.setValue(name);
-                        pro.getBrand().setName(name);
-                        ProductDetailsFragment fragment = new ProductDetailsFragment();
-                        Bundle bundle = new Bundle();
-                        String productJsonString = Utils.getGsonParser().toJson(pro);
-                        bundle.putString(Variable.DETAIL_KEY, productJsonString);
-                        fragment.setArguments(bundle);
-                        switchFragment(fragment);
+                        if (bundle.getSerializable("newProduct") != null) {
+                            Bundle bundle = new Bundle();
+                            Brand brand = new Brand();
+                            brand.setName(name);
+                            product.setBrand(brand);
+                            ChangeCPUProductFragment fragment = new ChangeCPUProductFragment();
+                            bundle.putSerializable("newProduct", product);
+                            fragment.setArguments(bundle);
+                            switchFragment(fragment);
+                        } else {
+
+                            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/brand/name");
+                            mDatabase.setValue(name);
+                            pro.getBrand().setName(name);
+                            ProductDetailsFragment fragment = new ProductDetailsFragment();
+                            Bundle bundle = new Bundle();
+                            String productJsonString = Utils.getGsonParser().toJson(pro);
+                            bundle.putString(Variable.DETAIL_KEY, productJsonString);
+                            fragment.setArguments(bundle);
+                            switchFragment(fragment);
+                        }
                     }
                 }
             });

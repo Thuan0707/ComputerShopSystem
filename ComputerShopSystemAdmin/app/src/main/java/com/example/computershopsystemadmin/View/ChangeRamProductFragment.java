@@ -18,6 +18,7 @@ import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.Model.Ram;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
+import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ChangeNameProductFragmentBinding;
 import com.example.computershopsystemadmin.databinding.ChangeRamProductFragmentBinding;
@@ -69,7 +70,12 @@ public class ChangeRamProductFragment extends Fragment {
                         Log.e("asdf","vo ne");
                         int capacity = Integer.parseInt(binding.spRAM.getSelectedItem().toString().trim().replace("GB", ""));
                         String des = binding.edRAM.getText().toString();
-
+                        Validation validation = new Validation();
+                        String notify = validation.CheckDescriptionProduct(des);
+                        if (notify != null) {
+                            binding.edRAM.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                            binding.edRAM.setError(notify);
+                        } else {
                         if (bundle.getSerializable("newProduct") != null) {
                             Bundle bundle = new Bundle();
                             Ram ram = new Ram();
@@ -95,7 +101,7 @@ public class ChangeRamProductFragment extends Fragment {
                             bundle.putString(Variable.DETAIL_KEY, productJsonString);
                             fragment.setArguments(bundle);
                             switchFragment(fragment);
-                        }
+                        }}
                     }
                 });
 

@@ -16,6 +16,7 @@ import com.example.computershopsystemadmin.Model.CPU;
 import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
+import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ChangeCpuProductFragmentBinding;
 import com.google.firebase.database.DatabaseReference;
@@ -62,7 +63,14 @@ Product product;
                 public void onClick(View v) {
                     String series = binding.spSeriesCPU.getSelectedItem().toString();
                     String des = binding.edDesCPU.getText().toString();
-                    if (bundle.getSerializable("newProduct") != null) {
+                    Validation validation = new Validation();
+                    String notify = validation.CheckDescriptionProduct(des);
+                    if (notify != null) {
+                        binding.edDesCPU.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edDesCPU.setError(notify);
+                    } else {
+
+                        if (bundle.getSerializable("newProduct") != null) {
                         Bundle bundle = new Bundle();
                      CPU cpu=new CPU();
                      cpu.setSeries(series);
@@ -86,7 +94,7 @@ Product product;
                         bundle.putString(Variable.DETAIL_KEY, productJsonString);
                         fragment.setArguments(bundle);
                         switchFragment(fragment);
-                    }
+                    }}
                 }
             });
         }
