@@ -8,6 +8,21 @@
         android:layout_height="match_parent"
         tools:context=".View.ProductManagementFragment">
 
+        <Button
+            android:id="@+id/tvAddNewProduct"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border"
+            android:backgroundTint="#03A9F4"
+            android:text="Add New Product"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAcer" />
+
         <ImageButton
             android:id="@+id/ibtnUser"
             android:layout_width="wrap_content"
@@ -19,13 +34,13 @@
             app:srcCompat="@drawable/ic_user" />
 
         <TextView
-            android:id="@+id/tvAddNewProduct"
+            android:id="@+id/tvMoreCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Add New Product"
+            android:text="More Category"
             android:textColor="#40BFFF"
             android:textSize="16sp"
             android:textStyle="bold"
