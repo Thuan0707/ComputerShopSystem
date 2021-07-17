@@ -47,7 +47,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                             Intent intent = new Intent(LoginActiveActivity.this, MainActivity.class);
                             startActivity(intent);
                             Toast.makeText(LoginActiveActivity.this, "Login Successfully!!!", Toast.LENGTH_SHORT).show();
-
+                            LoginActiveActivity.this.finish();
                         } else {
                             tvErrorLogin = findViewById(R.id.tvErrorLogin);
                             tvErrorLogin.setText("Your Username or Password is Wrong!!!!");

@@ -1,11 +1,18 @@
 package com.example.computershopsystemadmin.View;
 
 
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +26,16 @@ import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ProductDetailsFragmentBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
@@ -35,20 +48,21 @@ import java.util.List;
 public class ProductDetailsFragment extends Fragment {
 
     private static String TAG = "testing";
-
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private Uri imageURI;
     public Product product;
     ProductDetailsFragmentBinding binding;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ProductDetailsFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-
+        storageReference = FirebaseStorage.getInstance().getReference("uploads");
         Bundle bundle = getArguments();
         String productJsonString = bundle.getString(Variable.DETAIL_KEY);
         product = Utils.getGsonParser().fromJson(productJsonString, Product.class);
@@ -62,6 +76,13 @@ public class ProductDetailsFragment extends Fragment {
         binding.txtROM.setText(product.getRom().getCapacity() + " " + product.getRom().getDescription());
         binding.txtBrand.setText(product.getBrand().getName());
         binding.txtQuantity.setText(String.valueOf(product.getQuantity()));
+
+        binding.ivProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser();
+            }
+        });
         binding.txtQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +184,24 @@ public class ProductDetailsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST) {
+            imageURI = data.getData();
+            uploadFile();
+
+            Log.e("uri", imageURI.toString());
+            Picasso.get().load(imageURI).fit().centerCrop().into(binding.ivProduct);
+        }
+    }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver cr = getContext().getContentResolver();
+        MimeTypeMap mine = MimeTypeMap.getSingleton();
+        return mine.getExtensionFromMimeType(cr.getType(uri));
+    }
+
     public <T> void setList(String key, List<T> list) {
         Gson gson = new Gson();
         String json = gson.toJson(list);
@@ -197,6 +236,39 @@ public class ProductDetailsFragment extends Fragment {
         fragTransaction.commit();
     }
 
+    private void uploadFile() {
+        if (imageURI != null) {
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageURI));
+            fileReference.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(
+                            new OnCompleteListener<Uri>() {
+
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    String fileLink = task.getResult().toString();
+                                    databaseReference = FirebaseDatabase.getInstance().getReference("Product/" + product.getId() + "/image");
+                                    databaseReference.setValue(fileLink);
+
+                                }
+                            }
+
+                    );
+
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "No file selected", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void openFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
 //    private String moneyFormat(double money) {
 //
 //        String[] splitStr = money.split("\\a");
