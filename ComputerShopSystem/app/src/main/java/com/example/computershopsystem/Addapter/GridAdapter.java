@@ -57,7 +57,7 @@ public class GridAdapter extends BaseAdapter {
         name.setText(listProduct.get(position).getName());
         brand.setText(listProduct.get(position).getBrand().getName());
         price.setText("$"+checkInt(listProduct.get(position).getSellPrice()));
-        Picasso.get().load(listProduct.get(position).getImage()).into(imageView);
+        Picasso.get().load(listProduct.get(position).getImage()).resize(300,300).into(imageView);
         notifyDataSetChanged();
         return convertView;
     }

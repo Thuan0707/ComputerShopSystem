@@ -20,6 +20,7 @@ import com.example.computershopsystemadmin.Model.Ram;
 import com.example.computershopsystemadmin.Model.Rom;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
+import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ChangeRamProductFragmentBinding;
 import com.example.computershopsystemadmin.databinding.ChangeRomProductFragmentBinding;
@@ -80,6 +81,12 @@ public class ChangeROMProductFragment extends Fragment {
                 public void onClick(View v) {
                     String capacity = binding.spROM.getSelectedItem().toString();
                     String des = binding.edDesROM.getText().toString();
+                    Validation validation = new Validation();
+                    String notify = validation.CheckDescriptionProduct(des);
+                    if (notify != null) {
+                        binding.edDesROM.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edDesROM.setError(notify);
+                    } else {
                     if (bundle.getSerializable("newProduct") != null) {
                         Bundle bundle = new Bundle();
                         Rom rom = new Rom();
@@ -104,7 +111,7 @@ public class ChangeROMProductFragment extends Fragment {
                         bundle.putString(Variable.DETAIL_KEY, productJsonString);
                         fragment.setArguments(bundle);
                         switchFragment(fragment);
-                    }
+                    }}
                 }
             });
         }

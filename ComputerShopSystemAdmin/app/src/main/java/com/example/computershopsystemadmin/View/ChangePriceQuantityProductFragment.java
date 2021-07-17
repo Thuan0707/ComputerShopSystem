@@ -16,6 +16,7 @@ import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.Model.Screen;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
+import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ChangeNameProductFragmentBinding;
 import com.example.computershopsystemadmin.databinding.ChangePriceQuantityProductFragmentBinding;
@@ -52,10 +53,27 @@ public class ChangePriceQuantityProductFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
 
-                    double sellPrice = Double.parseDouble(binding.edSellPrice.getText().toString().trim());
-                    double buyPrice = Double.parseDouble(binding.edBuyPrice.getText().toString().trim());
-                    int quantity = Integer.parseInt(binding.edQuantity.getText().toString().trim());
 
+                    Validation validation = new Validation();
+                    String notifyPrice = validation.CheckPrice(binding.edSellPrice.getText().toString().trim());
+                    if (notifyPrice != null) {
+                        binding.edSellPrice.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edSellPrice.setError(notifyPrice);
+                    }
+                    notifyPrice = validation.CheckPrice(binding.edBuyPrice.getText().toString().trim());
+                    if (notifyPrice != null) {
+                        binding.edBuyPrice.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edBuyPrice.setError(notifyPrice);
+                    }
+                    String notityQuantity = validation.CheckQuantity(binding.edQuantity.getText().toString().trim());
+                    if (notifyPrice != null) {
+                        binding.edQuantity.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edQuantity.setError(notityQuantity);
+                    }
+                    if (validation.isValid()){
+                        double sellPrice = Double.parseDouble(binding.edSellPrice.getText().toString().trim());
+                        double buyPrice = Double.parseDouble(binding.edBuyPrice.getText().toString().trim());
+                        int quantity = Integer.parseInt(binding.edQuantity.getText().toString().trim());
                     if (bundle.getSerializable("newProduct") != null) {
                         Bundle bundle = new Bundle();
 
@@ -83,7 +101,7 @@ public class ChangePriceQuantityProductFragment extends Fragment {
                         bundle.putString(Variable.DETAIL_KEY, productJsonString);
                         fragment.setArguments(bundle);
                         switchFragment(fragment);
-                    }
+                    }}
                 }
             });
         }

@@ -31,16 +31,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/AddNewProductFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/add_new_product_fragment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_storage_20_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Addapter/GridProductAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Addapter/GridProductAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangeNameProductFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangeNameProductFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ProductDetailsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ProductDetailsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ProductManagementFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ProductManagementFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/product_details_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/product_details_fragment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/product_management_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/res/layout/product_management_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/DAO/ProfileFirebaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/DAO/ProfileFirebaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/CustomerProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/CustomerProfileFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +105,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="SerialNumber@JYNBB18522154348" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-07-17T11:21:26.407695200Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="android-custom-viewC:/Users/MSI_GF/AppData/Local/Android/Sdk/sources/android-30/android/widget/GridView.java_SELECTED" value="GridView" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
@@ -298,22 +297,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1626222392629" />
-    <state width="746" height="188" key="GridCell.Tab.0.bottom" timestamp="1626370720614">
+    <state width="0" height="0" key="GridCell.Tab.0.bottom" timestamp="1626521683525">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626370720614" />
-    <state width="746" height="188" key="GridCell.Tab.0.center" timestamp="1626370720614">
+    <state width="0" height="0" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626521683525" />
+    <state width="0" height="0" key="GridCell.Tab.0.center" timestamp="1626521683525">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626370720614" />
-    <state width="746" height="188" key="GridCell.Tab.0.left" timestamp="1626370720614">
+    <state width="0" height="0" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626521683525" />
+    <state width="0" height="0" key="GridCell.Tab.0.left" timestamp="1626521683525">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626370720614" />
-    <state width="746" height="188" key="GridCell.Tab.0.right" timestamp="1626370720614">
+    <state width="0" height="0" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626521683525" />
+    <state width="0" height="0" key="GridCell.Tab.0.right" timestamp="1626521683525">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="746" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626370720614" />
+    <state width="0" height="0" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626521683525" />
     <state x="432" y="116" key="SettingsEditor" timestamp="1626177640535">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

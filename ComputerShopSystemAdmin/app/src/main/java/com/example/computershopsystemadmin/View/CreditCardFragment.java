@@ -49,6 +49,9 @@ public class CreditCardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 InputCreditCardFragment fragment = new InputCreditCardFragment();
+                Bundle bun=new Bundle();
+                bun.putSerializable("customer",customer);
+                fragment.setArguments(bun);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
                 fragTransaction.setCustomAnimations(android.R.animator.fade_in,

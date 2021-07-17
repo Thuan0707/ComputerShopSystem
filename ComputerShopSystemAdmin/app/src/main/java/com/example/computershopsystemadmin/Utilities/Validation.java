@@ -75,4 +75,43 @@ public class Validation {
         }
         return null;
     }
+
+    public String CheckPrice(String  price){
+        if (price.isEmpty()){
+            isValid=false;
+            return "Price can not price";
+
+        }
+        return null;
+    }
+    public String CheckQuantity(String qua){
+        if (qua.isEmpty()){
+            isValid=false;
+            return "Please input quantity!!!";
+
+        }
+        return null;
+    }
+    public String CheckDescriptionProduct(String des){
+        if (des.isEmpty()){
+            isValid=false;
+            return "Please input description!!!";
+
+        }
+        return null;
+    }
+    public String CheckBrandProduct(String brand){
+        if (brand.isEmpty()){
+            isValid=false;
+            return "Please input Brand!!!";
+        }
+        return null;
+    }
+    public String CheckNameProduct(String name){
+        if (name.isEmpty()){
+            isValid=false;
+            return "Please input name!!!";
+        }
+        return null;
+    }
 }

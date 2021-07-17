@@ -17,6 +17,7 @@ import com.example.computershopsystemadmin.Model.Rom;
 import com.example.computershopsystemadmin.Model.Screen;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.Utilities.Utils;
+import com.example.computershopsystemadmin.Utilities.Validation;
 import com.example.computershopsystemadmin.Utilities.Variable;
 import com.example.computershopsystemadmin.databinding.ChangeRomProductFragmentBinding;
 import com.example.computershopsystemadmin.databinding.ChangeScreenProductFragmentBinding;
@@ -67,6 +68,12 @@ public class ChangeScreenProductFragment extends Fragment {
                 public void onClick(View v) {
                     String size = binding.spScreen.getSelectedItem().toString();
                     String des = binding.edDesScreen.getText().toString();
+                    Validation validation = new Validation();
+                    String notify = validation.CheckDescriptionProduct(des);
+                    if (notify != null) {
+                        binding.edDesScreen.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                        binding.edDesScreen.setError(notify);
+                    } else {
                     if (bundle.getSerializable("newProduct") != null) {
                         Bundle bundle = new Bundle();
                         Screen screen = new Screen();
@@ -92,7 +99,7 @@ public class ChangeScreenProductFragment extends Fragment {
                         fragment.setArguments(bundle);
                         switchFragment(fragment);
                     }
-                }
+                }}
             });
         }
         return view;

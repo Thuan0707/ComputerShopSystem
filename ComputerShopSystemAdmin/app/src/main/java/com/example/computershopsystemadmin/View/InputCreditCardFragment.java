@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystemadmin.Model.CreditCard;
+import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.databinding.InputCreditCardFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,7 +50,7 @@ public class InputCreditCardFragment extends Fragment {
     EditText money;
     TextView expirationDate;
     EditText holderCard;
-
+Customer customer;
     String id;
     String keyCreditCard;
     SharedPreferences sharedpreferences;
@@ -60,6 +61,10 @@ public class InputCreditCardFragment extends Fragment {
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
         binding = InputCreditCardFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            customer = (Customer) bundle.getSerializable("customer");
+        }
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         id = null;
