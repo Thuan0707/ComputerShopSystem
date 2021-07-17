@@ -75,14 +75,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new ManagementFragment();
 
                         break;
-                    case R.id.ic_location:
-                        if (firebaseUser != null) {
-
-                            selectedFragment = new ProductDetailsFragment();
-                        } else {
-                            selectedFragment = new TestLoginLogoutFragment();
-                        }
-                        break;
+                   
 
                 }
                 switchFragment(selectedFragment);
