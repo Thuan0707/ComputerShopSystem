@@ -42,6 +42,13 @@ public class ManagementFragment extends Fragment {
                 switchFragment(fragment);
             }
         });
+        binding.btnVoucherManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VoucherFragment fragment = new VoucherFragment();
+                switchFragment(fragment);
+            }
+        });
         return view;
     }
 

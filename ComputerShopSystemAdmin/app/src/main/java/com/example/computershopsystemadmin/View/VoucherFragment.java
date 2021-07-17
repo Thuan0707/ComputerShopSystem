@@ -36,15 +36,13 @@ VoucherFragmentBinding binding;
     databaseReference = FirebaseDatabase.getInstance().getReference("Voucher");
     VoucherFirebaseHelper helper=new VoucherFirebaseHelper(databaseReference,getContext());
     helper.getList(binding.lvVoucher);
-    binding.lvVoucher.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+    binding.btnAddVoucher.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-      Voucher voucher=(Voucher)parent.getAdapter().getItem(position);
-        Gson gson = new Gson();
-        String json = gson.toJson(voucher);
-        editor.putString("voucher", json);
+      public void onClick(View v) {
+        editor.remove("voucher");
         editor.apply();
-        CheckOutFragment fragment = new CheckOutFragment();
+        InputVoucherFragment fragment = new InputVoucherFragment();
         switchFragment(fragment);
       }
     });

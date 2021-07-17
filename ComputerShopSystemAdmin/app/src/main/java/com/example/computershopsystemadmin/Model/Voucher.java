@@ -14,6 +14,14 @@ public class Voucher implements Serializable {
     public Voucher() {
     }
 
+    public Voucher(String id, String code, double discount, String name, String description) {
+        this.id = id;
+        this.code = code;
+        this.discount = discount;
+        this.name = name;
+        this.description = description;
+    }
+
     public Voucher(String id, String code, double discount, String name, String description, String createAt, String deleteAt) {
         this.id = id;
         this.code = code;
