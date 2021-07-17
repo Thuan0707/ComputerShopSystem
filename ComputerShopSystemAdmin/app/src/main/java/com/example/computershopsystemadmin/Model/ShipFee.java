@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ShipFee {
     int id;
-    int distance;
+    String  city;
     double fee;
     Date createAt;
     Date deleteAt;
@@ -12,9 +12,9 @@ public class ShipFee {
     public ShipFee() {
     }
 
-    public ShipFee(int id, int distance, double fee, Date createAt, Date deleteAt) {
+    public ShipFee(int id, String city, double fee, Date createAt, Date deleteAt) {
         this.id = id;
-        this.distance = distance;
+        this.city = city;
         this.fee = fee;
         this.createAt = createAt;
         this.deleteAt = deleteAt;
@@ -28,12 +28,12 @@ public class ShipFee {
         this.id = id;
     }
 
-    public int getDistance() {
-        return distance;
+    public String getCity() {
+        return city;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public double getFee() {
