@@ -1,9 +1,11 @@
 package com.example.computershopsystemadmin.Addapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,14 +18,14 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
-public class GridAdapter extends BaseAdapter {
+public class GridProductAdapter extends BaseAdapter {
 
     Context context;
     ArrayList<Product> listProduct;
 
     LayoutInflater layoutInflater;
 
-    public GridAdapter(Context context, ArrayList<Product> listProduct) {
+    public GridProductAdapter(Context context, ArrayList<Product> listProduct) {
         this.context = context;
         this.listProduct = listProduct;
 
@@ -57,7 +59,8 @@ public class GridAdapter extends BaseAdapter {
         name.setText(listProduct.get(position).getName());
         brand.setText(listProduct.get(position).getBrand().getName());
         price.setText("$"+checkInt(listProduct.get(position).getSellPrice()));
-        Picasso.get().load(listProduct.get(position).getImage()).into(imageView);
+
+        Picasso.get().load(listProduct.get(position).getImage()).resize(300,300).into(imageView);
         notifyDataSetChanged();
         return convertView;
     }

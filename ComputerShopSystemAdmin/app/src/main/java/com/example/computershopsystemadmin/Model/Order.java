@@ -1,8 +1,9 @@
 package com.example.computershopsystemadmin.Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Order {
+public class Order implements Serializable {
     String id;
     String idCustomer;
     String name;
@@ -15,7 +16,6 @@ public class Order {
     String note;
     CreditCard creditCard;
     Voucher voucher;
-
     public Order() {
     }
 

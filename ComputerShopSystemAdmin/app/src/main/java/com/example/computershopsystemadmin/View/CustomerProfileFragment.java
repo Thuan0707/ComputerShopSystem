@@ -1,4 +1,11 @@
-package com.example.computershopsystem.View;
+package com.example.computershopsystemadmin.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,44 +13,46 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import com.example.computershopsystem.DAO.ProfileFirebaseHelper;
-import com.example.computershopsystem.R;
-import com.example.computershopsystem.databinding.ProfileFragmentBinding;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.computershopsystemadmin.Model.Customer;
+import com.example.computershopsystemadmin.R;
+import com.example.computershopsystemadmin.databinding.CustomerProfileFragmentBinding;
 import com.squareup.picasso.Picasso;
 
-public class ProfileFragment extends Fragment {
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
-    ProfileFirebaseHelper helper;
-    DatabaseReference databaseReference;
-    ProfileFragmentBinding binding;
+import org.jetbrains.annotations.NotNull;
 
-    @Nullable
+public class CustomerProfileFragment extends Fragment {
+    CustomerProfileFragmentBinding binding;
+    Customer customer;
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = ProfileFragmentBinding.inflate(getLayoutInflater());
+    public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        binding = CustomerProfileFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
-        helper = new ProfileFirebaseHelper(databaseReference, getActivity());
-        helper.loadACustomer(firebaseUser.getUid(), binding.tvBirthday, binding.tvGender,binding.tvName);
+        Bundle bundle=this.getArguments();
+        if (bundle!=null){
+            customer=(Customer) bundle.getSerializable("customer");
+        }
+        binding.tvEmail.setText(customer.getCustomerAccount().getEmail());
+        binding.tvPhone.setText(customer.getCustomerAccount().getPhone());
+        binding.tvName.setText(customer.getFullName());
+        if (customer.getDateOfBirth() != null) {
+            binding.tvBirthday.setText(customer.getDateOfBirth());
+        }
+        String strGender = null;
+        switch (customer.getGender()) {
+            case 1:
+                strGender = "Male";
+                break;
+            case 0:
+                strGender = "Female";
+                break;
+            case 2:
+                strGender = "Other";
+                break;
+        }
+        binding.tvGender.setText(strGender);
+        if (customer.getImage() != null) {
 
-        binding.tvEmail.setText(firebaseUser.getEmail());
-        binding.tvPhone.setText(firebaseUser.getPhoneNumber());
-        if (firebaseUser.getPhotoUrl() != null) {
-
-            Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
+            Picasso.get().load(customer.getImage()).into(binding.imgAvatar);
         }
 
         binding.tvGender.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +121,7 @@ public class ProfileFragment extends Fragment {
                 switchFragment(fragment);
             }
         });
-     
+
         binding.tvName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,11 +134,10 @@ public class ProfileFragment extends Fragment {
                 switchFragment(fragment);
             }
         });
+
         return view;
     }
-
-
-    void switchFragment(Fragment fragment) {
+    public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
         fragTransaction.setCustomAnimations(android.R.animator.fade_in,

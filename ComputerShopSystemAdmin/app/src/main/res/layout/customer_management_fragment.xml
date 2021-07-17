@@ -6,17 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".View.CusHomeFragment">
-
-        <ImageButton
-            android:id="@+id/ibtnUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#00FFFFFF"
-            app:layout_constraintEnd_toStartOf="@+id/ibtnNotify"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_user" />
+        tools:context=".View.CustomerManagementFragment">
 
         <TextView
             android:id="@+id/tvMoreCate"
@@ -58,7 +48,7 @@
             android:drawablePadding="8dp"
             android:ems="10"
             android:fontFamily="sans-serif"
-            android:hint="Search Product"
+            android:hint="Search Customer"
             android:inputType="textPersonName"
             android:padding="8dp"
             android:textColor="@color/black"
@@ -181,8 +171,8 @@
             app:layout_constraintTop_toBottomOf="@+id/btnHP"
             app:layout_constraintVertical_bias="0.016" />
 
-        <GridView
-            android:id="@+id/gridProduct"
+        <ListView
+            android:id="@+id/lvCustomer"
             android:layout_width="409dp"
             android:layout_height="377dp"
             android:layout_marginTop="64dp"
@@ -194,15 +184,5 @@
             app:layout_constraintTop_toBottomOf="@+id/btnDell"
             app:layout_constraintVertical_bias="1.0" />
 
-        <ImageButton
-            android:id="@+id/ibtnNotify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#00FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_notify" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

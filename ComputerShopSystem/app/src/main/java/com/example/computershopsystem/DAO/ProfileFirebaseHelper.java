@@ -24,7 +24,7 @@ public class ProfileFirebaseHelper {
         this.db = db;
     }
 
-    public Customer loadACustomer(String id, TextView birth, TextView gender) {
+    public Customer loadACustomer(String id, TextView birth, TextView gender,TextView fullName) {
         Query query = db.child(id);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -32,7 +32,10 @@ public class ProfileFirebaseHelper {
                 if (snapshot.exists()) {
                     customer = snapshot.getValue(Customer.class);
                     if (customer.getDateOfBirth()!=null){
-                        birth.setText(customer.getDateOfBirth().toString());
+                        birth.setText(customer.getDateOfBirth());
+                    }
+                    if (customer.getFullName()!=null){
+                        fullName.setText(customer.getFullName());
                     }
 
                     String strGender=null;

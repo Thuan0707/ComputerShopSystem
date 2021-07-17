@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystemadmin.Addapter.LVCreditCardAdapter;
 import com.example.computershopsystemadmin.Model.CreditCard;
+import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.R;
 import com.example.computershopsystemadmin.databinding.CreditCardFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,16 +32,18 @@ import java.util.ArrayList;
 
 public class CreditCardFragment extends Fragment {
     CreditCardFragmentBinding binding;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
+
     private ListView listView;
+    Customer customer;
     @Nullable
     @Override
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
         binding = CreditCardFragmentBinding.inflate(getLayoutInflater());
         View view=binding.getRoot();
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            customer = (Customer) bundle.getSerializable("customer");
+        }
         getList();
         binding.btnGotoAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +63,7 @@ public class CreditCardFragment extends Fragment {
 
     public void getList() {
         ArrayList<CreditCard> creditCards = new ArrayList<>();
-        Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("card");
+        Query data = FirebaseDatabase.getInstance().getReference("Customer").child(customer.getId()).child("card");
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
