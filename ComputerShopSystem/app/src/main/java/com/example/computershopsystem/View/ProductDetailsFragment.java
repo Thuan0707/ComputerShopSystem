@@ -102,7 +102,7 @@ public class ProductDetailsFragment extends Fragment {
     public void IncreaseQuantityCartProduct(List<OrderProduct> listProductInCart, Product product) {
         for (OrderProduct item : listProductInCart) {
             if (item.getProduct().getId().equalsIgnoreCase(product.getId())) {
-              item.setQuantityInCart(item.getQuantityInCart()+1);
+              item.setQuantity(item.getQuantity()+1);
               return;
             }
         }

@@ -75,6 +75,7 @@ public class LoginActiveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_active);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signOut();
+        signOut();
         btnContinue = findViewById(R.id.btnContinue);
         edPhone = findViewById(R.id.txtPhoneContinue);
 
@@ -271,7 +272,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                     Log.d(TAG, "NumberPhone: " + phoneNumber);
 
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
-                        CustomerAccount customerAccount = new CustomerAccount(uid, phoneNumber, uid, email, null, null);
+                        CustomerAccount customerAccount = new CustomerAccount(uid, phoneNumber, uid, email, null);
                         Customer customer = new Customer(uid, customerAccount, name, Calendar.getInstance().getTime());
                         databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
                         databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);

@@ -1,4 +1,4 @@
-package com.example.computershopsystem.Addapter;
+package com.example.computershopsystem.Controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -50,8 +50,8 @@ public class LVProductInCheckOutAdapter extends ArrayAdapter<OrderProduct> {
         TextView price = convertView.findViewById(R.id.txtPriceCheckOut);
         TextView quantity = convertView.findViewById(R.id.txtQuantityCheckOut);
         name.setText(getItem(position).getProduct().getName());
-        price.setText(checkInt(getItem(position).getProduct().getSellPrice()*getItem(position).getQuantityInCart()));
-        quantity.setText("x"+String.valueOf(getItem(position).getQuantityInCart()));
+        price.setText(checkInt(getItem(position).getProduct().getSellPrice()*getItem(position).getQuantity()));
+        quantity.setText("x"+String.valueOf(getItem(position).getQuantity()));
         Picasso.get().load(getItem(position).getProduct().getImage()).into(image);
 
         firebaseAuth = FirebaseAuth.getInstance();

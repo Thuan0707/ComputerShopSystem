@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystem.Addapter.LVProductInCheckOutAdapter;
+import com.example.computershopsystem.Controller.LVProductInCheckOutAdapter;
 import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.Model.Order;
 import com.example.computershopsystem.Model.OrderProduct;
@@ -177,7 +177,7 @@ public class CheckOutFragment extends Fragment {
     public double sumPriceInList(List<OrderProduct> productList) {
         double sum = 0;
         for (OrderProduct item : productList) {
-            sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
+            sum += item.getProduct().getSellPrice() * item.getQuantity();
         }
         return sum;
     }
@@ -185,7 +185,7 @@ public class CheckOutFragment extends Fragment {
     public int quantityItemInList(List<OrderProduct> productList) {
         int quantity = 0;
         for (OrderProduct item : productList) {
-            quantity += item.getQuantityInCart();
+            quantity += item.getQuantity();
         }
         return quantity;
     }

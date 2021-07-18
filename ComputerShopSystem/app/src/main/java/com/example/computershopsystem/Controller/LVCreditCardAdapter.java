@@ -1,4 +1,4 @@
-package com.example.computershopsystem.Addapter;
+package com.example.computershopsystem.Controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;

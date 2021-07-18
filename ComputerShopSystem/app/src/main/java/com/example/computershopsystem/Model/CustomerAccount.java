@@ -6,20 +6,18 @@ public class CustomerAccount implements Serializable {
     String id;
     String phone;
     String  idFacebook;
-    String email;
+    String gmail;
     String idGmail;
-    String password;
 
     public CustomerAccount() {
     }
 
-    public CustomerAccount(String id, String phone, String idFacebook, String email, String idGmail, String password) {
+    public CustomerAccount(String id, String phone, String idFacebook, String gmail, String idGmail) {
         this.id = id;
         this.phone = phone;
         this.idFacebook = idFacebook;
-        this.email = email;
+        this.gmail = gmail;
         this.idGmail = idGmail;
-        this.password = password;
     }
 
     public String getId() {
@@ -46,12 +44,12 @@ public class CustomerAccount implements Serializable {
         this.idFacebook = idFacebook;
     }
 
-    public String getEmail() {
-        return email;
+    public String getGmail() {
+        return gmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
     }
 
     public String getIdGmail() {
@@ -62,11 +60,4 @@ public class CustomerAccount implements Serializable {
         this.idGmail = idGmail;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

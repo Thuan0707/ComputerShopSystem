@@ -1,4 +1,4 @@
-package com.example.computershopsystem.Addapter;
+package com.example.computershopsystem.Controller;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -55,7 +55,7 @@ public class LVOrderHistoryAdapter extends ArrayAdapter<Order> {
     String NumOfProduct(Order order) {
         int num = 0;
         for (OrderProduct orderProduct : order.getOrderProductList()) {
-            num += orderProduct.getQuantityInCart();
+            num += orderProduct.getQuantity();
         }
         return String.valueOf(num);
     }
@@ -63,7 +63,7 @@ public class LVOrderHistoryAdapter extends ArrayAdapter<Order> {
     double Total(Order order) {
         double total = 0;
         for (OrderProduct orderProduct : order.getOrderProductList()) {
-            total += orderProduct.getQuantityInCart() * orderProduct.getProduct().getSellPrice();
+            total += orderProduct.getQuantity() * orderProduct.getProduct().getSellPrice();
         }
         return total;
     }

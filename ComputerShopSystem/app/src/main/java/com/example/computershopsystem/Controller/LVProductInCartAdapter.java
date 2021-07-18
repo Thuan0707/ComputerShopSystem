@@ -1,4 +1,4 @@
-package com.example.computershopsystem.Addapter;
+package com.example.computershopsystem.Controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -67,7 +67,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         EditText quantity = convertView.findViewById(R.id.txtQuantityCartProduct);
         name.setText(getItem(position).getProduct().getName());
         price.setText(checkInt(getItem(position).getProduct().getSellPrice()));
-        quantity.setText(String.valueOf(getItem(position).getQuantityInCart()));
+        quantity.setText(String.valueOf(getItem(position).getQuantity()));
         Picasso.get().load(getItem(position).getProduct().getImage()).into(image);
         AppCompatImageButton increaseQuantity=convertView.findViewById(R.id.ibtnIncreaseQuantity);
         AppCompatImageButton decreaseQuantity=convertView.findViewById(R.id.ibtnDecreaseQuantity);
@@ -99,7 +99,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
                 if(product.getQuantity() > Integer.parseInt(quantity.getText().toString()))
                 quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())+1));
                 List<OrderProduct> listProduct=getList();
-                listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
+                listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
                 setList("cart",listProduct);
             }
         });
@@ -109,7 +109,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
                 if(Integer.parseInt(quantity.getText().toString())>1) {
                     quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString()) - 1));
                     List<OrderProduct> listProduct = getList();
-                    listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
+                    listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
                     setList("cart", listProduct);
                 }
             }
@@ -118,7 +118,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 List<OrderProduct> listProduct=getList();
-                listProduct.get(position).setQuantityInCart(Integer.parseInt(quantity.getText().toString()));
+                listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
                 setList("cart",listProduct);
                 return true;
             }

@@ -5,21 +5,21 @@ import java.io.Serializable;
 public class OrderProduct implements Serializable {
     String id;
     String orderID;
-    int quantityInCart;
+    int quantity;
     Product product;
 
     public OrderProduct() {
     }
 
-    public OrderProduct(String id, String orderID, int quantityInCart, Product product) {
+    public OrderProduct(String id, String orderID, int quantity, Product product) {
         this.id = id;
         this.orderID = orderID;
-        this.quantityInCart = quantityInCart;
+        this.quantity = quantity;
         this.product = product;
     }
 
-    public OrderProduct(int quantityInCart, Product product) {
-        this.quantityInCart = quantityInCart;
+    public OrderProduct(int quantity, Product product) {
+        this.quantity = quantity;
         this.product = product;
     }
 
@@ -39,12 +39,12 @@ public class OrderProduct implements Serializable {
         this.orderID = orderID;
     }
 
-    public int getQuantityInCart() {
-        return quantityInCart;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuantityInCart(int quantityInCart) {
-        this.quantityInCart = quantityInCart;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Product getProduct() {

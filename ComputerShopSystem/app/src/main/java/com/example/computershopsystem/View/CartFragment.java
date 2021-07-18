@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystem.Addapter.LVProductInCartAdapter;
+import com.example.computershopsystem.Controller.LVProductInCartAdapter;
 import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
@@ -82,7 +82,7 @@ public class CartFragment extends Fragment {
     public double sumInList(List<OrderProduct> productList) {
         double sum = 0;
         for (OrderProduct item : productList) {
-            sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
+            sum += item.getProduct().getSellPrice() * item.getQuantity();
         }
         return sum;
     }

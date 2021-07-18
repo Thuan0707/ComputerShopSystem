@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystem.Addapter.LVCreditCardAdapter;
+import com.example.computershopsystem.Controller.LVCreditCardAdapter;
 import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.R;
 import com.example.computershopsystem.databinding.CreditCardFragmentBinding;

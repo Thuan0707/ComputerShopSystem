@@ -56,7 +56,7 @@ public class InputFullNameRegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull @NotNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 String numberPhone = getIntent().getStringExtra("phone");
-                                CustomerAccount customerAccount = new CustomerAccount(firebaseUser.getUid(), numberPhone, null, null, null, null);
+                                CustomerAccount customerAccount = new CustomerAccount(firebaseUser.getUid(), numberPhone, null, null, null);
                                 Customer customer = new Customer(firebaseUser.getUid(), customerAccount, edName.getText().toString(), new Date());
                                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer");
                                 mDatabase.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);

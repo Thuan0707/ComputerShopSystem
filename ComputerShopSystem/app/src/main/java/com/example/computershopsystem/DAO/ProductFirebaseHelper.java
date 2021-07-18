@@ -6,7 +6,7 @@ import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 
-import com.example.computershopsystem.Addapter.GridAdapter;
+import com.example.computershopsystem.Controller.GridAdapter;
 import com.example.computershopsystem.Model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

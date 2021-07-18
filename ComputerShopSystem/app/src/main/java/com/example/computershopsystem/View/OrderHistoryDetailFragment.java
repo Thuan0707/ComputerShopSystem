@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.computershopsystem.Addapter.LVProductInCheckOutAdapter;
+import com.example.computershopsystem.Controller.LVProductInCheckOutAdapter;
 import com.example.computershopsystem.Model.Order;
 import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.R;
@@ -48,7 +48,7 @@ public class OrderHistoryDetailFragment extends Fragment {
     public double sumPriceInList(List<OrderProduct> productList) {
         double sum = 0;
         for (OrderProduct item : productList) {
-            sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
+            sum += item.getProduct().getSellPrice() * item.getQuantity();
         }
         return sum;
     }
@@ -56,7 +56,7 @@ public class OrderHistoryDetailFragment extends Fragment {
     public int quantityItemInList(List<OrderProduct> productList) {
         int quantity = 0;
         for (OrderProduct item : productList) {
-            quantity += item.getQuantityInCart();
+            quantity += item.getQuantity();
         }
         return quantity;
     }
