@@ -50,7 +50,7 @@ public class CustomerProfileFragment extends Fragment {
         }
         storageReference = FirebaseStorage.getInstance().getReference("Customer");
         binding.tvEmail.setText(customer.getCustomerAccount().getEmail());
-        binding.tvPhone.setText(customer.getCustomerAccount().getPhone());
+        binding.tvPhone.setText("0"+customer.getCustomerAccount().getPhone());
         binding.tvName.setText(customer.getFullName());
         if (customer.getDateOfBirth() != null) {
             binding.tvBirthday.setText(customer.getDateOfBirth());

@@ -205,6 +205,14 @@ public class ProductManagementFragment extends Fragment {
 
             }
         });
+
+        binding.tvMoreCate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoreCategoryFragment fragment = new MoreCategoryFragment(binding.gridProduct);
+           switchFragment(fragment);
+            }
+        });
         binding.txtSearch.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
