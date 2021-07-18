@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             editor = sharedpreferences.edit();
 
         }
-        switchFragment(new ProductManagementFragment());
+        switchFragment(new DashboardFragment());
 
 
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.ic_home:
-                        selectedFragment = new ProductManagementFragment();
+                        selectedFragment = new DashboardFragment();
 
                         break;
                     case R.id.ic_user:

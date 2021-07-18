@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="$9999999999999"
+                        android:text="$712738277"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
@@ -104,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="9999999999999"
+                        android:text="1757"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
@@ -138,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="9999999999999"
+                        android:text="7000"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="9999999999999"
+                        android:text="6"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
@@ -205,7 +205,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="9999999999999"
+                        android:text="3707"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
