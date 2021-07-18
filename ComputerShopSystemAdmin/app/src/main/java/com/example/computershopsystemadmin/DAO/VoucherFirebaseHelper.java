@@ -5,7 +5,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
-import com.example.computershopsystemadmin.Addapter.LVVoucherAdapter;
+import com.example.computershopsystemadmin.Controller.LVVoucherAdapter;
 import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.Model.Voucher;
 import com.example.computershopsystemadmin.R;

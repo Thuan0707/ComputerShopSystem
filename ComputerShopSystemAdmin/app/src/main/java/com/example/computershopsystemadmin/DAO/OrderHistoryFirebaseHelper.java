@@ -5,7 +5,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
-import com.example.computershopsystemadmin.Addapter.LVOrderHistoryAdapter;
+import com.example.computershopsystemadmin.Controller.LVOrderHistoryAdapter;
 import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.Model.Order;
 import com.example.computershopsystemadmin.R;

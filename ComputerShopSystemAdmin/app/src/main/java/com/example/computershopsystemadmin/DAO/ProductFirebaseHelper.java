@@ -7,7 +7,7 @@ import android.widget.GridView;
 import androidx.annotation.NonNull;
 
 
-import com.example.computershopsystemadmin.Addapter.GridProductAdapter;
+import com.example.computershopsystemadmin.Controller.GridProductAdapter;
 import com.example.computershopsystemadmin.Model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

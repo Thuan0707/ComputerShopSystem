@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.computershopsystemadmin.Addapter.LVProductInCheckOutAdapter;
+import com.example.computershopsystemadmin.Controller.LVProductInCheckOutAdapter;
 import com.example.computershopsystemadmin.Model.Order;
 import com.example.computershopsystemadmin.Model.OrderProduct;
 import com.example.computershopsystemadmin.R;

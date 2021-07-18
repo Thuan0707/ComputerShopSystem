@@ -10,6 +10,7 @@ public class Admin {
     String address;
     String email;
     String phone;
+    String image;
     AdminAccount adminAccount;
     Date createAt;
     Date deleteAt;
@@ -17,7 +18,7 @@ public class Admin {
     public Admin() {
     }
 
-    public Admin(String id, String fullName, String dateOfBirth, int gender, String address, String email, String phone, AdminAccount adminAccount, Date createAt, Date deleteAt) {
+    public Admin(String id, String fullName, String dateOfBirth, int gender, String address, String email, String phone, String image, AdminAccount adminAccount, Date createAt, Date deleteAt) {
         this.id = id;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -25,6 +26,7 @@ public class Admin {
         this.address = address;
         this.email = email;
         this.phone = phone;
+        this.image = image;
         this.adminAccount = adminAccount;
         this.createAt = createAt;
         this.deleteAt = deleteAt;
@@ -84,6 +86,14 @@ public class Admin {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public AdminAccount getAdminAccount() {

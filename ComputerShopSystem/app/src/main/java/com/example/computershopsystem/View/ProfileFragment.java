@@ -158,7 +158,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST) {
+        if (requestCode == PICK_IMAGE_REQUEST&&data!=null) {
             imageURI = data.getData();
             Picasso.get().load(imageURI).resize(500, 500).into(binding.imgAvatar);
             uploadFile();

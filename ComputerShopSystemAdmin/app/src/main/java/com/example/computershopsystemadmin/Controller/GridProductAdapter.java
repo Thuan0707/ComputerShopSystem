@@ -1,4 +1,4 @@
-package com.example.computershopsystemadmin.Addapter;
+package com.example.computershopsystemadmin.Controller;
 
 import android.content.Context;
 import android.util.Log;
