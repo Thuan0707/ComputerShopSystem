@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.computershopsystemadmin.Addapter.LVProductInCheckOutAdapter;
+import com.example.computershopsystemadmin.Controller.LVProductInCheckOutAdapter;
 import com.example.computershopsystemadmin.Model.CreditCard;
 import com.example.computershopsystemadmin.Model.Order;
 import com.example.computershopsystemadmin.Model.OrderProduct;

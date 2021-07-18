@@ -1,20 +1,15 @@
 package com.example.computershopsystemadmin.DAO;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.GridView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
-import com.example.computershopsystemadmin.Addapter.GridProductAdapter;
-import com.example.computershopsystemadmin.Addapter.LVCustomerAdapter;
+import com.example.computershopsystemadmin.Controller.LVCustomerAdapter;
 import com.example.computershopsystemadmin.Model.Customer;
-import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
