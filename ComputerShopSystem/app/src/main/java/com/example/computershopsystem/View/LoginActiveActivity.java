@@ -281,10 +281,15 @@ public class LoginActiveActivity extends AppCompatActivity {
                         Log.d(TAG, "onSuccess: Existing User: " + name);
                         Toast.makeText(LoginActiveActivity.this, "Welcome back " + name, Toast.LENGTH_SHORT).show();
                     }
-
-
-                    startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
-
+                    if (user.getPhoneNumber()==null){
+                        Intent intent = new Intent(LoginActiveActivity.this, InputPhoneRegisterActivity.class);
+                        intent.putExtra("facebook",true);
+                        startActivity(intent);
+                    }else {
+                        startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
+                        Log.d(TAG, "onSuccess: Existing User: " + email);
+                        Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
+                    }
                     finish();
                 }
             }

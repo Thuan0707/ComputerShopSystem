@@ -163,7 +163,12 @@ public class RegisterOTP extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
-                        CustomerAccount customerAccount = new CustomerAccount(user.getUid(), numberPhone, null, user.getEmail(), user.getUid());
+                        CustomerAccount customerAccount;
+                        if (getIntent().getStringExtra("facebook") != null) {
+                            customerAccount = new CustomerAccount(user.getUid(), numberPhone, user.getUid(), user.getEmail(), null);
+                        }else{
+                            customerAccount = new CustomerAccount(user.getUid(), numberPhone, null, user.getEmail(), user.getUid());
+                        }
 
                         Customer customer = new Customer(user.getUid(), customerAccount, user.getDisplayName(), new Date());
 //                         Order order = new Order(user.getUid(), "132", "ádsf", "11/11/2222", null, "11/22/2222", "Ninh kiu", "123", null,null, new CreditCard(),new Voucher());
