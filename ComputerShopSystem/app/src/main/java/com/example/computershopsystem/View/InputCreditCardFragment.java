@@ -35,8 +35,10 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class InputCreditCardFragment extends Fragment {
 
@@ -48,12 +50,14 @@ public class InputCreditCardFragment extends Fragment {
     EditText money;
     TextView expirationDate;
     EditText holderCard;
+    List<CreditCard> creditCardList;
 
+    Boolean isUpdate;
     String id;
     String keyCreditCard;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
-
+    Boolean check;
     @Nullable
     @Override
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class InputCreditCardFragment extends Fragment {
         View view = binding.getRoot();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        isUpdate =false;
         id = null;
         keyCreditCard = null;
         CreditCard creditCard = new CreditCard();
@@ -104,6 +109,7 @@ public class InputCreditCardFragment extends Fragment {
         if(!(id == null)){
             binding.tvNameTop12.setText("Update Card");
             binding.btnAddCard.setText("Save");
+            isUpdate =true;
             //Log.e("NUNUNUNU",null);
 //            if(creditCard != null ){
 //
@@ -113,6 +119,7 @@ public class InputCreditCardFragment extends Fragment {
 ////                holderCard.setText(creditCard.getCardHolder());
 //            }
         }
+        getList();
         numberCard.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -214,13 +221,14 @@ public class InputCreditCardFragment extends Fragment {
         binding.btnAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean check = true;
+                check = true;
                 String cardNumber = String.valueOf(numberCard.getText());
                 if(cardNumber.equals("")){
                     numberCard.setError("Please enter Number Card !");
                     numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
+
                 String expiration = String.valueOf(expirationDate.getText());
                 if(String.valueOf(expirationDate.getText()).equals("")){
                     expirationDate.setError("Please enter Expiration Date !");
@@ -240,7 +248,8 @@ public class InputCreditCardFragment extends Fragment {
 
                     check = false;
                 }
-                if(check) {
+
+                if(check && checkDuplicate(cardNumber,isUpdate)) {
                     String idCard = id;
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
                     if((id == null)) {
@@ -263,4 +272,36 @@ public class InputCreditCardFragment extends Fragment {
         return  view;
     }
 
+    void getList(){
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                creditCardList = new ArrayList<>();
+                if (snapshot.exists()) {
+                    for (DataSnapshot shot : snapshot.getChildren()) {
+                        keyCreditCard=shot.getKey();
+                        CreditCard creditCard = shot.getValue(CreditCard.class);
+                        creditCardList.add(creditCard);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    Boolean checkDuplicate(String number,Boolean isUpdate){
+        for(CreditCard item : creditCardList){
+            if(item.getCardNumber().equals(number)&& !isUpdate){
+                numberCard.setError("Your number card had existed !");
+                numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                return false;
+            }
+        }
+        return true;
+    }
 }

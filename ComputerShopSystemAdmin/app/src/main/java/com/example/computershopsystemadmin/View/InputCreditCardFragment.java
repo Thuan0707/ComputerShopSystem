@@ -37,8 +37,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class InputCreditCardFragment extends Fragment {
 
@@ -51,10 +53,13 @@ public class InputCreditCardFragment extends Fragment {
     TextView expirationDate;
     EditText holderCard;
     Customer customer;
+    List<CreditCard> creditCardList;
+    Boolean isUpdate;
     String id;
     String keyCreditCard;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+
 
     @Nullable
     @Override
@@ -67,6 +72,7 @@ public class InputCreditCardFragment extends Fragment {
         }
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        isUpdate =false;
         id = null;
         keyCreditCard = null;
         CreditCard creditCard = new CreditCard();
@@ -110,6 +116,7 @@ public class InputCreditCardFragment extends Fragment {
         if(!(id == null)){
             binding.tvNameTop12.setText("Update Card");
             binding.btnAddCard.setText("Save");
+            isUpdate =true;
             //Log.e("NUNUNUNU",null);
 //            if(creditCard != null ){
 //
@@ -119,6 +126,8 @@ public class InputCreditCardFragment extends Fragment {
 ////                holderCard.setText(creditCard.getCardHolder());
 //            }
         }
+
+        getList();
         numberCard.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -246,7 +255,7 @@ public class InputCreditCardFragment extends Fragment {
 
                     check = false;
                 }
-                if(check) {
+                if(check&& checkDuplicate(cardNumber,isUpdate)) {
                     String idCard = id;
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(customer.getId()).child("cardList");
                     if((id == null)) {
@@ -272,4 +281,36 @@ public class InputCreditCardFragment extends Fragment {
         return  view;
     }
 
+    void getList(){
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(customer.getId()).child("cardList");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                creditCardList = new ArrayList<>();
+                if (snapshot.exists()) {
+                    for (DataSnapshot shot : snapshot.getChildren()) {
+                        keyCreditCard=shot.getKey();
+                        CreditCard creditCard = shot.getValue(CreditCard.class);
+                        creditCardList.add(creditCard);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    Boolean checkDuplicate(String number,Boolean isUpdate){
+        for(CreditCard item : creditCardList){
+            if(item.getCardNumber().equals(number)&& !isUpdate){
+                numberCard.setError("Your number card had existed !");
+                numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                return false;
+            }
+        }
+        return true;
+    }
 }
