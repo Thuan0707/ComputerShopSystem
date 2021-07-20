@@ -8,16 +8,6 @@
         android:layout_height="match_parent"
         tools:context=".View.CusHomeFragment">
 
-        <ImageButton
-            android:id="@+id/ibtnUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#00FFFFFF"
-            app:layout_constraintEnd_toStartOf="@+id/ibtnNotify"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_user" />
-
         <TextView
             android:id="@+id/tvMoreCate"
             android:layout_width="wrap_content"
@@ -194,15 +184,5 @@
             app:layout_constraintTop_toBottomOf="@+id/btnDell"
             app:layout_constraintVertical_bias="1.0" />
 
-        <ImageButton
-            android:id="@+id/ibtnNotify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#00FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_notify" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

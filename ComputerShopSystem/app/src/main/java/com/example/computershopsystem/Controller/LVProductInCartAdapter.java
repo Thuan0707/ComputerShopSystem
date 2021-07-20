@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -96,8 +97,11 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         increaseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(product.getQuantity() > Integer.parseInt(quantity.getText().toString()))
-                quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString())+1));
+                if(product.getQuantity() > Integer.parseInt(quantity.getText().toString())) {
+                    quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString()) + 1));
+                }else{
+                    Toast.makeText(getContext(), "The quantity of this product is "+String.valueOf(product.getQuantity()) , Toast.LENGTH_SHORT).show();
+                }
                 List<OrderProduct> listProduct=getList();
                 listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
                 setList("cart",listProduct);

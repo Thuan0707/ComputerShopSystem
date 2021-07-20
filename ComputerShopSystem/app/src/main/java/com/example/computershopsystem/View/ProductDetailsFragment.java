@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,6 +66,7 @@ public class ProductDetailsFragment extends Fragment {
                     startActivity(new Intent(getActivity(), LoginActiveActivity.class));
                     getActivity().finish();
                 }else{
+                    Toast.makeText(getContext(), "This Product is added to cart" , Toast.LENGTH_SHORT).show();
                     sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
                     editor = sharedpreferences.edit();
                     List<OrderProduct> listProductInCart = getList();
