@@ -32,7 +32,14 @@ public class Validation {
             return "Email is invalid";
         return null ;
     }
+    public String CheckDOB(int year) {
 
+        if (year>=2005) {
+            isValid = false;
+            return "Your birthday must be more than 16 years old";
+        }
+        return null;
+    }
     public String CheckPhone(String phone) {
         if (phone.isEmpty()) {
             isValid=false;

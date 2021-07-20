@@ -51,11 +51,9 @@ public class ProfileAdminFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("Admin");
         storageReference = FirebaseStorage.getInstance().getReference("Admin");
         helper = new ProfileFirebaseHelper(databaseReference, getActivity());
-        helper.loadAAdmin(firebaseUser.getUid(), binding.tvBirthday, binding.tvGender, binding.tvEmail, binding.tvPhone);
+        helper.loadAAdmin(firebaseUser.getUid(), binding.tvBirthday, binding.tvGender, binding.tvEmail, binding.tvPhone,binding.imgAvatar);
         binding.tvName.setText(firebaseUser.getDisplayName());
-        if (firebaseUser.getPhotoUrl() != null) {
-            Picasso.get().load(firebaseUser.getPhotoUrl()).into(binding.imgAvatar);
-        }
+
 
         binding.tvGender.setOnClickListener(new View.OnClickListener() {
             @Override

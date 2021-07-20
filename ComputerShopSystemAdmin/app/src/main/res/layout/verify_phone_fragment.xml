@@ -32,30 +32,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <ImageButton
-        android:id="@+id/ibtnBack8"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/left" />
-
     <TextView
         android:id="@+id/tvNameTop9"
         android:layout_width="220dp"
         android:layout_height="30dp"
 
-        android:layout_marginStart="16dp"
         android:text="Verify Phone Number"
         android:textColor="#223263"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hr15"
-        app:layout_constraintStart_toEndOf="@+id/ibtnBack8"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
 
     <View
         android:id="@+id/hr15"

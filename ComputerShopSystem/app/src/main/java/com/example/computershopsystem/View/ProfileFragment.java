@@ -87,6 +87,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 BirthdayFragment fragment = new BirthdayFragment();
+
                 if (binding.tvPhone.getText() != null) {
                     bundle.putString("dateOfBirth", binding.tvBirthday.getText().toString());
                     fragment.setArguments(bundle);

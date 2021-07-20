@@ -111,7 +111,6 @@ public class CheckOutFragment extends Fragment {
         binding.tvVoucherCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 VoucherFragment fragment = new VoucherFragment();
                 fragment.setArguments(bundle);
                 switchFragment(fragment);
