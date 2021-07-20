@@ -1,6 +1,7 @@
 package com.example.computershopsystemadmin.DAO;
 
 import android.content.Context;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -61,7 +63,7 @@ public class ProfileFirebaseHelper {
         return customer;
     }
 
-    public Admin loadAAdmin(String id,TextView birth, TextView gender,TextView email,TextView phone) {
+    public Admin loadAAdmin(String id,TextView birth, TextView gender,TextView email,TextView phone,ImageView iv) {
         Query query = db.child(id);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -77,6 +79,7 @@ public class ProfileFirebaseHelper {
                     if (admin.getPhone() != null) {
                         phone.setText(admin.getPhone());
                     }
+                    Picasso.get().load(admin.getImage()).into(iv);
                     String strGender = null;
                     switch (admin.getGender()) {
                         case 1:
