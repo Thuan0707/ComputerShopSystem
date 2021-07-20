@@ -3,11 +3,12 @@ package com.example.computershopsystem.View;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -20,24 +21,27 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PointOfInterest;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
-public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallback {
+
+public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
     private ActivityGoogleMapsApiBinding binding;
-    private Menu menu;
+
     private final int REQUEST_LOCATION_PERMISSION = 1;
-    private boolean locationPermissionGranted = false;
+
+    private Marker homeMarker = null;
+    private String city, region, strAdr;
 
 
     @Override
@@ -46,6 +50,8 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
 
         binding = ActivityGoogleMapsApiBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.txtAddress.setText("");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -76,14 +82,33 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(shop, 15f));
 
         LatLng hmmm = new LatLng(10.029031,105.757339);
-        GroundOverlayOptions homeOverlay = new GroundOverlayOptions()
-                .image(BitmapDescriptorFactory.fromResource(R.drawable.cart))
-                .position(hmmm, 100);
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull @NotNull LatLng pos) {
+                Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                List<Address> addressList = null;
+                setHomeMarker();
+                homeMarker = mMap.addMarker(new MarkerOptions().position(pos).title("Your Address"));
+                homeMarker.showInfoWindow();
+                try {
+                    addressList = geocoder.getFromLocation(pos.latitude, pos.longitude, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                setAddress(addressList);
+            }
+        });
 
-        mMap.addGroundOverlay(homeOverlay);
 
-        customeMap(mMap);
-        setPoiclick(mMap);
+//        GroundOverlayOptions homeOverlay = new GroundOverlayOptions()
+//                .image(BitmapDescriptorFactory.fromResource(R.drawable.cart))
+//                .position(hmmm, 100);
+
+//        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+//        mMap.addGroundOverlay(homeOverlay);
+
+//        customeMap(mMap);
 
 
         enableMyLocation();
@@ -91,32 +116,25 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.map_options, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.normal_map:
-                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                return true;
-            case R.id.hybrid_map:
-                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                return true;
-            case R.id.satellite_map:
-                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                return true;
-            case R.id.terrain_map:
-                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+    private void setAddress(List<Address> addressList) {
+        for (Address address : addressList) {
+            if (address.getAddressLine(0) != null) {
+                binding.txtAddress.setText(address.getAddressLine(0));
+                strAdr = address.getAddressLine(0);
+                Log.d("address", "setAddress: " + strAdr);
+            }
+            if (address.getAddressLine(1) != null) {
+                binding.txtAddress.setText(
+                        binding.txtAddress.getText().toString() + address.getAddressLine(1));
+            }
         }
     }
+
+    private void setHomeMarker(){
+        if(homeMarker != null) homeMarker.remove();
+    }
+
+
 
     private void customeMap(GoogleMap googleMap) {
         try {
@@ -134,18 +152,6 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
         }
     }
 
-    private void setPoiclick(final GoogleMap mMap) {
-        mMap.setOnPoiClickListener(new GoogleMap.OnPoiClickListener() {
-            @Override
-            public void onPoiClick(@NonNull @NotNull PointOfInterest pointOfInterest) {
-                Marker poiMarker = mMap.addMarker(new MarkerOptions()
-                        .position(pointOfInterest.latLng)
-                        .title(pointOfInterest.name));
-
-                poiMarker.showInfoWindow();
-            }
-        });
-    }
 
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this,
@@ -178,4 +184,9 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
 
     }
 
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+    }
 }
