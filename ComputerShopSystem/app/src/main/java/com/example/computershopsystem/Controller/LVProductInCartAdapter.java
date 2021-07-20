@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -53,11 +54,14 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
     Product product;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
-    public LVProductInCartAdapter(@NonNull Context context, int resource, @NonNull List<OrderProduct> objects) {
+    FragmentActivity activity;
+
+    public LVProductInCartAdapter(@NonNull Context context, int resource, @NonNull List<OrderProduct> objects, FragmentActivity activity) {
         super(context, resource, objects);
+        this.activity = activity;
         this.context = context;
         this.resource = resource;
-        this.objects=objects;
+        this.objects = objects;
     }
 
     @NonNull
@@ -73,9 +77,9 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         price.setText(checkInt(getItem(position).getProduct().getSellPrice()));
         quantity.setText(String.valueOf(getItem(position).getQuantity()));
         Picasso.get().load(getItem(position).getProduct().getImage()).into(image);
-        AppCompatImageButton increaseQuantity=convertView.findViewById(R.id.ibtnIncreaseQuantity);
-        AppCompatImageButton decreaseQuantity=convertView.findViewById(R.id.ibtnDecreaseQuantity);
-        AppCompatImageButton remove=convertView.findViewById(R.id.ibtnDeleteCartProduct);
+        AppCompatImageButton increaseQuantity = convertView.findViewById(R.id.ibtnIncreaseQuantity);
+        AppCompatImageButton decreaseQuantity = convertView.findViewById(R.id.ibtnDecreaseQuantity);
+        AppCompatImageButton remove = convertView.findViewById(R.id.ibtnDeleteCartProduct);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = context.getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
@@ -100,51 +104,56 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         increaseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(product.getQuantity() > Integer.parseInt(quantity.getText().toString())) {
+                if (product.getQuantity() > Integer.parseInt(quantity.getText().toString())) {
                     quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString()) + 1));
-                }else{
-                    Toast.makeText(getContext(), "The quantity of this product is "+String.valueOf(product.getQuantity()) , Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "The quantity of this product is " + String.valueOf(product.getQuantity()), Toast.LENGTH_SHORT).show();
                 }
-                List<OrderProduct> listProduct=getList();
+                List<OrderProduct> listProduct = getList();
                 listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
-                setList("cart",listProduct);
+                setList("cart", listProduct);
+                CartFragment fragment = new CartFragment();
+                switchFragment(fragment);
             }
         });
         decreaseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Integer.parseInt(quantity.getText().toString())>1) {
+                if (Integer.parseInt(quantity.getText().toString()) > 1) {
                     quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString()) - 1));
                     List<OrderProduct> listProduct = getList();
                     listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
                     setList("cart", listProduct);
-                    CartFragment fragment=new CartFragment();
-
+                    CartFragment fragment = new CartFragment();
+                    switchFragment(fragment);
                 }
             }
         });
         quantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                List<OrderProduct> listProduct=getList();
+                List<OrderProduct> listProduct = getList();
                 listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
-                setList("cart",listProduct);
+                setList("cart", listProduct);
                 return true;
             }
         });
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<OrderProduct> listProduct=getList();
+                List<OrderProduct> listProduct = getList();
                 listProduct.remove(position);
-                setList("cart",listProduct);
+                setList("cart", listProduct);
                 objects.remove(position);
                 notifyDataSetChanged();
+                CartFragment fragment = new CartFragment();
+                switchFragment(fragment);
             }
         });
 
         return convertView;
     }
+
     public <T> void setList(String key, List<T> list) {
         Gson gson = new Gson();
         String json = gson.toJson(list);
@@ -155,6 +164,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         editor.putString(key, value);
         editor.apply();
     }
+
     public List<OrderProduct> getList() {
         List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
@@ -172,13 +182,14 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         DecimalFormat df = new DecimalFormat("###.####");
         return df.format(num); //and for you, Christian Kuetbach
     }
-//    public void switchFragment(Fragment fragment) {
-//        FragmentManager fragmentManager =getSupportFragmentManager();
-//        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
-//        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
-//                android.R.animator.fade_out);
-//        fragTransaction.addToBackStack(null);
-//        fragTransaction.replace(R.id.fl_wrapper, fragment);
-//        fragTransaction.commit();
-//    }
+
+    public void switchFragment(Fragment fragment) {
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                android.R.animator.fade_out);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.replace(R.id.fl_wrapper, fragment);
+        fragTransaction.commit();
+    }
 }

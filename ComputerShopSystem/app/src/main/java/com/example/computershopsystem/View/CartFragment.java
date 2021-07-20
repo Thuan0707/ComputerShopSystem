@@ -52,7 +52,7 @@ public class CartFragment extends Fragment {
         if (productList.size()==0){
             switchFragment(new NotFoundFragment());
         }
-        LVProductInCartAdapter LVProductInCartAdapter = new LVProductInCartAdapter(getActivity(), R.layout.cart_item, productList);
+        LVProductInCartAdapter LVProductInCartAdapter = new LVProductInCartAdapter(getActivity(), R.layout.cart_item, productList,getActivity());
         listView.setAdapter(LVProductInCartAdapter);
         binding.txtItemQuantity.setText(String.valueOf(productList.size()));
         binding.txtPriceItem.setText("$"+checkInt(sumInList(productList)));
