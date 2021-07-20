@@ -36,9 +36,6 @@
             android:name=".View.RegisterOTP"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".View.AccountNotLogin"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".View.SearchNotFound"
             android:screenOrientation="portrait" />
         <activity

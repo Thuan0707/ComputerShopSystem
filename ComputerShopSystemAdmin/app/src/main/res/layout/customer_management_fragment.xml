@@ -8,25 +8,24 @@
         android:layout_height="match_parent"
         tools:context=".View.CustomerManagementFragment">
 
-        <EditText
+
+        <TextView
             android:id="@+id/txtSearch"
             android:layout_width="275dp"
             android:layout_height="40dp"
-            android:layout_marginStart="18dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/seacher_notactive_bg"
-            android:drawableLeft="@drawable/ic_searchtext"
-            android:drawableRight="@drawable/ic_plusx"
-            android:drawablePadding="8dp"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="Search Customer"
-            android:inputType="textPersonName"
+
             android:padding="8dp"
-            android:textColor="@color/black"
+            android:text="Gender"
+            android:textColor="#223263"
+            android:textSize="20dp"
+
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.036"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <ImageView
             android:id="@+id/ivHr"
