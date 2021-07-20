@@ -15,11 +15,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.DAO.ProductFirebaseHelper;
 import com.example.computershopsystem.Model.OrderProduct;
 import com.example.computershopsystem.Model.Product;
 import com.example.computershopsystem.R;
+import com.example.computershopsystem.View.CartFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -59,7 +63,6 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         convertView = layoutInflater.inflate(resource, parent, false);
         ImageView image = convertView.findViewById(R.id.imageCartProduct);
@@ -115,6 +118,8 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
                     List<OrderProduct> listProduct = getList();
                     listProduct.get(position).setQuantity(Integer.parseInt(quantity.getText().toString()));
                     setList("cart", listProduct);
+                    CartFragment fragment=new CartFragment();
+
                 }
             }
         });
@@ -167,4 +172,13 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         DecimalFormat df = new DecimalFormat("###.####");
         return df.format(num); //and for you, Christian Kuetbach
     }
+//    public void switchFragment(Fragment fragment) {
+//        FragmentManager fragmentManager =getSupportFragmentManager();
+//        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+//        fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+//                android.R.animator.fade_out);
+//        fragTransaction.addToBackStack(null);
+//        fragTransaction.replace(R.id.fl_wrapper, fragment);
+//        fragTransaction.commit();
+//    }
 }

@@ -51,7 +51,7 @@ public class ProductDetailsFragment extends Fragment {
         String productJsonString = bundle.getString(Variable.DETAIL_KEY);
         product = Utils.getGsonParser().fromJson(productJsonString, Product.class);
 
-        Picasso.get().load(product.getImage()).into(binding.ivProduct);
+        Picasso.get().load(product.getImage()).resize(300,300).into(binding.ivProduct);
         binding.tvPriceProduct.setText("$"+Utils.checkInt(product.getSellPrice()));
         binding.txtNameProduct.setText(product.getName());
         binding.txtRAM.setText(product.getRam().getCapacity()+ "GB " + product.getRam().getDescription());
