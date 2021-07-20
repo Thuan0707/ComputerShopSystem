@@ -35,6 +35,7 @@ public class LVVoucherAdapter  extends ArrayAdapter<Voucher> {
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
 
+    //Constructor
     public LVVoucherAdapter(@NonNull Context context, int resource, @NonNull List<Voucher> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -43,7 +44,7 @@ public class LVVoucherAdapter  extends ArrayAdapter<Voucher> {
         editor = sharedpreferences.edit();
     }
 
-
+//Show data in item to the screen
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -53,6 +54,7 @@ public class LVVoucherAdapter  extends ArrayAdapter<Voucher> {
         TextView des = convertView.findViewById(R.id.tvVoucherDescription);
         TextView discount = convertView.findViewById(R.id.tvVoucherDiscount);
         TextView name = convertView.findViewById(R.id.tvVoucherName);
+        //Show data to item
         name.setText(getItem(position).getName());
         code.setText(String.valueOf(getItem(position).getCode()));
         discount.setText("$"+checkInt(getItem(position).getDiscount()));
@@ -86,12 +88,16 @@ public class LVVoucherAdapter  extends ArrayAdapter<Voucher> {
         });
         return convertView;
     }
+
+    //Check number is integer or double
     String checkInt(double num) {
         if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
         DecimalFormat df = new DecimalFormat("###.####");
         return df.format(num); //and for you, Christian Kuetbach
     }
 
+
+    //Change Fragment
     void switchFragment(Fragment fragment) {
         FragmentActivity fgActivity = (FragmentActivity) context;
         FragmentManager fragmentManager = fgActivity.getSupportFragmentManager();

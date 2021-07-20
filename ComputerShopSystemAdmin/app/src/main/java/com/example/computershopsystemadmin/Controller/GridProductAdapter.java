@@ -25,6 +25,7 @@ public class GridProductAdapter extends BaseAdapter {
 
     LayoutInflater layoutInflater;
 
+    //Constructor
     public GridProductAdapter(Context context, ArrayList<Product> listProduct) {
         this.context = context;
         this.listProduct = listProduct;
@@ -48,6 +49,7 @@ public class GridProductAdapter extends BaseAdapter {
         return 0;
     }
 
+    //Show view to screen
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -56,15 +58,17 @@ public class GridProductAdapter extends BaseAdapter {
         TextView name = convertView.findViewById(R.id.name_product);
         TextView brand = convertView.findViewById(R.id.brand_product);
         TextView price = convertView.findViewById(R.id.price_product);
+        //Load information
         name.setText(listProduct.get(position).getName());
         brand.setText(listProduct.get(position).getBrand().getName());
-        price.setText("$"+checkInt(listProduct.get(position).getSellPrice()));
-
-        Picasso.get().load(listProduct.get(position).getImage()).resize(300,300).into(imageView);
+        price.setText("$" + checkInt(listProduct.get(position).getSellPrice()));
+        //Load image
+        Picasso.get().load(listProduct.get(position).getImage()).resize(300, 300).into(imageView);
         notifyDataSetChanged();
         return convertView;
     }
 
+    //Check number is integer or double
     String checkInt(double num) {
         if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
         DecimalFormat df = new DecimalFormat("###.####");

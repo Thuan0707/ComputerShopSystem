@@ -35,6 +35,7 @@ public class ChangeBrandProductFragment extends Fragment {
         binding = ChangeBrandProductFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         Bundle bundle = this.getArguments();
+        //set Data to edit text
         if (bundle != null) {
             if (bundle.getSerializable("newProduct") != null) {
                 product = (Product) bundle.getSerializable("newProduct");
@@ -45,7 +46,7 @@ public class ChangeBrandProductFragment extends Fragment {
                 binding.edBrand.setText(pro.getBrand().getName());
             }
 
-
+                //Save brand to edit text
             binding.btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -85,6 +86,10 @@ public class ChangeBrandProductFragment extends Fragment {
         return view;
     }
 
+    /**
+     * change fragment
+     * @param fragment
+     */
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

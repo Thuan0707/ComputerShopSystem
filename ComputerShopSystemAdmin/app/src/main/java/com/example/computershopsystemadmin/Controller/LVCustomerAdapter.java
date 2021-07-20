@@ -26,10 +26,9 @@ public class LVCustomerAdapter  extends ArrayAdapter<Customer> {
     private Context context;
     private int resource;
     private List<Customer> objects;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
+
+
+    //constructor
     public LVCustomerAdapter(@NonNull Context context, int resource, @NonNull List<Customer> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -37,6 +36,8 @@ public class LVCustomerAdapter  extends ArrayAdapter<Customer> {
         this.objects=objects;
     }
 
+
+    //Show item to sreen
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -46,6 +47,8 @@ public class LVCustomerAdapter  extends ArrayAdapter<Customer> {
         TextView name = convertView.findViewById(R.id.txtName);
         TextView phone = convertView.findViewById(R.id.txtPhone);
         TextView status = convertView.findViewById(R.id.txtStatus);
+
+        //Set up information
         name.setText(getItem(position).getFullName());
         phone.setText(getItem(position).getCustomerAccount().getPhone());
         if (getItem(position).getImage()!=null){

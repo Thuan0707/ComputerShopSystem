@@ -23,6 +23,7 @@ public class LVOrderHistoryAdapter extends ArrayAdapter<Order> {
     private int resource;
     private List<Order> objects;
 
+    //Constructor
     public LVOrderHistoryAdapter(@NonNull Context context, int resource, @NonNull List<Order> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -30,6 +31,8 @@ public class LVOrderHistoryAdapter extends ArrayAdapter<Order> {
         this.objects = objects;
     }
 
+
+    //Show data to the screen
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -39,6 +42,8 @@ public class LVOrderHistoryAdapter extends ArrayAdapter<Order> {
         TextView price = convertView.findViewById(R.id.tvPriceOrder);
         TextView quantity = convertView.findViewById(R.id.tvQuantityOrder);
         TextView date = convertView.findViewById(R.id.tvDateOrder);
+
+        //Set data for item
         code.setText(getItem(position).getId());
         price.setText("$"+checkInt(Total(getItem(position))));
         quantity.setText(NumOfProduct(getItem(position)) + " Items");
@@ -46,12 +51,15 @@ public class LVOrderHistoryAdapter extends ArrayAdapter<Order> {
         return convertView;
     }
 
+
+    //Check number is double or integer
     String checkInt(double num) {
-        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        if ((int) num == num) return Integer.toString((int) num);
         DecimalFormat df = new DecimalFormat("###.####");
-        return df.format(num); //and for you, Christian Kuetbach
+        return df.format(num);
     }
 
+    //Return number of product
     String NumOfProduct(Order order) {
         int num = 0;
         for (OrderProduct orderProduct : order.getOrderProductList()) {
@@ -60,6 +68,7 @@ public class LVOrderHistoryAdapter extends ArrayAdapter<Order> {
         return String.valueOf(num);
     }
 
+    //Calculate total money of all order
     double Total(Order order) {
         double total = 0;
         for (OrderProduct orderProduct : order.getOrderProductList()) {

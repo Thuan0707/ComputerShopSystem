@@ -28,12 +28,19 @@ public class ProductFirebaseHelper {
     GridProductAdapter gridProductAdapter;
     Context context;
 
+    /**
+     * Constructor
+     * @param db
+     * @param gridView
+     * @param context
+     */
     public ProductFirebaseHelper(DatabaseReference db, GridView gridView, Context context) {
         this.gridView = gridView;
         this.context = context;
         this.db = db;
     }
 
+    //Get all product in DB
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -82,6 +89,9 @@ public class ProductFirebaseHelper {
         return list;
     }
 
+    /**
+     *     filter product by name
+     */
     public ArrayList<Product> retrieveByName(String s) {
         Query query = db.orderByChild("name");
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -107,7 +117,9 @@ public class ProductFirebaseHelper {
         });
         return list;
     }
-
+    /**
+     *     filter product by brand
+     */
     public ArrayList<Product> retrieveByBrand(String s) {
         Query query = db.orderByChild("brand/name").equalTo(s);
         query.addListenerForSingleValueEvent(valueEventListener);
@@ -143,25 +155,33 @@ public class ProductFirebaseHelper {
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
-
+    /**
+     *     filter product by ram
+     */
     public ArrayList<Product> retrieveByRam(int ram) {
         Query query = db.orderByChild("ram/capacity").equalTo(ram);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
-
+    /**
+     *     filter product by rom
+     */
     public ArrayList<Product> retrieveByRom(String rom) {
         Query query = db.orderByChild("rom/capacity").equalTo(rom);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
-
+    /**
+     *     filter product by screen
+     */
     public ArrayList<Product> retrieveByScreenSize(String size) {
         Query query = db.orderByChild("screen/size").equalTo(size);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
-
+    /**
+     *     filter product by cpu
+     */
     public ArrayList<Product> retrieveBySPU(String num) {
         Query query = db.orderByChild("cpu/series").equalTo("i"+num);
         query.addListenerForSingleValueEvent(valueEventListener);

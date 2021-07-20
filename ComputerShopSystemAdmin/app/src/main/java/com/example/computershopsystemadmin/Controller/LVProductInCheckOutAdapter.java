@@ -33,6 +33,8 @@ public class LVProductInCheckOutAdapter extends ArrayAdapter<OrderProduct> {
     private FirebaseUser firebaseUser;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+
+    //constructor
     public LVProductInCheckOutAdapter(@NonNull Context context, int resource, @NonNull List<OrderProduct> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -40,6 +42,7 @@ public class LVProductInCheckOutAdapter extends ArrayAdapter<OrderProduct> {
         this.objects=objects;
     }
 
+    //Set data to show to the screen
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -50,6 +53,8 @@ public class LVProductInCheckOutAdapter extends ArrayAdapter<OrderProduct> {
         TextView price = convertView.findViewById(R.id.txtPriceCheckOut);
         TextView quantity = convertView.findViewById(R.id.txtQuantityCheckOut);
         name.setText(getItem(position).getProduct().getName());
+
+        //Set up data for item
         price.setText(checkInt(getItem(position).getProduct().getSellPrice()*getItem(position).getQuantity()));
         quantity.setText("x"+String.valueOf(getItem(position).getQuantity()));
         Picasso.get().load(getItem(position).getProduct().getImage()).into(image);
@@ -63,16 +68,20 @@ public class LVProductInCheckOutAdapter extends ArrayAdapter<OrderProduct> {
 
         return convertView;
     }
+
+    //Set list in shared preference
     public <T> void setList(String key, List<T> list) {
         Gson gson = new Gson();
         String json = gson.toJson(list);
         update(key, json);
     }
-
+//update list in shared preference
     public void update(String key, String value) {
         editor.putString(key, value);
         editor.apply();
     }
+
+    //get list in shared preference
     public List<OrderProduct> getList() {
         List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
@@ -84,9 +93,11 @@ public class LVProductInCheckOutAdapter extends ArrayAdapter<OrderProduct> {
         }
         return listProduct;
     }
+
+    //Check number is integer or double
     String checkInt(double num) {
-        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        if ((int) num == num) return Integer.toString((int) num);
         DecimalFormat df = new DecimalFormat("###.####");
-        return df.format(num); //and for you, Christian Kuetbach
+        return df.format(num);
     }
 }

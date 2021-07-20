@@ -28,12 +28,20 @@ public class OrderHistoryFirebaseHelper {
     Context context;
     Customer customer;
 
+    /**
+     * Constructor
+     * @param db
+     * @param context
+     */
     public OrderHistoryFirebaseHelper(DatabaseReference db, Context context) {
         this.context = context;
         this.db = db;
     }
 
-
+    /**
+     * Get order List
+     * @param lv
+     */
     public void getList(ListView lv) {
         ArrayList<Order> orderList = new ArrayList<>();
         db.addListenerForSingleValueEvent(new ValueEventListener() {

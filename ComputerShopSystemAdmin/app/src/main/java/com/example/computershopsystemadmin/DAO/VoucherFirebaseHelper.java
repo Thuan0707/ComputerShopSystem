@@ -30,6 +30,10 @@ public class VoucherFirebaseHelper {
         this.db = db;
     }
 
+    /**
+     * Get voucher List
+     * @param lv
+     */
     public void getList(ListView lv) {
         ArrayList<Voucher> voucherList = new ArrayList<>();
         db.addListenerForSingleValueEvent(new ValueEventListener() {

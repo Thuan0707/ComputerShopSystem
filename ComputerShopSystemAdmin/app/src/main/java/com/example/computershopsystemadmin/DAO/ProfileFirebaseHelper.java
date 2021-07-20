@@ -28,6 +28,13 @@ public class ProfileFirebaseHelper {
         this.db = db;
     }
 
+    /**
+     * load data of a customer
+     * @param id
+     * @param birth
+     * @param gender
+     * @return
+     */
     public Customer loadACustomer(String id, TextView birth, TextView gender) {
         Query query = db.child(id);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -63,6 +70,16 @@ public class ProfileFirebaseHelper {
         return customer;
     }
 
+    /**
+     * Load data of admin
+     * @param id
+     * @param birth
+     * @param gender
+     * @param email
+     * @param phone
+     * @param iv
+     * @return
+     */
     public Admin loadAAdmin(String id,TextView birth, TextView gender,TextView email,TextView phone,ImageView iv) {
         Query query = db.child(id);
         query.addListenerForSingleValueEvent(new ValueEventListener() {

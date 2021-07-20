@@ -42,6 +42,7 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
 
+    //Constructor
     public LVCreditCardAdapter(@NonNull Context context, int resource, @NonNull List<CreditCard> objects, Customer customer) {
         super(context, resource, objects);
         this.context = context;
@@ -50,13 +51,15 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
+        //if user is null, create sharedprefernces
         if (firebaseUser!=null){
             sharedpreferences = getContext().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
             editor = sharedpreferences.edit();
         }
     }
 
-
+//Show view to screen
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -68,26 +71,30 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         TextView cardMoney = convertView.findViewById(R.id.txtCardMoney);
         ImageButton deleteCard = convertView.findViewById(R.id.ibtnDeleteCreditCard);
 
+        //Delete the card
         deleteCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get path to card in DB
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(customer.getId()).child("cardList").child(getItem(position).getId());
                 databaseReference.removeValue();
+                //go to show card view
                 CreditCardFragment fragment = new CreditCardFragment();
                 switchFragment(fragment);
             }
         });
+        //Set information card
         cardNumber.setText(getItem(position).getCardNumber());
         cardHolder.setText(String.valueOf(getItem(position).getCardHolder()));
         cardExpiration.setText(String.valueOf(getItem(position).getExpirationDate()));
         cardMoney.setText(String.valueOf(getItem(position).getMoney()));
 
+        //when click to card, go to input card fragment
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editor.putString("IdCard", getItem(position).getId());
                 editor.apply();
-                Log.e("Lala", "nnnnnnnnnnnnnnnnnnnnnnnnnnnn" + getItem(position).getCardHolder());
                 InputCreditCardFragment fragment = new InputCreditCardFragment();
                 switchFragment(fragment);
 
@@ -96,6 +103,7 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         return convertView;
     }
 
+    //Change fragment
     void switchFragment(Fragment fragment) {
         Bundle bun=new Bundle();
         bun.putSerializable("customer",customer);

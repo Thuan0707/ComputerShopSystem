@@ -37,10 +37,13 @@ public class BirthdayFragment extends Fragment {
         binding = BirthdayFragmentBinding.inflate(getLayoutInflater());
         View view=binding.getRoot();
         Bundle bundle = this.getArguments();
+        //get DOB to edit text
         if (bundle != null) {
             String str = bundle.getString("dateOfBirth");
             binding.edBirthday.setText(str);
         }
+
+        //Set dob
         binding.edBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +77,8 @@ public class BirthdayFragment extends Fragment {
                 datePickerDialog.show();
             }
         });
+
+        //Save DOB
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +100,8 @@ public class BirthdayFragment extends Fragment {
         });
         return view;
     }
+
+    //Change fragment
     public void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

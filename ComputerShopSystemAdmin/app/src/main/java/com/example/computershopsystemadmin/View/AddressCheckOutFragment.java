@@ -24,11 +24,14 @@ public class AddressCheckOutFragment extends Fragment {
         binding = AddressCheckOutFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         Bundle bundle=this.getArguments();
+        //Get data to edit text
         if (bundle!=null){
             binding.edAddressFullNameCheckOut.setText(bundle.getString("nameCheckOut"));
             binding.edAddressPhoneCheckOut.setText(bundle.getString("phoneCheckOut"));
             binding.edAddressAddressCheckOut.setText(bundle.getString("addressCheckOut"));
         }
+
+        //Change address to check out
         binding.btnChangeAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +72,10 @@ public class AddressCheckOutFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Change fragment
+     * @param fragment
+     */
     void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
