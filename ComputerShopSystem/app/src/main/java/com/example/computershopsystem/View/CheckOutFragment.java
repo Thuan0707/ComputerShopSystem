@@ -3,7 +3,6 @@ package com.example.computershopsystem.View;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,43 +63,32 @@ public class CheckOutFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
+        Gson gson = new Gson();
+        String strVoucher = sharedpreferences.getString("voucher", null);
+        voucher = gson.fromJson(strVoucher, Voucher.class);
 
-
-        bundle = this.getArguments();
+        Bundle bundle = this.getArguments();
         if (bundle != null) {
             binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
             binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
-            voucher = (Voucher) bundle.getSerializable("voucher");
-            creditCard = (CreditCard) bundle.getSerializable("creditCard");
-
         }
-
-        if (voucher != null) {
-            Log.e("ass", "!=null");
-            binding.tvVoucherCheckOut.setText(voucher.getCode());
-            binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
-        } else {
-
-            voucher = new Voucher();
-        }
-
-        if (creditCard != null) {
-            binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
-        } else {
-            creditCard = new CreditCard();
-        }
-
+        binding.tvVoucherCheckOut.setText(voucher.getCode());
+        binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
 
         binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
 
 
+        Gson gson1 = new Gson();
+        String strCreditCard = sharedpreferences.getString("creditCard", null);
         editor.remove("isCheckoutCreditCard");
         editor.apply();
-
+        creditCard = gson.fromJson(strCreditCard, CreditCard.class);;
+        listView = binding.lvProductCheckout;
+//
+        binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
 
         List<OrderProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);
-        listView = binding.lvProductCheckout;
         listView.setAdapter(LVProductInCartAdapter);
         binding.tvNumberOfProduct.setText("Price (" + String.valueOf(quantityItemInList(productList)) + " Products)");
         binding.tvPriceCheckOut.setText("$" + checkInt(sumPriceInList(productList)));
