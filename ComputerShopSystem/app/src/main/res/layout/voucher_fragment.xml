@@ -23,25 +23,16 @@
             android:id="@+id/tvNameTop11"
             android:layout_width="220dp"
             android:layout_height="30dp"
-            android:layout_marginStart="16dp"
             android:text="Voucher"
             android:textColor="#223263"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/hr17"
-            app:layout_constraintStart_toEndOf="@+id/ibtnBack10"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/ibtnBack10"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.136"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/left" />
+            app:layout_constraintVertical_bias="0.82" />
 
         <ListView
             android:id="@+id/lvVoucher"
