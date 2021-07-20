@@ -72,20 +72,24 @@ public class CheckOutFragment extends Fragment {
             binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
             binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
         }
-        binding.tvVoucherCheckOut.setText(voucher.getCode());
-        binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
+        if (voucher!=null){
+            binding.tvVoucherCheckOut.setText(voucher.getCode());
+            binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
+        }
+
 
         binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
-
-
-        Gson gson1 = new Gson();
+        Gson gsonw = new Gson();
         String strCreditCard = sharedpreferences.getString("creditCard", null);
         editor.remove("isCheckoutCreditCard");
         editor.apply();
-        creditCard = gson.fromJson(strCreditCard, CreditCard.class);;
+        creditCard = gsonw.fromJson(strCreditCard, CreditCard.class);
         listView = binding.lvProductCheckout;
 //
-        binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
+        if (creditCard!=null){
+            binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
+        }
+
 
         List<OrderProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);

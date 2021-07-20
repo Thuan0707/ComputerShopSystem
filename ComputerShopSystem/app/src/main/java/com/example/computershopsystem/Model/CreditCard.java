@@ -28,6 +28,10 @@ public class CreditCard implements Serializable {
     @PropertyName("deleteAt")
     Date deleteAt;
 
+    public CreditCard() {
+
+    }
+
     public CreditCard(String id, String money, String cardNumber, String expirationDate, String cardHolder, Date createAt, Date deleteAt) {
         this.id = id;
         this.money = money;
@@ -38,8 +42,6 @@ public class CreditCard implements Serializable {
         this.deleteAt = deleteAt;
     }
 
-    public CreditCard() {
-    }
 
     public String getId() {
         return id;
