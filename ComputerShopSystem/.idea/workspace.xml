@@ -32,10 +32,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d93e2d87-00bb-4c20-b197-6916cc2e417d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/CustomerFirebaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/CustomerFirebaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/OrderHistoryFirebaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/OrderHistoryFirebaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/VoucherFirebaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/VoucherFirebaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/DashboardFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/DashboardFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +42,7 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@JYNBB18522154348]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\Admin\.android\avd\Nexus_5X_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -286,9 +283,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="28" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1626582049614" />
-    <state x="93" y="93" width="1350" height="648" key="AVDManager" timestamp="1626344480764">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="83" y="81" width="1201" height="566" key="AVDManager" timestamp="1626781215231">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="83" y="81" width="1201" height="566" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1626781215231" />
     <state x="93" y="93" width="1350" height="648" key="AVDManager/0.0.1536.834@0.0.1536.834" timestamp="1626344480764" />
     <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1626169792775">
       <screen x="0" y="0" width="1536" height="834" />
