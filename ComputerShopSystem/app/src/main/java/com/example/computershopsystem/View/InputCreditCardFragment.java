@@ -235,7 +235,10 @@ public class InputCreditCardFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                // tao mot bien check de check du lieu nhap vao
                 check = true;
+
+                // neu number card rong thi check = false
                 String cardNumber = String.valueOf(numberCard.getText());
                 if(cardNumber.equals("")){
                     numberCard.setError("Please enter Number Card !");
@@ -243,18 +246,23 @@ public class InputCreditCardFragment extends Fragment {
                     check = false;
                 }
 
+                // neu expiration date rong thi bat ng dung chon lai va check = false
                 String expiration = String.valueOf(expirationDate.getText());
                 if(String.valueOf(expirationDate.getText()).equals("")){
                     expirationDate.setError("Please enter Expiration Date !");
                     expirationDate.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
+
+                // neu card holder rong thi bat ng dung nhap lai va check = false
                 String cardHolder = String.valueOf(holderCard.getText());
                 if(cardHolder.equals("")){
                     holderCard.setError("Please enter Holder card !");
                     holderCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     check = false;
                 }
+
+                // neu tien rong thi bat ng dung nhap lai va check = false
                 String cardMoney = String.valueOf(money.getText());
                 if(cardMoney.equals("")){
                     money.setError("Please enter Money !");
@@ -262,14 +270,19 @@ public class InputCreditCardFragment extends Fragment {
 
                     check = false;
                 }
+
+                // neu check == true va number card khong bị trung thi add du lieu vao fire base
                 if(check && checkDuplicate(cardNumber)) {
                     String idCard = id;
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
                     if((id == null)) {
                         idCard = databaseReference.push().getKey();
                     }
+
                     CreditCard creditCard = new CreditCard(idCard, String.valueOf(Integer.parseInt(cardMoney.toString())), cardNumber, expiration, cardHolder, new Date(), new Date());
                     databaseReference.child(idCard).setValue(creditCard);
+
+                    // chuyen trang den credit card fragment
                     CreditCardFragment fragment = new CreditCardFragment();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
@@ -285,6 +298,7 @@ public class InputCreditCardFragment extends Fragment {
         return  view;
     }
 
+    // lay toan bo card trong firebase
     void getList(){
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -307,6 +321,7 @@ public class InputCreditCardFragment extends Fragment {
         });
     }
 
+    // check xem number card co bi trung khong
     Boolean checkDuplicate(String number){
         Boolean isUpdate = false;
         for(CreditCard item : creditCardList){
