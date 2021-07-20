@@ -80,13 +80,9 @@ public class InputCreditCardFragment extends Fragment {
         if (firebaseUser!=null){
             sharedpreferences = getContext().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
             editor = sharedpreferences.edit();
-            id = null;
-
-            Bundle bundle = this.getArguments();
-            if (bundle != null) {
-                id = bundle.getString("IdCard");
-            }
-
+            id = sharedpreferences.getString("IdCard",null);
+            editor.remove("IdCard");
+            editor.apply();
             Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("cardList").orderByChild("id").equalTo(id);
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
