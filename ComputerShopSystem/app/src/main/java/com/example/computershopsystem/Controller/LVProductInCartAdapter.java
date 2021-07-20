@@ -157,6 +157,7 @@ public class LVProductInCartAdapter extends ArrayAdapter<OrderProduct> {
         }
         return listProduct;
     }
+
     String checkInt(double num) {
         if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
         DecimalFormat df = new DecimalFormat("###.####");
