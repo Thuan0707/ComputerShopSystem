@@ -3,6 +3,7 @@ package com.example.computershopsystem.Controller;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -87,15 +89,18 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
             public void onClick(View v) {
                 if(isCheckout){
                     CreditCard creditCard=(CreditCard) getItem(position);
-                    Bundle bundle=new Bundle();
-                    bundle.putSerializable("creditCard",creditCard);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(creditCard);
+                    editor.putString("creditCard", json);
+                    editor.apply();
                     CheckOutFragment fragment = new CheckOutFragment();
-                    fragment.setArguments(bundle);
                     switchFragment(fragment);
                 }else {
-                    editor.putString("IdCard", getItem(position).getId());
-                    editor.apply();
+                    Bundle bundle = new Bundle();
+                    Log.e("Lala", "nnnnnnnnnnnnnnnnnnnnnnnnnnnn" + getItem(position).getCardHolder());
                     InputCreditCardFragment fragment = new InputCreditCardFragment();
+                    bundle.putString("IdCard", getItem(position).getId());
+                    fragment.setArguments(bundle);
                     switchFragment(fragment);
                 }
             }
