@@ -97,7 +97,6 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
                     switchFragment(fragment);
                 }else {
                     Bundle bundle = new Bundle();
-                    Log.e("Lala", "nnnnnnnnnnnnnnnnnnnnnnnnnnnn" + getItem(position).getCardHolder());
                     InputCreditCardFragment fragment = new InputCreditCardFragment();
                     bundle.putString("IdCard", getItem(position).getId());
                     fragment.setArguments(bundle);
