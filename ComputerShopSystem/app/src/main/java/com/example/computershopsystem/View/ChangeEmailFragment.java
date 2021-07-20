@@ -94,7 +94,7 @@ void ChangeGmail(   GoogleSignInAccount acct ){
         public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
             if (task.isSuccessful()){
                 FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/"+user.getUid()+"/customerAccount");
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/"+user.getUid()+"/customerAccount/email");
                 mDatabase.setValue(acct.getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {

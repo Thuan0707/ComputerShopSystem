@@ -36,6 +36,9 @@ public class InputPhoneRegisterActivity extends AppCompatActivity {
                    phone.setError(notify);
                 }else{
                     Intent intent = new Intent(InputPhoneRegisterActivity.this, RegisterOTP.class);
+                    if (getIntent().getStringExtra("facebook") != null) {
+                        intent.putExtra("facebook",true);
+                    }
                     intent.putExtra("changePhone",phone.getText().toString());
                     startActivity(intent);
                 }

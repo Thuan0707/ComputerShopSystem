@@ -2,16 +2,19 @@ package com.example.computershopsystem.Model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
 
 public class Customer implements Serializable {
     String id;
     CustomerAccount customerAccount;
     String fullName;
-    Date dateOfBirth;
+    String  dateOfBirth;
     String address;
     int gender;
-    List<CreditCard> cardList;
+    String image;
+    HashMap<String ,CreditCard> cardList;
+    HashMap<String ,Order> orderList;
+
     Date createAt;
     Date deleteAt;
 
@@ -26,14 +29,18 @@ public class Customer implements Serializable {
         this.createAt = createAt;
     }
 
-    public Customer(String id, CustomerAccount customerAccount, String fullName, Date dateOfBirth, String address, int gender, List<CreditCard> cardList, Date createAt, Date deleteAt) {
+
+    public Customer(String id, CustomerAccount customerAccount, String fullName, String dateOfBirth, String address, int gender, String image, HashMap<String, CreditCard> cardList, HashMap<String, Order> orderList, Date createAt, Date deleteAt) {
         this.id = id;
         this.customerAccount = customerAccount;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.gender = gender;
+        this.image = image;
         this.cardList = cardList;
+        this.orderList = orderList;
+
         this.createAt = createAt;
         this.deleteAt = deleteAt;
     }
@@ -62,11 +69,11 @@ public class Customer implements Serializable {
         this.fullName = fullName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -86,13 +93,31 @@ public class Customer implements Serializable {
         this.gender = gender;
     }
 
-    public List<CreditCard> getCardList() {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public HashMap<String, CreditCard> getCardList() {
         return cardList;
     }
 
-    public void setCardList(List<CreditCard> cardList) {
+    public void setCardList(HashMap<String, CreditCard> cardList) {
         this.cardList = cardList;
     }
+
+    public HashMap<String, Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(HashMap<String, Order> orderList) {
+        this.orderList = orderList;
+    }
+
+
 
     public Date getCreateAt() {
         return createAt;

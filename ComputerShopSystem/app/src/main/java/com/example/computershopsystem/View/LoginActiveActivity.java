@@ -77,7 +77,8 @@ public class LoginActiveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_active);
         firebaseAuth = FirebaseAuth.getInstance();
-//        firebaseAuth.signOut();
+        firebaseAuth.signOut();
+        signOut();
         btnContinue = findViewById(R.id.btnContinue);
         edPhone = findViewById(R.id.txtPhoneContinue);
 
@@ -196,13 +197,20 @@ public class LoginActiveActivity extends AppCompatActivity {
             Log.d(TAG, "onActivityResult: Google Signin intent result");
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             Log.d(TAG, "account task" + accountTask.toString());
-            try {
-                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
 
-                firebaseAuthWithGoogleAccount(account);
-            } catch (Exception e) {
-                Log.d(TAG, "onActivity result:" + e.getMessage());
+            Log.e(TAG, "LAAAAAAAAAAAAAAAAAAAA" + accountTask.toString());
+//            try {
+            GoogleSignInAccount account = null;
+            try {
+                account = accountTask.getResult(ApiException.class);
+            } catch (ApiException e) {
+                e.printStackTrace();
             }
+
+            firebaseAuthWithGoogleAccount(account);
+//            } catch (Exception e) {
+//                Log.d(TAG, "onActivity result:" + e.toString());
+//            }
         }
     }
 
@@ -214,6 +222,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+
                         Log.d(TAG, "onSuccess: Log In");
 
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -280,7 +289,7 @@ public class LoginActiveActivity extends AppCompatActivity {
                     Log.d(TAG, "NumberPhone: " + phoneNumber);
 
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
-                        CustomerAccount customerAccount = new CustomerAccount(uid, phoneNumber, uid, email, null, null);
+                        CustomerAccount customerAccount = new CustomerAccount(uid, phoneNumber, uid, email, null);
                         Customer customer = new Customer(uid, customerAccount, name, Calendar.getInstance().getTime());
                         databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
                         databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(customer);
@@ -289,10 +298,15 @@ public class LoginActiveActivity extends AppCompatActivity {
                         Log.d(TAG, "onSuccess: Existing User: " + name);
                         Toast.makeText(LoginActiveActivity.this, "Welcome back " + name, Toast.LENGTH_SHORT).show();
                     }
-
-
-                    startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
-
+                    if (user.getPhoneNumber()==null){
+                        Intent intent = new Intent(LoginActiveActivity.this, InputPhoneRegisterActivity.class);
+                        intent.putExtra("facebook",true);
+                        startActivity(intent);
+                    }else {
+                        startActivity(new Intent(LoginActiveActivity.this, MainActivity.class));
+                        Log.d(TAG, "onSuccess: Existing User: " + email);
+                        Toast.makeText(LoginActiveActivity.this, "Welcome back " + email, Toast.LENGTH_SHORT).show();
+                    }
                     finish();
                 }
             }
@@ -317,6 +331,15 @@ public class LoginActiveActivity extends AppCompatActivity {
         if (authStateListener != null) {
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
+    }
+    private void signOut() {
+        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(LoginActiveActivity.this, options);
+        googleSignInClient.signOut();
     }
 
 }

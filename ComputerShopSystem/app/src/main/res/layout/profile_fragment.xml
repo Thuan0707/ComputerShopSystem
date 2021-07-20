@@ -75,17 +75,6 @@
                 android:text="Phone Number"
                 android:textColor="#017FFF" />
 
-            <TextView
-                android:id="@+id/tvAcer"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="4dp"
-                android:drawableStart="@drawable/ic_password_blue"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/poppins_bold"
-                android:gravity="center_vertical"
-                android:text="Change Password"
-                android:textColor="#017FFF" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +93,9 @@
                 android:gravity="center_vertical"
                 android:text="Male"
 
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvBirthday"
@@ -115,9 +106,11 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
-                android:text="12-12-2000"
 
-                android:textColor="#000000" />
+
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -129,7 +122,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
 
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvPhone"
@@ -141,19 +136,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center_vertical"
 
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/tvPass"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="4dp"
-                android:drawableEnd="@drawable/ic_right"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/poppins_light"
-                android:gravity="center_vertical"
-
-                android:textColor="#000000" />
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
     </LinearLayout>

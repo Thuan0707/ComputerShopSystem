@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.computershopsystemadmin">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name=".View.DashboardFragment"></activity>
+
+        <activity android:name=".View.InputVoucherFragment"></activity>
+
+        <activity android:name=".View.ChangePhotoProductFragment" />
+        <activity android:name=".View.CustomerProfileFragment" />
+        <activity android:name=".View.CustomerManagementFragment" />
+        <activity android:name=".View.ManagementFragment" />
+        <activity android:name=".View.ChangePriceQuantityProductFragment" />
+        <activity android:name=".View.ChangeBrandProductFragment" />
+        <activity android:name=".View.ChangeScreenProductFragment" />
+        <activity android:name=".View.ChangeROMProductFragment" />
+        <activity android:name=".View.ChangeRamProductFragment" />
+        <activity android:name=".View.ChangeNameProductFragment" />
+        <activity android:name=".View.ChangeCPUProductFragment" />
+        <activity
+            android:name=".View.InputPhoneRegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.RegisterOTP"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SearchNotFound"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SearchResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SearchInput"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.HomeLoginActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.ProductManagementFragment"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".View.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.LoginWrongActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".View.LoginActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".View.LoginActiveActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

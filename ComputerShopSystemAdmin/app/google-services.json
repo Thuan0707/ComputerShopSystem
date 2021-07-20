@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "518295832706",
+    "firebase_url": "https://computershopsystem-c38da-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "computershopsystem-c38da",
+    "storage_bucket": "computershopsystem-c38da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518295832706:android:19dc4fe3f7f871cd4f4c9b",
+        "android_client_info": {
+          "package_name": "com.example.computershopsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518295832706-sp0s5nq0tq3vc09r8kicsfjr1vadbq3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.computershopsystem",
+            "certificate_hash": "07defd04deeff1c5008cafcd570484dda0f966c6"
+          }
+        },
+        {
+          "client_id": "518295832706-uf1n4ga92vpbsilv80m8n4vqkj5h1536.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.computershopsystem",
+            "certificate_hash": "26ca6115c98c775fc2859fbc6b7796f507f0663b"
+          }
+        },
+        {
+          "client_id": "518295832706-ugsh458oqg6udtea63qgurvrpmvns9af.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.computershopsystem",
+            "certificate_hash": "f12931e77472cf8c45c76771592ca8590f303731"
+          }
+        },
+        {
+          "client_id": "518295832706-sujmlhja7956qhof1iuqisp6fjvncl1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_LlkzYSkEoPJAO8UUPhW662rFSWLMyxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518295832706-sujmlhja7956qhof1iuqisp6fjvncl1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518295832706:android:0733c4019d4aa1b94f4c9b",
+        "android_client_info": {
+          "package_name": "com.example.computershopsystemadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518295832706-keej1ca4h7l4om698p50f99b77192jk3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.computershopsystemadmin",
+            "certificate_hash": "26ca6115c98c775fc2859fbc6b7796f507f0663b"
+          }
+        },
+        {
+          "client_id": "518295832706-sujmlhja7956qhof1iuqisp6fjvncl1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_LlkzYSkEoPJAO8UUPhW662rFSWLMyxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518295832706-sujmlhja7956qhof1iuqisp6fjvncl1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

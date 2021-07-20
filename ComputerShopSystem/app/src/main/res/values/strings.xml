@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Computer Shop System</string>
+    <string name="app_name">CPSS</string>
 
     <string-array name="harddrive">
         <item>SSD 256GB</item>

@@ -8,15 +8,15 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.056"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/cpss" />
 
     <TextView
         android:id="@+id/tvWelcome"
@@ -58,7 +58,7 @@
         android:hint="Your Phone Number"
         android:inputType="phone"
         android:paddingHorizontal="16dp"
-        android:text="0353798884"
+        android:text=""
         android:textAlignment="textStart"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +154,7 @@
         android:textAllCaps="false"
         android:textColor="#9098B1"
         android:textSize="16sp"
-        app:backgroundTint="@color/white"
+        app:backgroundTint="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
