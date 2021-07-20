@@ -60,6 +60,7 @@ public class LVVoucherAdapter  extends ArrayAdapter<Voucher> {
 
         ImageButton deleteCVoucher = convertView.findViewById(R.id.ibtnDeleteVoucher);
 
+        //delete voucher in voucher management
         deleteCVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

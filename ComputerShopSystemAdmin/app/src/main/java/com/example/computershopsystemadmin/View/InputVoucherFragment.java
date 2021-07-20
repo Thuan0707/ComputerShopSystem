@@ -160,6 +160,7 @@ public class InputVoucherFragment extends Fragment {
             }
         });
 
+        //Add new voucher in voucher management
         binding.btnAddVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

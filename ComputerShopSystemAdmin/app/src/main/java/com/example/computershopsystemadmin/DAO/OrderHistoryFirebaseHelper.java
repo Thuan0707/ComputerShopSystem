@@ -58,6 +58,10 @@ public class OrderHistoryFirebaseHelper {
         });
     }
 
+    /**
+     * setText total Customer's order of CPSS
+     * @param textView
+     */
     public void TotalOrder(TextView textView) {
 
         db.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -82,6 +86,11 @@ public class OrderHistoryFirebaseHelper {
         });
     }
 
+    /**
+     * calculate total order by orderList.size
+     * @param customerList
+     * @return
+     */
     String GetTotalOrder(List<Customer> customerList) {
         int total = 0;
         for (Customer customer : customerList) {

@@ -86,6 +86,11 @@ public class CustomerFirebaseHelper {
             }
         });
     }
+
+    /**
+     * setText total Customer by get size of list
+     * @param textView
+     */
     public void totalCustomer(TextView textView) {
 
         db.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -109,6 +114,8 @@ public class CustomerFirebaseHelper {
             }
         });
     }
+
+
     public void totalSoldProduct(TextView textView) {
 
         db.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -132,6 +139,12 @@ public class CustomerFirebaseHelper {
             }
         });
     }
+
+    /**
+     * calculate total profit of CPSS
+     * @param customerList
+     * @return
+     */
     String caculateProfit(List<Customer> customerList) {
         double profit = 0;
         for (Customer customer : customerList) {

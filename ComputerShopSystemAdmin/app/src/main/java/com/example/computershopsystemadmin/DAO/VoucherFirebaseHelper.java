@@ -53,6 +53,11 @@ public class VoucherFirebaseHelper {
             }
         });
     }
+
+    /**
+     * setText total Voucher by get size of list
+     * @param textView
+     */
     public void TotalVoucher(TextView textView) {
     List<Voucher> voucherList = new ArrayList<>();
         db.addListenerForSingleValueEvent(new ValueEventListener() {
