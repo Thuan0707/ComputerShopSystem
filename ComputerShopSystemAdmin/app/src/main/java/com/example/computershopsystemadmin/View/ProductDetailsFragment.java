@@ -178,6 +178,8 @@ public class ProductDetailsFragment extends Fragment {
             public void onClick(View v) {
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId());
                 mDatabase.removeValue();
+                ProductManagementFragment fragment = new ProductManagementFragment();
+                switchFragment(fragment);
             }
         });
 
