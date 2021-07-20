@@ -50,8 +50,9 @@ public class InputCreditCardFragment extends Fragment {
     EditText money;
     TextView expirationDate;
     EditText holderCard;
-    List<CreditCard> creditCardList;
 
+    // khai bao bien de lay list credit card so sanh id
+    List<CreditCard> creditCardList;
     String id;
     String keyCreditCard;
     SharedPreferences sharedpreferences;
@@ -69,26 +70,34 @@ public class InputCreditCardFragment extends Fragment {
         CreditCard creditCard = new CreditCard();
 
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+
+        // hung du lieu tu binding
         numberCard = binding.edCardNumberAdd;
         money = binding.edMoneyCardAdd;
         expirationDate = binding.edExpirationCardAdd;
         holderCard = binding.edCardHolderAdd;
+
+        // set Input Type cua number card và money la so
         numberCard.setInputType(InputType.TYPE_CLASS_NUMBER);
         money.setInputType(InputType.TYPE_CLASS_NUMBER);
         if (firebaseUser!=null){
+            // khai bao bien share preferences de lay du lieu
             sharedpreferences = getContext().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
             editor = sharedpreferences.edit();
+
+            // lay id Card tu Bundle
             Bundle bundle = this.getArguments();
             if(bundle != null) {
                 id = bundle.getString("IdCard");
             }
-            editor.remove("IdCard");
-            editor.apply();
+
+            // get data tu id vua nhan
             Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("cardList").orderByChild("id").equalTo(id);
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
+                        // neu co ket qua hien thi no ra man hinh
                         for (DataSnapshot shot : snapshot.getChildren()) {
                             keyCreditCard=shot.getKey();
                             CreditCard creditCard = shot.getValue(CreditCard.class);
@@ -107,24 +116,20 @@ public class InputCreditCardFragment extends Fragment {
             });
         }
 
+        // neu co id thay doi trang thanh trang update
         if(!(id == null)){
             binding.tvNameTop12.setText("Update Card");
             binding.btnAddCard.setText("Save");
-            //Log.e("NUNUNUNU",null);
-//            if(creditCard != null ){
-//
-////                numberCard.setText(creditCard.getCardNumber());
-////                money.setText(creditCard.getMoney());
-////                expirationDate.setText(creditCard.getExpirationDate());
-////                holderCard.setText(creditCard.getCardHolder());
-//            }
         }
+
+        // bat du lieu nhap vao number card
         numberCard.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+            // du lieu nhap vao khong duoc rong, khong dc qua 12 chu so
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 getList();
@@ -143,12 +148,15 @@ public class InputCreditCardFragment extends Fragment {
             public void afterTextChanged(Editable s) {
             }
         });
+
+        // bat du lieu nhap vao money
         money.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+            // du lieu so nhap vao khong dc rong và phai lơn hon 0
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 money.setBackground(getActivity().getDrawable(R.drawable.border));
@@ -172,6 +180,8 @@ public class InputCreditCardFragment extends Fragment {
 
             }
         });
+
+        // set chon calendar cho Date
         expirationDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,12 +206,15 @@ public class InputCreditCardFragment extends Fragment {
                 datePickerDialog.show();
             }
         });
+
+        // bat du lieu cho holder card
         holderCard.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+            // du lieu nhap vao khong dc rong
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 money.setBackground(getActivity().getDrawable(R.drawable.border));
@@ -217,9 +230,11 @@ public class InputCreditCardFragment extends Fragment {
             }
         });
 
+        // set even cho nut add
         binding.btnAddCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 check = true;
                 String cardNumber = String.valueOf(numberCard.getText());
                 if(cardNumber.equals("")){
