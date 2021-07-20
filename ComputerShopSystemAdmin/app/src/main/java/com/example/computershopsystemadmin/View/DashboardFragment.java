@@ -33,6 +33,7 @@ public class DashboardFragment extends Fragment {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
         helper = new CustomerFirebaseHelper(databaseReference, getActivity());
+        // show details in dashboard
         helper.profit(binding.tvProfit);
         helper.totalCustomer(binding.tvCustomer);
         helper.totalSoldProduct(binding.tvProduct);

@@ -173,6 +173,7 @@ public class ProductDetailsFragment extends Fragment {
                 switchFragment(fragment);
             }
         });
+        //Disable product  in product management
         binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
