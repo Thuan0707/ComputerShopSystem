@@ -11,25 +11,16 @@
             android:id="@+id/tvNameTop12"
             android:layout_width="262dp"
             android:layout_height="31dp"
-            android:layout_marginStart="16dp"
             android:text="Order History"
             android:textColor="#223263"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/hr18"
-            app:layout_constraintStart_toEndOf="@+id/ibtnBack11"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/ibtnBack11"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.107"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/left" />
+            app:layout_constraintVertical_bias="0.421" />
 
         <View
             android:id="@+id/hr18"

@@ -104,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="1757"
+                        android:text="0"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
@@ -138,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="7000"
+                        android:text="0"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="6"
+                        android:text="0"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>
@@ -205,7 +205,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="3707"
+                        android:text="0"
                         android:textColor="@color/white"
                         android:textSize="34sp" />
                 </LinearLayout>

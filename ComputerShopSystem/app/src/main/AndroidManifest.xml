@@ -23,7 +23,9 @@
         <activity
             android:name=".View.AccountNotLogin"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".View.InputFullNameRegisterActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.SearchResult"
             android:screenOrientation="portrait" />
