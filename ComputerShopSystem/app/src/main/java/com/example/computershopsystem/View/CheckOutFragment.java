@@ -3,6 +3,7 @@ package com.example.computershopsystem.View;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,9 +82,10 @@ public class CheckOutFragment extends Fragment {
         binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
         Gson gsonw = new Gson();
         String strCreditCard = sharedpreferences.getString("creditCard", null);
+        Log.e("card",strCreditCard);
         editor.remove("isCheckoutCreditCard");
         editor.apply();
-        creditCard = gsonw.fromJson(strCreditCard, CreditCard.class);
+        creditCard = gson.fromJson(strCreditCard,CreditCard.class);
         listView = binding.lvProductCheckout;
 //
         if (creditCard!=null){
@@ -101,21 +103,15 @@ public class CheckOutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CreditCardFragment fragment = new CreditCardFragment();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("voucher", voucher);
-                bundle.putSerializable("creditCard", creditCard);
-                fragment.setArguments(bundle);
-//                editor.putBoolean("isCheckoutCreditCard", true);
-//                editor.apply();
+                editor.putBoolean("isCheckoutCreditCard", true);
+                editor.apply();
                 switchFragment(fragment);
             }
         });
         binding.tvVoucherCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("voucher", voucher);
-                bundle.putSerializable("creditCard", creditCard);
+
                 VoucherFragment fragment = new VoucherFragment();
                 fragment.setArguments(bundle);
                 switchFragment(fragment);

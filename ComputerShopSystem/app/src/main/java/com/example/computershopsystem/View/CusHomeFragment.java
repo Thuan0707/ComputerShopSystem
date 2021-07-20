@@ -92,6 +92,12 @@ public class CusHomeFragment extends Fragment {
                 String json = gson.toJson(creditCard);
                 editor.putString("creditCard", json);
                 editor.commit();
+            }else{
+                CreditCard creditCard=new CreditCard();
+                Gson gson = new Gson();
+                String json = gson.toJson(creditCard);
+                editor.putString("creditCard", json);
+                editor.apply();
             }
         }
 
