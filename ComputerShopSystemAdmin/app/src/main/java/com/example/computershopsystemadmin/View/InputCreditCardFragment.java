@@ -66,6 +66,8 @@ public class InputCreditCardFragment extends Fragment {
     public View onCreateView(@NonNull  LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable  Bundle savedInstanceState) {
         binding = InputCreditCardFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+
+        // get customer can chinh sua hoac them credit card
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             customer = (Customer) bundle.getSerializable("customer");
@@ -73,20 +75,28 @@ public class InputCreditCardFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         isUpdate =false;
+
+        // set id = null
         id = null;
         keyCreditCard = null;
         CreditCard creditCard = new CreditCard();
 
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+
+        // dat ten cho cac bien trong binding
         numberCard = binding.edCardNumberAdd;
         money = binding.edMoneyCardAdd;
         expirationDate = binding.edExpirationCardAdd;
         holderCard = binding.edCardHolderAdd;
+
+        // set input type cua number card va money la so
         numberCard.setInputType(InputType.TYPE_CLASS_NUMBER);
         money.setInputType(InputType.TYPE_CLASS_NUMBER);
         if (firebaseUser!=null){
             sharedpreferences = getContext().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
             editor = sharedpreferences.edit();
+
+            // lay du lieu id can chinh sua
             id = sharedpreferences.getString("IdCard",null);
             editor.remove("IdCard");
             editor.apply();
@@ -96,6 +106,7 @@ public class InputCreditCardFragment extends Fragment {
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         for (DataSnapshot shot : snapshot.getChildren()) {
+                            // neu co id hien thi du lieu ra man hinh chinh sua
                             keyCreditCard=shot.getKey();
                             CreditCard creditCard = shot.getValue(CreditCard.class);
                             numberCard.setText(creditCard.getCardNumber());
@@ -113,27 +124,24 @@ public class InputCreditCardFragment extends Fragment {
             });
         }
 
+        // neu id == null chuyen tu trang add thanh trang update
         if(!(id == null)){
             binding.tvNameTop12.setText("Update Card");
             binding.btnAddCard.setText("Save");
             isUpdate =true;
-            //Log.e("NUNUNUNU",null);
-//            if(creditCard != null ){
-//
-////                numberCard.setText(creditCard.getCardNumber());
-////                money.setText(creditCard.getMoney());
-////                expirationDate.setText(creditCard.getExpirationDate());
-////                holderCard.setText(creditCard.getCardHolder());
-//            }
         }
 
+        // lay all list card
         getList();
+
+        // check du lieu nhap vao cua number card
         numberCard.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+            // neu du lieu nhap vao la rong hoac be hon 12 chu so thì set error
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 numberCard.setBackground(getActivity().getDrawable(R.drawable.border));
