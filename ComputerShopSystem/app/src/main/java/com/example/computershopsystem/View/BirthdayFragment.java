@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.R;
+import com.example.computershopsystem.Utilities.Validation;
 import com.example.computershopsystem.databinding.BirthdayFragmentBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,8 +53,17 @@ public class BirthdayFragment extends Fragment {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
+                        binding.edBirthday.setBackground(getActivity().getDrawable(R.drawable.border));
+                        binding.edBirthday.setError(null);
+                        Validation validation=new Validation();
+                        String notify=validation.CheckDOB(year);
+                        if(notify!=null){
+                            binding.edBirthday.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                            binding.edBirthday.setError(notify);}
+                        else{
+                            binding.edBirthday.setText( (monthOfYear + 1)+ "/" +dayOfMonth  + "/" + year);
+                        }
 
-                        binding.edBirthday.setText( (monthOfYear + 1)+ "/" +dayOfMonth  + "/" + year);
                     }
                 };
 
