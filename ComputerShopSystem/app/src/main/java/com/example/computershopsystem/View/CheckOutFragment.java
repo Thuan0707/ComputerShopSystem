@@ -3,6 +3,7 @@ package com.example.computershopsystem.View;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,36 +64,38 @@ public class CheckOutFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         sharedpreferences = getActivity().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
-        Gson gson = new Gson();
-        String strVoucher = sharedpreferences.getString("voucher", null);
-        voucher = gson.fromJson(strVoucher, Voucher.class);
 
-      bundle = this.getArguments();
+
+        bundle = this.getArguments();
         if (bundle != null) {
             binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
             binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
-            voucher=(Voucher) bundle.getSerializable("voucher");
-            creditCard=(CreditCard) bundle.getSerializable("creditCard");
+            voucher = (Voucher) bundle.getSerializable("voucher");
+            creditCard = (CreditCard) bundle.getSerializable("creditCard");
 
         }
-        binding.tvVoucherCheckOut.setText(voucher.getCode());
-        binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
+
+        if (voucher != null) {
+            Log.e("ass", "!=null");
+            binding.tvVoucherCheckOut.setText(voucher.getCode());
+            binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
+        } else {
+
+            voucher = new Voucher();
+        }
+
+        if (creditCard != null) {
+            binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
+        } else {
+            creditCard = new CreditCard();
+        }
+
 
         binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
 
 
         editor.remove("isCheckoutCreditCard");
         editor.apply();
-
-
-
-
-        if (creditCard!=null){
-            binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
-        }
-        if (voucher!=null){
-            binding.tvVoucherCheckOut.setText(voucher.getCode());
-        }
 
 
         List<OrderProduct> productList = getList();
@@ -106,20 +109,21 @@ public class CheckOutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CreditCardFragment fragment = new CreditCardFragment();
-                bundle.putSerializable("voucher",voucher);
-                bundle.putSerializable("creditCard",creditCard);
-
-                editor.putBoolean("isCheckoutCreditCard", true);
-                editor.apply();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("voucher", voucher);
+                bundle.putSerializable("creditCard", creditCard);
+                fragment.setArguments(bundle);
+//                editor.putBoolean("isCheckoutCreditCard", true);
+//                editor.apply();
                 switchFragment(fragment);
             }
         });
         binding.tvVoucherCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle=new Bundle();
-                bundle.putSerializable("voucher",voucher);
-                bundle.putSerializable("creditCard",creditCard);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("voucher", voucher);
+                bundle.putSerializable("creditCard", creditCard);
                 VoucherFragment fragment = new VoucherFragment();
                 fragment.setArguments(bundle);
                 switchFragment(fragment);
@@ -135,35 +139,35 @@ public class CheckOutFragment extends Fragment {
         binding.btnOrderCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.tvPaymentCheckOut.getText().toString() == "" || !CheckMoneyInCreditCard(creditCard.getMoney(),binding.tvTotalCheckOut.getText().toString().trim().replace("$",""))){
+                if (binding.tvPaymentCheckOut.getText().toString() == "" || !CheckMoneyInCreditCard(creditCard.getMoney(), binding.tvTotalCheckOut.getText().toString().trim().replace("$", ""))) {
                     binding.tvPaymentCheckOut.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     binding.tvPaymentCheckOut.setError("Please choose the card that has enough money");
-                }else{
+                } else {
                     String name = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
-                String phone = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
-                String addesss = binding.tvAddressCheckout.getText().toString();
-                String shipDate = binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[1] + " " + binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[2];
-                DateFormat dateFormat = new SimpleDateFormat("HH:mm mm/dd/yyyy");
-                String orderDate = dateFormat.format(new Date());
-                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
-                String id = mDatabase.push().getKey();
-                decreaseQuantityProduct(productList);
-                decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString().trim().replace("$","")), creditCard);
-                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), creditCard, voucher);
+                    String phone = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
+                    String addesss = binding.tvAddressCheckout.getText().toString();
+                    String shipDate = binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[1] + " " + binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[2];
+                    DateFormat dateFormat = new SimpleDateFormat("HH:mm mm/dd/yyyy");
+                    String orderDate = dateFormat.format(new Date());
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
+                    String id = mDatabase.push().getKey();
+                    decreaseQuantityProduct(productList);
+                    decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString().trim().replace("$", "")), creditCard);
+                    Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), creditCard, voucher);
 
-                mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getContext(), "Order Successfully", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getContext(), "Order Fail", Toast.LENGTH_SHORT).show();
+                    mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getContext(), "Order Successfully", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), "Order Fail", Toast.LENGTH_SHORT).show();
+                            }
+                            switchFragment(new CusHomeFragment());
                         }
-                        switchFragment(new CusHomeFragment());
-                    }
-                });
+                    });
 
-            }
+                }
             }
 
         });
