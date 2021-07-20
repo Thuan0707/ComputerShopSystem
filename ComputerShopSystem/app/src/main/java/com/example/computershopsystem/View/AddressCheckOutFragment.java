@@ -1,5 +1,6 @@
 package com.example.computershopsystem.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,15 @@ public class AddressCheckOutFragment extends Fragment {
             binding.edAddressPhoneCheckOut.setText(bundle.getString("phoneCheckOut"));
             binding.edAddressAddressCheckOut.setText(bundle.getString("addressCheckOut"));
         }
+
+        binding.btnChooseAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), GoogleMapsApi.class));
+            }
+        });
+
+
         binding.btnChangeAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

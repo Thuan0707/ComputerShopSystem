@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.Controller.LVProductInCheckOutAdapter;
+import com.example.computershopsystem.DAO.ProfileFirebaseHelper;
 import com.example.computershopsystem.Model.CreditCard;
 import com.example.computershopsystem.Model.Order;
 import com.example.computershopsystem.Model.OrderProduct;
@@ -30,6 +31,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -47,12 +50,15 @@ public class CheckOutFragment extends Fragment {
     CheckOutFragmentBinding binding;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    ProfileFirebaseHelper helper;
     public Product product;
     private ListView listView;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
     CreditCard creditCard;
     Voucher voucher;
+    DatabaseReference databaseReference;
+    StorageReference storageReference;
 
 
     @Nullable
@@ -67,12 +73,19 @@ public class CheckOutFragment extends Fragment {
         Gson gson = new Gson();
         String strVoucher = sharedpreferences.getString("voucher", null);
         voucher = gson.fromJson(strVoucher, Voucher.class);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
+        storageReference = FirebaseStorage.getInstance().getReference("Customer");
+        helper = new ProfileFirebaseHelper(databaseReference, getActivity());
+        helper.loadCheckoutCustomer(firebaseUser.getUid(), binding.tvNameAndPhoneCheckout, binding.tvAddressCheckout, firebaseUser.getPhoneNumber());
 
         Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
-            binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
-        }
+
+            binding.tvNameAndPhoneCheckout.setText(getFullName() + " - " + getNumberPhone());
+
+//        if (bundle != null) {
+//            binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
+//            binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
+//        }
         if (voucher!=null){
             binding.tvVoucherCheckOut.setText(voucher.getCode());
             binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
@@ -80,7 +93,7 @@ public class CheckOutFragment extends Fragment {
 
 
         binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
-        Gson gsonw = new Gson();
+
         String strCreditCard = sharedpreferences.getString("creditCard", null);
         Log.e("card",strCreditCard);
         editor.remove("isCheckoutCreditCard");
@@ -127,7 +140,15 @@ public class CheckOutFragment extends Fragment {
         binding.btnOrderCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.tvPaymentCheckOut.getText().toString() == "" || !CheckMoneyInCreditCard(creditCard.getMoney(), binding.tvTotalCheckOut.getText().toString().trim().replace("$", ""))) {
+                if (binding.tvAddressCheckout.getText().toString() == "" || firebaseUser.getPhoneNumber() == "") {
+                    binding.tvAddressCheckout.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                    binding.tvChangeInfoCheckout.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                    Toast toast = Toast.makeText(getContext(), "Please fill your information" ,Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+                if (binding.tvPaymentCheckOut.getText().toString() == ""
+                        || !CheckMoneyInCreditCard(creditCard.getMoney(), binding.tvTotalCheckOut.getText().toString().trim().replace("$", ""))) {
                     binding.tvPaymentCheckOut.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     binding.tvPaymentCheckOut.setError("Please choose the card that has enough money");
                 } else {
@@ -239,5 +260,20 @@ public class CheckOutFragment extends Fragment {
         fragTransaction.addToBackStack(null);
         fragTransaction.replace(R.id.fl_wrapper, fragment);
         fragTransaction.commit();
+    }
+
+    private String getAddress(){
+        String address = sharedpreferences.getString("address", null);
+        return address;
+    }
+
+    private String getFullName(){
+        String fullname = sharedpreferences.getString("fullName", null);
+        return fullname;
+    }
+
+    private String getNumberPhone(){
+        String numberphone = sharedpreferences.getString("phone", null);
+        return numberphone;
     }
 }

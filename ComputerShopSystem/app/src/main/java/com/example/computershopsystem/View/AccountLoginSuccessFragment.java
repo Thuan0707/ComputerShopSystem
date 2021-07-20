@@ -1,6 +1,5 @@
 package com.example.computershopsystem.View;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,12 +57,12 @@ public class AccountLoginSuccessFragment extends Fragment {
             }
         });
 
-        btnAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), GoogleMapsApi.class));
-            }
-        });
+//        btnAddress.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), GoogleMapsApi.class));
+//            }
+//        });
 
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
