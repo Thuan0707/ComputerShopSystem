@@ -79,7 +79,7 @@ public class CartFragment extends Fragment {
     public double sumInList(List<OrderProduct> productList) {
         double sum = 0;
         for (OrderProduct item : productList) {
-            sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
+            sum += item.getProduct().getSellPrice() * item.getQuantity();
         }
         return sum;
     }

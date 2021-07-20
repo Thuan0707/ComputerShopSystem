@@ -170,7 +170,7 @@ public class CheckOutFragment extends Fragment {
     public double sumPriceInList(List<OrderProduct> productList) {
         double sum = 0;
         for (OrderProduct item : productList) {
-            sum += item.getProduct().getSellPrice() * item.getQuantityInCart();
+            sum += item.getProduct().getSellPrice() * item.getQuantity();
         }
         return sum;
     }
@@ -178,7 +178,7 @@ public class CheckOutFragment extends Fragment {
     public int quantityItemInList(List<OrderProduct> productList) {
         int quantity = 0;
         for (OrderProduct item : productList) {
-            quantity += item.getQuantityInCart();
+            quantity += item.getQuantity();
         }
         return quantity;
     }
@@ -193,7 +193,7 @@ public class CheckOutFragment extends Fragment {
         DatabaseReference mDatabase = null;
         for (OrderProduct orderProduct : orderProductList) {
             mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + orderProduct.getProduct().getId() + "/quantity");
-            mDatabase.setValue(orderProduct.getProduct().getQuantity() - orderProduct.getQuantityInCart());
+            mDatabase.setValue(orderProduct.getProduct().getQuantity() - orderProduct.getQuantity());
         }
     }
 

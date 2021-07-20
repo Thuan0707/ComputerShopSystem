@@ -2,11 +2,14 @@ package com.example.computershopsystemadmin.DAO;
 
 import android.content.Context;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.example.computershopsystemadmin.Controller.LVCustomerAdapter;
 import com.example.computershopsystemadmin.Model.Customer;
+import com.example.computershopsystemadmin.Model.Order;
+import com.example.computershopsystemadmin.Model.OrderProduct;
 import com.example.computershopsystemadmin.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class CustomerFirebaseHelper {
     DatabaseReference db;
@@ -31,7 +36,11 @@ public class CustomerFirebaseHelper {
         this.context = context;
         this.db = db;
     }
+    public CustomerFirebaseHelper(DatabaseReference db, Context context) {
 
+        this.context = context;
+        this.db = db;
+    }
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -54,8 +63,45 @@ public class CustomerFirebaseHelper {
     };
 
 
+    public void profit(TextView textView) {
 
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Customer> listCustomer = new ArrayList<>();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot shot : dataSnapshot.getChildren()) {
+                        Customer customer = shot.getValue(Customer.class);
 
+                        listCustomer.add(customer);
+                    }
+                    textView.setText(caculateProfit(listCustomer));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    String caculateProfit(List<Customer> customerList) {
+        double profit = 0;
+        for (Customer customer : customerList) {
+            HashMap<String, Order> orderList = customer.getOrderList();
+            if (orderList != null) {
+                for (Order order : orderList.values()) {
+                    List<OrderProduct> orderProductList = order.getOrderProductList();
+                    for (OrderProduct orderProduct: orderProductList) {
+                        profit+=(orderProduct.getProduct().getSellPrice()-orderProduct.getProduct().getBuyPrice())*orderProduct.getQuantity();
+                    }
+                }
+            }
+        }
+        return "$"+String.valueOf(profit);
+    }
 
     //RETRIEVE
     public ArrayList<Customer> retrieve() {
@@ -89,17 +135,19 @@ public class CustomerFirebaseHelper {
 //        return list;
 //    }
 
-    public ArrayList<Customer>  retrieveByBrand(String s) {
+    public ArrayList<Customer> retrieveByBrand(String s) {
         Query query = db.orderByChild("brand/name").equalTo(s);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
+
     public ArrayList<Customer> retrieveByLowPrice() {
         Query query = db.orderByChild("sellPrice").endAt(500).startAt(200);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
-    public ArrayList<Customer>  retrieveByMediumPrice() {
+
+    public ArrayList<Customer> retrieveByMediumPrice() {
         Query query = db.orderByChild("sellPrice").endAt(1000).startAt(500);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
@@ -117,28 +165,29 @@ public class CustomerFirebaseHelper {
         return list;
     }
 
-    public ArrayList<Customer>  retrieveByRom(String rom) {
+    public ArrayList<Customer> retrieveByRom(String rom) {
         Query query = db.orderByChild("rom/capacity").equalTo(rom);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
 
-    public ArrayList<Customer>  retrieveByScreenSize(String size) {
+    public ArrayList<Customer> retrieveByScreenSize(String size) {
         Query query = db.orderByChild("screen/size").equalTo(size);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
 
-    public ArrayList<Customer>  retrieveBySPU(String num) {
-        Query query = db.orderByChild("cpu/series").equalTo("i"+num);
+    public ArrayList<Customer> retrieveBySPU(String num) {
+        Query query = db.orderByChild("cpu/series").equalTo("i" + num);
         query.addListenerForSingleValueEvent(valueEventListener);
         return list;
     }
+
     public ArrayList<Customer> getList() {
         return list;
     }
 
-    public void setList(ArrayList<Customer>  list) {
+    public void setList(ArrayList<Customer> list) {
         this.list = list;
     }
 }

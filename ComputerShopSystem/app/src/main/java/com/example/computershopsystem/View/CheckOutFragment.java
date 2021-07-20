@@ -53,7 +53,7 @@ public class CheckOutFragment extends Fragment {
     SharedPreferences.Editor editor;
     CreditCard creditCard;
     Voucher voucher;
-    Bundle bundle;
+
 
     @Nullable
     @Override
