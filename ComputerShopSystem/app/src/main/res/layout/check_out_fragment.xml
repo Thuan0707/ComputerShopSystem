@@ -226,7 +226,6 @@
                 android:layout_marginBottom="4dp"
                 android:drawableEnd="@drawable/ic_right"
                 android:fontFamily="@font/poppins_bold"
-                android:text="1234 5678 9123 4567"
                 android:textAlignment="viewEnd" />
 
             <TextView

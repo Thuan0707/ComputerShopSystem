@@ -86,12 +86,15 @@ public class CusHomeFragment extends Fragment {
                 editor.putString("note", "");
                 editor.commit();
             }
+            CreditCard creditCard=null;
+            Gson gson = new Gson();
+            String json = gson.toJson(creditCard);
             if (!sharedpreferences.contains("creditCard")) {
-                CreditCard creditCard=new CreditCard();
-                Gson gson = new Gson();
-                String json = gson.toJson(creditCard);
                 editor.putString("creditCard", json);
                 editor.commit();
+            }else{
+                editor.putString("creditCard", json);
+                editor.apply();
             }
         }
 

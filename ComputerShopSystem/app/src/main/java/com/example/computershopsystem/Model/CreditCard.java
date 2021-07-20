@@ -2,9 +2,10 @@ package com.example.computershopsystem.Model;
 
 import com.google.firebase.database.PropertyName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CreditCard{
+public class CreditCard implements Serializable {
 
     @PropertyName("id")
     String id;

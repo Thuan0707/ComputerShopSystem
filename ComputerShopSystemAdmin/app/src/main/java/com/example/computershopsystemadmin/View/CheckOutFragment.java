@@ -118,8 +118,9 @@ public class CheckOutFragment extends Fragment {
                 String orderDate = dateFormat.format(new Date());
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
                 String id = mDatabase.push().getKey();
-                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), null,voucher);
-
+                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(),  creditCard, voucher);
+                decreaseQuantityProduct(productList);
+                decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString()),creditCard);
                 mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -186,6 +187,19 @@ public class CheckOutFragment extends Fragment {
         if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
         DecimalFormat df = new DecimalFormat("###.####");
         return df.format(num); //and for you, Christian Kuetbach
+    }
+
+    void decreaseQuantityProduct(List<OrderProduct> orderProductList) {
+        DatabaseReference mDatabase = null;
+        for (OrderProduct orderProduct : orderProductList) {
+            mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + orderProduct.getProduct().getId() + "/quantity");
+            mDatabase.setValue(orderProduct.getProduct().getQuantity() - orderProduct.getQuantityInCart());
+        }
+    }
+
+    void decreaseMoneyInCard(double total, CreditCard creditCard) {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/cardList/" + creditCard.getId() + "/money");
+        mDatabase.setValue(String.valueOf(Double.parseDouble(creditCard.getMoney()) - total));
     }
 
     void switchFragment(Fragment fragment) {

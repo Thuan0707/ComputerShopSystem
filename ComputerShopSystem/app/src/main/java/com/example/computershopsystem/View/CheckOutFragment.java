@@ -52,6 +52,7 @@ public class CheckOutFragment extends Fragment {
     SharedPreferences.Editor editor;
     CreditCard creditCard;
     Voucher voucher;
+    Bundle bundle;
 
     @Nullable
     @Override
@@ -66,10 +67,13 @@ public class CheckOutFragment extends Fragment {
         String strVoucher = sharedpreferences.getString("voucher", null);
         voucher = gson.fromJson(strVoucher, Voucher.class);
 
-        Bundle bundle = this.getArguments();
+      bundle = this.getArguments();
         if (bundle != null) {
             binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
             binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
+            voucher=(Voucher) bundle.getSerializable("voucher");
+            creditCard=(CreditCard) bundle.getSerializable("creditCard");
+
         }
         binding.tvVoucherCheckOut.setText(voucher.getCode());
         binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
@@ -77,17 +81,23 @@ public class CheckOutFragment extends Fragment {
         binding.tvNoteCheckOut.setText(sharedpreferences.getString("note", null));
 
 
-        Gson gson1 = new Gson();
-        String strCreditCard = sharedpreferences.getString("creditCard", null);
         editor.remove("isCheckoutCreditCard");
         editor.apply();
-        creditCard = gson.fromJson(strCreditCard, CreditCard.class);;
-        listView = binding.lvProductCheckout;
-//
-        binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
+
+
+
+
+        if (creditCard!=null){
+            binding.tvPaymentCheckOut.setText(creditCard.getCardNumber());
+        }
+        if (voucher!=null){
+            binding.tvVoucherCheckOut.setText(voucher.getCode());
+        }
+
 
         List<OrderProduct> productList = getList();
         LVProductInCheckOutAdapter LVProductInCartAdapter = new LVProductInCheckOutAdapter(getActivity(), R.layout.check_out_item, productList);
+        listView = binding.lvProductCheckout;
         listView.setAdapter(LVProductInCartAdapter);
         binding.tvNumberOfProduct.setText("Price (" + String.valueOf(quantityItemInList(productList)) + " Products)");
         binding.tvPriceCheckOut.setText("$" + checkInt(sumPriceInList(productList)));
@@ -96,7 +106,10 @@ public class CheckOutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CreditCardFragment fragment = new CreditCardFragment();
-                editor.putBoolean("isCheckoutCreditCard",true);
+                bundle.putSerializable("voucher",voucher);
+                bundle.putSerializable("creditCard",creditCard);
+
+                editor.putBoolean("isCheckoutCreditCard", true);
                 editor.apply();
                 switchFragment(fragment);
             }
@@ -104,7 +117,11 @@ public class CheckOutFragment extends Fragment {
         binding.tvVoucherCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bundle=new Bundle();
+                bundle.putSerializable("voucher",voucher);
+                bundle.putSerializable("creditCard",creditCard);
                 VoucherFragment fragment = new VoucherFragment();
+                fragment.setArguments(bundle);
                 switchFragment(fragment);
             }
         });
@@ -118,7 +135,11 @@ public class CheckOutFragment extends Fragment {
         binding.btnOrderCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
+                if (binding.tvPaymentCheckOut.getText().toString() == "" || !CheckMoneyInCreditCard(creditCard.getMoney(),binding.tvTotalCheckOut.getText().toString().trim().replace("$",""))){
+                    binding.tvPaymentCheckOut.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                    binding.tvPaymentCheckOut.setError("Please choose the card that has enough money");
+                }else{
+                    String name = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[0];
                 String phone = binding.tvNameAndPhoneCheckout.getText().toString().split("\\ - ")[1];
                 String addesss = binding.tvAddressCheckout.getText().toString();
                 String shipDate = binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[1] + " " + binding.tvTimeDeliveryCheckOut.getText().toString().split("\\ - ")[2];
@@ -126,7 +147,9 @@ public class CheckOutFragment extends Fragment {
                 String orderDate = dateFormat.format(new Date());
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
                 String id = mDatabase.push().getKey();
-                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), creditCard,voucher);
+                decreaseQuantityProduct(productList);
+                decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString().trim().replace("$","")), creditCard);
+                Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), creditCard, voucher);
 
                 mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -141,7 +164,7 @@ public class CheckOutFragment extends Fragment {
                 });
 
             }
-
+            }
 
         });
         binding.tvChangeInfoCheckout.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +183,13 @@ public class CheckOutFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    boolean CheckMoneyInCreditCard(String money, String total) {
+        if (Double.parseDouble(money) < Double.parseDouble(total)) {
+            return false;
+        }
+        return true;
     }
 
     public List<OrderProduct> getList() {
@@ -188,6 +218,19 @@ public class CheckOutFragment extends Fragment {
             quantity += item.getQuantity();
         }
         return quantity;
+    }
+
+    void decreaseQuantityProduct(List<OrderProduct> orderProductList) {
+        DatabaseReference mDatabase = null;
+        for (OrderProduct orderProduct : orderProductList) {
+            mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + orderProduct.getProduct().getId() + "/quantity");
+            mDatabase.setValue(orderProduct.getProduct().getQuantity() - orderProduct.getQuantity());
+        }
+    }
+
+    void decreaseMoneyInCard(double total, CreditCard creditCard) {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/cardList/" + creditCard.getId() + "/money");
+        mDatabase.setValue(String.valueOf(Double.parseDouble(creditCard.getMoney()) - total));
     }
 
     String checkInt(double num) {
