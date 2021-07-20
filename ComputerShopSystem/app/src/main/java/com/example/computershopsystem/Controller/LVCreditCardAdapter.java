@@ -3,7 +3,6 @@ package com.example.computershopsystem.Controller;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
@@ -82,7 +82,7 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         cardNumber.setText(getItem(position).getCardNumber());
         cardHolder.setText(String.valueOf(getItem(position).getCardHolder()));
         cardExpiration.setText(String.valueOf(getItem(position).getExpirationDate()));
-        cardMoney.setText(String.valueOf(getItem(position).getMoney()));
+        cardMoney.setText(checkInt(Double.parseDouble(getItem(position).getMoney())));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,4 +117,10 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         fragTransaction.replace(R.id.fl_wrapper, fragment);
         fragTransaction.commit();
     }
+    String checkInt(double num) {
+        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        DecimalFormat df = new DecimalFormat("###.####");
+        return df.format(num); //and for you, Christian Kuetbach
+    }
+
 }
