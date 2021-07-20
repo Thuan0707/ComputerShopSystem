@@ -86,7 +86,52 @@ public class CustomerFirebaseHelper {
             }
         });
     }
+    public void totalCustomer(TextView textView) {
 
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Customer> listCustomer = new ArrayList<>();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot shot : dataSnapshot.getChildren()) {
+                        Customer customer = shot.getValue(Customer.class);
+
+                        listCustomer.add(customer);
+                    }
+                textView.setText(String.valueOf(listCustomer.size()));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+    public void totalSoldProduct(TextView textView) {
+
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Customer> listCustomer = new ArrayList<>();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot shot : dataSnapshot.getChildren()) {
+                        Customer customer = shot.getValue(Customer.class);
+
+                        listCustomer.add(customer);
+                    }
+                    textView.setText(TotalProduct(listCustomer));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
     String caculateProfit(List<Customer> customerList) {
         double profit = 0;
         for (Customer customer : customerList) {
@@ -102,7 +147,21 @@ public class CustomerFirebaseHelper {
         }
         return "$"+String.valueOf(profit);
     }
-
+    String TotalProduct(List<Customer> customerList) {
+        int total = 0;
+        for (Customer customer : customerList) {
+            HashMap<String, Order> orderList = customer.getOrderList();
+            if (orderList != null) {
+                for (Order order : orderList.values()) {
+                    List<OrderProduct> orderProductList = order.getOrderProductList();
+                    for (OrderProduct orderProduct: orderProductList) {
+                        total+=orderProduct.getQuantity();
+                    }
+                }
+            }
+        }
+        return String.valueOf(total);
+    }
     //RETRIEVE
     public ArrayList<Customer> retrieve() {
         db.addValueEventListener(valueEventListener);

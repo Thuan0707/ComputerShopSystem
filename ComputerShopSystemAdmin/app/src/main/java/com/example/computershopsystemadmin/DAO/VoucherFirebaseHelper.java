@@ -2,6 +2,7 @@ package com.example.computershopsystemadmin.DAO;
 
 import android.content.Context;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -17,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VoucherFirebaseHelper {
     DatabaseReference db;
@@ -41,14 +43,37 @@ public class VoucherFirebaseHelper {
                 }
 
 
-                 LVVoucherAdapter lvVoucherAdapter = new LVVoucherAdapter(context, R.layout.voucher_item, voucherList);
+                LVVoucherAdapter lvVoucherAdapter = new LVVoucherAdapter(context, R.layout.voucher_item, voucherList);
                 lv.setAdapter(lvVoucherAdapter);
             }
+
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
             }
         });
     }
+    public void TotalVoucher(TextView textView) {
+    List<Voucher> voucherList = new ArrayList<>();
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot shot : dataSnapshot.getChildren()) {
+                        Voucher voucher = shot.getValue(Voucher.class);
+                        voucherList.add(voucher);
+                    }
+                }
+
+
+             textView.setText(String.valueOf(voucherList.size()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
+}
 
