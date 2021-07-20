@@ -52,7 +52,6 @@ public class InputCreditCardFragment extends Fragment {
     EditText holderCard;
     List<CreditCard> creditCardList;
 
-    Boolean isUpdate;
     String id;
     String keyCreditCard;
     SharedPreferences sharedpreferences;
@@ -65,7 +64,6 @@ public class InputCreditCardFragment extends Fragment {
         View view = binding.getRoot();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        isUpdate =false;
         id = null;
         keyCreditCard = null;
         CreditCard creditCard = new CreditCard();
@@ -80,7 +78,10 @@ public class InputCreditCardFragment extends Fragment {
         if (firebaseUser!=null){
             sharedpreferences = getContext().getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
             editor = sharedpreferences.edit();
-            id = sharedpreferences.getString("IdCard",null);
+            Bundle bundle = this.getArguments();
+            if(bundle != null) {
+                id = bundle.getString("IdCard");
+            }
             editor.remove("IdCard");
             editor.apply();
             Query data = FirebaseDatabase.getInstance().getReference("Customer").child(firebaseUser.getUid()).child("cardList").orderByChild("id").equalTo(id);
@@ -109,7 +110,6 @@ public class InputCreditCardFragment extends Fragment {
         if(!(id == null)){
             binding.tvNameTop12.setText("Update Card");
             binding.btnAddCard.setText("Save");
-            isUpdate =true;
             //Log.e("NUNUNUNU",null);
 //            if(creditCard != null ){
 //
@@ -119,7 +119,6 @@ public class InputCreditCardFragment extends Fragment {
 ////                holderCard.setText(creditCard.getCardHolder());
 //            }
         }
-        getList();
         numberCard.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -128,6 +127,7 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                getList();
                 numberCard.setBackground(getActivity().getDrawable(R.drawable.border));
                 if(s.toString().equals("")){
                     numberCard.setError("Please enter Number Card !");
@@ -141,7 +141,6 @@ public class InputCreditCardFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         money.addTextChangedListener(new TextWatcher() {
@@ -248,8 +247,7 @@ public class InputCreditCardFragment extends Fragment {
 
                     check = false;
                 }
-
-                if(check && checkDuplicate(cardNumber,isUpdate)) {
+                if(check && checkDuplicate(cardNumber)) {
                     String idCard = id;
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer").child(firebaseUser.getUid()).child("cardList");
                     if((id == null)) {
@@ -294,9 +292,13 @@ public class InputCreditCardFragment extends Fragment {
         });
     }
 
-    Boolean checkDuplicate(String number,Boolean isUpdate){
+    Boolean checkDuplicate(String number){
+        Boolean isUpdate = false;
         for(CreditCard item : creditCardList){
-            if(item.getCardNumber().equals(number)&& !isUpdate){
+            if(id!=null && (id.equals(item.getId()))){
+                isUpdate = true;
+            }
+            if(item.getCardNumber().trim().equals(number.trim())&& !isUpdate){
                 numberCard.setError("Your number card had existed !");
                 numberCard.setBackground(getActivity().getDrawable(R.drawable.border_red));
                 return false;
