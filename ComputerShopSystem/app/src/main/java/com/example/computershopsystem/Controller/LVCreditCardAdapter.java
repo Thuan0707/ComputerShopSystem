@@ -2,6 +2,7 @@ package com.example.computershopsystem.Controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,10 +96,11 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
                     CheckOutFragment fragment = new CheckOutFragment();
                     switchFragment(fragment);
                 }else {
-                    editor.putString("IdCard", getItem(position).getId());
-                    editor.apply();
+                    Bundle bundle = new Bundle();
                     Log.e("Lala", "nnnnnnnnnnnnnnnnnnnnnnnnnnnn" + getItem(position).getCardHolder());
                     InputCreditCardFragment fragment = new InputCreditCardFragment();
+                    bundle.putString("IdCard", getItem(position).getId());
+                    fragment.setArguments(bundle);
                     switchFragment(fragment);
                 }
             }
