@@ -67,4 +67,45 @@ public class ProfileFirebaseHelper {
         return customer;
     }
 
+    public Customer loadCheckoutCustomer(String id, TextView fullName, TextView Address, String numberphone) {
+        Query query = db.child(id);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    customer = snapshot.getValue(Customer.class);
+
+                    if (customer.getFullName()!=null){
+                        fullName.setText(customer.getFullName() + " - " + changeNumberPhone(numberphone));
+                    }
+
+                    if (customer.getAddress() != null) {
+                        Address.setText(customer.getAddress());
+                    } else {
+                        Address.setText(null);
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+        return customer;
+    }
+
+    public String changeNumberPhone(String phone) {
+        String[] spl = phone.split("[+84]");
+
+        StringBuilder builder = new StringBuilder();
+        for (String item: spl) {
+            builder.append(item);
+        }
+        return "0" + builder.toString();
+    }
+
 }

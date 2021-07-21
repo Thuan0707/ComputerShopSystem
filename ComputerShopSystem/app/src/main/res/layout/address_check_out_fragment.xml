@@ -11,8 +11,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Address"
             android:textColor="#017FFF"
@@ -157,6 +157,34 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtRegion"
+            android:layout_width="372dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edAddressAddressCheckOut" />
+
+        <Button
+            android:id="@+id/btnChooseAddress"
+            android:layout_width="95dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="#03A9F4"
+            android:text="Choose"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/edAddressPhoneCheckOut" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

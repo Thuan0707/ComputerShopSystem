@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.computershopsystem.Model.Customer;
 import com.example.computershopsystem.Model.CustomerAccount;
@@ -79,6 +82,8 @@ public class LoginActiveActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.btnContinue);
         edPhone = findViewById(R.id.txtPhoneContinue);
 
+
+
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +111,7 @@ public class LoginActiveActivity extends AppCompatActivity {
         mCallbackManager = CallbackManager.Factory.create();
         firebaseAuth = FirebaseAuth.getInstance();
         checkUser();
+
 
         btGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,15 +165,26 @@ public class LoginActiveActivity extends AppCompatActivity {
 
 
     private void checkUser() {
+        Log.d(TAG, "checkUser: hello");
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
         if (firebaseUser != null) {
             Log.e("ádf","inputphone nè");
             if (firebaseUser.getPhoneNumber()==null){
                 startActivity(new Intent(this, InputPhoneRegisterActivity.class));
-            }else{
-                startActivity(new Intent(this, AccountLoginSuccessFragment.class));
+                finish();
+            } else {
+                Log.e(TAG, "Aloo: toi day chua di " );
+                Fragment fragment = new AccountLoginSuccessFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+                fragTransaction.setCustomAnimations(android.R.animator.fade_in,
+                        android.R.animator.fade_out);
+                fragTransaction.addToBackStack(null);
+                fragTransaction.replace(R.id.fl_wrapper, fragment);
+                fragTransaction.commit();
             }
-            finish();
+
         }
     }
 

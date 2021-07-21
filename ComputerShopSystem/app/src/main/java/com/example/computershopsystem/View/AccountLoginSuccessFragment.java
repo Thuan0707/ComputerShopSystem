@@ -34,6 +34,7 @@ public class AccountLoginSuccessFragment extends Fragment {
     Button btnPayment;
     Button btnProfile;
     Button btnOrder;
+    Button btnAddress;
 
     @Nullable
     @Override
@@ -55,6 +56,14 @@ public class AccountLoginSuccessFragment extends Fragment {
                 switchFragment(fragment);
             }
         });
+
+//        btnAddress.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), GoogleMapsApi.class));
+//            }
+//        });
+
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

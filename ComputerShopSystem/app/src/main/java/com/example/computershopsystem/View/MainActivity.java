@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     public Product product;
 
+
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
 

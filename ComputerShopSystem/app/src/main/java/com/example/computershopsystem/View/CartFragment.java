@@ -67,6 +67,7 @@ public class CartFragment extends Fragment {
         return view;
     }
 
+
     public List<OrderProduct> getList() {
         List<OrderProduct> listProduct = new ArrayList<>();
         String serializedObject = sharedpreferences.getString("cart", null);
