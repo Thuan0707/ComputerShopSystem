@@ -34,9 +34,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Controller/LVCreditCardAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/Controller/LVCreditCardAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CartFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CartFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CheckOutFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/computershopsystem/View/CusHomeFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Controller/GridProductAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/Controller/GridProductAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/CustomerFirebaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/DAO/CustomerFirebaseHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/BirthdayFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/BirthdayFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangeBrandProductFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ComputerShopSystemAdmin/app/src/main/java/com/example/computershopsystemadmin/View/ChangeBrandProductFragment.java" afterDir="false" />
@@ -316,22 +316,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="406" y="155" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1626772288788" />
-    <state width="1241" height="49" key="GridCell.Tab.0.bottom" timestamp="1626836299671">
+    <state width="746" height="311" key="GridCell.Tab.0.bottom" timestamp="1626836709794">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1241" height="49" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626836299671" />
-    <state width="1241" height="49" key="GridCell.Tab.0.center" timestamp="1626836299671">
+    <state width="746" height="311" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626836709794" />
+    <state width="746" height="311" key="GridCell.Tab.0.center" timestamp="1626836709794">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1241" height="49" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626836299671" />
-    <state width="1241" height="49" key="GridCell.Tab.0.left" timestamp="1626836299671">
+    <state width="746" height="311" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626836709794" />
+    <state width="746" height="311" key="GridCell.Tab.0.left" timestamp="1626836709793">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1241" height="49" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626836299671" />
-    <state width="1241" height="49" key="GridCell.Tab.0.right" timestamp="1626836299671">
+    <state width="746" height="311" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626836709793" />
+    <state width="746" height="311" key="GridCell.Tab.0.right" timestamp="1626836709794">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1241" height="49" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626836299671" />
+    <state width="746" height="311" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626836709794" />
     <state x="432" y="116" key="SettingsEditor" timestamp="1626177640535">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
