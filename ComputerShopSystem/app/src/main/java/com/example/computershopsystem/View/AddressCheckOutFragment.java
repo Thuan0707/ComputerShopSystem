@@ -25,10 +25,20 @@ public class AddressCheckOutFragment extends Fragment {
         binding = AddressCheckOutFragmentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         Bundle bundle=this.getArguments();
+        String address = null;
         if (bundle!=null){
             binding.edAddressFullNameCheckOut.setText(bundle.getString("nameCheckOut"));
             binding.edAddressPhoneCheckOut.setText(bundle.getString("phoneCheckOut"));
-            binding.edAddressAddressCheckOut.setText(bundle.getString("addressCheckOut"));
+//            binding.edAddressAddressCheckOut.setText(bundle.getString("addressCheckOut"));
+            address = bundle.getString("addressCheckOut");
+        }
+
+        if (address != ""){
+            binding.txtRegion.setText(getRegion(address));
+            binding.edAddressAddressCheckOut.setText(getaddress(address));
+        } else {
+            binding.txtRegion.setText("");
+            binding.edAddressAddressCheckOut.setText("");
         }
 
         binding.btnChooseAddress.setOnClickListener(new View.OnClickListener() {
@@ -87,5 +97,33 @@ public class AddressCheckOutFragment extends Fragment {
         fragTransaction.addToBackStack(null);
         fragTransaction.replace(R.id.fl_wrapper, fragment);
         fragTransaction.commit();
+    }
+
+    private String getCityName(String address) {
+        String[] add = address.split(",");
+        String result = add[add.length - 2];
+        return result;
+    }
+
+    private String getRegion(String address) {
+        String[] add = address.split(",");
+        String result = add[add.length - 4] + ", " + add[add.length - 3] + ", "
+                + add[add.length - 2] + ", "+ add[add.length - 1];
+        return result;
+    }
+
+    private String getaddress(String address) {
+        String[] splitt = address.split(",");
+        String result = null;
+
+        StringBuilder builder = new StringBuilder();
+        for (int i =0; i< splitt.length-4;  i++) {
+            if (i == splitt.length - 5){
+                builder.append(splitt[i]);
+            } else {
+                builder.append(splitt[i]+", ");
+            }
+        }
+        return builder.toString();
     }
 }

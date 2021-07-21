@@ -3,6 +3,7 @@ package com.example.computershopsystem.View;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -48,11 +49,19 @@ public class MainActivity extends AppCompatActivity {
             sharedpreferences =getSharedPreferences(firebaseUser.getUid(), Context.MODE_PRIVATE);
             editor = sharedpreferences.edit();
         }
+
+
         
      
 
         switchFragment(new CusHomeFragment());
 
+        String checkGoogleMap = (String) getIntent().getSerializableExtra("CheckGoogleMap");
+        Log.d("checkgooglemap", "onCreate: " + checkGoogleMap);
+        if (checkGoogleMap != null) {
+            Log.d("aloooo", "onCreate: ");
+            switchFragment(new CheckOutFragment());
+        }
 
         BottomNavigationView nav_bot = findViewById(R.id.nav_bot);
         nav_bot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

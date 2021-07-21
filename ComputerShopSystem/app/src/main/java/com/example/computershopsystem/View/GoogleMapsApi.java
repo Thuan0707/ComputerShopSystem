@@ -1,6 +1,8 @@
 package com.example.computershopsystem.View;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Address;
@@ -9,6 +11,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -25,6 +29,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,26 +49,109 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private ActivityGoogleMapsApiBinding binding;
 
+
     private final int REQUEST_LOCATION_PERMISSION = 1;
 
     private Marker homeMarker = null;
-    private String city, region, strAdr;
+    private String strAdr = null;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
         binding = ActivityGoogleMapsApiBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.txtAddress.setText("");
+
+        binding.btnChoose.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onClick(View v) {
+                if (binding.txtAddress.getText() == "") {
+                    binding.txtAddress.setBackground(getDrawable(R.drawable.border_red));
+                    Toast toast = Toast.makeText(getApplicationContext(), "Please choose your address" ,Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    String city = getCityName(strAdr);
+                    String region = getRegion(strAdr);
+                    String address = getaddress(strAdr);
+
+                    String fullName= firebaseUser.getDisplayName();
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                            .setDisplayName(fullName)
+                            .build();
+                    FirebaseAuth.getInstance().getCurrentUser().updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+
+                                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/"+user.getUid()+"/address");
+                                mDatabase.setValue(strAdr).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            Toast.makeText(getApplicationContext(), "Choose Address Successfully" , Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            intent.putExtra("CheckGoogleMap", "check");
+                                            startActivity(intent);
+
+                                        }else{
+                                            Toast.makeText(getApplicationContext(), "Choose Address Fail" , Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+
+
+
+                }
+            }
+        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
+    private String getCityName(String address) {
+        String[] add = address.split(",");
+        String result = add[add.length - 2];
+        return result;
+    }
+
+    private String getRegion(String address) {
+        String[] add = address.split(",");
+        String result = add[add.length - 4] + ", " + add[add.length - 3] + ", "
+                + add[add.length - 2] + ", "+ add[add.length - 1];
+        return result;
+    }
+
+    private String getaddress(String address) {
+        String[] splitt = address.split(",");
+        String result = null;
+
+        StringBuilder builder = new StringBuilder();
+        for (int i =0; i< splitt.length-4;  i++) {
+            if (i == splitt.length - 5){
+                builder.append(splitt[i]);
+            } else {
+                builder.append(splitt[i]+", ");
+            }
+        }
+        return builder.toString();
+    }
+
 
 
 
@@ -81,7 +175,6 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(shop).title("Here is our Computer shop :>"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(shop, 15f));
 
-        LatLng hmmm = new LatLng(10.029031,105.757339);
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(@NonNull @NotNull LatLng pos) {
@@ -119,8 +212,9 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
     private void setAddress(List<Address> addressList) {
         for (Address address : addressList) {
             if (address.getAddressLine(0) != null) {
-                binding.txtAddress.setText(address.getAddressLine(0));
                 strAdr = address.getAddressLine(0);
+                binding.txtAddress.setText(strAdr);
+
                 Log.d("address", "setAddress: " + strAdr);
             }
             if (address.getAddressLine(1) != null) {
@@ -189,4 +283,11 @@ public class GoogleMapsApi extends FragmentActivity implements OnMapReadyCallbac
     public void onLocationChanged(@NonNull Location location) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
     }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+
 }

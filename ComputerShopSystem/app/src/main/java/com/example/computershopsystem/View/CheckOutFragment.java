@@ -80,12 +80,6 @@ public class CheckOutFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
 
-            binding.tvNameAndPhoneCheckout.setText(getFullName() + " - " + getNumberPhone());
-
-//        if (bundle != null) {
-//            binding.tvNameAndPhoneCheckout.setText(bundle.getString("nameCheckOut") + " - " + bundle.getString("phoneCheckOut"));
-//            binding.tvAddressCheckout.setText(bundle.getString("addressCheckOut"));
-//        }
         if (voucher!=null){
             binding.tvVoucherCheckOut.setText(voucher.getCode());
             binding.tvDiscountCheckOut.setText("-$" + checkInt(voucher.getDiscount()));
@@ -124,6 +118,7 @@ public class CheckOutFragment extends Fragment {
         binding.tvVoucherCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 VoucherFragment fragment = new VoucherFragment();
                 fragment.setArguments(bundle);
                 switchFragment(fragment);
@@ -145,8 +140,8 @@ public class CheckOutFragment extends Fragment {
                     Toast toast = Toast.makeText(getContext(), "Please fill your information" ,Toast.LENGTH_SHORT);
                     toast.show();
 
-                }else 
-                if (binding.tvPaymentCheckOut.getText().toString() == ""
+                }
+                else if (binding.tvPaymentCheckOut.getText().toString() == ""
                         || !CheckMoneyInCreditCard(creditCard.getMoney(), binding.tvTotalCheckOut.getText().toString().trim().replace("$", ""))) {
                     binding.tvPaymentCheckOut.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     binding.tvPaymentCheckOut.setError("Please choose the card that has enough money");
@@ -160,7 +155,7 @@ public class CheckOutFragment extends Fragment {
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
                     String id = mDatabase.push().getKey();
                     decreaseQuantityProduct(productList);
-                    decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString().trim().replace("$", "").replace(",",".")), creditCard);
+                    decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString().trim().replace("$", "")), creditCard);
                     Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), creditCard, voucher);
 
                     mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -198,7 +193,7 @@ public class CheckOutFragment extends Fragment {
     }
 
     boolean CheckMoneyInCreditCard(String money, String total) {
-        if (Double.parseDouble(money.trim().replace(",",".")) < Double.parseDouble(total.trim().replace(",","."))) {
+        if (Double.parseDouble(money) < Double.parseDouble(total)) {
             return false;
         }
         return true;
@@ -261,18 +256,32 @@ public class CheckOutFragment extends Fragment {
         fragTransaction.commit();
     }
 
-    private String getAddress(){
-        String address = sharedpreferences.getString("address", null);
-        return address;
+
+    private String getCityName(String address) {
+        String[] add = address.split(",");
+        String result = add[add.length - 2];
+        return result;
     }
 
-    private String getFullName(){
-        String fullname = sharedpreferences.getString("fullName", null);
-        return fullname;
+    private String getRegion(String address) {
+        String[] add = address.split(",");
+        String result = add[add.length - 4] + ", " + add[add.length - 3] + ", "
+                + add[add.length - 2] + ", "+ add[add.length - 1];
+        return result;
     }
 
-    private String getNumberPhone(){
-        String numberphone = sharedpreferences.getString("phone", null);
-        return numberphone;
+    private String getaddress(String address) {
+        String[] splitt = address.split(",");
+        String result = null;
+
+        StringBuilder builder = new StringBuilder();
+        for (int i =0; i< splitt.length-4;  i++) {
+            if (i == splitt.length - 5){
+                builder.append(splitt[i]);
+            } else {
+                builder.append(splitt[i]+", ");
+            }
+        }
+        return builder.toString();
     }
 }
