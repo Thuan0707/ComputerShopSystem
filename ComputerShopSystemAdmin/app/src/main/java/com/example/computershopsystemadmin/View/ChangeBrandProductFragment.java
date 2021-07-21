@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.computershopsystemadmin.Model.Brand;
 import com.example.computershopsystemadmin.Model.Product;
@@ -68,7 +69,7 @@ public class ChangeBrandProductFragment extends Fragment {
                             fragment.setArguments(bundle);
                             switchFragment(fragment);
                         } else {
-
+                            Toast.makeText(getContext(), "Change brand is successfully", Toast.LENGTH_SHORT).show();
                             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/brand/name");
                             mDatabase.setValue(name);
                             pro.getBrand().setName(name);
@@ -79,6 +80,7 @@ public class ChangeBrandProductFragment extends Fragment {
                             fragment.setArguments(bundle);
                             switchFragment(fragment);
                         }
+
                     }
                 }
             });

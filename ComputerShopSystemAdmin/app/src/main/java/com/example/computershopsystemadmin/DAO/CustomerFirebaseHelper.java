@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -161,7 +162,7 @@ public class CustomerFirebaseHelper {
                 }
             }
         }
-        return "$"+String.valueOf(profit);
+        return "$"+checkInt(profit);
     }
 
     /**
@@ -200,5 +201,10 @@ public class CustomerFirebaseHelper {
 
     public void setList(ArrayList<Customer> list) {
         this.list = list;
+    }
+    String checkInt(double num) {
+        if ((int) num == num) return Integer.toString((int) num);
+        DecimalFormat df = new DecimalFormat("###.####");
+        return df.format(num);
     }
 }

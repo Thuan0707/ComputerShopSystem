@@ -118,9 +118,9 @@ public class LVCreditCardAdapter  extends ArrayAdapter<CreditCard> {
         fragTransaction.commit();
     }
     String checkInt(double num) {
-        if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
+        if ((int) num == num) return Integer.toString((int) num);
         DecimalFormat df = new DecimalFormat("###.####");
-        return df.format(num); //and for you, Christian Kuetbach
+        return df.format(num);
     }
 
 }

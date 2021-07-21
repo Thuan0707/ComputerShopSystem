@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.computershopsystemadmin.Model.CPU;
 import com.example.computershopsystemadmin.Model.Product;
@@ -88,7 +89,7 @@ public class ChangeRamProductFragment extends Fragment {
                             fragment.setArguments(bundle);
                             switchFragment(fragment);
                         } else {
-
+                            Toast.makeText(getContext(), "Change ram is successfully", Toast.LENGTH_SHORT).show();
                             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/ram/capacity");
                             mDatabase.setValue(capacity);
                             pro.getRam().setCapacity(capacity);

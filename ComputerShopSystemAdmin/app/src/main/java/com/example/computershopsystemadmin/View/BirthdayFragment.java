@@ -61,8 +61,8 @@ public class BirthdayFragment extends Fragment {
                         Validation validation=new Validation();
                         String notify=validation.CheckDOB(year);
                         if(notify!=null){
-                            binding.edBirthday.setBackground(getActivity().getDrawable(R.drawable.border_red));
-                            binding.edBirthday.setError(notify);}
+                            Toast.makeText(getContext(), notify , Toast.LENGTH_SHORT).show();
+                        }
                         else{
                             binding.edBirthday.setText( (monthOfYear + 1)+ "/" +dayOfMonth  + "/" + year);
                         }

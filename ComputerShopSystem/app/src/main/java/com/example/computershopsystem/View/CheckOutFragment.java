@@ -145,7 +145,7 @@ public class CheckOutFragment extends Fragment {
                     Toast toast = Toast.makeText(getContext(), "Please fill your information" ,Toast.LENGTH_SHORT);
                     toast.show();
 
-                }
+                }else 
                 if (binding.tvPaymentCheckOut.getText().toString() == ""
                         || !CheckMoneyInCreditCard(creditCard.getMoney(), binding.tvTotalCheckOut.getText().toString().trim().replace("$", ""))) {
                     binding.tvPaymentCheckOut.setBackground(getActivity().getDrawable(R.drawable.border_red));
@@ -160,7 +160,7 @@ public class CheckOutFragment extends Fragment {
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Customer/" + firebaseUser.getUid() + "/orderList");
                     String id = mDatabase.push().getKey();
                     decreaseQuantityProduct(productList);
-                    decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString().trim().replace("$", "")), creditCard);
+                    decreaseMoneyInCard(Double.parseDouble(binding.tvTotalCheckOut.getText().toString().trim().replace("$", "").replace(",",".")), creditCard);
                     Order order = new Order(id, firebaseUser.getUid(), name, orderDate, null, shipDate, addesss, phone, productList, binding.tvNoteCheckOut.getText().toString(), creditCard, voucher);
 
                     mDatabase.child(id).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -198,7 +198,7 @@ public class CheckOutFragment extends Fragment {
     }
 
     boolean CheckMoneyInCreditCard(String money, String total) {
-        if (Double.parseDouble(money) < Double.parseDouble(total)) {
+        if (Double.parseDouble(money.trim().replace(",",".")) < Double.parseDouble(total.trim().replace(",","."))) {
             return false;
         }
         return true;

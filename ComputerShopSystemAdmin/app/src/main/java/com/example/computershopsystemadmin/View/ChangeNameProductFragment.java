@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.computershopsystemadmin.Model.Product;
 import com.example.computershopsystemadmin.Model.Ram;
@@ -67,6 +68,7 @@ Product pro;
                             fragment.setArguments(bundle);
                             switchFragment(fragment);
                         } else {
+                            Toast.makeText(getContext(), "Change name is successfully", Toast.LENGTH_SHORT).show();
                             Bundle bundle = new Bundle();
                             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/name");
                             mDatabase.setValue(name);

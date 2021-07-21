@@ -37,7 +37,7 @@ public class ChangePhoneFragment extends Fragment {
         Bundle bundle = this.getArguments();
         String str = bundle.getString("phone");
         if (str != "") {
-            binding.edPhone.setText("0"+str.substring(3));
+            binding.edPhone.setText("0"+str.substring(1));
         }
         binding.btnChange.setOnClickListener(new View.OnClickListener() {
             @Override

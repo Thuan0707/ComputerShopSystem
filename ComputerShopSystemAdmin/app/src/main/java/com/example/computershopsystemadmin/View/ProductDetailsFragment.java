@@ -179,6 +179,10 @@ public class ProductDetailsFragment extends Fragment {
             public void onClick(View v) {
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + product.getId());
                 mDatabase.removeValue();
+                Toast.makeText(getContext(), "Delete product is successfully", Toast.LENGTH_SHORT).show();
+
+                ProductManagementFragment fragment=new ProductManagementFragment();
+                switchFragment(fragment);
             }
         });
 
@@ -188,7 +192,7 @@ public class ProductDetailsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST) {
+        if (requestCode == PICK_IMAGE_REQUEST && data!=null) {
             imageURI = data.getData();
             uploadFile();
 

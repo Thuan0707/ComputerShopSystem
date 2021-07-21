@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.computershopsystemadmin.Model.Customer;
 import com.example.computershopsystemadmin.Model.CustomerAccount;
@@ -98,6 +99,7 @@ public class ChangeROMProductFragment extends Fragment {
                         fragment.setArguments(bundle);
                         switchFragment(fragment);
                     } else {
+                        Toast.makeText(getContext(), "Change rom is successfully", Toast.LENGTH_SHORT).show();
 
                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/rom/capacity");
                         mDatabase.setValue(capacity);

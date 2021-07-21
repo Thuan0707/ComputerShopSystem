@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.computershopsystemadmin.Model.Brand;
 import com.example.computershopsystemadmin.Model.CPU;
@@ -81,7 +82,7 @@ Product product;
                         fragment.setArguments(bundle);
                         switchFragment(fragment);
                     } else {
-
+                            Toast.makeText(getContext(), "Change cpu is successfully", Toast.LENGTH_SHORT).show();
                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Product/" + pro.getId() + "/cpu/series");
                         mDatabase.setValue(series);
                         pro.getCpu().setSeries(series);

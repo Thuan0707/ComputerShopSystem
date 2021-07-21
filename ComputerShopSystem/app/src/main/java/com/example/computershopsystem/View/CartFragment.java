@@ -56,7 +56,7 @@ public class CartFragment extends Fragment {
         listView.setAdapter(LVProductInCartAdapter);
         binding.txtItemQuantity.setText(String.valueOf(productList.size()));
         binding.txtPriceItem.setText("$"+checkInt(sumInList(productList)));
-        binding.txtTotalPrice.setText("$"+checkInt(sumInList(productList) + 20));
+        binding.txtTotalPrice.setText("$"+checkInt(sumInList(productList) ));
         binding.btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

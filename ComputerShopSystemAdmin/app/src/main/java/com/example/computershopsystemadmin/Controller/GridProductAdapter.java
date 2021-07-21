@@ -72,7 +72,7 @@ public class GridProductAdapter extends BaseAdapter {
     String checkInt(double num) {
         if ((int) num == num) return Integer.toString((int) num); //for you, StackOverflowException
         DecimalFormat df = new DecimalFormat("###.####");
-        return df.format(num); //and for you, Christian Kuetbach
+        return df.format(num);
     }
 
 }

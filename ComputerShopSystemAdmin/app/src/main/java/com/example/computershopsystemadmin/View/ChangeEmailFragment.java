@@ -59,6 +59,7 @@ public class ChangeEmailFragment extends Fragment {
                     binding.edEmail.setBackground(getActivity().getDrawable(R.drawable.border_red));
                     binding.edEmail.setError(emailNotify);
                 } else {
+                    Toast.makeText(getContext(), "Change email is successfully", Toast.LENGTH_SHORT).show();
                     databaseReference = FirebaseDatabase.getInstance().getReference("Admin/"+user.getUid()+"/email");
                     databaseReference.setValue(binding.edEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

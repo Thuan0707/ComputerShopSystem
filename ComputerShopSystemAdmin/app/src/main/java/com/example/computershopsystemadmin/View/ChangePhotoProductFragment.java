@@ -87,7 +87,9 @@ public class ChangePhotoProductFragment extends Fragment {
                                     String fileLink = task.getResult().toString();
                                     product.setImage(fileLink);
                                     databaseReference = FirebaseDatabase.getInstance().getReference("Product");
-                                    databaseReference.push().setValue(product);
+                                    String  id =databaseReference.push().getKey();
+                                    product.setId(id);
+                                    databaseReference.child(id).setValue(product);
                                     ProductManagementFragment fragment=new ProductManagementFragment();
                                     switchFragment(fragment);
                                     Toast.makeText(getContext(), "Add product success fully", Toast.LENGTH_SHORT).show();

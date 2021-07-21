@@ -71,8 +71,8 @@ public class ChangePriceQuantityProductFragment extends Fragment {
                         binding.edQuantity.setError(notityQuantity);
                     }
                     if (validation.isValid()){
-                        double sellPrice = Double.parseDouble(binding.edSellPrice.getText().toString().trim());
-                        double buyPrice = Double.parseDouble(binding.edBuyPrice.getText().toString().trim());
+                        double sellPrice = Double.parseDouble(binding.edSellPrice.getText().toString().trim().replace(",","."));
+                        double buyPrice = Double.parseDouble(binding.edBuyPrice.getText().toString().trim().replace(",","."));
                         int quantity = Integer.parseInt(binding.edQuantity.getText().toString().trim());
                     if (bundle.getSerializable("newProduct") != null) {
                         Bundle bundle = new Bundle();

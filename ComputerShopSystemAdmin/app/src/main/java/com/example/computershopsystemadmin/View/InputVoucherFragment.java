@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 public class InputVoucherFragment extends Fragment {
@@ -62,7 +63,7 @@ public class InputVoucherFragment extends Fragment {
 
             name.setText(voucher.getName());
             code.setText(voucher.getCode());
-            discount.setText(String.valueOf(voucher.getDiscount()));
+            discount.setText(checkInt(voucher.getDiscount()));
             description.setText(voucher.getDescription());
         }
 
@@ -216,4 +217,11 @@ public class InputVoucherFragment extends Fragment {
         fragTransaction.replace(R.id.fl_wrapper, fragment);
         fragTransaction.commit();
     }
+
+    String checkInt(double num) {
+        if ((int) num == num) return Integer.toString((int) num);
+        DecimalFormat df = new DecimalFormat("###.####");
+        return df.format(num);
+    }
+
 }

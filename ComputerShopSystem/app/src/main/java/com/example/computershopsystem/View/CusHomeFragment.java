@@ -1,6 +1,5 @@
 package com.example.computershopsystem.View;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -248,12 +247,7 @@ public class CusHomeFragment extends Fragment {
             }
         });
 
-        binding.ibtnUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), LoginActiveActivity.class));
-            }
-        });
+
 
         binding.btnAsus.setOnClickListener(new View.OnClickListener() {
             @Override
